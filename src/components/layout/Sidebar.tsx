@@ -3,7 +3,7 @@ import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
-import { useMobile } from '@/hooks/use-mobile';
+import { useIsMobile } from '@/hooks/use-mobile';
 import { X } from 'lucide-react';
 import { ScrollArea } from '@/components/ui/scroll-area';
 
@@ -16,7 +16,7 @@ import {
   List, 
   HelpCircle, 
   Map, 
-  BuildingLibrary,
+  Building,
   Award,
   FileSpreadsheet
 } from 'lucide-react';
@@ -27,7 +27,7 @@ interface SidebarProps {
 
 const Sidebar = ({ onClose }: SidebarProps) => {
   const location = useLocation();
-  const isMobile = useMobile();
+  const isMobile = useIsMobile();
   
   const isActive = (path: string) => {
     if (path === '/') {
@@ -47,7 +47,7 @@ const Sidebar = ({ onClose }: SidebarProps) => {
       case 'templates': return <FileText size={size} />;
       case 'plan-comptable': return <List size={size} />;
       case 'carte': return <Map size={size} />;
-      case 'administrations': return <BuildingLibrary size={size} />;
+      case 'administrations': return <Building size={size} />;
       case 'quiz': return <Award size={size} />;
       case 'excel-converter': return <FileSpreadsheet size={size} />;
       default: return null;
