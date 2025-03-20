@@ -1,328 +1,420 @@
 
 import React, { useState } from 'react';
-import { CheckCircle, XCircle, HelpCircle, RefreshCw, Award } from 'lucide-react';
+import { Check, X, Award, ArrowRight, HelpCircle, RefreshCcw, ChevronRight, SmilePlus, Frown, PartyPopper } from 'lucide-react';
+import confetti from 'canvas-confetti';
 
-type Question = {
-  id: number;
-  text: string;
+type QuizQuestion = {
+  id: string;
+  question: string;
   options: string[];
   correctAnswer: number;
   explanation: string;
 };
 
 type QuizProps = {
-  questions: Question[];
   title: string;
 };
 
-const quizQuestions: Question[] = [
+const questions: QuizQuestion[] = [
   {
-    id: 1,
-    text: "Quel compte du plan comptable suisse est utilisé pour la caisse?",
-    options: ["1000", "2000", "3000", "4000"],
-    correctAnswer: 0,
-    explanation: "La caisse est enregistrée au compte 1000 dans le plan comptable suisse. Les comptes 1xxx correspondent aux actifs."
-  },
-  {
-    id: 2,
-    text: "À quel taux standard la TVA est-elle prélevée en Suisse?",
-    options: ["7.7%", "8.1%", "2.5%", "3.7%"],
+    id: '1',
+    question: 'Selon le Code des Obligations suisse, à partir de quel chiffre d\'affaires annuel une entreprise individuelle doit-elle obligatoirement tenir une comptabilité complète?',
+    options: [
+      '100\'000 CHF',
+      '500\'000 CHF',
+      '1\'000\'000 CHF',
+      '1\'500\'000 CHF'
+    ],
     correctAnswer: 1,
-    explanation: "Le taux standard de la TVA en Suisse est de 8.1% depuis le 1er janvier 2024. Le taux réduit est de 2.6% et le taux spécial pour l'hébergement est de 3.8%."
+    explanation: 'Selon l\'art. 957 al. 1 ch. 1 CO, les entreprises individuelles qui ont réalisé un chiffre d\'affaires d\'au moins 500\'000 francs lors du dernier exercice sont tenues de tenir une comptabilité et de présenter des comptes.'
   },
   {
-    id: 3,
-    text: "Quel document doit obligatoirement comporter le numéro d'identification TVA?",
-    options: ["Un reçu de caisse", "Une facture", "Un bulletin de livraison", "Un relevé bancaire"],
-    correctAnswer: 1,
-    explanation: "Une facture doit obligatoirement comporter le numéro d'identification TVA, tant celui du fournisseur que celui du client dans certains cas (auto-liquidation)."
-  },
-  {
-    id: 4,
-    text: "Quelle est la durée légale de conservation des pièces comptables en Suisse?",
-    options: ["5 ans", "7 ans", "10 ans", "15 ans"],
+    id: '2',
+    question: 'Quel est le taux normal de TVA en Suisse depuis le 1er janvier 2024?',
+    options: [
+      '7.5%',
+      '7.7%',
+      '8.0%',
+      '8.1%'
+    ],
     correctAnswer: 2,
-    explanation: "La durée légale de conservation des pièces comptables en Suisse est de 10 ans, conformément à l'article 958f du Code des obligations."
+    explanation: 'Le taux normal de TVA en Suisse est de 8.0% depuis le 1er janvier 2024. Les autres taux sont de 2.6% (taux réduit) et 3.8% (taux spécial pour l\'hébergement).'
   },
   {
-    id: 5,
-    text: "Comment s'appelle le document qui résume les charges et les produits d'une entreprise?",
-    options: ["Le bilan", "Le compte de résultat", "L'annexe", "Le tableau de flux de trésorerie"],
-    correctAnswer: 1,
-    explanation: "Le compte de résultat (aussi appelé compte de profits et pertes) résume les charges et les produits d'une entreprise sur une période donnée."
-  },
-  {
-    id: 6,
-    text: "Que signifie l'acronyme LPP?",
+    id: '3',
+    question: 'Quelle est la durée minimale de conservation des pièces comptables selon le droit suisse?',
     options: [
-      "Loi sur la Prévoyance Professionnelle",
-      "Loi sur les Produits et Prestations",
-      "Loi sur les Placements Privés",
-      "Loi sur la Protection du Personnel"
+      '5 ans',
+      '7 ans',
+      '10 ans',
+      '15 ans'
     ],
-    correctAnswer: 0,
-    explanation: "LPP signifie Loi sur la Prévoyance Professionnelle. Elle constitue le 2ème pilier du système de prévoyance suisse et est obligatoire pour tous les salariés."
-  },
-  {
-    id: 7,
-    text: "Quelle est la différence fondamentale entre un actif et un passif?",
-    options: [
-      "Un actif génère des dépenses, un passif des recettes",
-      "Un actif appartient à l'entreprise, un passif est dû par l'entreprise",
-      "Un actif est toujours matériel, un passif est toujours immatériel",
-      "Un actif est un bien meuble, un passif est un bien immeuble"
-    ],
-    correctAnswer: 1,
-    explanation: "Un actif représente ce que l'entreprise possède ou ce qui lui est dû, tandis qu'un passif représente ce que l'entreprise doit à des tiers ou à ses propriétaires."
-  },
-  {
-    id: 8,
-    text: "Quel logiciel de comptabilité est le plus utilisé en Suisse pour les grandes entreprises?",
-    options: ["SAP", "Sage", "Abacus", "Oracle"],
     correctAnswer: 2,
-    explanation: "Abacus est le logiciel de comptabilité le plus répandu en Suisse pour les grandes entreprises, mais aussi pour les PME. Il est spécialement adapté aux spécificités de la comptabilité suisse."
+    explanation: 'Selon l\'art. 958f al. 1 CO, les livres et les pièces comptables, ainsi que le rapport de gestion et le rapport de révision, doivent être conservés pendant 10 ans.'
   },
   {
-    id: 9,
-    text: "Quelle méthode d'amortissement est la plus couramment utilisée en Suisse?",
+    id: '4',
+    question: 'Dans le plan comptable suisse, à quelle classe appartiennent les comptes de charges de personnel?',
     options: [
-      "Amortissement linéaire",
-      "Amortissement dégressif",
-      "Amortissement par unités d'œuvre",
-      "Amortissement progressif"
+      'Classe 1',
+      'Classe 3',
+      'Classe 5',
+      'Classe 6'
+    ],
+    correctAnswer: 2,
+    explanation: 'Dans le plan comptable suisse, les charges de personnel sont enregistrées dans la classe 5. La classe 1 correspond aux actifs, la classe 3 aux produits et la classe 6 aux autres charges d\'exploitation.'
+  },
+  {
+    id: '5',
+    question: 'Quelle méthode d\'amortissement n\'est PAS reconnue fiscalement en Suisse pour les immobilisations?',
+    options: [
+      'Méthode linéaire',
+      'Méthode dégressive',
+      'Méthode des unités d\'œuvre',
+      'Amortissement immédiat'
+    ],
+    correctAnswer: 2,
+    explanation: 'La méthode des unités d\'œuvre n\'est généralement pas reconnue fiscalement en Suisse. Les méthodes couramment acceptées sont la méthode linéaire, dégressive, ou l\'amortissement immédiat dans certains cas.'
+  },
+  {
+    id: '6',
+    question: 'Quel est le taux de cotisation AVS/AI/APG pour les salariés en 2024?',
+    options: [
+      '5.05%',
+      '5.3%',
+      '10.6%',
+      '13.1%'
     ],
     correctAnswer: 1,
-    explanation: "L'amortissement dégressif est la méthode la plus couramment utilisée en Suisse, notamment pour des raisons fiscales. Cette méthode permet de déduire des montants plus importants les premières années."
+    explanation: 'Le taux de cotisation AVS/AI/APG pour les salariés est de 5.3% du salaire brut. L\'employeur paie également 5.3%, ce qui fait un total de 10.6%.'
   },
   {
-    id: 10,
-    text: "Dans le plan comptable suisse, à quelle classe appartiennent les comptes commençant par 5?",
+    id: '7',
+    question: 'Quelle norme comptable est spécifiquement conçue pour les PME suisses?',
     options: [
-      "Actifs",
-      "Passifs",
-      "Produits",
-      "Charges"
+      'IFRS',
+      'Swiss GAAP RPC',
+      'US GAAP',
+      'IPSAS'
     ],
-    correctAnswer: 3,
-    explanation: "Les comptes de la classe 5 correspondent aux charges de personnel dans le plan comptable suisse."
+    correctAnswer: 1,
+    explanation: 'Swiss GAAP RPC (Recommandations relatives à la présentation des comptes) est la norme comptable suisse spécifiquement adaptée aux besoins des PME suisses.'
   }
 ];
 
-const AccountingQuiz: React.FC<QuizProps> = ({ questions = quizQuestions, title = "Quiz Comptabilité Suisse" }) => {
-  const [currentAnswers, setCurrentAnswers] = useState<Array<number | null>>(Array(questions.length).fill(null));
-  const [showResults, setShowResults] = useState(false);
+const AccountingQuiz: React.FC<QuizProps> = ({ title }) => {
   const [currentQuestion, setCurrentQuestion] = useState(0);
+  const [selectedAnswers, setSelectedAnswers] = useState<(number | null)[]>(Array(questions.length).fill(null));
+  const [showExplanation, setShowExplanation] = useState(false);
+  const [quizSubmitted, setQuizSubmitted] = useState(false);
+  const [score, setScore] = useState(0);
   
-  const handleAnswer = (questionIndex: number, optionIndex: number) => {
-    const newAnswers = [...currentAnswers];
-    newAnswers[questionIndex] = optionIndex;
-    setCurrentAnswers(newAnswers);
+  const handleAnswerSelection = (answerIndex: number) => {
+    if (quizSubmitted) return;
+    
+    const newSelectedAnswers = [...selectedAnswers];
+    newSelectedAnswers[currentQuestion] = answerIndex;
+    setSelectedAnswers(newSelectedAnswers);
+    setShowExplanation(true);
   };
   
-  const handleSubmit = () => {
-    setShowResults(true);
-  };
-  
-  const resetQuiz = () => {
-    setCurrentAnswers(Array(questions.length).fill(null));
-    setShowResults(false);
-    setCurrentQuestion(0);
-  };
-  
-  const score = currentAnswers.reduce((acc, answer, index) => {
-    if (answer === questions[index].correctAnswer) {
-      return acc + 1;
-    }
-    return acc;
-  }, 0);
-  
-  const scorePercentage = Math.round((score / questions.length) * 100);
-  
-  const getScoreMessage = () => {
-    if (scorePercentage >= 90) return "Excellent! Vous maîtrisez parfaitement le sujet!";
-    if (scorePercentage >= 75) return "Très bien! Vous avez de solides connaissances!";
-    if (scorePercentage >= 60) return "Bien! Vous avez compris les concepts essentiels.";
-    if (scorePercentage >= 40) return "Pas mal, mais il y a encore des points à améliorer.";
-    return "Continuez à étudier, la pratique fait la perfection!";
-  };
-  
-  const navigateQuestion = (direction: 'prev' | 'next') => {
-    if (direction === 'prev' && currentQuestion > 0) {
-      setCurrentQuestion(currentQuestion - 1);
-    } else if (direction === 'next' && currentQuestion < questions.length - 1) {
+  const goToNextQuestion = () => {
+    setShowExplanation(false);
+    if (currentQuestion < questions.length - 1) {
       setCurrentQuestion(currentQuestion + 1);
     }
   };
-
+  
+  const goToPreviousQuestion = () => {
+    setShowExplanation(false);
+    if (currentQuestion > 0) {
+      setCurrentQuestion(currentQuestion - 1);
+    }
+  };
+  
+  const resetQuiz = () => {
+    setCurrentQuestion(0);
+    setSelectedAnswers(Array(questions.length).fill(null));
+    setShowExplanation(false);
+    setQuizSubmitted(false);
+    setScore(0);
+  };
+  
+  const handleSubmitQuiz = () => {
+    const hasUnansweredQuestions = selectedAnswers.some((answer) => answer === null);
+    if (hasUnansweredQuestions) {
+      alert('Veuillez répondre à toutes les questions avant de soumettre le quiz.');
+      return;
+    }
+    
+    const newScore = selectedAnswers.reduce((total, answer, index) => {
+      return answer === questions[index].correctAnswer ? total + 1 : total;
+    }, 0);
+    
+    setScore(newScore);
+    setQuizSubmitted(true);
+    
+    if (newScore / questions.length >= 0.7) {
+      // Trigger confetti for good performance
+      confetti({
+        particleCount: 100,
+        spread: 70,
+        origin: { y: 0.6 }
+      });
+    }
+  };
+  
+  const calculatePercentage = () => {
+    return Math.round((score / questions.length) * 100);
+  };
+  
+  const getFeedbackMessage = () => {
+    const percentage = calculatePercentage();
+    if (percentage >= 90) return "Excellent! Vous êtes un expert en comptabilité suisse!";
+    if (percentage >= 70) return "Très bien! Vous avez de solides connaissances en comptabilité.";
+    if (percentage >= 50) return "Pas mal! Quelques concepts à revoir mais c'est encourageant.";
+    return "Continuez à apprendre! La comptabilité suisse a ses subtilités.";
+  };
+  
+  const getFeedbackIcon = () => {
+    const percentage = calculatePercentage();
+    if (percentage >= 70) return <PartyPopper size={36} className="text-green-500" />;
+    if (percentage >= 50) return <SmilePlus size={36} className="text-yellow-500" />;
+    return <Frown size={36} className="text-orange-500" />;
+  };
+  
+  const question = questions[currentQuestion];
+  const selectedAnswer = selectedAnswers[currentQuestion];
+  const isCorrect = selectedAnswer !== null && selectedAnswer === question.correctAnswer;
+  
   return (
-    <div className="glass rounded-xl shadow-card p-6">
-      <h2 className="text-2xl font-bold mb-6">{title}</h2>
-      
-      {!showResults ? (
-        <div>
-          <div className="mb-4 flex justify-between items-center">
-            <span className="text-sm text-swiss-text-secondary">
-              Question {currentQuestion + 1} sur {questions.length}
-            </span>
-            <div className="flex items-center space-x-2">
-              <span className="text-sm text-swiss-text-secondary">
-                {currentAnswers.filter(a => a !== null).length} réponses sur {questions.length}
-              </span>
-              <div className="w-24 bg-gray-200 rounded-full h-2.5">
-                <div 
-                  className="bg-swiss-blue h-2.5 rounded-full" 
-                  style={{ width: `${(currentAnswers.filter(a => a !== null).length / questions.length) * 100}%` }}
-                ></div>
+    <div className="glass rounded-xl p-6 shadow-card">
+      {!quizSubmitted ? (
+        <>
+          <div className="flex justify-between items-center mb-6">
+            <h3 className="text-xl font-semibold">{title}</h3>
+            <div className="text-sm text-swiss-text-secondary">
+              Question {currentQuestion + 1} / {questions.length}
+            </div>
+          </div>
+          
+          <div className="mb-6">
+            <div className="bg-swiss-blue/5 p-4 rounded-lg mb-6">
+              <h4 className="text-lg font-medium mb-2">{question.question}</h4>
+              <div className="space-y-3 mt-4">
+                {question.options.map((option, index) => (
+                  <button
+                    key={index}
+                    onClick={() => handleAnswerSelection(index)}
+                    className={`w-full text-left p-3 rounded-lg flex items-center transition-colors ${
+                      selectedAnswer === index 
+                        ? isCorrect 
+                          ? 'bg-green-100 border border-green-300' 
+                          : 'bg-red-100 border border-red-300'
+                        : 'bg-white border border-gray-200 hover:border-swiss-blue/30'
+                    }`}
+                    disabled={quizSubmitted}
+                  >
+                    <div className={`w-6 h-6 flex items-center justify-center rounded-full mr-3 ${
+                      selectedAnswer === index 
+                        ? isCorrect 
+                          ? 'bg-green-500 text-white' 
+                          : 'bg-red-500 text-white'
+                        : 'bg-gray-100 text-gray-700'
+                    }`}>
+                      {selectedAnswer === index 
+                        ? isCorrect 
+                          ? <Check size={14} /> 
+                          : <X size={14} /> 
+                        : String.fromCharCode(65 + index)}
+                    </div>
+                    <span>{option}</span>
+                    {selectedAnswer === index && (
+                      <div className="ml-auto">
+                        {isCorrect 
+                          ? <Check size={20} className="text-green-500" /> 
+                          : <X size={20} className="text-red-500" />}
+                      </div>
+                    )}
+                  </button>
+                ))}
               </div>
             </div>
-          </div>
-          
-          <div className="bg-swiss-muted p-6 rounded-lg mb-6">
-            <h3 className="text-xl font-semibold mb-4">{questions[currentQuestion].text}</h3>
             
-            <div className="space-y-3">
-              {questions[currentQuestion].options.map((option, optionIndex) => (
-                <button
-                  key={optionIndex}
-                  onClick={() => handleAnswer(currentQuestion, optionIndex)}
-                  className={`w-full text-left p-3 rounded-md transition-colors ${
-                    currentAnswers[currentQuestion] === optionIndex
-                      ? 'bg-swiss-blue text-white'
-                      : 'bg-white hover:bg-gray-100'
-                  }`}
-                >
-                  <span className="font-medium">
-                    {String.fromCharCode(65 + optionIndex)}.
-                  </span>{' '}
-                  {option}
-                </button>
-              ))}
-            </div>
+            {showExplanation && selectedAnswer !== null && (
+              <div className={`p-4 rounded-lg ${isCorrect ? 'bg-green-50 border border-green-200' : 'bg-red-50 border border-red-200'}`}>
+                <div className="flex items-start">
+                  <div className={`p-2 rounded-full mr-3 mt-0.5 ${isCorrect ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'}`}>
+                    <HelpCircle size={16} />
+                  </div>
+                  <div>
+                    <h5 className="font-semibold mb-1">{isCorrect ? 'Correct!' : 'Incorrect'}</h5>
+                    <p className="text-sm">{question.explanation}</p>
+                    {!isCorrect && (
+                      <p className="mt-2 text-sm font-medium">
+                        La bonne réponse était: {question.options[question.correctAnswer]}
+                      </p>
+                    )}
+                  </div>
+                </div>
+              </div>
+            )}
           </div>
           
-          <div className="flex justify-between items-center">
+          <div className="flex justify-between">
+            <button
+              onClick={goToPreviousQuestion}
+              disabled={currentQuestion === 0}
+              className={`px-4 py-2 rounded-lg flex items-center ${
+                currentQuestion === 0 
+                  ? 'bg-gray-100 text-gray-400 cursor-not-allowed' 
+                  : 'bg-swiss-blue/10 text-swiss-blue hover:bg-swiss-blue/20'
+              }`}
+            >
+              <ArrowRight size={16} className="transform rotate-180 mr-2" />
+              Précédent
+            </button>
+            
             <div>
-              <button
-                onClick={() => navigateQuestion('prev')}
-                disabled={currentQuestion === 0}
-                className={`px-4 py-2 rounded-md border transition-colors ${
-                  currentQuestion === 0
-                    ? 'border-gray-200 text-gray-400 cursor-not-allowed'
-                    : 'border-swiss-blue text-swiss-blue hover:bg-swiss-blue/10'
-                }`}
-              >
-                Question précédente
-              </button>
-            </div>
-            
-            <div className="flex space-x-3">
               {currentQuestion < questions.length - 1 ? (
                 <button
-                  onClick={() => navigateQuestion('next')}
-                  className="px-4 py-2 rounded-md bg-swiss-blue text-white hover:bg-swiss-blue/90 transition-colors"
+                  onClick={goToNextQuestion}
+                  className="px-4 py-2 rounded-lg bg-swiss-blue/10 text-swiss-blue hover:bg-swiss-blue/20 flex items-center"
                 >
-                  Question suivante
+                  Suivant
+                  <ArrowRight size={16} className="ml-2" />
                 </button>
               ) : (
                 <button
-                  onClick={handleSubmit}
-                  disabled={currentAnswers.includes(null)}
-                  className={`px-4 py-2 rounded-md transition-colors ${
-                    currentAnswers.includes(null)
-                      ? 'bg-gray-300 cursor-not-allowed'
-                      : 'bg-green-600 text-white hover:bg-green-700'
-                  }`}
+                  onClick={handleSubmitQuiz}
+                  className="px-4 py-2 rounded-lg bg-swiss-blue text-white hover:bg-swiss-blue/90 flex items-center"
                 >
-                  Valider mes réponses
+                  Terminer le quiz
+                  <Check size={16} className="ml-2" />
                 </button>
               )}
             </div>
           </div>
-        </div>
-      ) : (
-        <div>
-          <div className="text-center mb-8">
-            <div className="inline-flex items-center justify-center p-4 bg-swiss-blue/10 rounded-full mb-4">
-              <Award size={48} className="text-swiss-blue" />
+          
+          <div className="mt-6 pt-6 border-t border-gray-200">
+            <div className="flex items-center justify-between">
+              <div className="flex space-x-1">
+                {questions.map((_, index) => (
+                  <button
+                    key={index}
+                    onClick={() => setCurrentQuestion(index)}
+                    className={`w-8 h-8 rounded-full flex items-center justify-center text-sm ${
+                      currentQuestion === index 
+                        ? 'bg-swiss-blue text-white'
+                        : selectedAnswers[index] !== null
+                          ? 'bg-swiss-blue/20 text-swiss-blue'
+                          : 'bg-gray-100 text-gray-700'
+                    }`}
+                  >
+                    {index + 1}
+                  </button>
+                ))}
+              </div>
+              
+              <button
+                onClick={handleSubmitQuiz}
+                className="px-4 py-2 rounded-lg bg-swiss-blue text-white hover:bg-swiss-blue/90 flex items-center"
+              >
+                Soumettre
+                <ChevronRight size={16} className="ml-1" />
+              </button>
             </div>
-            <h3 className="text-2xl font-bold mb-2">
-              Votre score: {score}/{questions.length} ({scorePercentage}%)
-            </h3>
-            <p className="text-lg text-swiss-text-secondary">{getScoreMessage()}</p>
+          </div>
+        </>
+      ) : (
+        // Results display
+        <div className="text-center py-6">
+          <div className="mb-6">
+            {getFeedbackIcon()}
           </div>
           
-          <div className="space-y-6 mb-8">
-            {questions.map((question, questionIndex) => {
-              const isCorrect = currentAnswers[questionIndex] === question.correctAnswer;
-              
-              return (
+          <h3 className="text-2xl font-bold mb-2">Quiz Terminé!</h3>
+          <p className="text-lg text-swiss-text-secondary mb-6">{getFeedbackMessage()}</p>
+          
+          <div className="glass p-8 rounded-xl mb-8 inline-block">
+            <div className="relative w-32 h-32 mx-auto">
+              <svg className="w-full h-full" viewBox="0 0 100 100">
+                <circle 
+                  className="text-gray-200" 
+                  strokeWidth="8" 
+                  stroke="currentColor" 
+                  fill="transparent" 
+                  r="45" 
+                  cx="50" 
+                  cy="50" 
+                />
+                <circle 
+                  className="text-swiss-blue" 
+                  strokeWidth="8" 
+                  strokeDasharray={`${calculatePercentage() * 2.83}, 283`}
+                  strokeLinecap="round" 
+                  stroke="currentColor" 
+                  fill="transparent" 
+                  r="45" 
+                  cx="50" 
+                  cy="50" 
+                />
+              </svg>
+              <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center">
+                <div className="text-3xl font-bold">{score}</div>
+                <div className="text-sm text-swiss-text-secondary">sur {questions.length}</div>
+              </div>
+            </div>
+            
+            <div className="mt-4 text-lg font-semibold text-swiss-blue">
+              {calculatePercentage()}%
+            </div>
+          </div>
+          
+          <div className="mb-8">
+            <h4 className="font-semibold mb-4 flex items-center justify-center">
+              <Award size={20} className="mr-2 text-swiss-blue" />
+              Résumé de vos réponses
+            </h4>
+            
+            <div className="space-y-3 max-w-md mx-auto">
+              {questions.map((q, index) => (
                 <div 
-                  key={questionIndex}
-                  className={`p-4 rounded-lg border ${
-                    isCorrect ? 'border-green-200 bg-green-50' : 'border-red-200 bg-red-50'
+                  key={index} 
+                  className={`p-3 rounded-lg flex items-center ${
+                    selectedAnswers[index] === q.correctAnswer 
+                      ? 'bg-green-50 border border-green-200' 
+                      : 'bg-red-50 border border-red-200'
                   }`}
                 >
-                  <div className="flex items-start mb-2">
-                    <div className="mr-3 mt-1">
-                      {isCorrect ? (
-                        <CheckCircle size={20} className="text-green-600" />
-                      ) : (
-                        <XCircle size={20} className="text-red-600" />
-                      )}
-                    </div>
-                    <div>
-                      <h4 className="font-semibold mb-1">
-                        {questionIndex + 1}. {question.text}
-                      </h4>
-                      
-                      <div className="ml-6 mt-2 space-y-1">
-                        {question.options.map((option, optionIndex) => (
-                          <div 
-                            key={optionIndex}
-                            className={`py-1 px-2 rounded ${
-                              optionIndex === question.correctAnswer
-                                ? 'bg-green-200 text-green-800'
-                                : currentAnswers[questionIndex] === optionIndex
-                                  ? 'bg-red-200 text-red-800'
-                                  : ''
-                            }`}
-                          >
-                            <span className="font-medium">
-                              {String.fromCharCode(65 + optionIndex)}.
-                            </span>{' '}
-                            {option}
-                            {optionIndex === question.correctAnswer && (
-                              <span className="ml-2">✓</span>
-                            )}
-                          </div>
-                        ))}
-                      </div>
-                      
-                      <div className="mt-3 bg-white p-3 rounded border border-gray-200">
-                        <div className="flex items-center">
-                          <HelpCircle size={16} className="text-swiss-blue mr-2" />
-                          <span className="font-medium">Explication:</span>
-                        </div>
-                        <p className="mt-1 text-swiss-text-secondary">
-                          {question.explanation}
-                        </p>
-                      </div>
+                  <div className={`w-8 h-8 flex items-center justify-center rounded-full mr-3 ${
+                    selectedAnswers[index] === q.correctAnswer 
+                      ? 'bg-green-500 text-white' 
+                      : 'bg-red-500 text-white'
+                  }`}>
+                    {selectedAnswers[index] === q.correctAnswer 
+                      ? <Check size={16} /> 
+                      : <X size={16} />}
+                  </div>
+                  <div className="flex-1 truncate">
+                    <div className="text-sm font-medium truncate">Question {index + 1}</div>
+                    <div className="text-xs text-swiss-text-secondary truncate">
+                      {selectedAnswers[index] !== q.correctAnswer && 
+                        `Votre réponse: ${selectedAnswers[index] !== null ? q.options[selectedAnswers[index]] : 'Non répondu'}`}
                     </div>
                   </div>
                 </div>
-              );
-            })}
+              ))}
+            </div>
           </div>
           
-          <div className="text-center">
-            <button
-              onClick={resetQuiz}
-              className="inline-flex items-center px-4 py-2 rounded-md bg-swiss-blue text-white hover:bg-swiss-blue/90 transition-colors"
-            >
-              <RefreshCw size={16} className="mr-2" />
-              Recommencer le quiz
-            </button>
-          </div>
+          <button
+            onClick={resetQuiz}
+            className="px-6 py-3 rounded-lg bg-swiss-blue text-white hover:bg-swiss-blue/90 flex items-center mx-auto"
+          >
+            <RefreshCcw size={16} className="mr-2" />
+            Recommencer le quiz
+          </button>
         </div>
       )}
     </div>

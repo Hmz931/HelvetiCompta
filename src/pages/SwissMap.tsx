@@ -1,10 +1,10 @@
 
 import React from 'react';
 import Breadcrumb from '../components/common/Breadcrumb';
-import SwissMap from '../components/map/SwissMap';
-import { Map, Info } from 'lucide-react';
+import SwissMapComponent from '../components/map/SwissMap';
+import { Map, Info, BookOpen, CreditCard, Building2 } from 'lucide-react';
 
-const SwissMapPage = () => {
+const SwissMap = () => {
   return (
     <div className="animate-fade-in">
       <Breadcrumb />
@@ -13,106 +13,217 @@ const SwissMapPage = () => {
       <div className="glass rounded-xl p-6 shadow-card mb-10">
         <div className="flex items-start">
           <div className="mr-4 bg-swiss-blue/10 p-2 rounded-md text-swiss-blue mt-1">
-            <Info size={24} />
+            <Map size={24} />
           </div>
           <div>
             <p className="text-lg mb-2">
-              Explorez les différents cantons suisses et découvrez leurs particularités fiscales et administratives.
+              Explorez les spécificités cantonales en matière de comptabilité et fiscalité
             </p>
             <p className="text-swiss-text-secondary">
-              La Suisse est composée de 26 cantons, chacun avec ses propres lois fiscales et règlements. Cette carte interactive vous permet de visualiser rapidement les informations pertinentes pour chaque canton.
+              Cette carte interactive vous permet de découvrir les particularités comptables et fiscales 
+              des différents cantons suisses. Cliquez sur un canton pour afficher ses informations.
             </p>
           </div>
         </div>
       </div>
       
-      <SwissMap />
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-10">
+        <div className="lg:col-span-2">
+          <div className="glass rounded-xl p-6 shadow-card h-full">
+            <h2 className="text-xl font-semibold mb-4">Carte des Cantons Suisses</h2>
+            <div className="aspect-[4/3] w-full relative bg-swiss-muted rounded-lg overflow-hidden">
+              <SwissMapComponent />
+            </div>
+          </div>
+        </div>
+        
+        <div>
+          <div className="glass rounded-xl p-6 shadow-card">
+            <h2 className="text-xl font-semibold mb-4">Informations Cantonales</h2>
+            <div className="text-swiss-text-secondary mb-4">
+              <p>Sélectionnez un canton sur la carte pour afficher ses particularités fiscales et comptables.</p>
+            </div>
+            
+            <div id="canton-info" className="space-y-4">
+              <div className="border border-dashed border-gray-300 rounded-lg p-4 text-center text-swiss-text-secondary">
+                <Map size={32} className="mx-auto mb-2 text-gray-400" />
+                <p>Aucun canton sélectionné</p>
+                <p className="text-sm mt-2">Cliquez sur un canton pour voir ses informations</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
       
-      <div className="mt-12 mb-10">
+      <section className="mb-10">
         <h2 className="text-2xl font-bold mb-6 flex items-center">
-          <Map size={24} className="mr-3 text-swiss-blue" />
-          En savoir plus sur le système fiscal suisse
+          <Info size={24} className="mr-3 text-swiss-blue" />
+          Particularités cantonales
         </h2>
         
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div className="glass rounded-xl p-6 shadow-card">
-            <h3 className="text-xl font-semibold mb-4">Fédéralisme fiscal</h3>
+            <div className="flex items-center mb-4">
+              <div className="rounded-full bg-swiss-blue/10 p-2 mr-3">
+                <CreditCard size={20} className="text-swiss-blue" />
+              </div>
+              <h3 className="text-xl font-semibold">Fiscalité</h3>
+            </div>
             <p className="text-swiss-text-secondary mb-4">
-              Le système fiscal suisse est caractérisé par son fédéralisme, ce qui signifie que la Confédération, les cantons et les communes ont chacun le droit de prélever des impôts.
+              La Suisse est caractérisée par son système fiscal fédéraliste où chaque canton dispose 
+              d'une large autonomie pour fixer ses propres taux d'imposition.
             </p>
-            <p className="text-swiss-text-secondary">
-              Cette structure à trois niveaux crée une diversité considérable dans les taux d'imposition selon les cantons et les communes, ce qui peut influencer les choix d'implantation des entreprises et des particuliers.
-            </p>
+            <ul className="space-y-2 text-swiss-text-secondary">
+              <li className="flex items-start">
+                <span className="inline-flex items-center justify-center bg-swiss-blue text-white rounded-full w-5 h-5 mr-3 mt-0.5 text-xs">•</span>
+                <span>Les taux d'imposition des bénéfices des entreprises varient significativement entre les cantons</span>
+              </li>
+              <li className="flex items-start">
+                <span className="inline-flex items-center justify-center bg-swiss-blue text-white rounded-full w-5 h-5 mr-3 mt-0.5 text-xs">•</span>
+                <span>Certains cantons offrent des statuts fiscaux privilégiés pour certains types d'entreprises</span>
+              </li>
+              <li className="flex items-start">
+                <span className="inline-flex items-center justify-center bg-swiss-blue text-white rounded-full w-5 h-5 mr-3 mt-0.5 text-xs">•</span>
+                <span>Les délais de dépôt des déclarations fiscales peuvent varier d'un canton à l'autre</span>
+              </li>
+            </ul>
           </div>
           
           <div className="glass rounded-xl p-6 shadow-card">
-            <h3 className="text-xl font-semibold mb-4">Concurrence fiscale</h3>
+            <div className="flex items-center mb-4">
+              <div className="rounded-full bg-swiss-blue/10 p-2 mr-3">
+                <BookOpen size={20} className="text-swiss-blue" />
+              </div>
+              <h3 className="text-xl font-semibold">Réglementations</h3>
+            </div>
             <p className="text-swiss-text-secondary mb-4">
-              La concurrence fiscale entre cantons est une caractéristique importante du système suisse. Les cantons peuvent définir leurs propres taux d'imposition pour attirer les entreprises et les contribuables fortunés.
+              Bien que le droit comptable suisse soit largement unifié au niveau fédéral, certaines spécificités 
+              cantonales peuvent exister, notamment en matière de:
             </p>
-            <p className="text-swiss-text-secondary">
-              Cette concurrence a conduit certains cantons à proposer des taux d'imposition très attractifs, notamment Zoug, Schwyz et Nidwald, qui figurent parmi les plus avantageux de Suisse.
-            </p>
+            <ul className="space-y-2 text-swiss-text-secondary">
+              <li className="flex items-start">
+                <span className="inline-flex items-center justify-center bg-swiss-blue text-white rounded-full w-5 h-5 mr-3 mt-0.5 text-xs">•</span>
+                <span>Procédures administratives liées au Registre du Commerce</span>
+              </li>
+              <li className="flex items-start">
+                <span className="inline-flex items-center justify-center bg-swiss-blue text-white rounded-full w-5 h-5 mr-3 mt-0.5 text-xs">•</span>
+                <span>Obligations de révision et critères d'exemption</span>
+              </li>
+              <li className="flex items-start">
+                <span className="inline-flex items-center justify-center bg-swiss-blue text-white rounded-full w-5 h-5 mr-3 mt-0.5 text-xs">•</span>
+                <span>Impôts spécifiques cantonaux et communaux</span>
+              </li>
+            </ul>
           </div>
         </div>
-      </div>
+      </section>
       
-      <div className="bg-swiss-muted rounded-xl p-6 mb-8">
-        <h3 className="text-lg font-semibold mb-3">Ressources complémentaires</h3>
-        <ul className="space-y-2">
-          <li>
+      <section>
+        <h2 className="text-2xl font-bold mb-6 flex items-center">
+          <Building2 size={24} className="mr-3 text-swiss-blue" />
+          Ressources administratives par canton
+        </h2>
+        
+        <div className="glass rounded-xl p-6 shadow-card">
+          <p className="text-swiss-text-secondary mb-6">
+            Retrouvez ci-dessous les liens vers les administrations fiscales cantonales et autres ressources utiles par canton.
+          </p>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 text-sm">
             <a 
-              href="https://www.efd.admin.ch/efd/fr/home/impots/steuersystem-schweiz.html" 
-              className="text-swiss-blue hover:underline flex items-center"
-              target="_blank"
+              href="https://www.ge.ch/impots" 
+              target="_blank" 
               rel="noopener noreferrer"
+              className="p-3 border border-gray-200 rounded hover:border-swiss-blue/50 hover:bg-swiss-blue/5 transition-colors flex items-center"
             >
-              <ArrowRight size={16} className="mr-2" />
-              Système fiscal suisse (Administration fédérale)
+              <span className="font-semibold min-w-20">Genève</span>
+              <span className="text-swiss-text-secondary">Administration fiscale</span>
             </a>
-          </li>
-          <li>
+            
             <a 
-              href="https://www.estv.admin.ch/estv/fr/home.html" 
-              className="text-swiss-blue hover:underline flex items-center"
-              target="_blank"
+              href="https://www.vd.ch/themes/etat-droit-finances/impots/" 
+              target="_blank" 
               rel="noopener noreferrer"
+              className="p-3 border border-gray-200 rounded hover:border-swiss-blue/50 hover:bg-swiss-blue/5 transition-colors flex items-center"
             >
-              <ArrowRight size={16} className="mr-2" />
-              Administration fédérale des contributions
+              <span className="font-semibold min-w-20">Vaud</span>
+              <span className="text-swiss-text-secondary">Administration fiscale</span>
             </a>
-          </li>
-          <li>
+            
             <a 
-              href="/ressources/administrations" 
-              className="text-swiss-blue hover:underline flex items-center"
+              href="https://www.fr.ch/dfin/scc" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="p-3 border border-gray-200 rounded hover:border-swiss-blue/50 hover:bg-swiss-blue/5 transition-colors flex items-center"
             >
-              <ArrowRight size={16} className="mr-2" />
-              Liste des administrations fiscales cantonales
+              <span className="font-semibold min-w-20">Fribourg</span>
+              <span className="text-swiss-text-secondary">Administration fiscale</span>
             </a>
-          </li>
-        </ul>
-      </div>
+            
+            <a 
+              href="https://www.vs.ch/web/scc" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="p-3 border border-gray-200 rounded hover:border-swiss-blue/50 hover:bg-swiss-blue/5 transition-colors flex items-center"
+            >
+              <span className="font-semibold min-w-20">Valais</span>
+              <span className="text-swiss-text-secondary">Administration fiscale</span>
+            </a>
+            
+            <a 
+              href="https://www.ne.ch/autorites/DFS/SCCO/Pages/accueil.aspx" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="p-3 border border-gray-200 rounded hover:border-swiss-blue/50 hover:bg-swiss-blue/5 transition-colors flex items-center"
+            >
+              <span className="font-semibold min-w-20">Neuchâtel</span>
+              <span className="text-swiss-text-secondary">Administration fiscale</span>
+            </a>
+            
+            <a 
+              href="https://www.jura.ch/DFI/CTR.html" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="p-3 border border-gray-200 rounded hover:border-swiss-blue/50 hover:bg-swiss-blue/5 transition-colors flex items-center"
+            >
+              <span className="font-semibold min-w-20">Jura</span>
+              <span className="text-swiss-text-secondary">Administration fiscale</span>
+            </a>
+            
+            <a 
+              href="https://www.be.ch/oic" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="p-3 border border-gray-200 rounded hover:border-swiss-blue/50 hover:bg-swiss-blue/5 transition-colors flex items-center"
+            >
+              <span className="font-semibold min-w-20">Berne</span>
+              <span className="text-swiss-text-secondary">Administration fiscale</span>
+            </a>
+            
+            <a 
+              href="https://www.zh.ch/de/finanzdirektion/steueramt.html" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="p-3 border border-gray-200 rounded hover:border-swiss-blue/50 hover:bg-swiss-blue/5 transition-colors flex items-center"
+            >
+              <span className="font-semibold min-w-20">Zurich</span>
+              <span className="text-swiss-text-secondary">Administration fiscale</span>
+            </a>
+            
+            <a 
+              href="https://www.steuern.lu.ch/index" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="p-3 border border-gray-200 rounded hover:border-swiss-blue/50 hover:bg-swiss-blue/5 transition-colors flex items-center"
+            >
+              <span className="font-semibold min-w-20">Lucerne</span>
+              <span className="text-swiss-text-secondary">Administration fiscale</span>
+            </a>
+          </div>
+        </div>
+      </section>
     </div>
   );
 };
 
-// Add missing ArrowRight component
-const ArrowRight = ({ size, className }: { size: number, className?: string }) => (
-  <svg 
-    width={size} 
-    height={size} 
-    viewBox="0 0 24 24" 
-    fill="none" 
-    stroke="currentColor" 
-    strokeWidth="2" 
-    strokeLinecap="round" 
-    strokeLinejoin="round" 
-    className={className}
-  >
-    <line x1="5" y1="12" x2="19" y2="12"></line>
-    <polyline points="12 5 19 12 12 19"></polyline>
-  </svg>
-);
-
-export default SwissMapPage;
+export default SwissMap;

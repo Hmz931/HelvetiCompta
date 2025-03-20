@@ -4,6 +4,7 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import React from "react";
 
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
@@ -28,8 +29,29 @@ const queryClient = new QueryClient();
 // Google Analytics integration
 const GoogleAnalytics = () => {
   React.useEffect(() => {
-    // Google Analytics script would be loaded here
-    // This is a placeholder - you would need to add your actual GA tracking ID
+    // Google Analytics script integration
+    if (typeof window !== 'undefined') {
+      // Replace with your actual GA measurement ID
+      const GA_MEASUREMENT_ID = 'G-XXXXXXXXXX'; 
+      
+      // Load the GA script
+      const script = document.createElement('script');
+      script.async = true;
+      script.src = `https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`;
+      document.head.appendChild(script);
+      
+      // Initialize GA
+      window.dataLayer = window.dataLayer || [];
+      function gtag(...args: any[]) {
+        window.dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', GA_MEASUREMENT_ID);
+      
+      // Expose gtag to window
+      window.gtag = gtag;
+    }
+    
     console.log('Google Analytics initialized');
   }, []);
 
@@ -75,5 +97,13 @@ const App = () => (
     </TooltipProvider>
   </QueryClientProvider>
 );
+
+// Add TypeScript interfaces for global window object
+declare global {
+  interface Window {
+    dataLayer: any[];
+    gtag: (...args: any[]) => void;
+  }
+}
 
 export default App;

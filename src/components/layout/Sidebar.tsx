@@ -1,129 +1,143 @@
 
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Book, FileText, BarChart, Calculator, FileQuestion, Files, List, Info, MapPin } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import { cn } from '@/lib/utils';
+import { useMobile } from '@/hooks/use-mobile';
+import { X } from 'lucide-react';
+import { ScrollArea } from '@/components/ui/scroll-area';
 
-function Sidebar() {
+import { 
+  Book, 
+  Database, 
+  Laptop,
+  BookOpen, 
+  FileText, 
+  List, 
+  HelpCircle, 
+  Map, 
+  BuildingLibrary,
+  Award,
+  FileSpreadsheet
+} from 'lucide-react';
+
+interface SidebarProps {
+  onClose?: () => void;
+}
+
+const Sidebar = ({ onClose }: SidebarProps) => {
   const location = useLocation();
-  const path = location.pathname;
+  const isMobile = useMobile();
   
-  const renderMenu = () => {
-    if (path.includes('/formation')) {
-      return (
-        <>
-          <h3 className="text-lg font-semibold mb-3">Formation Comptable</h3>
-          <ul className="space-y-1">
-            <li><Link to="/formation/overview" className={`flex items-center gap-2 p-2 rounded-md hover:bg-gray-100 transition-colors ${path === '/formation/overview' ? 'bg-gray-100' : ''}`}><Book size={16} /> Vue d'ensemble</Link></li>
-            <li><Link to="/formation/financial" className={`flex items-center gap-2 p-2 rounded-md hover:bg-gray-100 transition-colors ${path === '/formation/financial' ? 'bg-gray-100' : ''}`}><Calculator size={16} /> Comptabilité Financière</Link></li>
-            <li><Link to="/formation/salary" className={`flex items-center gap-2 p-2 rounded-md hover:bg-gray-100 transition-colors ${path === '/formation/salary' ? 'bg-gray-100' : ''}`}><BarChart size={16} /> Gestion des Salaires</Link></li>
-            <li><Link to="/formation/analytics" className={`flex items-center gap-2 p-2 rounded-md hover:bg-gray-100 transition-colors ${path === '/formation/analytics' ? 'bg-gray-100' : ''}`}><BarChart size={16} /> Comptabilité Analytique</Link></li>
-            <li><Link to="/formation/tax" className={`flex items-center gap-2 p-2 rounded-md hover:bg-gray-100 transition-colors ${path === '/formation/tax' ? 'bg-gray-100' : ''}`}><FileQuestion size={16} /> TVA et Fiscalité</Link></li>
-            <li><Link to="/formation/closing" className={`flex items-center gap-2 p-2 rounded-md hover:bg-gray-100 transition-colors ${path === '/formation/closing' ? 'bg-gray-100' : ''}`}><Files size={16} /> Clôtures</Link></li>
-            <li><Link to="/formation/exercises" className={`flex items-center gap-2 p-2 rounded-md hover:bg-gray-100 transition-colors ${path === '/formation/exercises' ? 'bg-gray-100' : ''}`}><FileText size={16} /> Exercices Pratiques</Link></li>
-            <li><Link to="/formation/quiz" className={`flex items-center gap-2 p-2 rounded-md hover:bg-gray-100 transition-colors ${path === '/formation/quiz' ? 'bg-gray-100' : ''}`}><FileQuestion size={16} /> Quiz et Tests</Link></li>
-          </ul>
-          
-          <div className="mt-6 pt-4 border-t border-gray-200">
-            <Link to="/plan-comptable" className="flex items-center gap-2 p-2 text-swiss-blue font-medium rounded-md hover:bg-blue-50 transition-colors">
-              <List size={16} /> Plan Comptable Suisse
-            </Link>
-          </div>
-        </>
-      );
-    } else if (path.includes('/abacus')) {
-      return (
-        <>
-          <h3 className="text-lg font-semibold mb-3">Documentation Abacus</h3>
-          <ul className="space-y-1">
-            <li><Link to="/abacus/general" className={`flex items-center gap-2 p-2 rounded-md hover:bg-gray-100 transition-colors ${path === '/abacus/general' ? 'bg-gray-100' : ''}`}><FileText size={16} /> Généralités</Link></li>
-            <li><Link to="/abacus/modules" className={`flex items-center gap-2 p-2 rounded-md hover:bg-gray-100 transition-colors ${path === '/abacus/modules' ? 'bg-gray-100' : ''}`}><FileText size={16} /> Modules</Link></li>
-            <li><Link to="/abacus/tips" className={`flex items-center gap-2 p-2 rounded-md hover:bg-gray-100 transition-colors ${path === '/abacus/tips' ? 'bg-gray-100' : ''}`}><FileText size={16} /> Astuces</Link></li>
-            <li><Link to="/abacus/excel-converter" className={`flex items-center gap-2 p-2 rounded-md hover:bg-gray-100 transition-colors ${path === '/abacus/excel-converter' ? 'bg-gray-100' : ''}`}><FileText size={16} /> Convertisseur Excel</Link></li>
-          </ul>
-        </>
-      );
-    } else if (path.includes('/yooz')) {
-      return (
-        <>
-          <h3 className="text-lg font-semibold mb-3">Documentation Yooz</h3>
-          <ul className="space-y-1">
-            <li><Link to="/yooz/introduction" className={`flex items-center gap-2 p-2 rounded-md hover:bg-gray-100 transition-colors ${path === '/yooz/introduction' ? 'bg-gray-100' : ''}`}><FileText size={16} /> Introduction</Link></li>
-          </ul>
-        </>
-      );
-    } else if (path.includes('/templates')) {
-      return (
-        <>
-          <h3 className="text-lg font-semibold mb-3">Templates</h3>
-          <ul className="space-y-1">
-            <li><Link to="/templates/invoice" className={`flex items-center gap-2 p-2 rounded-md hover:bg-gray-100 transition-colors ${path === '/templates/invoice' ? 'bg-gray-100' : ''}`}><FileText size={16} /> Factures</Link></li>
-          </ul>
-        </>
-      );
-    } else if (path.includes('/plan-comptable')) {
-      return (
-        <>
-          <h3 className="text-lg font-semibold mb-3">Plan Comptable</h3>
-          <ul className="space-y-1">
-            <li><Link to="/plan-comptable" className="flex items-center gap-2 p-2 bg-gray-100 rounded-md"><List size={16} /> Plan Comptable Suisse</Link></li>
-          </ul>
-          
-          <div className="mt-6 pt-4 border-t border-gray-200">
-            <Link to="/formation/financial" className="flex items-center gap-2 p-2 text-swiss-blue font-medium rounded-md hover:bg-blue-50 transition-colors">
-              <Calculator size={16} /> Comptabilité Financière
-            </Link>
-          </div>
-        </>
-      );
-    } else if (path.includes('/lexique')) {
-      return (
-        <>
-          <h3 className="text-lg font-semibold mb-3">Lexique Comptable</h3>
-          <ul className="space-y-1">
-            <li><Link to="/lexique" className="flex items-center gap-2 p-2 bg-gray-100 rounded-md"><FileQuestion size={16} /> Lexique Comptable Suisse</Link></li>
-          </ul>
-          
-          <div className="mt-6 pt-4 border-t border-gray-200">
-            <Link to="/ressources" className="flex items-center gap-2 p-2 text-swiss-blue font-medium rounded-md hover:bg-blue-50 transition-colors">
-              <Info size={16} /> Ressources Utiles
-            </Link>
-          </div>
-        </>
-      );
-    } else if (path.includes('/ressources')) {
-      return (
-        <>
-          <h3 className="text-lg font-semibold mb-3">Ressources</h3>
-          <ul className="space-y-1">
-            <li><Link to="/ressources" className="flex items-center gap-2 p-2 bg-gray-100 rounded-md"><Info size={16} /> Ressources Générales</Link></li>
-            <li><Link to="/ressources/administrations" className={`flex items-center gap-2 p-2 rounded-md hover:bg-gray-100 transition-colors ${path === '/ressources/administrations' ? 'bg-gray-100' : ''}`}><Info size={16} /> Administrations Cantonales</Link></li>
-            <li><Link to="/ressources/carte" className={`flex items-center gap-2 p-2 rounded-md hover:bg-gray-100 transition-colors ${path === '/ressources/carte' ? 'bg-gray-100' : ''}`}><MapPin size={16} /> Carte Interactive</Link></li>
-          </ul>
-        </>
-      );
-    } else {
-      return (
-        <>
-          <h3 className="text-lg font-semibold mb-3">Ressources</h3>
-          <ul className="space-y-1">
-            <li><Link to="/formation" className="flex items-center gap-2 p-2 rounded-md hover:bg-gray-100 transition-colors"><Book size={16} /> Formation Comptable</Link></li>
-            <li><Link to="/plan-comptable" className="flex items-center gap-2 p-2 rounded-md hover:bg-gray-100 transition-colors"><List size={16} /> Plan Comptable Suisse</Link></li>
-            <li><Link to="/lexique" className="flex items-center gap-2 p-2 rounded-md hover:bg-gray-100 transition-colors"><FileQuestion size={16} /> Lexique Comptable</Link></li>
-          </ul>
-        </>
-      );
+  const isActive = (path: string) => {
+    if (path === '/') {
+      return location.pathname === '/';
+    }
+    return location.pathname.startsWith(path);
+  };
+
+  const getIcon = (name: string) => {
+    const size = 20;
+    switch (name) {
+      case 'formation': return <Book size={size} />;
+      case 'abacus': return <Database size={size} />;
+      case 'yooz': return <Laptop size={size} />;
+      case 'lexique': return <BookOpen size={size} />;
+      case 'ressources': return <HelpCircle size={size} />;
+      case 'templates': return <FileText size={size} />;
+      case 'plan-comptable': return <List size={size} />;
+      case 'carte': return <Map size={size} />;
+      case 'administrations': return <BuildingLibrary size={size} />;
+      case 'quiz': return <Award size={size} />;
+      case 'excel-converter': return <FileSpreadsheet size={size} />;
+      default: return null;
     }
   };
-  
-  if (path === '/') {
-    return null;
-  }
-  
+
+  const navItems = [
+    { name: 'Formation', path: '/formation', icon: 'formation' },
+    { name: 'Abacus', path: '/abacus', icon: 'abacus', 
+      subitems: [
+        { name: 'Documentation', path: '/abacus' },
+        { name: 'Excel Converter', path: '/abacus/excel-converter', icon: 'excel-converter' }
+      ] 
+    },
+    { name: 'Yooz', path: '/yooz', icon: 'yooz' },
+    { name: 'Lexique', path: '/lexique', icon: 'lexique' },
+    { name: 'Plan Comptable', path: '/plan-comptable', icon: 'plan-comptable' },
+    { name: 'Ressources', path: '/ressources', icon: 'ressources',
+      subitems: [
+        { name: 'Templates', path: '/templates', icon: 'templates' },
+        { name: 'Administrations', path: '/ressources/administrations', icon: 'administrations' },
+        { name: 'Carte Suisse', path: '/ressources/carte', icon: 'carte' }
+      ]
+    },
+    { name: 'Quiz', path: '/formation/quiz', icon: 'quiz' },
+  ];
+
   return (
-    <div className="w-64 flex-shrink-0 mr-6 glass rounded-xl shadow-card p-4 sticky top-24">
-      {renderMenu()}
+    <div className={cn(
+      "w-full md:w-64 flex-shrink-0 bg-sidebar-background border-r border-sidebar-border",
+      "md:relative md:h-auto overflow-hidden",
+      isMobile ? "fixed inset-0 z-50" : "hidden md:block"
+    )}>
+      {isMobile && (
+        <div className="flex items-center justify-between p-4 border-b border-sidebar-border">
+          <h2 className="font-semibold">Navigation</h2>
+          <Button
+            variant="ghost"
+            size="icon"
+            onClick={onClose}
+            className="h-7 w-7"
+          >
+            <X className="h-4 w-4" />
+            <span className="sr-only">Fermer le menu</span>
+          </Button>
+        </div>
+      )}
+      <ScrollArea className="h-[calc(100vh-5rem)] md:h-[calc(100vh-8rem)]">
+        <div className="py-4 px-3">
+          <nav className="space-y-1">
+            {navItems.map((item) => (
+              <React.Fragment key={item.name}>
+                <Link
+                  to={item.path}
+                  className={cn(
+                    "flex items-center gap-3 rounded-md px-3 py-2 text-sm font-medium",
+                    isActive(item.path) && !item.subitems
+                      ? "bg-sidebar-accent text-sidebar-accent-foreground"
+                      : "text-sidebar-foreground hover:bg-sidebar-accent/50 hover:text-sidebar-accent-foreground"
+                  )}
+                >
+                  {getIcon(item.icon)}
+                  {item.name}
+                </Link>
+                {item.subitems && (
+                  <div className="ml-6 mt-1 space-y-1">
+                    {item.subitems.map((subitem) => (
+                      <Link
+                        key={subitem.name}
+                        to={subitem.path}
+                        className={cn(
+                          "flex items-center gap-3 rounded-md px-3 py-2 text-sm font-medium",
+                          isActive(subitem.path)
+                            ? "bg-sidebar-accent text-sidebar-accent-foreground"
+                            : "text-sidebar-foreground hover:bg-sidebar-accent/50 hover:text-sidebar-accent-foreground"
+                        )}
+                      >
+                        {subitem.icon && getIcon(subitem.icon)}
+                        {subitem.name}
+                      </Link>
+                    ))}
+                  </div>
+                )}
+              </React.Fragment>
+            ))}
+          </nav>
+        </div>
+      </ScrollArea>
     </div>
   );
-}
+};
 
 export default Sidebar;

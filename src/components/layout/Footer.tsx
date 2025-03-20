@@ -1,136 +1,88 @@
 
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { ChevronRight, Github, Linkedin } from 'lucide-react';
+import { Github, Linkedin, Mail, Phone } from 'lucide-react';
 
 const Footer = () => {
-  const currentYear = new Date().getFullYear();
-
   return (
-    <footer className="bg-swiss-dark text-white mt-20">
-      <div className="container mx-auto px-4 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          <div className="space-y-4">
-            <h3 className="text-xl font-bold tracking-tight">
-              Helveti<span className="text-swiss-blue">Compta</span>
-            </h3>
-            <p className="text-gray-300 max-w-xs">
-              Un site dédié à la formation en comptabilité suisse et à la documentation 
-              des logiciels Abacus et Yooz.
+    <footer className="bg-swiss-blue/5 border-t border-swiss-blue/10 mt-auto">
+      <div className="container mx-auto px-4 py-8">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+          <div>
+            <h3 className="font-semibold text-lg mb-4">HelvetiCompta</h3>
+            <p className="text-swiss-text-secondary text-sm">
+              Ressources complètes pour maîtriser la comptabilité suisse et 
+              les logiciels associés.
             </p>
             <div className="flex space-x-4 mt-4">
               <a 
-                href="https://github.com/hamooo90" 
+                href="https://github.com/username" 
                 target="_blank" 
-                rel="noopener noreferrer" 
-                className="text-gray-300 hover:text-white transition-colors"
-                aria-label="GitHub"
+                rel="noopener noreferrer"
+                className="text-swiss-text-secondary hover:text-swiss-blue transition-colors"
               >
                 <Github size={20} />
               </a>
               <a 
                 href="https://www.linkedin.com/in/hamza-bouguerra-a09788106" 
                 target="_blank" 
-                rel="noopener noreferrer" 
-                className="text-gray-300 hover:text-white transition-colors"
-                aria-label="LinkedIn"
+                rel="noopener noreferrer"
+                className="text-swiss-text-secondary hover:text-swiss-blue transition-colors"
               >
                 <Linkedin size={20} />
+              </a>
+              <a 
+                href="mailto:contact@helveticompta.ch" 
+                className="text-swiss-text-secondary hover:text-swiss-blue transition-colors"
+              >
+                <Mail size={20} />
+              </a>
+              <a 
+                href="tel:+41000000000" 
+                className="text-swiss-text-secondary hover:text-swiss-blue transition-colors"
+              >
+                <Phone size={20} />
               </a>
             </div>
           </div>
           
-          <div className="space-y-4">
-            <h3 className="text-lg font-semibold">Liens Rapides</h3>
-            <ul className="space-y-2">
-              <li>
-                <Link 
-                  to="/" 
-                  className="text-gray-300 hover:text-white transition-colors duration-200 flex items-center group"
-                >
-                  <ChevronRight size={16} className="opacity-0 -ml-4 group-hover:opacity-100 group-hover:ml-0 transition-all duration-200" />
-                  Accueil
-                </Link>
-              </li>
-              <li>
-                <Link 
-                  to="/formation" 
-                  className="text-gray-300 hover:text-white transition-colors duration-200 flex items-center group"
-                >
-                  <ChevronRight size={16} className="opacity-0 -ml-4 group-hover:opacity-100 group-hover:ml-0 transition-all duration-200" />
-                  Formation
-                </Link>
-              </li>
-              <li>
-                <Link 
-                  to="/lexique" 
-                  className="text-gray-300 hover:text-white transition-colors duration-200 flex items-center group"
-                >
-                  <ChevronRight size={16} className="opacity-0 -ml-4 group-hover:opacity-100 group-hover:ml-0 transition-all duration-200" />
-                  Lexique Comptable
-                </Link>
-              </li>
-              <li>
-                <Link 
-                  to="/ressources" 
-                  className="text-gray-300 hover:text-white transition-colors duration-200 flex items-center group"
-                >
-                  <ChevronRight size={16} className="opacity-0 -ml-4 group-hover:opacity-100 group-hover:ml-0 transition-all duration-200" />
-                  Ressources
-                </Link>
-              </li>
+          <div>
+            <h3 className="font-semibold text-lg mb-4">Navigation</h3>
+            <ul className="space-y-2 text-sm">
+              <li><Link to="/" className="text-swiss-text-secondary hover:text-swiss-blue transition-colors">Accueil</Link></li>
+              <li><Link to="/formation" className="text-swiss-text-secondary hover:text-swiss-blue transition-colors">Formation</Link></li>
+              <li><Link to="/abacus" className="text-swiss-text-secondary hover:text-swiss-blue transition-colors">Abacus</Link></li>
+              <li><Link to="/yooz" className="text-swiss-text-secondary hover:text-swiss-blue transition-colors">Yooz</Link></li>
+              <li><Link to="/lexique" className="text-swiss-text-secondary hover:text-swiss-blue transition-colors">Lexique</Link></li>
             </ul>
           </div>
           
-          <div className="space-y-4">
-            <h3 className="text-lg font-semibold">Documentation</h3>
-            <ul className="space-y-2">
-              <li>
-                <Link 
-                  to="/abacus" 
-                  className="text-gray-300 hover:text-white transition-colors duration-200 flex items-center group"
-                >
-                  <ChevronRight size={16} className="opacity-0 -ml-4 group-hover:opacity-100 group-hover:ml-0 transition-all duration-200" />
-                  Abacus
-                </Link>
-              </li>
-              <li>
-                <Link 
-                  to="/yooz" 
-                  className="text-gray-300 hover:text-white transition-colors duration-200 flex items-center group"
-                >
-                  <ChevronRight size={16} className="opacity-0 -ml-4 group-hover:opacity-100 group-hover:ml-0 transition-all duration-200" />
-                  Yooz
-                </Link>
-              </li>
-              <li>
-                <Link 
-                  to="/templates" 
-                  className="text-gray-300 hover:text-white transition-colors duration-200 flex items-center group"
-                >
-                  <ChevronRight size={16} className="opacity-0 -ml-4 group-hover:opacity-100 group-hover:ml-0 transition-all duration-200" />
-                  Templates
-                </Link>
-              </li>
+          <div>
+            <h3 className="font-semibold text-lg mb-4">Ressources</h3>
+            <ul className="space-y-2 text-sm">
+              <li><Link to="/ressources" className="text-swiss-text-secondary hover:text-swiss-blue transition-colors">Documentation</Link></li>
+              <li><Link to="/templates" className="text-swiss-text-secondary hover:text-swiss-blue transition-colors">Templates</Link></li>
+              <li><Link to="/plan-comptable" className="text-swiss-text-secondary hover:text-swiss-blue transition-colors">Plan Comptable</Link></li>
+              <li><Link to="/ressources/administrations" className="text-swiss-text-secondary hover:text-swiss-blue transition-colors">Administrations</Link></li>
+              <li><Link to="/ressources/carte" className="text-swiss-text-secondary hover:text-swiss-blue transition-colors">Carte Suisse</Link></li>
             </ul>
           </div>
           
-          <div className="space-y-4">
-            <h3 className="text-lg font-semibold">Contact</h3>
-            <p className="text-gray-300">
-              Vous avez des questions ou besoin d'assistance?
-            </p>
-            <a 
-              href="mailto:contact@helveticompta.ch" 
-              className="inline-block bg-swiss-blue text-white px-4 py-2 rounded-md hover:bg-opacity-90 transition-all duration-200"
-            >
-              Contactez-nous
-            </a>
+          <div>
+            <h3 className="font-semibold text-lg mb-4">Contact</h3>
+            <address className="text-swiss-text-secondary text-sm not-italic">
+              <p>HelvetiCompta</p>
+              <p>Rue de Lausanne 1</p>
+              <p>1201 Genève</p>
+              <p>Suisse</p>
+              <p className="mt-2">contact@helveticompta.ch</p>
+              <p>+41 00 000 00 00</p>
+            </address>
           </div>
         </div>
         
-        <div className="mt-8 pt-8 border-t border-gray-800 text-center text-gray-400">
-          <p>© {currentYear} HelvetiCompta. Développé par Hamza Bouguerra. Tous droits réservés.</p>
+        <div className="border-t border-swiss-blue/10 mt-8 pt-6 text-center text-swiss-text-secondary text-sm">
+          <p>&copy; {new Date().getFullYear()} HelvetiCompta. Tous droits réservés.</p>
         </div>
       </div>
     </footer>

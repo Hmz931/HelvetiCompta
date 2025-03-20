@@ -1,9 +1,17 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Book, FileText, Database, Laptop, BookOpen, Award, FileCode, List, Map, Search } from 'lucide-react';
+import { Book, FileText, Database, Laptop, BookOpen, Award, List, Map, Search } from 'lucide-react';
 
 const Index = () => {
+  const [searchQuery, setSearchQuery] = useState('');
+  
+  const handleSearch = (e: React.FormEvent) => {
+    e.preventDefault();
+    // In a real application, this would search across the site content
+    console.log('Searching for:', searchQuery);
+  };
+  
   return (
     <div className="animate-fade-in">
       <section className="mb-16">
@@ -15,14 +23,23 @@ const Index = () => {
             </p>
             
             <div className="max-w-md mx-auto">
-              <div className="relative">
+              <form onSubmit={handleSearch} className="relative">
                 <input
                   type="text"
                   placeholder="Rechercher dans HelvetiCompta..."
                   className="w-full py-3 px-5 pl-12 rounded-full border border-gray-200 shadow-sm focus:outline-none focus:ring-2 focus:ring-swiss-blue/20"
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
                 />
                 <Search size={20} className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400" />
-              </div>
+                <button 
+                  type="submit" 
+                  className="absolute right-3 top-1/2 transform -translate-y-1/2 bg-swiss-blue text-white p-1 rounded-full hover:bg-swiss-blue/90 transition-colors"
+                  aria-label="Search"
+                >
+                  <Search size={16} />
+                </button>
+              </form>
             </div>
           </div>
         </div>
