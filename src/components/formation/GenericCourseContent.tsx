@@ -36,8 +36,8 @@ const GenericCourseContent = ({ courseId }: CourseContentProps) => {
       }
 
       return (
-        <div key={sectionIndex} className="mb-6">
-          {hasSectionHeader && <h3 className="text-lg font-semibold mb-3">{sectionHeader}</h3>}
+        <div key={sectionIndex} className="mb-8">
+          {hasSectionHeader && <h3 className="text-xl font-semibold mb-4">{sectionHeader}</h3>}
           
           {sectionContent.split('\n\n').map((paragraph, idx) => {
             // Check if paragraph contains a table (rows with | separators)
@@ -61,22 +61,22 @@ const GenericCourseContent = ({ courseId }: CourseContentProps) => {
               }
               
               return (
-                <div key={idx} className="my-4 overflow-x-auto">
-                  <Table>
+                <div key={idx} className="my-6 overflow-x-auto">
+                  <Table className="border border-gray-200 rounded-md">
                     {hasHeader && headers.length > 0 && (
-                      <TableHeader>
+                      <TableHeader className="bg-gray-50">
                         <TableRow>
                           {headers.map((header, i) => (
-                            <TableHead key={i}>{header}</TableHead>
+                            <TableHead key={i} className="font-semibold text-gray-700">{header}</TableHead>
                           ))}
                         </TableRow>
                       </TableHeader>
                     )}
                     <TableBody>
                       {rows.map((row, rowIdx) => (
-                        <TableRow key={rowIdx}>
+                        <TableRow key={rowIdx} className="hover:bg-gray-50 border-t border-gray-200">
                           {row.map((cell, cellIdx) => (
-                            <TableCell key={cellIdx}>{cell}</TableCell>
+                            <TableCell key={cellIdx} className="py-3">{cell}</TableCell>
                           ))}
                         </TableRow>
                       ))}
@@ -86,7 +86,7 @@ const GenericCourseContent = ({ courseId }: CourseContentProps) => {
               );
             } else {
               // Regular paragraph
-              return <p key={idx} className="my-2">{paragraph}</p>;
+              return <p key={idx} className="my-3 text-gray-700 leading-relaxed">{paragraph}</p>;
             }
           })}
         </div>
@@ -96,15 +96,15 @@ const GenericCourseContent = ({ courseId }: CourseContentProps) => {
   
   return (
     <div className="animate-fade-in">
-      <h1 className="text-3xl font-bold mb-6">{course.title}</h1>
+      <h1 className="text-3xl font-bold mb-4">{course.title}</h1>
       {course.description && (
         <p className="text-swiss-text-secondary mb-8 text-lg">{course.description}</p>
       )}
       
-      <div className="space-y-6">
+      <div className="space-y-8">
         {course.sections.map((section) => (
-          <div key={section.id} className="glass rounded-xl p-6 shadow-card">
-            <h2 className="text-xl font-bold mb-3">{section.title}</h2>
+          <div key={section.id} className="bg-white rounded-xl p-6 shadow-card">
+            <h2 className="text-2xl font-bold mb-4 text-swiss-dark">{section.title}</h2>
             {section.content ? (
               renderContent(section.content)
             ) : (
