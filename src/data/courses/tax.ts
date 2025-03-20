@@ -27,7 +27,6 @@ L'assujettissement à la TVA est obligatoire pour les entreprises dont le chiffr
 Il existe deux principales méthodes de décompte TVA en Suisse :
 
 | Méthode | Description | Particularités |
-| --- | --- | --- |
 | Méthode effective | Basée sur les chiffres d'affaires et les achats réels | Plus complexe mais plus précise |
 | Méthode des taux de la dette fiscale nette (TDFN) | Utilisation de taux forfaitaires par branche d'activité | Simplifiée, mais peut être moins avantageuse |
 
