@@ -1,7 +1,8 @@
 
 import React from 'react';
 import { courseStructure } from '@/data/courses';
-import ChartOfAccountsSearch from './ChartOfAccountsSearch';
+import CourseHeader from './chart-of-accounts/CourseHeader';
+import CourseSections from './chart-of-accounts/CourseSections';
 
 const ChartOfAccountsCourseContent = () => {
   const course = courseStructure['chart-of-accounts'];
@@ -12,26 +13,8 @@ const ChartOfAccountsCourseContent = () => {
   
   return (
     <div className="animate-fade-in">
-      <h1 className="text-3xl font-bold mb-6">{course.title}</h1>
-      {course.description && (
-        <p className="text-swiss-text-secondary mb-8 text-lg">{course.description}</p>
-      )}
-      
-      <div className="space-y-6">
-        {course.sections.map((section) => (
-          <div key={section.id} className="glass rounded-xl p-6 shadow-card">
-            <h2 className="text-xl font-bold mb-3">{section.title}</h2>
-            
-            {section.id === 'search' ? (
-              <ChartOfAccountsSearch />
-            ) : (
-              <div className="prose max-w-none">
-                <div dangerouslySetInnerHTML={{ __html: section.content || "Contenu à venir..." }} />
-              </div>
-            )}
-          </div>
-        ))}
-      </div>
+      <CourseHeader course={course} />
+      <CourseSections sections={course.sections} />
     </div>
   );
 };
