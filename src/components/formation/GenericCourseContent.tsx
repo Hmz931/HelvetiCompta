@@ -2,6 +2,7 @@
 import React from 'react';
 import { courseStructure } from '@/data/courses';
 import { Table, TableHeader, TableRow, TableHead, TableBody, TableCell } from '@/components/ui/table';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 
 type CourseContentProps = {
   courseId: string;
@@ -37,7 +38,7 @@ const GenericCourseContent = ({ courseId }: CourseContentProps) => {
 
       return (
         <div key={sectionIndex} className="mb-8">
-          {hasSectionHeader && <h3 className="text-xl font-semibold mb-4">{sectionHeader}</h3>}
+          {hasSectionHeader && <h3 className="text-xl font-semibold mb-4 text-swiss-dark">{sectionHeader}</h3>}
           
           {sectionContent.split('\n\n').map((paragraph, idx) => {
             // Check if paragraph contains a table (rows with | separators)
@@ -60,33 +61,58 @@ const GenericCourseContent = ({ courseId }: CourseContentProps) => {
                 );
               }
               
+              // Enhanced table styling
               return (
-                <div key={idx} className="my-6 overflow-x-auto">
-                  <Table className="border border-gray-200 rounded-md">
-                    {hasHeader && headers.length > 0 && (
-                      <TableHeader className="bg-gray-50">
-                        <TableRow>
-                          {headers.map((header, i) => (
-                            <TableHead key={i} className="font-semibold text-gray-700">{header}</TableHead>
-                          ))}
-                        </TableRow>
-                      </TableHeader>
-                    )}
-                    <TableBody>
-                      {rows.map((row, rowIdx) => (
-                        <TableRow key={rowIdx} className="hover:bg-gray-50 border-t border-gray-200">
-                          {row.map((cell, cellIdx) => (
-                            <TableCell key={cellIdx} className="py-3">{cell}</TableCell>
-                          ))}
-                        </TableRow>
-                      ))}
-                    </TableBody>
-                  </Table>
-                </div>
+                <Card key={idx} className="my-6 border border-gray-200">
+                  <div className="overflow-x-auto">
+                    <Table>
+                      {hasHeader && headers.length > 0 && (
+                        <TableHeader className="bg-gray-50">
+                          <TableRow>
+                            {headers.map((header, i) => (
+                              <TableHead 
+                                key={i} 
+                                className="font-semibold text-gray-700 py-3"
+                              >
+                                {header}
+                              </TableHead>
+                            ))}
+                          </TableRow>
+                        </TableHeader>
+                      )}
+                      <TableBody>
+                        {rows.map((row, rowIdx) => (
+                          <TableRow 
+                            key={rowIdx} 
+                            className={`hover:bg-gray-50 border-t border-gray-200 ${
+                              rowIdx % 2 === 0 ? 'bg-white' : 'bg-gray-50/50'
+                            }`}
+                          >
+                            {row.map((cell, cellIdx) => (
+                              <TableCell 
+                                key={cellIdx} 
+                                className={`py-3 ${cellIdx === 0 ? 'font-medium' : ''}`}
+                              >
+                                {cell}
+                              </TableCell>
+                            ))}
+                          </TableRow>
+                        ))}
+                      </TableBody>
+                    </Table>
+                  </div>
+                </Card>
               );
             } else {
-              // Regular paragraph
-              return <p key={idx} className="my-3 text-gray-700 leading-relaxed">{paragraph}</p>;
+              // Regular paragraph with improved styling
+              return (
+                <p 
+                  key={idx} 
+                  className="my-3 text-gray-700 leading-relaxed"
+                >
+                  {paragraph}
+                </p>
+              );
             }
           })}
         </div>
@@ -96,21 +122,25 @@ const GenericCourseContent = ({ courseId }: CourseContentProps) => {
   
   return (
     <div className="animate-fade-in">
-      <h1 className="text-3xl font-bold mb-4">{course.title}</h1>
+      <h1 className="text-3xl font-bold mb-4 text-swiss-dark">{course.title}</h1>
       {course.description && (
-        <p className="text-swiss-text-secondary mb-8 text-lg">{course.description}</p>
+        <p className="text-gray-600 mb-8 text-lg">{course.description}</p>
       )}
       
       <div className="space-y-8">
         {course.sections.map((section) => (
-          <div key={section.id} className="bg-white rounded-xl p-6 shadow-card">
-            <h2 className="text-2xl font-bold mb-4 text-swiss-dark">{section.title}</h2>
-            {section.content ? (
-              renderContent(section.content)
-            ) : (
-              <p className="text-swiss-text-secondary">Contenu à venir...</p>
-            )}
-          </div>
+          <Card key={section.id} className="border-0 shadow-md rounded-xl overflow-hidden">
+            <CardHeader className="bg-gradient-to-r from-swiss-blue/10 to-swiss-blue/5 pb-4">
+              <CardTitle className="text-2xl font-bold text-swiss-dark">{section.title}</CardTitle>
+            </CardHeader>
+            <CardContent className="pt-5">
+              {section.content ? (
+                renderContent(section.content)
+              ) : (
+                <p className="text-gray-500 italic">Contenu à venir...</p>
+              )}
+            </CardContent>
+          </Card>
         ))}
       </div>
     </div>
