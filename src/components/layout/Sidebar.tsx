@@ -1,10 +1,10 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import { useIsMobile } from '@/hooks/use-mobile';
-import { X } from 'lucide-react';
+import { X, ChevronDown, ChevronRight } from 'lucide-react';
 import { ScrollArea } from '@/components/ui/scroll-area';
 
 import { 
@@ -29,6 +29,15 @@ const Sidebar = ({ onClose }: SidebarProps) => {
   const location = useLocation();
   const isMobile = useIsMobile();
   
+  // State to track which sections are expanded
+  const [expandedSections, setExpandedSections] = useState<string[]>(() => {
+    // Initialize with sections that should be expanded based on current route
+    const path = location.pathname;
+    return navItems
+      .filter(item => item.subitems && path.startsWith(item.path))
+      .map(item => item.path);
+  });
+  
   const isActive = (path: string) => {
     if (path === '/') {
       return location.pathname === '/';
@@ -52,6 +61,20 @@ const Sidebar = ({ onClose }: SidebarProps) => {
       case 'excel-converter': return <FileSpreadsheet size={size} />;
       default: return null;
     }
+  };
+
+  const toggleSection = (path: string) => {
+    setExpandedSections(prev => {
+      if (prev.includes(path)) {
+        return prev.filter(p => p !== path);
+      } else {
+        return [...prev, path];
+      }
+    });
+  };
+
+  const isSectionExpanded = (path: string) => {
+    return expandedSections.includes(path);
   };
 
   const navItems = [
@@ -114,36 +137,61 @@ const Sidebar = ({ onClose }: SidebarProps) => {
           <nav className="space-y-1">
             {navItems.map((item) => (
               <React.Fragment key={item.name}>
-                <Link
-                  to={item.path}
-                  className={cn(
-                    "flex items-center gap-3 rounded-md px-3 py-2 text-sm font-medium",
-                    isActive(item.path) && !item.subitems
-                      ? "bg-swiss-blue text-white"
-                      : "text-sidebar-foreground hover:bg-swiss-blue/10 hover:text-swiss-blue"
-                  )}
-                >
-                  {getIcon(item.icon)}
-                  {item.name}
-                </Link>
-                {item.subitems && (
-                  <div className="ml-6 mt-1 space-y-1">
-                    {item.subitems.map((subitem) => (
-                      <Link
-                        key={subitem.name}
-                        to={subitem.path}
-                        className={cn(
-                          "flex items-center gap-3 rounded-md px-3 py-2 text-sm font-medium",
-                          isActive(subitem.path)
-                            ? "bg-swiss-blue text-white"
-                            : "text-sidebar-foreground hover:bg-swiss-blue/10 hover:text-swiss-blue"
-                        )}
-                      >
-                        {subitem.icon && getIcon(subitem.icon)}
-                        {subitem.name}
-                      </Link>
-                    ))}
+                {item.subitems ? (
+                  <div className="mb-1">
+                    <button
+                      onClick={() => toggleSection(item.path)}
+                      className={cn(
+                        "flex items-center justify-between gap-3 rounded-md px-3 py-2 text-sm font-medium w-full",
+                        isActive(item.path) && !isSectionExpanded(item.path)
+                          ? "bg-swiss-blue text-white"
+                          : "text-sidebar-foreground hover:bg-swiss-blue/10 hover:text-swiss-blue"
+                      )}
+                    >
+                      <div className="flex items-center gap-3">
+                        {getIcon(item.icon)}
+                        {item.name}
+                      </div>
+                      {isSectionExpanded(item.path) ? (
+                        <ChevronDown className="h-4 w-4" />
+                      ) : (
+                        <ChevronRight className="h-4 w-4" />
+                      )}
+                    </button>
+                    
+                    {isSectionExpanded(item.path) && (
+                      <div className="ml-6 mt-1 space-y-1">
+                        {item.subitems.map((subitem) => (
+                          <Link
+                            key={subitem.name}
+                            to={subitem.path}
+                            className={cn(
+                              "flex items-center gap-3 rounded-md px-3 py-2 text-sm font-medium",
+                              isActive(subitem.path)
+                                ? "bg-swiss-blue text-white"
+                                : "text-sidebar-foreground hover:bg-swiss-blue/10 hover:text-swiss-blue"
+                            )}
+                          >
+                            {subitem.icon && getIcon(subitem.icon)}
+                            {subitem.name}
+                          </Link>
+                        ))}
+                      </div>
+                    )}
                   </div>
+                ) : (
+                  <Link
+                    to={item.path}
+                    className={cn(
+                      "flex items-center gap-3 rounded-md px-3 py-2 text-sm font-medium",
+                      isActive(item.path)
+                        ? "bg-swiss-blue text-white"
+                        : "text-sidebar-foreground hover:bg-swiss-blue/10 hover:text-swiss-blue"
+                    )}
+                  >
+                    {getIcon(item.icon)}
+                    {item.name}
+                  </Link>
                 )}
               </React.Fragment>
             ))}
