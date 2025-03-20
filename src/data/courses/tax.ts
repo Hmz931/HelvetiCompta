@@ -34,9 +34,9 @@ Il existe deux principales méthodes de décompte TVA en Suisse :
 ## Exemples de décomptes TVA
 Voici deux exemples de formulaires officiels de décompte TVA utilisés en Suisse:
 
-![Exemple de décompte TVA 1](public/lovable-uploads/958aaae1-7d05-47b8-bb17-2fe18b78b505.png)
+![Exemple de décompte TVA 1](/assets/documents/tax/vat_form_example1.png)
 
-![Exemple de décompte TVA 2](public/lovable-uploads/0af0f501-d183-48a9-bdd8-fabb025f2c71.png)
+![Exemple de décompte TVA 2](/assets/documents/tax/vat_form_example2.png)
 
 Ces formulaires comprennent trois sections principales:
 1. Le chiffre d'affaires (section I) - déclaration du chiffre d'affaires total et des déductions
