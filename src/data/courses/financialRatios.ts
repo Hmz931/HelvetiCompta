@@ -26,7 +26,13 @@ Les ratios de liquidité permettent d'évaluer la capacité de l'entreprise à f
 </div>
 
 <div className="my-4 py-3 px-6 bg-swiss-blue/5 border-l-4 border-swiss-blue rounded-md">
-  Ratio de liquidité générale = <span className="font-semibold">Actifs circulants / Passifs à court terme</span>
+  <div className="flex justify-center my-1">
+    <div className="text-center">
+      <div className="mb-1">Actifs circulants</div>
+      <div className="border-t border-gray-400"></div>
+      <div className="mt-1">Passifs à court terme</div>
+    </div>
+  </div>
 </div>
 
 <div className="flex items-center gap-2 my-3 text-swiss-blue">
@@ -50,7 +56,13 @@ Les ratios de liquidité permettent d'évaluer la capacité de l'entreprise à f
 </div>
 
 <div className="my-4 py-3 px-6 bg-swiss-blue/5 border-l-4 border-swiss-blue rounded-md">
-  Ratio de liquidité immédiate = <span className="font-semibold">(Liquidités + Créances clients) / Passifs à court terme</span>
+  <div className="flex justify-center my-1">
+    <div className="text-center">
+      <div className="mb-1">Liquidités + Créances clients</div>
+      <div className="border-t border-gray-400"></div>
+      <div className="mt-1">Passifs à court terme</div>
+    </div>
+  </div>
 </div>
 
 <div className="flex items-center gap-2 my-3 text-swiss-blue">
@@ -77,7 +89,13 @@ Les ratios de rentabilité mesurent la capacité de l'entreprise à générer de
 </div>
 
 <div className="my-4 py-3 px-6 bg-swiss-blue/5 border-l-4 border-swiss-blue rounded-md">
-  Marge bénéficiaire nette = <span className="font-semibold">Résultat net / Chiffre d'affaires</span>
+  <div className="flex justify-center my-1">
+    <div className="text-center">
+      <div className="mb-1">Résultat net</div>
+      <div className="border-t border-gray-400"></div>
+      <div className="mt-1">Chiffre d'affaires</div>
+    </div>
+  </div>
 </div>
 
 <div className="flex items-center gap-2 my-3 text-swiss-blue">
@@ -96,7 +114,13 @@ Les ratios de rentabilité mesurent la capacité de l'entreprise à générer de
 </div>
 
 <div className="my-4 py-3 px-6 bg-swiss-blue/5 border-l-4 border-swiss-blue rounded-md">
-  ROE = <span className="font-semibold">Résultat net / Capitaux propres</span>
+  <div className="flex justify-center my-1">
+    <div className="text-center">
+      <div className="mb-1">Résultat net</div>
+      <div className="border-t border-gray-400"></div>
+      <div className="mt-1">Capitaux propres</div>
+    </div>
+  </div>
 </div>
 
 <div className="flex items-center gap-2 my-3 text-swiss-blue">
@@ -115,7 +139,13 @@ Les ratios de rentabilité mesurent la capacité de l'entreprise à générer de
 </div>
 
 <div className="my-4 py-3 px-6 bg-swiss-blue/5 border-l-4 border-swiss-blue rounded-md">
-  ROA = <span className="font-semibold">Résultat net / Total des actifs</span>
+  <div className="flex justify-center my-1">
+    <div className="text-center">
+      <div className="mb-1">Résultat net</div>
+      <div className="border-t border-gray-400"></div>
+      <div className="mt-1">Total des actifs</div>
+    </div>
+  </div>
 </div>
 
 <div className="flex items-center gap-2 my-3 text-swiss-blue">
@@ -141,7 +171,13 @@ Les ratios de solvabilité évaluent la structure financière de l'entreprise et
 </div>
 
 <div className="my-4 py-3 px-6 bg-swiss-blue/5 border-l-4 border-swiss-blue rounded-md">
-  Ratio d'endettement total = <span className="font-semibold">Total des dettes / Total des actifs</span>
+  <div className="flex justify-center my-1">
+    <div className="text-center">
+      <div className="mb-1">Total des dettes</div>
+      <div className="border-t border-gray-400"></div>
+      <div className="mt-1">Total des actifs</div>
+    </div>
+  </div>
 </div>
 
 <div className="flex items-center gap-2 my-3 text-swiss-blue">
@@ -160,7 +196,13 @@ Les ratios de solvabilité évaluent la structure financière de l'entreprise et
 </div>
 
 <div className="my-4 py-3 px-6 bg-swiss-blue/5 border-l-4 border-swiss-blue rounded-md">
-  Ratio d'autonomie financière = <span className="font-semibold">Capitaux propres / Total du passif</span>
+  <div className="flex justify-center my-1">
+    <div className="text-center">
+      <div className="mb-1">Capitaux propres</div>
+      <div className="border-t border-gray-400"></div>
+      <div className="mt-1">Total du passif</div>
+    </div>
+  </div>
 </div>
 
 <div className="flex items-center gap-2 my-3 text-swiss-blue">
