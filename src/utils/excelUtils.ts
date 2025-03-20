@@ -166,12 +166,13 @@ export const createTemplateWorkbook = () => {
   // Create headers
   const headers = ["Date", "Compte", "Contrepartie", "Texte1", "Montant", "Code TVA"];
   
-  // Add some example data
+  // Add some example data with the new date format (JJ.MM-AAAA)
   const exampleData = [
     headers,
-    ["2023-01-15", "1020", "3200", "Facture client 123", "1000.00", "111"],
-    ["2023-01-20", "4200", "1020", "Achat fournitures", "250.75", "311"],
-    ["2023-01-25", "6000", "1020", "Loyer janvier", "1500.00", "400"]
+    ["03.01.2024", "1020", "3400", "ENC CA", "5987,3", "511"],
+    ["06.01.2024", "6500", "1020", "Achat fourniture de bureau", "10589,4", "141"],
+    ["08.01.2024", "2299", "1020", "PMT Salaires", "16864,95", ""],
+    ["09.01.2024", "4000", "1020", "Achat marchandises", "10589,4", "131"]
   ];
   
   // Create worksheet and add to workbook

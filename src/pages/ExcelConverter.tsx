@@ -78,7 +78,7 @@ const ExcelConverterPage = () => {
           </li>
           <li className="flex items-start">
             <span className="inline-flex items-center justify-center bg-swiss-blue text-white rounded-full w-5 h-5 mr-3 mt-0.5 text-xs">4</span>
-            <span>Utilisez le format de date AAAA-MM-JJ pour une meilleure compatibilité.</span>
+            <span>Utilisez le format de date JJ.MM-AAAA pour une meilleure compatibilité.</span>
           </li>
         </ul>
       </div>
