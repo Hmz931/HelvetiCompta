@@ -105,5 +105,6 @@ export const fullAccountsList: AccountItem[] = [
   
   // Catégorie 9 - Clôture
   { number: '9000', title: 'Compte de résultat', category: '9' },
+  { number: '9075', title: 'Report du bénéfice ou de la perte de l\'exercice précédent', category: '9', description: 'Compte utilisé pour le report du résultat de l\'exercice précédent' },
   { number: '9100', title: 'Clôture', category: '9' },
 ];
