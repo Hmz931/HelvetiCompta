@@ -19,6 +19,23 @@ export const accountCategories = {
   '9': { id: '9', name: 'Clôture', description: 'Comptes utilisés pour la clôture des exercices comptables' },
 };
 
+// Helper functions to work with the accounts list
+export const getFullAccountsList = (): AccountItem[] => {
+  return fullAccountsList;
+};
+
+export const getAccountsByCategory = (category: string): AccountItem[] => {
+  return fullAccountsList.filter(account => account.category === category);
+};
+
+export const searchAccounts = (searchTerm: string): AccountItem[] => {
+  const term = searchTerm.toLowerCase();
+  return fullAccountsList.filter(account => 
+    account.number.toLowerCase().includes(term) || 
+    account.title.toLowerCase().includes(term)
+  );
+};
+
 // Plan comptable complet
 export const fullAccountsList: AccountItem[] = [
   { number: '1000', title: 'Caisse', category: '1', description: 'Enregistre toutes les entrées et sorties d\'argent liquide (billets et pièces).' },
@@ -285,7 +302,4 @@ export const fullAccountsList: AccountItem[] = [
   { number: '2691', title: 'Autres provisions à long terme', category: '2' },
   { number: '2695', title: 'Réserve pour fluctuation de valeur', category: '2' },
   { number: '2710', title: 'Prêts postposés de tiers', category: '2' },
-  { number: '2720', title: 'Prêts postposés de participations', category: '2' },
-  { number: '2730', title: 'Prêts postposés des parties prenantes et des organes', category: '2' },
-  { number: '2800', title: 'Capital-actions / parts sociales / capital de fondation / capital-participation', category: '2', description: 'Capital de base de l\'entreprise apporté par les actionnaires ou associés. Sa nature dépend de la forme juridique de l\'entreprise (SA, Sàrl, etc.).' },
-  { number: '2900', title: 'Agio à la fondation ou lors d
+  { number: '2720', title: 'Prêts postposés de particip
