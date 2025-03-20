@@ -1,6 +1,6 @@
 
 import React, { useState } from 'react';
-import { Search, ChevronLeft, ChevronRight } from 'lucide-react';
+import { Search, FileText } from 'lucide-react';
 import {
   Table,
   TableBody,
@@ -11,6 +11,7 @@ import {
 } from "@/components/ui/table";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { Input } from "@/components/ui/input";
 import {
   Pagination,
   PaginationContent,
@@ -45,8 +46,9 @@ const ResultsDisplay = ({
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage, setItemsPerPage] = useState(10);
   const [activeCategory, setActiveCategory] = useState<string | null>(categoryFilter);
+  const [tableSearchTerm, setTableSearchTerm] = useState('');
   
-  // Group accounts by their first digit (category)
+  // Catégories de comptes regroupées par leur premier chiffre
   const accountCategories = React.useMemo(() => {
     const categories: Record<string, string> = {
       '1': 'Actifs',
@@ -63,41 +65,52 @@ const ResultsDisplay = ({
     return categories;
   }, []);
   
-  // Filter accounts based on active category
+  // Filtrer les comptes en fonction de la catégorie active et du terme de recherche dans le tableau
   const filteredAccounts = React.useMemo(() => {
+    // Si un compte est sélectionné, ne montrer que celui-là
     if (selectedAccount) {
       return accounts.filter(account => account.number === selectedAccount);
     }
     
-    if (searchResults.length > 0) {
-      return searchResults;
+    // Si la recherche principale a des résultats, les utiliser
+    let baseAccounts = searchResults.length > 0 ? searchResults : [];
+    
+    // Si pas de résultats principaux mais une catégorie active, filtrer par catégorie
+    if (baseAccounts.length === 0 && activeCategory) {
+      baseAccounts = accounts.filter(account => account.number.startsWith(activeCategory));
     }
     
-    if (activeCategory) {
-      return accounts.filter(account => account.number.startsWith(activeCategory));
+    // Si recherche dans le tableau, filtrer davantage
+    if (tableSearchTerm) {
+      return baseAccounts.filter(
+        account => 
+          account.number.toLowerCase().includes(tableSearchTerm.toLowerCase()) || 
+          account.title.toLowerCase().includes(tableSearchTerm.toLowerCase())
+      );
     }
     
-    return [];
-  }, [selectedAccount, searchResults, activeCategory, accounts]);
+    return baseAccounts;
+  }, [selectedAccount, searchResults, activeCategory, accounts, tableSearchTerm]);
   
-  // Calculate pagination
+  // Calculer la pagination
   const totalPages = Math.ceil(filteredAccounts.length / itemsPerPage);
   const startIndex = (currentPage - 1) * itemsPerPage;
   const paginatedAccounts = filteredAccounts.slice(startIndex, startIndex + itemsPerPage);
   
-  // Handle page change
+  // Gérer le changement de page
   const handlePageChange = (page: number) => {
     setCurrentPage(page);
   };
   
-  // Handle category change
+  // Gérer le changement de catégorie
   const handleCategoryChange = (category: string) => {
     setActiveCategory(category);
-    setCurrentPage(1); // Reset to first page when category changes
+    setCurrentPage(1); // Retourner à la première page lors du changement de catégorie
+    setTableSearchTerm(''); // Réinitialiser la recherche dans le tableau
   };
   
-  // If we have a selected account, search results, or a category filter
-  if (searchResults.length > 0 || selectedAccount || (activeCategory && searchTerm === '')) {
+  // Si nous avons un compte sélectionné, des résultats de recherche ou un filtre de catégorie
+  if (searchResults.length > 0 || selectedAccount || activeCategory) {
     return (
       <Card className="shadow-md border-0 overflow-hidden">
         <CardHeader className="bg-gradient-to-r from-swiss-blue/15 to-swiss-blue/5 border-b border-gray-200">
@@ -110,19 +123,34 @@ const ResultsDisplay = ({
                   : `Comptes de la catégorie ${activeCategory} - ${accountCategories[activeCategory || '']}`}
             </CardTitle>
             
-            {!selectedAccount && searchResults.length === 0 && (
-              <Select value={activeCategory || '0'} onValueChange={handleCategoryChange}>
-                <SelectTrigger className="w-[240px]">
-                  <SelectValue placeholder="Sélectionner une catégorie" />
-                </SelectTrigger>
-                <SelectContent>
-                  {Object.entries(accountCategories).map(([key, value]) => (
-                    <SelectItem key={key} value={key}>
-                      {key} - {value}
-                    </SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
+            {!selectedAccount && (
+              <div className="flex flex-col sm:flex-row gap-2 sm:items-center">
+                <div className="relative w-64">
+                  <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" size={16} />
+                  <Input
+                    placeholder="Filtrer les résultats..."
+                    value={tableSearchTerm}
+                    onChange={(e) => {
+                      setTableSearchTerm(e.target.value);
+                      setCurrentPage(1); // Réinitialiser la page lors d'une nouvelle recherche
+                    }}
+                    className="pl-9 pr-4 w-full"
+                  />
+                </div>
+                
+                <Select value={activeCategory || '0'} onValueChange={handleCategoryChange}>
+                  <SelectTrigger className="w-[180px]">
+                    <SelectValue placeholder="Catégorie" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    {Object.entries(accountCategories).map(([key, value]) => (
+                      <SelectItem key={key} value={key}>
+                        {key} - {value}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+              </div>
             )}
           </div>
         </CardHeader>
@@ -145,7 +173,7 @@ const ResultsDisplay = ({
                         <TableCell>{account.title}</TableCell>
                       </TableRow>
                     ))
-                ) : (
+                ) : paginatedAccounts.length > 0 ? (
                   paginatedAccounts.map((account, index) => (
                     <TableRow 
                       key={account.number} 
@@ -158,12 +186,10 @@ const ResultsDisplay = ({
                       <TableCell>{account.title}</TableCell>
                     </TableRow>
                   ))
-                )}
-                
-                {!selectedAccount && paginatedAccounts.length === 0 && (
+                ) : (
                   <TableRow>
                     <TableCell colSpan={2} className="text-center py-8 text-gray-500">
-                      Aucun compte trouvé pour cette catégorie
+                      Aucun compte trouvé
                     </TableCell>
                   </TableRow>
                 )}
@@ -171,7 +197,7 @@ const ResultsDisplay = ({
             </Table>
           </div>
           
-          {/* Pagination controls */}
+          {/* Contrôles de pagination */}
           {!selectedAccount && filteredAccounts.length > itemsPerPage && (
             <div className="mt-4 flex justify-between items-center px-4">
               <div className="text-sm text-gray-500">
@@ -190,7 +216,7 @@ const ResultsDisplay = ({
                   {[...Array(Math.min(5, totalPages))].map((_, index) => {
                     let pageNumber: number;
                     
-                    // Logic to determine which page numbers to show
+                    // Logique pour déterminer quels numéros de page afficher
                     if (totalPages <= 5) {
                       pageNumber = index + 1;
                     } else if (currentPage <= 3) {
@@ -236,6 +262,7 @@ const ResultsDisplay = ({
                   <SelectItem value="10">10</SelectItem>
                   <SelectItem value="25">25</SelectItem>
                   <SelectItem value="50">50</SelectItem>
+                  <SelectItem value="100">100</SelectItem>
                 </SelectContent>
               </Select>
             </div>
@@ -245,7 +272,7 @@ const ResultsDisplay = ({
     );
   }
   
-  // If no search or category selection is being done, show the empty state
+  // Si aucune recherche ou sélection de catégorie n'est effectuée, afficher l'état vide
   return (
     <Card className="shadow-md border-0 overflow-hidden text-center">
       <CardContent className="py-10">

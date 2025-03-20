@@ -19,19 +19,30 @@ const ChartOfAccountsSearch = () => {
   const [selectedAccount, setSelectedAccount] = useState<string | null>(null);
   const [categoryFilter, setCategoryFilter] = useState<string | null>(null);
   
+  // Effectuer la recherche dès que le terme de recherche ou le filtre de catégorie change
   useEffect(() => {
-    if (searchTerm.trim() === '') {
+    // Retourner tous les comptes si aucun terme de recherche n'est spécifié mais qu'une catégorie est sélectionnée
+    if (searchTerm.trim() === '' && categoryFilter) {
+      const filteredByCategory = fullAccountsList.filter(account => 
+        account.number.startsWith(categoryFilter)
+      );
+      setSearchResults(filteredByCategory);
+      return;
+    }
+    
+    // Aucun résultat si aucun terme de recherche et aucune catégorie
+    if (searchTerm.trim() === '' && !categoryFilter) {
       setSearchResults([]);
       return;
     }
     
     const filteredAccounts = fullAccountsList.filter(account => {
-      // Filter by search term
+      // Filtre par terme de recherche
       const matchesSearch = 
         account.number.toLowerCase().includes(searchTerm.toLowerCase()) || 
         account.title.toLowerCase().includes(searchTerm.toLowerCase());
       
-      // Filter by category if one is selected
+      // Filtre par catégorie si une est sélectionnée
       const matchesCategory = categoryFilter 
         ? account.number.startsWith(categoryFilter) 
         : true;
@@ -43,13 +54,18 @@ const ChartOfAccountsSearch = () => {
   }, [searchTerm, categoryFilter]);
   
   const handleCategorySelect = (category: string) => {
-    // If user clicks the currently active filter, disable it
+    // Si l'utilisateur clique sur le filtre actuellement actif, le désactiver
     if (category === categoryFilter) {
       setCategoryFilter(null);
     } else {
       setCategoryFilter(category);
-      // Reset selected account when changing category
+      // Réinitialiser le compte sélectionné lors du changement de catégorie
       setSelectedAccount(null);
+    }
+    
+    // Montrer automatiquement tous les comptes de la catégorie sélectionnée
+    if (searchTerm.trim() === '') {
+      setIsSearching(true);
     }
   };
   
@@ -58,9 +74,9 @@ const ChartOfAccountsSearch = () => {
   };
   
   const handleSearchBlur = () => {
-    // Add a delay to allow clicking on search results
+    // Ajouter un délai pour permettre de cliquer sur les résultats de recherche
     setTimeout(() => {
-      if (document.activeElement?.tagName !== 'BUTTON') {
+      if (document.activeElement?.tagName !== 'BUTTON' && searchTerm.trim() === '' && !categoryFilter) {
         setIsSearching(false);
       }
     }, 200);
