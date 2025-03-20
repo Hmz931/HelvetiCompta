@@ -1,3 +1,4 @@
+
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -67,8 +68,10 @@ const App = () => (
           <Header />
           <div className="flex-1 pt-20">
             <div className="container mx-auto px-4 md:px-6 py-8">
-              <div className="flex flex-col md:flex-row">
-                <Sidebar />
+              <div className="flex flex-col md:flex-row gap-4">
+                <div className="md:w-64 flex-shrink-0 bg-white rounded-lg shadow-sm">
+                  <Sidebar />
+                </div>
                 <main className="flex-1">
                   <Routes>
                     <Route path="/" element={<Index />} />

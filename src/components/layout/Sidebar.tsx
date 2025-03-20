@@ -94,11 +94,7 @@ const Sidebar = ({ onClose }: SidebarProps) => {
   ];
 
   return (
-    <div className={cn(
-      "w-full md:w-64 flex-shrink-0 bg-sidebar-background border-r border-sidebar-border",
-      "md:relative md:h-auto overflow-hidden",
-      isMobile ? "fixed inset-0 z-50" : "hidden md:block"
-    )}>
+    <div className="w-full h-full rounded-lg overflow-hidden">
       {isMobile && (
         <div className="flex items-center justify-between p-4 border-b border-sidebar-border">
           <h2 className="font-semibold">Navigation</h2>
@@ -113,7 +109,7 @@ const Sidebar = ({ onClose }: SidebarProps) => {
           </Button>
         </div>
       )}
-      <ScrollArea className="h-[calc(100vh-5rem)] md:h-[calc(100vh-8rem)]">
+      <ScrollArea className="h-[calc(100vh-12rem)] md:h-[calc(100vh-8rem)]">
         <div className="py-4 px-3">
           <nav className="space-y-1">
             {navItems.map((item) => (
@@ -123,8 +119,8 @@ const Sidebar = ({ onClose }: SidebarProps) => {
                   className={cn(
                     "flex items-center gap-3 rounded-md px-3 py-2 text-sm font-medium",
                     isActive(item.path) && !item.subitems
-                      ? "bg-sidebar-accent text-sidebar-accent-foreground"
-                      : "text-sidebar-foreground hover:bg-sidebar-accent/50 hover:text-sidebar-accent-foreground"
+                      ? "bg-swiss-blue text-white"
+                      : "text-sidebar-foreground hover:bg-swiss-blue/10 hover:text-swiss-blue"
                   )}
                 >
                   {getIcon(item.icon)}
@@ -139,8 +135,8 @@ const Sidebar = ({ onClose }: SidebarProps) => {
                         className={cn(
                           "flex items-center gap-3 rounded-md px-3 py-2 text-sm font-medium",
                           isActive(subitem.path)
-                            ? "bg-sidebar-accent text-sidebar-accent-foreground"
-                            : "text-sidebar-foreground hover:bg-sidebar-accent/50 hover:text-sidebar-accent-foreground"
+                            ? "bg-swiss-blue text-white"
+                            : "text-sidebar-foreground hover:bg-swiss-blue/10 hover:text-swiss-blue"
                         )}
                       >
                         {subitem.icon && getIcon(subitem.icon)}
