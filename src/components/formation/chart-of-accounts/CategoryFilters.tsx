@@ -8,8 +8,6 @@ interface CategoryFiltersProps {
   onSelectCategory: (category: string) => void;
 }
 
-// The issue is that ChartOfAccountsSearch.tsx is passing 'categoryFilter' 
-// but the component expects 'selectedCategory'
 const CategoryFilters = ({ selectedCategory, onSelectCategory }: CategoryFiltersProps) => {
   return (
     <div className="flex flex-wrap gap-2 mb-4">

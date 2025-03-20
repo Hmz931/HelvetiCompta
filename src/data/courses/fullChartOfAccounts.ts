@@ -1,3 +1,4 @@
+
 // Plan comptable suisse complet
 export interface AccountItem {
   number: string;
@@ -318,3 +319,31 @@ export const fullAccountsList: AccountItem[] = [
   { number: '3096', title: 'Différences de change', category: '3' },
   { number: '3097', title: 'Frets et ports', category: '3' },
 ];
+
+/**
+ * Retourne la liste complète des comptes
+ */
+export const getFullAccountsList = (): AccountItem[] => {
+  return fullAccountsList;
+};
+
+/**
+ * Filtre les comptes par catégorie
+ * @param category - La catégorie de compte (1-9)
+ */
+export const getAccountsByCategory = (category: string): AccountItem[] => {
+  return fullAccountsList.filter(account => account.category === category);
+};
+
+/**
+ * Recherche des comptes selon un terme de recherche
+ * @param searchTerm - Terme de recherche à utiliser
+ */
+export const searchAccounts = (searchTerm: string): AccountItem[] => {
+  const term = searchTerm.toLowerCase().trim();
+  
+  return fullAccountsList.filter(account => 
+    account.number.toLowerCase().includes(term) || 
+    account.title.toLowerCase().includes(term)
+  );
+};
