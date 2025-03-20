@@ -1,13 +1,15 @@
 
 import React, { useState, useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import SearchBar from '../common/SearchBar';
 import { ChevronDown, Menu, X } from 'lucide-react';
 
 const Header = () => {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [searchTerm, setSearchTerm] = useState('');
   const location = useLocation();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -25,6 +27,21 @@ const Header = () => {
 
   const isActive = (path: string) => {
     return location.pathname.startsWith(path);
+  };
+  
+  const handleHeaderSearch = (term: string) => {
+    // Navigate to the home page with the search term
+    if (location.pathname !== '/') {
+      navigate('/?search=' + encodeURIComponent(term));
+    } else {
+      // If already on home page, use URL search params to update without navigation
+      const searchParams = new URLSearchParams(window.location.search);
+      searchParams.set('search', term);
+      window.history.replaceState(null, '', `/?${searchParams.toString()}`);
+      
+      // Dispatch a custom event to notify the Index component of the search
+      window.dispatchEvent(new CustomEvent('header-search', { detail: { term } }));
+    }
   };
 
   return (
@@ -69,7 +86,11 @@ const Header = () => {
           </nav>
 
           <div className="hidden md:flex items-center">
-            <SearchBar />
+            <SearchBar 
+              value={searchTerm}
+              onChange={setSearchTerm}
+              onSearch={handleHeaderSearch}
+            />
           </div>
 
           {/* Mobile menu button */}
@@ -89,7 +110,11 @@ const Header = () => {
         }`}
       >
         <div className="container mx-auto px-4 py-4 space-y-2">
-          <SearchBar />
+          <SearchBar 
+            value={searchTerm}
+            onChange={setSearchTerm}
+            onSearch={handleHeaderSearch}
+          />
           <nav className="flex flex-col space-y-2 mt-4">
             <Link 
               to="/" 
