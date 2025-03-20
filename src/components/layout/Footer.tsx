@@ -16,7 +16,7 @@ const Footer = () => {
             </p>
             <div className="flex space-x-4 mt-4">
               <a 
-                href="https://github.com/username" 
+                href="https://github.com/Hmz931" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="text-swiss-text-secondary hover:text-swiss-blue transition-colors"
@@ -32,7 +32,7 @@ const Footer = () => {
                 <Linkedin size={20} />
               </a>
               <a 
-                href="mailto:contact@helveticompta.ch" 
+                href="mailto:hamza93bouguerra@gmail.com" 
                 className="text-swiss-text-secondary hover:text-swiss-blue transition-colors"
               >
                 <Mail size={20} />
@@ -72,10 +72,7 @@ const Footer = () => {
             <h3 className="font-semibold text-lg mb-4">Contact</h3>
             <address className="text-swiss-text-secondary text-sm not-italic">
               <p>HelvetiCompta</p>
-              <p>Rue de Lausanne 1</p>
-              <p>1201 Genève</p>
-              <p>Suisse</p>
-              <p className="mt-2">contact@helveticompta.ch</p>
+              <p className="mt-2">hamza93bouguerra@gmail.com</p>
               <p>+41 00 000 00 00</p>
             </address>
           </div>
