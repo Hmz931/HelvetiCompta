@@ -288,4 +288,4 @@ export const fullAccountsList: AccountItem[] = [
   { number: '2720', title: 'Prêts postposés de participations', category: '2' },
   { number: '2730', title: 'Prêts postposés des parties prenantes et des organes', category: '2' },
   { number: '2800', title: 'Capital-actions / parts sociales / capital de fondation / capital-participation', category: '2', description: 'Capital de base de l\'entreprise apporté par les actionnaires ou associés. Sa nature dépend de la forme juridique de l\'entreprise (SA, Sàrl, etc.).' },
-  { number: '2900', title: 'Agio à la fondation
+  { number: '2900', title: 'Agio à la fondation ou lors d
