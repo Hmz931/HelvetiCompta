@@ -107,8 +107,8 @@ const ChartOfAccountsSearch = () => {
             />
             
             <CategoryFilters
-              categoryFilter={categoryFilter}
-              onCategorySelect={handleCategorySelect}
+              selectedCategory={categoryFilter}
+              onSelectCategory={handleCategorySelect}
             />
           </div>
         </CardContent>
