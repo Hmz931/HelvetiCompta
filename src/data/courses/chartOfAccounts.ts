@@ -63,7 +63,6 @@ export const chartOfAccountsCourse: Course = {
       content: `## Les catégories du plan comptable
 
 | Catégorie | Intitulé | Plage de comptes |
-| --- | --- | --- |
 | 1 | Actifs | 1000-1999 |
 | 2 | Passifs | 2000-2999 |
 | 3 | Revenus | 3000-3999 |
@@ -85,7 +84,6 @@ export const chartOfAccountsCourse: Course = {
       content: `## Plan comptable détaillé
 
 | Numéro | Libellé du compte | Explication |
-| --- | --- | --- |
 | 1000 | Caisse | Le compte 'Caisse' enregistre toutes les entrées et sorties d'argent liquide (billets et pièces). Ce compte est débité lors d'encaissements et crédité lors de décaissements. Il fait partie des actifs circulants et son solde représente le montant d'espèces détenu par l'entreprise à un moment donné. |
 | 1003 | Caisse EUR | Le compte 'Caisse EUR' fonctionne comme le compte de caisse principal, mais est spécifiquement dédié à l'enregistrement des mouvements d'espèces en euros. Ce compte permet de suivre séparément les liquidités en euros pour faciliter la gestion des devises. |
 | 1004 | Caisse en devise étrangère A | Ce compte sert à enregistrer les mouvements d'espèces dans une devise étrangère spécifique (autre que l'euro). Les entreprises ayant des activités internationales utilisent ce compte pour suivre leurs liquidités dans différentes devises. |
