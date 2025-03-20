@@ -21,6 +21,18 @@ const Formation = () => {
         <Route path="/closing" element={<GenericCourseContent courseId="closing" />} />
         <Route path="/exercises" element={<GenericCourseContent courseId="exercises" />} />
         <Route path="/chart-of-accounts" element={<ChartOfAccountsCourseContent />} />
+        <Route path="/intro" element={<GenericCourseContent courseId="intro" />} />
+        <Route path="/journal" element={<GenericCourseContent courseId="journal" />} />
+        <Route path="/income-expenses" element={<GenericCourseContent courseId="income-expenses" />} />
+        <Route path="/interests" element={<GenericCourseContent courseId="interests" />} />
+        <Route path="/transitional" element={<GenericCourseContent courseId="transitional" />} />
+        <Route path="/provisions" element={<GenericCourseContent courseId="provisions" />} />
+        <Route path="/legal-forms" element={<GenericCourseContent courseId="legal-forms" />} />
+        <Route path="/partnerships" element={<GenericCourseContent courseId="partnerships" />} />
+        <Route path="/corporations" element={<GenericCourseContent courseId="corporations" />} />
+        <Route path="/llc" element={<GenericCourseContent courseId="llc" />} />
+        <Route path="/depreciation" element={<GenericCourseContent courseId="depreciation" />} />
+        <Route path="/financial-ratios" element={<GenericCourseContent courseId="financial-ratios" />} />
       </Routes>
     </div>
   );

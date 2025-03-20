@@ -8,6 +8,18 @@ import { taxCourse } from './tax';
 import { closingCourse } from './closing';
 import { exercisesCourse } from './exercises';
 import { chartOfAccountsCourse, fullAccountsList } from './chartOfAccounts';
+import { introCourse } from './intro';
+import { journalCourse } from './journal';
+import { incomeExpensesCourse } from './incomeExpenses';
+import { interestsCourse } from './interests';
+import { transitionalCourse } from './transitional';
+import { provisionsCourse } from './provisions';
+import { legalFormsCourse } from './legalForms';
+import { partnershipsCourse } from './partnerships';
+import { corporationsCourse } from './corporations';
+import { llcCourse } from './llc';
+import { depreciationCourse } from './depreciation';
+import { financialRatiosCourse } from './financialRatios';
 
 export const courseStructure: CourseStructure = {
   overview: overviewCourse,
@@ -17,7 +29,19 @@ export const courseStructure: CourseStructure = {
   tax: taxCourse,
   closing: closingCourse,
   exercises: exercisesCourse,
-  'chart-of-accounts': chartOfAccountsCourse
+  'chart-of-accounts': chartOfAccountsCourse,
+  intro: introCourse,
+  journal: journalCourse,
+  'income-expenses': incomeExpensesCourse,
+  interests: interestsCourse,
+  transitional: transitionalCourse,
+  provisions: provisionsCourse,
+  'legal-forms': legalFormsCourse,
+  partnerships: partnershipsCourse,
+  corporations: corporationsCourse,
+  llc: llcCourse,
+  depreciation: depreciationCourse,
+  'financial-ratios': financialRatiosCourse
 };
 
 export * from './types';
