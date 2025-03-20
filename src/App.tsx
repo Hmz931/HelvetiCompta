@@ -16,6 +16,7 @@ import YoozDocumentation from "@/pages/YoozDocumentation";
 import Glossary from "@/pages/Glossary";
 import Resources from "@/pages/Resources";
 import Templates from "@/pages/Templates";
+import TextAnalysis from "@/pages/TextAnalysis";
 import NotFound from "@/pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -41,6 +42,7 @@ const App = () => (
                     <Route path="/glossaire" element={<Glossary />} />
                     <Route path="/ressources" element={<Resources />} />
                     <Route path="/templates/*" element={<Templates />} />
+                    <Route path="/analyse-texte" element={<TextAnalysis />} />
                     <Route path="*" element={<NotFound />} />
                   </Routes>
                 </main>

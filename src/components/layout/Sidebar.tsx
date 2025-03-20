@@ -1,107 +1,100 @@
-
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { ChevronRight } from 'lucide-react';
+import { Book, FileText, BarChart, Calculator, FileQuestion, Files, FileUp } from 'lucide-react';
 
-type SidebarLinkProps = {
-  to: string;
-  children: React.ReactNode;
-  active?: boolean;
-};
-
-const SidebarLink = ({ to, children, active }: SidebarLinkProps) => (
-  <li className="mb-1">
-    <Link
-      to={to}
-      className={`flex items-center px-4 py-2 rounded-md text-sm transition-all duration-200 ${
-        active 
-          ? 'bg-swiss-blue/10 text-swiss-blue font-medium' 
-          : 'text-swiss-text-secondary hover:bg-swiss-muted hover:text-swiss-blue'
-      }`}
-    >
-      <ChevronRight size={16} className={`mr-1 ${active ? 'text-swiss-blue' : 'text-gray-400'}`} />
-      {children}
-    </Link>
-  </li>
-);
-
-const Sidebar = () => {
+function Sidebar() {
   const location = useLocation();
   const path = location.pathname;
-  
-  if (path === '/') return null;
   
   const renderMenu = () => {
     if (path.includes('/formation')) {
       return (
         <>
-          <h3 className="text-lg font-semibold mb-3 px-4">Formation Comptable</h3>
-          <ul>
-            <SidebarLink to="/formation/overview" active={path.includes('/formation/overview')}>Vue d'ensemble</SidebarLink>
-            <SidebarLink to="/formation/financial" active={path.includes('/formation/financial')}>Comptabilité Financière</SidebarLink>
-            <SidebarLink to="/formation/salary" active={path.includes('/formation/salary')}>Gestion des Salaires</SidebarLink>
-            <SidebarLink to="/formation/analytics" active={path.includes('/formation/analytics')}>Comptabilité Analytique</SidebarLink>
-            <SidebarLink to="/formation/tax" active={path.includes('/formation/tax')}>TVA et Fiscalité</SidebarLink>
-            <SidebarLink to="/formation/closing" active={path.includes('/formation/closing')}>Clôtures</SidebarLink>
-            <SidebarLink to="/formation/exercises" active={path.includes('/formation/exercises')}>Exercices Pratiques</SidebarLink>
+          <h3 className="text-lg font-semibold mb-3">Formation Comptable</h3>
+          <ul className="space-y-1">
+            <li><Link to="/formation/overview" className="flex items-center gap-2 p-2 rounded-md hover:bg-gray-100 transition-colors"><Book size={16} /> Vue d'ensemble</Link></li>
+            <li><Link to="/formation/financial" className="flex items-center gap-2 p-2 rounded-md hover:bg-gray-100 transition-colors"><Calculator size={16} /> Comptabilité Financière</Link></li>
+            <li><Link to="/formation/salary" className="flex items-center gap-2 p-2 rounded-md hover:bg-gray-100 transition-colors"><BarChart size={16} /> Gestion des Salaires</Link></li>
+            <li><Link to="/formation/analytics" className="flex items-center gap-2 p-2 rounded-md hover:bg-gray-100 transition-colors"><BarChart size={16} /> Comptabilité Analytique</Link></li>
+            <li><Link to="/formation/tax" className="flex items-center gap-2 p-2 rounded-md hover:bg-gray-100 transition-colors"><FileQuestion size={16} /> TVA et Fiscalité</Link></li>
+            <li><Link to="/formation/closing" className="flex items-center gap-2 p-2 rounded-md hover:bg-gray-100 transition-colors"><Files size={16} /> Clôtures</Link></li>
+            <li><Link to="/formation/exercises" className="flex items-center gap-2 p-2 rounded-md hover:bg-gray-100 transition-colors"><FileText size={16} /> Exercices Pratiques</Link></li>
           </ul>
+          
+          <div className="mt-6 pt-4 border-t border-gray-200">
+            <Link to="/analyse-texte" className="flex items-center gap-2 p-2 text-swiss-blue font-medium rounded-md hover:bg-blue-50 transition-colors">
+              <FileUp size={16} /> Analyser du texte
+            </Link>
+          </div>
         </>
       );
-    }
-    
-    if (path.includes('/abacus')) {
+    } else if (path.includes('/abacus')) {
       return (
         <>
-          <h3 className="text-lg font-semibold mb-3 px-4">Abacus</h3>
-          <ul>
-            <SidebarLink to="/abacus/intro" active={path.includes('/abacus/intro')}>Introduction</SidebarLink>
-            <SidebarLink to="/abacus/modules" active={path.includes('/abacus/modules')}>Modules</SidebarLink>
-            <SidebarLink to="/abacus/guides" active={path.includes('/abacus/guides')}>Guides Pas-à-Pas</SidebarLink>
-            <SidebarLink to="/abacus/tips" active={path.includes('/abacus/tips')}>Astuces</SidebarLink>
-            <SidebarLink to="/abacus/faq" active={path.includes('/abacus/faq')}>FAQ</SidebarLink>
+          <h3 className="text-lg font-semibold mb-3">Documentation Abacus</h3>
+          <ul className="space-y-1">
+            <li><Link to="/abacus/general" className="flex items-center gap-2 p-2 rounded-md hover:bg-gray-100 transition-colors"><FileText size={16} /> Généralités</Link></li>
+            <li><Link to="/abacus/modules" className="flex items-center gap-2 p-2 rounded-md hover:bg-gray-100 transition-colors"><FileText size={16} /> Modules</Link></li>
+            <li><Link to="/abacus/tips" className="flex items-center gap-2 p-2 rounded-md hover:bg-gray-100 transition-colors"><FileText size={16} /> Astuces</Link></li>
           </ul>
         </>
       );
-    }
-    
-    if (path.includes('/yooz')) {
+    } else if (path.includes('/yooz')) {
       return (
         <>
-          <h3 className="text-lg font-semibold mb-3 px-4">Yooz</h3>
-          <ul>
-            <SidebarLink to="/yooz/intro" active={path.includes('/yooz/intro')}>Introduction</SidebarLink>
-            <SidebarLink to="/yooz/guides" active={path.includes('/yooz/guides')}>Guides d'utilisation</SidebarLink>
-            <SidebarLink to="/yooz/integration" active={path.includes('/yooz/integration')}>Intégration Abacus</SidebarLink>
-            <SidebarLink to="/yooz/faq" active={path.includes('/yooz/faq')}>FAQ</SidebarLink>
+          <h3 className="text-lg font-semibold mb-3">Documentation Yooz</h3>
+          <ul className="space-y-1">
+            <li><Link to="/yooz/introduction" className="flex items-center gap-2 p-2 rounded-md hover:bg-gray-100 transition-colors"><FileText size={16} /> Introduction</Link></li>
           </ul>
         </>
       );
-    }
-    
-    if (path.includes('/templates')) {
+    } else if (path.includes('/templates')) {
       return (
         <>
-          <h3 className="text-lg font-semibold mb-3 px-4">Templates</h3>
-          <ul>
-            <SidebarLink to="/templates/closing" active={path.includes('/templates/closing')}>Dossiers de Clôture</SidebarLink>
-            <SidebarLink to="/templates/reporting" active={path.includes('/templates/reporting')}>Rapports Financiers</SidebarLink>
-            <SidebarLink to="/templates/tax" active={path.includes('/templates/tax')}>Déclarations Fiscales</SidebarLink>
-            <SidebarLink to="/templates/accounting" active={path.includes('/templates/accounting')}>Documents Comptables</SidebarLink>
+          <h3 className="text-lg font-semibold mb-3">Templates</h3>
+          <ul className="space-y-1">
+            <li><Link to="/templates/invoice" className="flex items-center gap-2 p-2 rounded-md hover:bg-gray-100 transition-colors"><FileText size={16} /> Factures</Link></li>
+          </ul>
+        </>
+      );
+    } else if (path.includes('/analyse-texte')) {
+      return (
+        <>
+          <h3 className="text-lg font-semibold mb-3">Outils d'analyse</h3>
+          <ul className="space-y-1">
+            <li><Link to="/analyse-texte" className="flex items-center gap-2 p-2 bg-gray-100 rounded-md"><FileUp size={16} /> Analyser du texte</Link></li>
+          </ul>
+          
+          <div className="mt-6 pt-4 border-t border-gray-200">
+            <Link to="/formation" className="flex items-center gap-2 p-2 text-swiss-blue font-medium rounded-md hover:bg-blue-50 transition-colors">
+              <Book size={16} /> Retour à la formation
+            </Link>
+          </div>
+        </>
+      );
+    } else {
+      return (
+        <>
+          <h3 className="text-lg font-semibold mb-3">Ressources</h3>
+          <ul className="space-y-1">
+            <li><Link to="/formation" className="flex items-center gap-2 p-2 rounded-md hover:bg-gray-100 transition-colors"><Book size={16} /> Formation Comptable</Link></li>
+            <li><Link to="/analyse-texte" className="flex items-center gap-2 p-2 rounded-md hover:bg-gray-100 transition-colors"><FileUp size={16} /> Analyser du texte</Link></li>
+            <li><Link to="/glossaire" className="flex items-center gap-2 p-2 rounded-md hover:bg-gray-100 transition-colors"><FileQuestion size={16} /> Glossaire</Link></li>
           </ul>
         </>
       );
     }
-    
-    return null;
   };
   
+  if (path === '/') {
+    return null;
+  }
+  
   return (
-    <div className="w-64 bg-white shadow-card rounded-lg h-auto mr-6 sticky top-28 self-start animate-fade-in overflow-hidden">
-      <div className="py-6">
-        {renderMenu()}
-      </div>
+    <div className="w-64 flex-shrink-0 mr-6 glass rounded-xl shadow-card p-4 sticky top-24">
+      {renderMenu()}
     </div>
   );
-};
+}
 
 export default Sidebar;
