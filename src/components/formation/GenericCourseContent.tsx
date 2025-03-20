@@ -37,8 +37,8 @@ const GenericCourseContent = ({ courseId }: CourseContentProps) => {
       }
 
       return (
-        <div key={sectionIndex} className="mb-8">
-          {hasSectionHeader && <h3 className="text-xl font-semibold mb-4 text-swiss-dark">{sectionHeader}</h3>}
+        <div key={sectionIndex} className="mb-10">
+          {hasSectionHeader && <h3 className="text-xl font-semibold mb-5 text-swiss-dark border-b pb-2">{sectionHeader}</h3>}
           
           {sectionContent.split('\n\n').map((paragraph, idx) => {
             // Check if paragraph contains a table (rows with | separators)
@@ -61,18 +61,18 @@ const GenericCourseContent = ({ courseId }: CourseContentProps) => {
                 );
               }
               
-              // Enhanced table styling
+              // Enhanced table styling with professional look
               return (
-                <Card key={idx} className="my-6 border border-gray-200">
+                <Card key={idx} className="my-6 overflow-hidden border border-gray-200 rounded-xl shadow-sm">
                   <div className="overflow-x-auto">
                     <Table>
                       {hasHeader && headers.length > 0 && (
-                        <TableHeader className="bg-gray-50">
+                        <TableHeader className="bg-gradient-to-r from-swiss-blue/10 to-swiss-blue/5">
                           <TableRow>
                             {headers.map((header, i) => (
                               <TableHead 
                                 key={i} 
-                                className="font-semibold text-gray-700 py-3"
+                                className="font-semibold text-swiss-dark py-4 text-base"
                               >
                                 {header}
                               </TableHead>
@@ -84,14 +84,14 @@ const GenericCourseContent = ({ courseId }: CourseContentProps) => {
                         {rows.map((row, rowIdx) => (
                           <TableRow 
                             key={rowIdx} 
-                            className={`hover:bg-gray-50 border-t border-gray-200 ${
-                              rowIdx % 2 === 0 ? 'bg-white' : 'bg-gray-50/50'
+                            className={`hover:bg-gray-50/80 ${
+                              rowIdx % 2 === 0 ? 'bg-white' : 'bg-gray-50/30'
                             }`}
                           >
                             {row.map((cell, cellIdx) => (
                               <TableCell 
                                 key={cellIdx} 
-                                className={`py-3 ${cellIdx === 0 ? 'font-medium' : ''}`}
+                                className={`py-3.5 ${cellIdx === 0 ? 'font-medium text-swiss-dark' : ''}`}
                               >
                                 {cell}
                               </TableCell>
@@ -108,7 +108,7 @@ const GenericCourseContent = ({ courseId }: CourseContentProps) => {
               return (
                 <p 
                   key={idx} 
-                  className="my-3 text-gray-700 leading-relaxed"
+                  className="my-4 text-gray-700 leading-relaxed"
                 >
                   {paragraph}
                 </p>
@@ -127,13 +127,13 @@ const GenericCourseContent = ({ courseId }: CourseContentProps) => {
         <p className="text-gray-600 mb-8 text-lg">{course.description}</p>
       )}
       
-      <div className="space-y-8">
+      <div className="space-y-10">
         {course.sections.map((section) => (
           <Card key={section.id} className="border-0 shadow-md rounded-xl overflow-hidden">
-            <CardHeader className="bg-gradient-to-r from-swiss-blue/10 to-swiss-blue/5 pb-4">
+            <CardHeader className="bg-gradient-to-r from-swiss-blue/15 to-swiss-blue/5 pb-4">
               <CardTitle className="text-2xl font-bold text-swiss-dark">{section.title}</CardTitle>
             </CardHeader>
-            <CardContent className="pt-5">
+            <CardContent className="pt-6 px-6">
               {section.content ? (
                 renderContent(section.content)
               ) : (

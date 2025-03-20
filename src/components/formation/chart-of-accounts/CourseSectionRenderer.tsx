@@ -12,11 +12,9 @@ const CourseSectionRenderer = ({ section }: CourseSectionRendererProps) => {
     return <ChartOfAccountsSearch />;
   }
   
-  return (
-    <div className="prose max-w-none">
-      <div dangerouslySetInnerHTML={{ __html: section.content || "Contenu à venir..." }} />
-    </div>
-  );
+  // For other sections, we'll let the parent component handle rendering
+  // as it has the Markdown table parsing logic
+  return null;
 };
 
 export default CourseSectionRenderer;
