@@ -35,20 +35,22 @@ Il existe deux principales méthodes de décompte TVA en Suisse :
 ## Exemples de décomptes TVA
 Voici deux exemples de formulaires officiels de décompte TVA utilisés en Suisse:
 
-<div>
+<div class="flex flex-col items-center my-6">
   <img 
     src="/assets/images/Decompte-TVA-modele-methode-des-taux-de-la-dette-fiscale-nette-des-2024.png" 
     alt="Décompte TVA - modèle TDFN" 
-    style="width: 100%; max-width: 700px; margin: 1rem 0; border: 1px solid #e2e8f0; border-radius: 0.5rem; box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);" 
+    style="width: 100%; max-width: 800px; border: 1px solid #e2e8f0; border-radius: 0.5rem; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);" 
   />
+  <p class="text-sm text-gray-600 mt-2 font-medium">Formulaire TVA - Méthode des taux de la dette fiscale nette</p>
 </div>
 
-<div>
+<div class="flex flex-col items-center my-6">
   <img 
     src="/assets/images/Decompte-TVA-modele-methode-effective-des-2024.png" 
     alt="Décompte TVA - modèle effectif" 
-    style="width: 100%; max-width: 700px; margin: 1rem 0; border: 1px solid #e2e8f0; border-radius: 0.5rem; box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);" 
+    style="width: 100%; max-width: 800px; border: 1px solid #e2e8f0; border-radius: 0.5rem; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);" 
   />
+  <p class="text-sm text-gray-600 mt-2 font-medium">Formulaire TVA - Méthode effective</p>
 </div>
 
 Ces formulaires comprennent trois sections principales:
