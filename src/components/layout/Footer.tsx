@@ -110,7 +110,7 @@ const Footer = () => {
         </div>
         
         <div className="mt-8 pt-8 border-t border-gray-800 text-center text-gray-400">
-          <p>© {currentYear} Swiss Accounting Hub. Tous droits réservés.</p>
+          <p>© {currentYear} Swiss Accounting Hub. Développé par Hamza Bouguerra. Tous droits réservés.</p>
         </div>
       </div>
     </footer>
