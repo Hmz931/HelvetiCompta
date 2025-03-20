@@ -43,7 +43,14 @@ const ChartOfAccountsSearch = () => {
   }, [searchTerm, categoryFilter]);
   
   const handleCategorySelect = (category: string) => {
-    setCategoryFilter(category === categoryFilter ? null : category);
+    // If user clicks the currently active filter, disable it
+    if (category === categoryFilter) {
+      setCategoryFilter(null);
+    } else {
+      setCategoryFilter(category);
+      // Reset selected account when changing category
+      setSelectedAccount(null);
+    }
   };
   
   const handleSearchFocus = () => {
