@@ -16,7 +16,6 @@ La Taxe sur la Valeur Ajoutée (TVA) est un impôt indirect sur la consommation 
 
 ## Taux de TVA en Suisse (2024)
 | Catégorie | Taux | Application |
-| --- | --- | --- |
 | Taux normal | 8.1% | Majorité des biens et services |
 | Taux réduit | 2.6% | Produits alimentaires, médicaments, livres, journaux |
 | Taux spécial hébergement | 3.8% | Services d'hébergement dans l'hôtellerie |
