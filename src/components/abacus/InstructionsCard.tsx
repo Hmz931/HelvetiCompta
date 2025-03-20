@@ -22,6 +22,15 @@ const InstructionsCard = ({ onDownloadTemplate }: InstructionsCardProps) => {
         <p className="text-sm mb-3">
           Le fichier Excel doit contenir les colonnes suivantes: <strong>Date, Compte, Contrepartie, Texte1, Montant, Code TVA</strong>.
         </p>
+        
+        <div className="mb-4 overflow-auto">
+          <img 
+            src="/lovable-uploads/e7a6fb4f-1eab-4f86-9836-d0e25d69467f.png" 
+            alt="Exemple format Excel" 
+            className="mx-auto border rounded shadow-sm"
+          />
+        </div>
+        
         <button 
           onClick={onDownloadTemplate}
           className="text-sm text-swiss-blue hover:underline flex items-center"
