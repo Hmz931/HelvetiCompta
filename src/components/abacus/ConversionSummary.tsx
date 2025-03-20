@@ -52,7 +52,7 @@ const ConversionSummary = ({ summary, file, onDownload, convertedData }: Convers
         </div>
         <div>
           <p className="text-sm text-swiss-text-secondary mb-1">Format de sortie</p>
-          <p className="font-medium">Abacus XML</p>
+          <p className="font-medium">Excel compatible Abacus</p>
         </div>
         <div>
           <p className="text-sm text-swiss-text-secondary mb-1">Écritures converties</p>
@@ -146,7 +146,7 @@ const ConversionSummary = ({ summary, file, onDownload, convertedData }: Convers
           className="bg-swiss-blue text-white px-6 py-2 rounded-lg hover:bg-swiss-blue/90 transition-colors flex items-center"
         >
           <Download size={18} className="mr-2" />
-          Télécharger le fichier pour Abacus
+          Télécharger le fichier Excel pour Abacus
         </button>
       </div>
     </div>

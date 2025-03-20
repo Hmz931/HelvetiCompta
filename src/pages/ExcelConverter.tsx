@@ -20,7 +20,7 @@ const ExcelConverterPage = () => {
               Convertissez facilement vos données Excel en un format compatible avec Abacus.
             </p>
             <p className="text-swiss-text-secondary">
-              Notre outil de conversion transforme vos fichiers Excel en fichiers XML prêts à être importés dans Abacus, 
+              Notre outil de conversion transforme vos fichiers Excel en fichiers Excel prêts à être importés dans Abacus, 
               vous permettant de gagner du temps et d'éviter les erreurs de saisie manuelle.
             </p>
           </div>
@@ -44,7 +44,7 @@ const ExcelConverterPage = () => {
           </div>
           <h3 className="text-lg font-semibold mb-2">2. Conversion automatique</h3>
           <p className="text-swiss-text-secondary">
-            Notre outil analyse et convertit automatiquement vos données en format XML compatible avec Abacus.
+            Notre outil analyse et convertit automatiquement vos données en format Excel compatible avec Abacus.
           </p>
         </div>
         
@@ -54,7 +54,7 @@ const ExcelConverterPage = () => {
           </div>
           <h3 className="text-lg font-semibold mb-2">3. Importez dans Abacus</h3>
           <p className="text-swiss-text-secondary">
-            Téléchargez le fichier XML généré et importez-le directement dans Abacus pour finaliser le processus.
+            Téléchargez le fichier Excel généré et importez-le directement dans Abacus pour finaliser le processus.
           </p>
         </div>
       </div>

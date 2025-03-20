@@ -91,7 +91,7 @@ const ExcelConverter = () => {
 
   const handleDownload = () => {
     if (!outputWorkbook || !file) return;
-    const fileName = `${file.name.replace(/\.[^/.]+$/, '')}_abacus.xml`;
+    const fileName = `${file.name.replace(/\.[^/.]+$/, '')}_abacus.xlsx`;
     downloadWorkbook(outputWorkbook, fileName);
   };
 
