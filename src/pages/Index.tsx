@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Book, FileText, Database, Laptop, BookOpen, Award, List, Map, Search } from 'lucide-react';
@@ -113,7 +112,7 @@ const Index = () => {
             </p>
           </Link>
 
-          <Link to="/plan-comptable" className="glass rounded-xl p-6 shadow-card transition-all hover:shadow-lg group">
+          <Link to="/formation/chart-of-accounts" className="glass rounded-xl p-6 shadow-card transition-all hover:shadow-lg group">
             <div className="flex items-center mb-4">
               <div className="bg-swiss-blue/10 text-swiss-blue p-3 rounded-lg mr-4 group-hover:bg-swiss-blue group-hover:text-white transition-colors">
                 <List size={24} />

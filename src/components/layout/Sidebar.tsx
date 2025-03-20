@@ -55,7 +55,13 @@ const Sidebar = ({ onClose }: SidebarProps) => {
   };
 
   const navItems = [
-    { name: 'Formation', path: '/formation', icon: 'formation' },
+    { name: 'Formation', path: '/formation', icon: 'formation', 
+      subitems: [
+        { name: 'Aperçu', path: '/formation' },
+        { name: 'Plan Comptable', path: '/formation/chart-of-accounts', icon: 'plan-comptable' },
+        { name: 'Quiz', path: '/formation/quiz', icon: 'quiz' }
+      ]
+    },
     { name: 'Abacus', path: '/abacus', icon: 'abacus', 
       subitems: [
         { name: 'Documentation', path: '/abacus' },
@@ -64,7 +70,6 @@ const Sidebar = ({ onClose }: SidebarProps) => {
     },
     { name: 'Yooz', path: '/yooz', icon: 'yooz' },
     { name: 'Lexique', path: '/lexique', icon: 'lexique' },
-    { name: 'Plan Comptable', path: '/plan-comptable', icon: 'plan-comptable' },
     { name: 'Ressources', path: '/ressources', icon: 'ressources',
       subitems: [
         { name: 'Templates', path: '/templates', icon: 'templates' },
@@ -72,7 +77,6 @@ const Sidebar = ({ onClose }: SidebarProps) => {
         { name: 'Carte Suisse', path: '/ressources/carte', icon: 'carte' }
       ]
     },
-    { name: 'Quiz', path: '/formation/quiz', icon: 'quiz' },
   ];
 
   return (

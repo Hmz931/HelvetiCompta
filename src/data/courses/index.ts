@@ -7,6 +7,7 @@ import { analyticsCourse } from './analytics';
 import { taxCourse } from './tax';
 import { closingCourse } from './closing';
 import { exercisesCourse } from './exercises';
+import { chartOfAccountsCourse } from './chartOfAccounts';
 
 export const courseStructure: CourseStructure = {
   overview: overviewCourse,
@@ -15,7 +16,8 @@ export const courseStructure: CourseStructure = {
   analytics: analyticsCourse,
   tax: taxCourse,
   closing: closingCourse,
-  exercises: exercisesCourse
+  exercises: exercisesCourse,
+  'chart-of-accounts': chartOfAccountsCourse
 };
 
 export * from './types';

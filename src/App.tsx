@@ -1,9 +1,8 @@
-
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import React from "react";
 
 import Header from "@/components/layout/Header";
@@ -17,7 +16,6 @@ import YoozDocumentation from "@/pages/YoozDocumentation";
 import Lexicon from "@/pages/Lexicon";
 import Resources from "@/pages/Resources";
 import Templates from "@/pages/Templates";
-import ChartOfAccounts from "@/pages/ChartOfAccounts";
 import NotFound from "@/pages/NotFound";
 import Administrations from "@/pages/Administrations";
 import SwissMap from "@/pages/SwissMap";
@@ -84,7 +82,7 @@ const App = () => (
                     <Route path="/ressources/administrations" element={<Administrations />} />
                     <Route path="/ressources/carte" element={<SwissMap />} />
                     <Route path="/templates/*" element={<Templates />} />
-                    <Route path="/plan-comptable" element={<ChartOfAccounts />} />
+                    <Route path="/plan-comptable" element={<Navigate to="/formation/chart-of-accounts" replace />} />
                     <Route path="*" element={<NotFound />} />
                   </Routes>
                 </main>

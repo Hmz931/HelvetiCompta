@@ -19,6 +19,7 @@ const Formation = () => {
         <Route path="/tax" element={<GenericCourseContent courseId="tax" />} />
         <Route path="/closing" element={<GenericCourseContent courseId="closing" />} />
         <Route path="/exercises" element={<GenericCourseContent courseId="exercises" />} />
+        <Route path="/chart-of-accounts" element={<GenericCourseContent courseId="chart-of-accounts" />} />
       </Routes>
     </div>
   );
