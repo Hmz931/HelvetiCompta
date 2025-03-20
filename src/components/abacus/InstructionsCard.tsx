@@ -20,7 +20,7 @@ const InstructionsCard = ({ onDownloadTemplate }: InstructionsCardProps) => {
           Format attendu
         </h3>
         <p className="text-sm mb-3">
-          Le fichier Excel doit contenir les colonnes suivantes: <strong>Date, Compte, Contrepartie, Texte1, Montant, Code TVA</strong>.
+          Le fichier Excel doit contenir les colonnes suivantes: <strong>Date (JJ-MM-AAAA), Compte, Contrepartie, Texte1, Montant, Code TVA</strong>.
         </p>
         
         <div className="mb-4 overflow-auto">
