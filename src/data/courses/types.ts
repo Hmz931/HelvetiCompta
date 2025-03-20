@@ -15,3 +15,10 @@ export type Course = {
 export type CourseStructure = {
   [key: string]: Course;
 };
+
+export type Account = {
+  number: string;
+  title: string;
+  description?: string;
+};
+
