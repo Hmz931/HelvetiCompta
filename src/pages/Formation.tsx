@@ -5,6 +5,7 @@ import Breadcrumb from '../components/common/Breadcrumb';
 import FormationOverview from '../components/formation/FormationOverview';
 import GenericCourseContent from '../components/formation/GenericCourseContent';
 import FinancialCourseContent from '../components/formation/FinancialCourseContent';
+import ChartOfAccountsCourseContent from '../components/formation/ChartOfAccountsCourseContent';
 
 const Formation = () => {
   return (
@@ -19,7 +20,7 @@ const Formation = () => {
         <Route path="/tax" element={<GenericCourseContent courseId="tax" />} />
         <Route path="/closing" element={<GenericCourseContent courseId="closing" />} />
         <Route path="/exercises" element={<GenericCourseContent courseId="exercises" />} />
-        <Route path="/chart-of-accounts" element={<GenericCourseContent courseId="chart-of-accounts" />} />
+        <Route path="/chart-of-accounts" element={<ChartOfAccountsCourseContent />} />
       </Routes>
     </div>
   );
