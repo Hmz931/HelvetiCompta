@@ -1,4 +1,3 @@
-
 // Plan comptable suisse complet
 export interface AccountItem {
   number: string;
@@ -289,61 +288,4 @@ export const fullAccountsList: AccountItem[] = [
   { number: '2720', title: 'Prêts postposés de participations', category: '2' },
   { number: '2730', title: 'Prêts postposés des parties prenantes et des organes', category: '2' },
   { number: '2800', title: 'Capital-actions / parts sociales / capital de fondation / capital-participation', category: '2', description: 'Capital de base de l\'entreprise apporté par les actionnaires ou associés. Sa nature dépend de la forme juridique de l\'entreprise (SA, Sàrl, etc.).' },
-  { number: '2900', title: 'Agio à la fondation ou lors d\'augmentations de capital', category: '2' },
-  { number: '2901', title: 'Autres apports, primes et contributions', category: '2' },
-  { number: '2902', title: 'Agio lors de fusion, de scission ou de cession d\'actifs', category: '2' },
-  { number: '2903', title: 'Gain lors de réduction du capital', category: '2' },
-  { number: '2940', title: 'Réserve d\'évaluation', category: '2' },
-  { number: '2950', title: 'Réserve légale issue du bénéfice', category: '2' },
-  { number: '2960', title: 'Réserve libre', category: '2' },
-  { number: '2961', title: 'Réserves facultatives issues du bénéfice', category: '2' },
-  { number: '2970', title: 'Bénéfice ou perte reporté', category: '2' },
-  { number: '2979', title: 'Bénéfice ou perte de l\'exercice', category: '2' },
-  { number: '2980', title: 'Propres actions', category: '2' },
-  { number: '2985', title: 'Commandite propre', category: '2' },
-  
-  // Catégorie 3 - Revenus
-  { number: '3000', title: 'Ventes de produits fabriqués A', category: '3' },
-  { number: '3000.1', title: 'Ventes de produits fabriqués au comptant', category: '3' },
-  { number: '3001.1', title: 'Ventes de produits fabriqués au détail à crédit', category: '3' },
-  { number: '3002.1', title: 'Ventes de produits fabriqués en gros à crédit', category: '3' },
-  { number: '3007.1', title: 'Ventes de produits fabriqués résultant de prestations annexes (port et emballage)', category: '3' },
-  { number: '3008.1', title: 'Variation des créances/débiteurs', category: '3' },
-  { number: '3009.1', title: 'Déductions sur ventes', category: '3' },
-  { number: '3090', title: 'Escomptes', category: '3' },
-  { number: '3091', title: 'Rabais et réductions de prix', category: '3' },
-  { number: '3092', title: 'Ristournes', category: '3' },
-  { number: '3093', title: 'Commissions de tiers', category: '3' },
-  { number: '3094', title: 'Frais d\'encaissement', category: '3' },
-  { number: '3095', title: 'Pertes sur clients, variation de prix', category: '3' },
-  { number: '3096', title: 'Différences de change', category: '3' },
-  { number: '3097', title: 'Frets et ports', category: '3' },
-];
-
-/**
- * Retourne la liste complète des comptes
- */
-export const getFullAccountsList = (): AccountItem[] => {
-  return fullAccountsList;
-};
-
-/**
- * Filtre les comptes par catégorie
- * @param category - La catégorie de compte (1-9)
- */
-export const getAccountsByCategory = (category: string): AccountItem[] => {
-  return fullAccountsList.filter(account => account.category === category);
-};
-
-/**
- * Recherche des comptes selon un terme de recherche
- * @param searchTerm - Terme de recherche à utiliser
- */
-export const searchAccounts = (searchTerm: string): AccountItem[] => {
-  const term = searchTerm.toLowerCase().trim();
-  
-  return fullAccountsList.filter(account => 
-    account.number.toLowerCase().includes(term) || 
-    account.title.toLowerCase().includes(term)
-  );
-};
+  { number: '2900', title: 'Agio à la fondation
