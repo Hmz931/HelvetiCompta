@@ -160,7 +160,7 @@ const Index = () => {
         <div className="flex flex-wrap justify-center items-center gap-8 md:gap-16">
           <div className="flex flex-col items-center">
             <img 
-              src="public/assets/abacus-logo.png" 
+              src="public/abacus-logo.png" 
               alt="Abacus Software" 
               className="h-16 w-auto object-contain mb-2" 
             />
@@ -168,7 +168,7 @@ const Index = () => {
           </div>
           <div className="flex flex-col items-center">
             <img 
-              src="public/assets/yooz-logo.png" 
+              src="public/yooz-logo.png" 
               alt="Yooz" 
               className="h-16 w-auto object-contain mb-2" 
             />
@@ -176,7 +176,7 @@ const Index = () => {
           </div>
           <div className="flex flex-col items-center">
             <img 
-              src="public/assets/uneo-logo.png" 
+              src="public/uneo-logo.png" 
               alt="Cabinet Fiduciaire" 
               className="h-16 w-auto object-contain mb-2" 
             />
