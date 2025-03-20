@@ -10,3 +10,10 @@ export type QuizQuestion = {
 export type QuizProps = {
   title: string;
 };
+
+export type QuizData = {
+  id: string;
+  title: string;
+  description: string;
+  questions: QuizQuestion[];
+};
