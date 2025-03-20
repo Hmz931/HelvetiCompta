@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Book, FileText, Database, Laptop, BookOpen, Award, FileCode, List } from 'lucide-react';
+import { Book, FileText, Database, Laptop, BookOpen, Award, FileCode, List, Map, Search } from 'lucide-react';
 
 const Index = () => {
   return (
@@ -9,10 +9,21 @@ const Index = () => {
       <section className="mb-16">
         <div className="glass rounded-xl p-10 text-center relative overflow-hidden shadow-card">
           <div className="relative z-10">
-            <h1 className="text-4xl md:text-5xl font-bold mb-6 text-swiss-blue">Swiss Accounting Hub</h1>
-            <p className="text-xl text-swiss-text-secondary max-w-3xl mx-auto">
+            <h1 className="text-4xl md:text-5xl font-bold mb-6 text-swiss-blue">HelvetiCompta</h1>
+            <p className="text-xl text-swiss-text-secondary max-w-3xl mx-auto mb-8">
               Ressources complètes pour maîtriser la comptabilité suisse et les logiciels associés
             </p>
+            
+            <div className="max-w-md mx-auto">
+              <div className="relative">
+                <input
+                  type="text"
+                  placeholder="Rechercher dans HelvetiCompta..."
+                  className="w-full py-3 px-5 pl-12 rounded-full border border-gray-200 shadow-sm focus:outline-none focus:ring-2 focus:ring-swiss-blue/20"
+                />
+                <Search size={20} className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400" />
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -73,12 +84,12 @@ const Index = () => {
             </p>
           </Link>
 
-          <Link to="/glossaire" className="glass rounded-xl p-6 shadow-card transition-all hover:shadow-lg group">
+          <Link to="/lexique" className="glass rounded-xl p-6 shadow-card transition-all hover:shadow-lg group">
             <div className="flex items-center mb-4">
               <div className="bg-swiss-blue/10 text-swiss-blue p-3 rounded-lg mr-4 group-hover:bg-swiss-blue group-hover:text-white transition-colors">
                 <BookOpen size={24} />
               </div>
-              <h3 className="text-xl font-semibold">Glossaire Comptable</h3>
+              <h3 className="text-xl font-semibold">Lexique Comptable</h3>
             </div>
             <p className="text-swiss-text-secondary">
               Définitions des termes spécifiques à la comptabilité suisse.
@@ -100,75 +111,31 @@ const Index = () => {
       </section>
 
       <section className="mb-16">
-        <h2 className="text-2xl font-bold mb-8 border-b pb-2">Plan Comptable Suisse</h2>
-        <div className="glass rounded-xl p-6 shadow-card">
-          <div className="mb-6">
-            <h3 className="text-xl font-semibold mb-4">À propos du plan comptable suisse</h3>
-            <div className="bg-gray-50 p-4 rounded-md border border-gray-200 mb-4">
-              <p className="text-gray-600 italic">
-                Espace réservé pour la description du plan comptable suisse. Cette section sera complétée ultérieurement.
-              </p>
+        <h2 className="text-2xl font-bold mb-8 border-b pb-2">Ressources Spéciales</h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <Link to="/ressources/carte" className="glass rounded-xl p-6 shadow-card transition-all hover:shadow-lg group">
+            <div className="flex items-center mb-4">
+              <div className="bg-swiss-blue/10 text-swiss-blue p-3 rounded-lg mr-4 group-hover:bg-swiss-blue group-hover:text-white transition-colors">
+                <Map size={24} />
+              </div>
+              <h3 className="text-xl font-semibold">Carte Interactive</h3>
             </div>
-          </div>
+            <p className="text-swiss-text-secondary">
+              Explorez les cantons suisses et leurs spécificités comptables et fiscales.
+            </p>
+          </Link>
           
-          <div className="overflow-x-auto">
-            <h4 className="font-semibold mb-3 text-swiss-blue">Extrait du plan comptable</h4>
-            <table className="min-w-full text-sm">
-              <thead>
-                <tr className="bg-gray-100">
-                  <th className="py-2 px-4 border-b text-left">Numéro</th>
-                  <th className="py-2 px-4 border-b text-left">Titre du compte</th>
-                </tr>
-              </thead>
-              <tbody className="divide-y">
-                <tr className="hover:bg-gray-50">
-                  <td className="py-2 px-4 font-medium">1000</td>
-                  <td className="py-2 px-4">Caisse</td>
-                </tr>
-                <tr className="hover:bg-gray-50">
-                  <td className="py-2 px-4 font-medium">1010</td>
-                  <td className="py-2 px-4">Compte postal</td>
-                </tr>
-                <tr className="hover:bg-gray-50">
-                  <td className="py-2 px-4 font-medium">1020</td>
-                  <td className="py-2 px-4">Compte courant CHF</td>
-                </tr>
-                <tr className="hover:bg-gray-50">
-                  <td className="py-2 px-4 font-medium">1022</td>
-                  <td className="py-2 px-4">Compte courant EUR</td>
-                </tr>
-                <tr className="hover:bg-gray-50">
-                  <td className="py-2 px-4 font-medium">1100</td>
-                  <td className="py-2 px-4">Créances suisses en CHF</td>
-                </tr>
-                <tr className="hover:bg-gray-50">
-                  <td className="py-2 px-4 font-medium">1200</td>
-                  <td className="py-2 px-4">Stocks de marchandises commerciales A</td>
-                </tr>
-                <tr className="hover:bg-gray-50">
-                  <td className="py-2 px-4 font-medium">2000</td>
-                  <td className="py-2 px-4">Dettes résultant d'achats de matières et de marchandises</td>
-                </tr>
-                <tr className="hover:bg-gray-50">
-                  <td className="py-2 px-4 font-medium">2800</td>
-                  <td className="py-2 px-4">Capital-actions / parts sociales / capital de fondation</td>
-                </tr>
-                <tr className="hover:bg-gray-50">
-                  <td className="py-2 px-4 font-medium">3000</td>
-                  <td className="py-2 px-4">Ventes de produits fabriqués A</td>
-                </tr>
-                <tr className="hover:bg-gray-50">
-                  <td className="py-2 px-4 font-medium">4000</td>
-                  <td className="py-2 px-4">Charges de matériel produit A</td>
-                </tr>
-              </tbody>
-            </table>
-            <div className="mt-4 text-right">
-              <Link to="/plan-comptable" className="text-swiss-blue hover:underline flex items-center justify-end gap-1 text-sm">
-                Voir le plan comptable complet <FileCode size={16} />
-              </Link>
+          <Link to="/formation/quiz" className="glass rounded-xl p-6 shadow-card transition-all hover:shadow-lg group">
+            <div className="flex items-center mb-4">
+              <div className="bg-swiss-blue/10 text-swiss-blue p-3 rounded-lg mr-4 group-hover:bg-swiss-blue group-hover:text-white transition-colors">
+                <Award size={24} />
+              </div>
+              <h3 className="text-xl font-semibold">Quiz et Tests</h3>
             </div>
-          </div>
+            <p className="text-swiss-text-secondary">
+              Testez vos connaissances en comptabilité suisse avec nos quiz interactifs.
+            </p>
+          </Link>
         </div>
       </section>
 

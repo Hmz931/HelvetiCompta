@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { ChevronRight } from 'lucide-react';
+import { ChevronRight, Github, Linkedin } from 'lucide-react';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -12,12 +12,32 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           <div className="space-y-4">
             <h3 className="text-xl font-bold tracking-tight">
-              Swiss<span className="text-swiss-blue">Accounting</span>Hub
+              Helveti<span className="text-swiss-blue">Compta</span>
             </h3>
             <p className="text-gray-300 max-w-xs">
               Un site dédié à la formation en comptabilité suisse et à la documentation 
               des logiciels Abacus et Yooz.
             </p>
+            <div className="flex space-x-4 mt-4">
+              <a 
+                href="https://github.com/hamooo90" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="text-gray-300 hover:text-white transition-colors"
+                aria-label="GitHub"
+              >
+                <Github size={20} />
+              </a>
+              <a 
+                href="https://www.linkedin.com/in/hamza-bouguerra-a09788106" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="text-gray-300 hover:text-white transition-colors"
+                aria-label="LinkedIn"
+              >
+                <Linkedin size={20} />
+              </a>
+            </div>
           </div>
           
           <div className="space-y-4">
@@ -43,11 +63,11 @@ const Footer = () => {
               </li>
               <li>
                 <Link 
-                  to="/glossaire" 
+                  to="/lexique" 
                   className="text-gray-300 hover:text-white transition-colors duration-200 flex items-center group"
                 >
                   <ChevronRight size={16} className="opacity-0 -ml-4 group-hover:opacity-100 group-hover:ml-0 transition-all duration-200" />
-                  Glossaire
+                  Lexique Comptable
                 </Link>
               </li>
               <li>
@@ -101,7 +121,7 @@ const Footer = () => {
               Vous avez des questions ou besoin d'assistance?
             </p>
             <a 
-              href="mailto:contact@swiss-accounting-hub.ch" 
+              href="mailto:contact@helveticompta.ch" 
               className="inline-block bg-swiss-blue text-white px-4 py-2 rounded-md hover:bg-opacity-90 transition-all duration-200"
             >
               Contactez-nous
@@ -110,7 +130,7 @@ const Footer = () => {
         </div>
         
         <div className="mt-8 pt-8 border-t border-gray-800 text-center text-gray-400">
-          <p>© {currentYear} Swiss Accounting Hub. Développé par Hamza Bouguerra. Tous droits réservés.</p>
+          <p>© {currentYear} HelvetiCompta. Développé par Hamza Bouguerra. Tous droits réservés.</p>
         </div>
       </div>
     </footer>

@@ -39,7 +39,7 @@ const Header = () => {
         <div className="flex items-center justify-between">
           <Link to="/" className="flex items-center">
             <span className="text-2xl font-bold text-swiss-dark tracking-tight">
-              Swiss<span className="text-swiss-blue">Accounting</span>Hub
+              Helveti<span className="text-swiss-blue">Compta</span>
             </span>
           </Link>
 
@@ -60,8 +60,8 @@ const Header = () => {
             <Link to="/templates" className={`nav-item ${isActive('/templates') ? 'active font-medium text-swiss-blue' : ''}`}>
               Templates
             </Link>
-            <Link to="/glossaire" className={`nav-item ${isActive('/glossaire') ? 'active font-medium text-swiss-blue' : ''}`}>
-              Glossaire
+            <Link to="/lexique" className={`nav-item ${isActive('/lexique') ? 'active font-medium text-swiss-blue' : ''}`}>
+              Lexique
             </Link>
             <Link to="/ressources" className={`nav-item ${isActive('/ressources') ? 'active font-medium text-swiss-blue' : ''}`}>
               Ressources
@@ -127,11 +127,11 @@ const Header = () => {
               Templates
             </Link>
             <Link 
-              to="/glossaire" 
-              className={`px-4 py-2 rounded-md ${isActive('/glossaire') ? 'bg-swiss-muted text-swiss-blue font-medium' : ''}`}
+              to="/lexique" 
+              className={`px-4 py-2 rounded-md ${isActive('/lexique') ? 'bg-swiss-muted text-swiss-blue font-medium' : ''}`}
               onClick={() => setMobileMenuOpen(false)}
             >
-              Glossaire
+              Lexique
             </Link>
             <Link 
               to="/ressources" 

@@ -13,13 +13,28 @@ import Index from "@/pages/Index";
 import Formation from "@/pages/Formation";
 import AbacusDocumentation from "@/pages/AbacusDocumentation";
 import YoozDocumentation from "@/pages/YoozDocumentation";
-import Glossary from "@/pages/Glossary";
+import Lexicon from "@/pages/Lexicon";
 import Resources from "@/pages/Resources";
 import Templates from "@/pages/Templates";
 import ChartOfAccounts from "@/pages/ChartOfAccounts";
 import NotFound from "@/pages/NotFound";
+import Administrations from "@/pages/Administrations";
+import SwissMap from "@/pages/SwissMap";
+import Quiz from "@/pages/Quiz";
+import ExcelConverter from "@/pages/ExcelConverter";
 
 const queryClient = new QueryClient();
+
+// Google Analytics integration
+const GoogleAnalytics = () => {
+  React.useEffect(() => {
+    // Google Analytics script would be loaded here
+    // This is a placeholder - you would need to add your actual GA tracking ID
+    console.log('Google Analytics initialized');
+  }, []);
+
+  return null;
+};
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
@@ -27,6 +42,7 @@ const App = () => (
       <Toaster />
       <Sonner />
       <BrowserRouter>
+        <GoogleAnalytics />
         <div className="flex flex-col min-h-screen">
           <Header />
           <div className="flex-1 pt-20">
@@ -37,10 +53,14 @@ const App = () => (
                   <Routes>
                     <Route path="/" element={<Index />} />
                     <Route path="/formation/*" element={<Formation />} />
+                    <Route path="/formation/quiz" element={<Quiz />} />
                     <Route path="/abacus/*" element={<AbacusDocumentation />} />
+                    <Route path="/abacus/excel-converter" element={<ExcelConverter />} />
                     <Route path="/yooz/*" element={<YoozDocumentation />} />
-                    <Route path="/glossaire" element={<Glossary />} />
+                    <Route path="/lexique" element={<Lexicon />} />
                     <Route path="/ressources" element={<Resources />} />
+                    <Route path="/ressources/administrations" element={<Administrations />} />
+                    <Route path="/ressources/carte" element={<SwissMap />} />
                     <Route path="/templates/*" element={<Templates />} />
                     <Route path="/plan-comptable" element={<ChartOfAccounts />} />
                     <Route path="*" element={<NotFound />} />
