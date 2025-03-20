@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Book, FileText, Database, Laptop, BookOpen, Award, List, Map, Search } from 'lucide-react';
@@ -160,7 +161,7 @@ const Index = () => {
         <div className="flex flex-wrap justify-center items-center gap-8 md:gap-16">
           <div className="flex flex-col items-center">
             <img 
-              src="public/abacus-logo.png" 
+              src="/assets/images/abacus-logo.png" 
               alt="Abacus Software" 
               className="h-16 w-auto object-contain mb-2" 
             />
@@ -168,7 +169,7 @@ const Index = () => {
           </div>
           <div className="flex flex-col items-center">
             <img 
-              src="public/yooz-logo.png" 
+              src="/assets/images/yooz-logo.png" 
               alt="Yooz" 
               className="h-16 w-auto object-contain mb-2" 
             />
@@ -176,7 +177,7 @@ const Index = () => {
           </div>
           <div className="flex flex-col items-center">
             <img 
-              src="public/uneo-logo.png" 
+              src="/assets/images/uneo-logo.png" 
               alt="Cabinet Fiduciaire" 
               className="h-16 w-auto object-contain mb-2" 
             />
