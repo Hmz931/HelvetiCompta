@@ -1,8 +1,7 @@
-
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Book, Award, ArrowRight, BookOpen } from 'lucide-react';
-import { courseStructure } from '@/data/courseStructure';
+import { courseStructure } from '@/data/courses';
 
 const FormationOverview = () => {
   return (

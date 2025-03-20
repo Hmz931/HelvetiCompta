@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight, Info, Search } from 'lucide-react';
@@ -12,7 +11,7 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
-import { courseStructure } from '@/data/courseStructure';
+import { courseStructure } from '@/data/courses';
 
 // Échantillon des comptes pour l'affichage dans le cours de comptabilité financière
 const financialAccounts = [

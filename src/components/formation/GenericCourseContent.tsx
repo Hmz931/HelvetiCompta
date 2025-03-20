@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { courseStructure } from '@/data/courseStructure';
+import { courseStructure } from '@/data/courses';
 import { Table, TableHeader, TableRow, TableHead, TableBody, TableCell } from '@/components/ui/table';
 
 type CourseContentProps = {
