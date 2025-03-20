@@ -16,11 +16,13 @@ Les ratios de rentabilité mesurent la capacité de l'entreprise à générer de
 </div>
 
 <div className="my-4 py-3 px-6 bg-swiss-blue/5 border-l-4 border-swiss-blue rounded-md">
-  <div className="flex justify-center my-1">
-    <div className="text-center">
-      <div className="mb-1">Résultat net</div>
-      <div className="border-t border-gray-400"></div>
-      <div className="mt-1">Chiffre d'affaires</div>
+  <div className="flex items-center">
+    <div className="mr-3 text-lg font-medium">Marge bénéficiaire nette = </div>
+    <div>
+      <div className="text-center">
+        <div className="border-b border-gray-800 pb-1">Résultat net</div>
+        <div className="pt-1">Chiffre d'affaires</div>
+      </div>
     </div>
   </div>
 </div>
@@ -41,11 +43,13 @@ Les ratios de rentabilité mesurent la capacité de l'entreprise à générer de
 </div>
 
 <div className="my-4 py-3 px-6 bg-swiss-blue/5 border-l-4 border-swiss-blue rounded-md">
-  <div className="flex justify-center my-1">
-    <div className="text-center">
-      <div className="mb-1">Résultat net</div>
-      <div className="border-t border-gray-400"></div>
-      <div className="mt-1">Capitaux propres</div>
+  <div className="flex items-center">
+    <div className="mr-3 text-lg font-medium">ROE = </div>
+    <div>
+      <div className="text-center">
+        <div className="border-b border-gray-800 pb-1">Résultat net</div>
+        <div className="pt-1">Capitaux propres</div>
+      </div>
     </div>
   </div>
 </div>
@@ -66,11 +70,13 @@ Les ratios de rentabilité mesurent la capacité de l'entreprise à générer de
 </div>
 
 <div className="my-4 py-3 px-6 bg-swiss-blue/5 border-l-4 border-swiss-blue rounded-md">
-  <div className="flex justify-center my-1">
-    <div className="text-center">
-      <div className="mb-1">Résultat net</div>
-      <div className="border-t border-gray-400"></div>
-      <div className="mt-1">Total des actifs</div>
+  <div className="flex items-center">
+    <div className="mr-3 text-lg font-medium">ROA = </div>
+    <div>
+      <div className="text-center">
+        <div className="border-b border-gray-800 pb-1">Résultat net</div>
+        <div className="pt-1">Total des actifs</div>
+      </div>
     </div>
   </div>
 </div>

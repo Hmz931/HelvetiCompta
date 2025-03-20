@@ -16,11 +16,13 @@ Les ratios d'efficacité mesurent la performance opérationnelle de l'entreprise
 </div>
 
 <div className="my-4 py-3 px-6 bg-swiss-blue/5 border-l-4 border-swiss-blue rounded-md">
-  <div className="flex justify-center my-1">
-    <div className="text-center">
-      <div className="mb-1">Coût des marchandises vendues</div>
-      <div className="border-t border-gray-400"></div>
-      <div className="mt-1">Stock moyen</div>
+  <div className="flex items-center">
+    <div className="mr-3 text-lg font-medium">Rotation des stocks = </div>
+    <div>
+      <div className="text-center">
+        <div className="border-b border-gray-800 pb-1">Coût des marchandises vendues</div>
+        <div className="pt-1">Stock moyen</div>
+      </div>
     </div>
   </div>
 </div>
@@ -41,14 +43,16 @@ Les ratios d'efficacité mesurent la performance opérationnelle de l'entreprise
 </div>
 
 <div className="my-4 py-3 px-6 bg-swiss-blue/5 border-l-4 border-swiss-blue rounded-md">
-  <div className="flex justify-center my-1">
-    <div className="text-center">
-      <div className="mb-1">Créances clients × 360</div>
-      <div className="border-t border-gray-400"></div>
-      <div className="mt-1">Chiffre d'affaires</div>
+  <div className="flex items-center">
+    <div className="mr-3 text-lg font-medium">Délai moyen de recouvrement = </div>
+    <div>
+      <div className="text-center">
+        <div className="border-b border-gray-800 pb-1">Créances clients × 360</div>
+        <div className="pt-1">Chiffre d'affaires</div>
+      </div>
     </div>
+    <div className="ml-2 text-sm text-gray-600">(en jours)</div>
   </div>
-  <div className="text-right text-sm text-gray-600 mt-2">(en jours)</div>
 </div>
 
 <div className="flex items-center gap-2 my-3 text-swiss-blue">

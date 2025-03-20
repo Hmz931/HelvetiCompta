@@ -16,11 +16,13 @@ Les ratios de solvabilité évaluent la structure financière de l'entreprise et
 </div>
 
 <div className="my-4 py-3 px-6 bg-swiss-blue/5 border-l-4 border-swiss-blue rounded-md">
-  <div className="flex justify-center my-1">
-    <div className="text-center">
-      <div className="mb-1">Total des dettes</div>
-      <div className="border-t border-gray-400"></div>
-      <div className="mt-1">Total des actifs</div>
+  <div className="flex items-center">
+    <div className="mr-3 text-lg font-medium">Ratio d'endettement total = </div>
+    <div>
+      <div className="text-center">
+        <div className="border-b border-gray-800 pb-1">Total des dettes</div>
+        <div className="pt-1">Total des actifs</div>
+      </div>
     </div>
   </div>
 </div>
@@ -41,11 +43,13 @@ Les ratios de solvabilité évaluent la structure financière de l'entreprise et
 </div>
 
 <div className="my-4 py-3 px-6 bg-swiss-blue/5 border-l-4 border-swiss-blue rounded-md">
-  <div className="flex justify-center my-1">
-    <div className="text-center">
-      <div className="mb-1">Capitaux propres</div>
-      <div className="border-t border-gray-400"></div>
-      <div className="mt-1">Total du passif</div>
+  <div className="flex items-center">
+    <div className="mr-3 text-lg font-medium">Ratio d'autonomie financière = </div>
+    <div>
+      <div className="text-center">
+        <div className="border-b border-gray-800 pb-1">Capitaux propres</div>
+        <div className="pt-1">Total du passif</div>
+      </div>
     </div>
   </div>
 </div>
