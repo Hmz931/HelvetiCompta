@@ -35,9 +35,21 @@ Il existe deux principales méthodes de décompte TVA en Suisse :
 ## Exemples de décomptes TVA
 Voici deux exemples de formulaires officiels de décompte TVA utilisés en Suisse:
 
-<img src="/assets/images/Décompte TVA - modèle méthode des taux de la dette fiscale nette dès 2024.png" alt="Décompte TVA - modèle TDFN" className="w-full max-w-3xl my-4 border border-gray-200 rounded-lg shadow-sm" />
+<div>
+  <img 
+    src="/assets/images/Decompte-TVA-modele-methode-des-taux-de-la-dette-fiscale-nette-des-2024.png" 
+    alt="Décompte TVA - modèle TDFN" 
+    style="width: 100%; max-width: 700px; margin: 1rem 0; border: 1px solid #e2e8f0; border-radius: 0.5rem; box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);" 
+  />
+</div>
 
-<img src="/assets/images/Décompte TVA - modèle méthode effective dès 2024.png" alt="Décompte TVA - modèle effectif" className="w-full max-w-3xl my-4 border border-gray-200 rounded-lg shadow-sm" />
+<div>
+  <img 
+    src="/assets/images/Decompte-TVA-modele-methode-effective-des-2024.png" 
+    alt="Décompte TVA - modèle effectif" 
+    style="width: 100%; max-width: 700px; margin: 1rem 0; border: 1px solid #e2e8f0; border-radius: 0.5rem; box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);" 
+  />
+</div>
 
 Ces formulaires comprennent trois sections principales:
 1. Le chiffre d'affaires (section I) - déclaration du chiffre d'affaires total et des déductions

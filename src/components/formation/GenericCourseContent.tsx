@@ -41,8 +41,14 @@ const GenericCourseContent = ({ courseId }: CourseContentProps) => {
           {hasSectionHeader && <h3 className="text-xl font-semibold mb-5 text-swiss-dark border-b pb-2">{sectionHeader}</h3>}
           
           {sectionContent.split('\n\n').map((paragraph, idx) => {
+            // Check if paragraph contains HTML tags (like <img> or <div>)
+            if (paragraph.trim().startsWith('<') && paragraph.includes('>')) {
+              return (
+                <div key={idx} dangerouslySetInnerHTML={{ __html: paragraph }} />
+              );
+            }
             // Check if paragraph contains a table (rows with | separators)
-            if (paragraph.includes('|') && paragraph.trim().startsWith('|')) {
+            else if (paragraph.includes('|') && paragraph.trim().startsWith('|')) {
               const tableRows = paragraph.trim().split('\n');
               const hasHeader = tableRows.length > 1 && tableRows[1].trim().startsWith('|-');
               
