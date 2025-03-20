@@ -1,5 +1,5 @@
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Search } from 'lucide-react';
 
 interface SearchBarProps {
@@ -8,6 +8,7 @@ interface SearchBarProps {
   onChange?: (value: string) => void;
   placeholder?: string;
   className?: string;
+  autoSearch?: boolean;
 }
 
 const SearchBar = ({ 
@@ -15,7 +16,8 @@ const SearchBar = ({
   value, 
   onChange, 
   placeholder = "Rechercher...",
-  className = ""
+  className = "",
+  autoSearch = false
 }: SearchBarProps) => {
   const [searchTerm, setSearchTerm] = useState('');
   const [isFocused, setIsFocused] = useState(false);
@@ -23,10 +25,21 @@ const SearchBar = ({
   const isControlled = value !== undefined && onChange !== undefined;
   
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const newValue = e.target.value;
+    
     if (isControlled) {
-      onChange(e.target.value);
+      onChange(newValue);
     } else {
-      setSearchTerm(e.target.value);
+      setSearchTerm(newValue);
+    }
+    
+    // Auto search after typing (for more responsive search)
+    if (autoSearch && onSearch && newValue.trim().length >= 2) {
+      const timer = setTimeout(() => {
+        onSearch(newValue);
+      }, 300);
+      
+      return () => clearTimeout(timer);
     }
   };
   

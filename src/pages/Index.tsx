@@ -1,14 +1,41 @@
+
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { Book, FileText, Database, Laptop, BookOpen, Award, List, Map, Search, X } from 'lucide-react';
 import { lexiconTerms } from '@/data/lexiconTerms';
 import { glossaryTerms } from '@/data/glossaryTerms';
+import { fullAccountsList } from '@/data/courses/chartOfAccounts';
 import SearchBar from '@/components/common/SearchBar';
 
 const Index = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [searchResults, setSearchResults] = useState<Array<{ title: string; path: string; excerpt: string; source: string }>>([]);
   const [isSearching, setIsSearching] = useState(false);
+  const location = useLocation();
+  
+  useEffect(() => {
+    // Check if there's a search parameter in the URL
+    const searchParams = new URLSearchParams(location.search);
+    const searchFromUrl = searchParams.get('search');
+    if (searchFromUrl) {
+      setSearchQuery(searchFromUrl);
+      setIsSearching(true);
+    }
+  }, [location]);
+
+  // Listen for search events from the header
+  useEffect(() => {
+    const handleHeaderSearch = (event: CustomEvent) => {
+      const { term } = event.detail;
+      setSearchQuery(term);
+      setIsSearching(true);
+    };
+
+    window.addEventListener('header-search', handleHeaderSearch as EventListener);
+    return () => {
+      window.removeEventListener('header-search', handleHeaderSearch as EventListener);
+    };
+  }, []);
   
   useEffect(() => {
     if (searchQuery.trim().length < 2) {
@@ -22,6 +49,7 @@ const Index = () => {
     const query = searchQuery.toLowerCase();
     const results = [];
     
+    // Search in lexicon terms
     for (const term of lexiconTerms) {
       if (
         term.title.toLowerCase().includes(query) ||
@@ -37,6 +65,7 @@ const Index = () => {
       }
     }
     
+    // Search in glossary terms
     for (const term of glossaryTerms) {
       if (
         term.title.toLowerCase().includes(query) ||
@@ -50,6 +79,37 @@ const Index = () => {
           source: 'Lexique'
         });
       }
+    }
+    
+    // Search in chart of accounts
+    for (const account of fullAccountsList) {
+      if (
+        account.number.includes(query) ||
+        account.title.toLowerCase().includes(query)
+      ) {
+        results.push({
+          title: `${account.number} - ${account.title}`,
+          path: `/formation/chart-of-accounts?account=${encodeURIComponent(account.number)}`,
+          excerpt: `Numéro de compte: ${account.number}, Libellé: ${account.title}`,
+          source: 'Plan Comptable'
+        });
+      }
+    }
+    
+    // Search in tax documentation
+    if (
+      'tva'.includes(query) || 
+      'taxe'.includes(query) || 
+      'impôt'.includes(query) || 
+      'fiscal'.includes(query) || 
+      'fiscalité'.includes(query)
+    ) {
+      results.push({
+        title: 'TVA et fiscalité',
+        path: '/formation?course=tax',
+        excerpt: highlightText('Principes de la TVA suisse, taux applicables, méthodes de décompte et particularités.', query, 150),
+        source: 'Formation'
+      });
     }
     
     setSearchResults(results);

@@ -10,7 +10,9 @@ type AccountsTableProps = {
 const AccountsTable = ({ accounts, searchTerm }: AccountsTableProps) => {
   const filteredAccounts = accounts.filter(account => 
     account.number.includes(searchTerm) || 
-    account.title.toLowerCase().includes(searchTerm.toLowerCase())
+    account.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    (account.explanation && account.explanation.toLowerCase().includes(searchTerm.toLowerCase())) ||
+    (account.example && account.example.toLowerCase().includes(searchTerm.toLowerCase()))
   );
 
   return (

@@ -38,18 +38,28 @@ const financialAccounts: AccountInfo[] = [
     title: 'Ventes de produits fabriqués A', 
     explanation: "Ce compte enregistre le chiffre d'affaires résultant de la vente des produits fabriqués par l'entreprise. Il s'agit d'un compte de produits qui influence directement le résultat de l'exercice.",
     example: "Crédit: Vente de produits manufacturés par l'entreprise.\nDébit: Retour de marchandises par un client."
+  },
+  { 
+    number: '2270', 
+    title: 'TVA due', 
+    explanation: "Ce compte enregistre la TVA collectée sur les ventes et qui doit être versée à l'administration fiscale. C'est un compte de passif à court terme représentant une dette envers l'État.",
+    example: "Crédit: TVA collectée sur les ventes.\nDébit: Règlement du décompte TVA à l'administration fiscale."
   }
 ];
 
 const AccountsPanel = () => {
   const [searchTerm, setSearchTerm] = useState('');
 
+  const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchTerm(e.target.value);
+  };
+
   return (
     <div className="glass rounded-xl p-6 shadow-card">
       <div className="flex items-center justify-between mb-4">
         <h2 className="text-xl font-bold">Plan Comptable - Comptes Principaux</h2>
         <Link 
-          to="/plan-comptable" 
+          to="/formation/chart-of-accounts" 
           className="text-swiss-blue hover:underline flex items-center gap-1"
         >
           <span>Voir le plan complet</span>
@@ -68,7 +78,7 @@ const AccountsPanel = () => {
           type="text"
           placeholder="Rechercher un compte..."
           value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
+          onChange={handleSearchChange}
           className="pl-10"
         />
       </div>

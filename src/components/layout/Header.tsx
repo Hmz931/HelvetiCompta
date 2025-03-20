@@ -30,6 +30,8 @@ const Header = () => {
   };
   
   const handleHeaderSearch = (term: string) => {
+    console.log("Header search:", term);
+    
     // Navigate to the home page with the search term
     if (location.pathname !== '/') {
       navigate('/?search=' + encodeURIComponent(term));
@@ -42,6 +44,9 @@ const Header = () => {
       // Dispatch a custom event to notify the Index component of the search
       window.dispatchEvent(new CustomEvent('header-search', { detail: { term } }));
     }
+    
+    // Clear the search term in the header after search
+    setSearchTerm('');
   };
 
   return (
@@ -90,6 +95,7 @@ const Header = () => {
               value={searchTerm}
               onChange={setSearchTerm}
               onSearch={handleHeaderSearch}
+              autoSearch={true}
             />
           </div>
 
@@ -114,6 +120,7 @@ const Header = () => {
             value={searchTerm}
             onChange={setSearchTerm}
             onSearch={handleHeaderSearch}
+            autoSearch={true}
           />
           <nav className="flex flex-col space-y-2 mt-4">
             <Link 
