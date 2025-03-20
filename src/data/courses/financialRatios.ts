@@ -20,10 +20,20 @@ Les ratios de liquidité permettent d'évaluer la capacité de l'entreprise à f
 
 ### a) Ratio de liquidité générale
 
-📌 **Formule**:
-Ratio de liquidité générale = Actifs circulants / Passifs à court terme
+<div className="flex items-center gap-2 my-3 text-swiss-blue">
+  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 12H2"/><path d="m9 4-7 8 7 8"/></svg>
+  <span className="font-semibold">Formule :</span>
+</div>
 
-📌 **Comptes utilisés (Bilan)**:
+<div className="my-4 py-3 px-6 bg-swiss-blue/5 border-l-4 border-swiss-blue rounded-md">
+  Ratio de liquidité générale = <span className="font-semibold">Actifs circulants / Passifs à court terme</span>
+</div>
+
+<div className="flex items-center gap-2 my-3 text-swiss-blue">
+  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 12H2"/><path d="m9 4-7 8 7 8"/></svg>
+  <span className="font-semibold">Comptes utilisés (Bilan) :</span>
+</div>
+
 - **Actifs circulants (1000 - 1499)**:
   - 1000-1099 : Liquidités (Banques, Caisse)
   - 1100-1199 : Créances clients
@@ -34,10 +44,20 @@ Ratio de liquidité générale = Actifs circulants / Passifs à court terme
 
 ### b) Ratio de liquidité immédiate
 
-📌 **Formule**:
-Ratio de liquidité immédiate = (Liquidités + Créances clients) / Passifs à court terme
+<div className="flex items-center gap-2 my-3 text-swiss-blue">
+  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 12H2"/><path d="m9 4-7 8 7 8"/></svg>
+  <span className="font-semibold">Formule :</span>
+</div>
 
-📌 **Comptes utilisés**:
+<div className="my-4 py-3 px-6 bg-swiss-blue/5 border-l-4 border-swiss-blue rounded-md">
+  Ratio de liquidité immédiate = <span className="font-semibold">(Liquidités + Créances clients) / Passifs à court terme</span>
+</div>
+
+<div className="flex items-center gap-2 my-3 text-swiss-blue">
+  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 12H2"/><path d="m9 4-7 8 7 8"/></svg>
+  <span className="font-semibold">Comptes utilisés :</span>
+</div>
+
 - Liquidités (1000-1099)
 - Créances clients (1100-1199)
 - Passifs à court terme (2000-2499)`
@@ -51,28 +71,58 @@ Les ratios de rentabilité mesurent la capacité de l'entreprise à générer de
 
 ### a) Marge bénéficiaire nette
 
-📌 **Formule**:
-Marge bénéficiaire nette = Résultat net / Chiffre d'affaires
+<div className="flex items-center gap-2 my-3 text-swiss-blue">
+  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 12H2"/><path d="m9 4-7 8 7 8"/></svg>
+  <span className="font-semibold">Formule :</span>
+</div>
 
-📌 **Comptes utilisés**:
+<div className="my-4 py-3 px-6 bg-swiss-blue/5 border-l-4 border-swiss-blue rounded-md">
+  Marge bénéficiaire nette = <span className="font-semibold">Résultat net / Chiffre d'affaires</span>
+</div>
+
+<div className="flex items-center gap-2 my-3 text-swiss-blue">
+  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 12H2"/><path d="m9 4-7 8 7 8"/></svg>
+  <span className="font-semibold">Comptes utilisés :</span>
+</div>
+
 - Chiffre d'affaires net (3000-3799)
 - Résultat net (9900)
 
 ### b) Rentabilité des capitaux propres (ROE)
 
-📌 **Formule**:
-ROE = Résultat net / Capitaux propres
+<div className="flex items-center gap-2 my-3 text-swiss-blue">
+  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 12H2"/><path d="m9 4-7 8 7 8"/></svg>
+  <span className="font-semibold">Formule :</span>
+</div>
 
-📌 **Comptes utilisés**:
+<div className="my-4 py-3 px-6 bg-swiss-blue/5 border-l-4 border-swiss-blue rounded-md">
+  ROE = <span className="font-semibold">Résultat net / Capitaux propres</span>
+</div>
+
+<div className="flex items-center gap-2 my-3 text-swiss-blue">
+  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 12H2"/><path d="m9 4-7 8 7 8"/></svg>
+  <span className="font-semibold">Comptes utilisés :</span>
+</div>
+
 - Résultat net (9900)
 - Capitaux propres (2800-2899)
 
 ### c) Rentabilité des actifs (ROA)
 
-📌 **Formule**:
-ROA = Résultat net / Total des actifs
+<div className="flex items-center gap-2 my-3 text-swiss-blue">
+  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 12H2"/><path d="m9 4-7 8 7 8"/></svg>
+  <span className="font-semibold">Formule :</span>
+</div>
 
-📌 **Comptes utilisés**:
+<div className="my-4 py-3 px-6 bg-swiss-blue/5 border-l-4 border-swiss-blue rounded-md">
+  ROA = <span className="font-semibold">Résultat net / Total des actifs</span>
+</div>
+
+<div className="flex items-center gap-2 my-3 text-swiss-blue">
+  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 12H2"/><path d="m9 4-7 8 7 8"/></svg>
+  <span className="font-semibold">Comptes utilisés :</span>
+</div>
+
 - Résultat net (9900)
 - Total des actifs (1000-1999)`
     },
@@ -85,19 +135,39 @@ Les ratios de solvabilité évaluent la structure financière de l'entreprise et
 
 ### a) Ratio d'endettement total
 
-📌 **Formule**:
-Ratio d'endettement total = Total des dettes / Total des actifs
+<div className="flex items-center gap-2 my-3 text-swiss-blue">
+  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 12H2"/><path d="m9 4-7 8 7 8"/></svg>
+  <span className="font-semibold">Formule :</span>
+</div>
 
-📌 **Comptes utilisés**:
+<div className="my-4 py-3 px-6 bg-swiss-blue/5 border-l-4 border-swiss-blue rounded-md">
+  Ratio d'endettement total = <span className="font-semibold">Total des dettes / Total des actifs</span>
+</div>
+
+<div className="flex items-center gap-2 my-3 text-swiss-blue">
+  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 12H2"/><path d="m9 4-7 8 7 8"/></svg>
+  <span className="font-semibold">Comptes utilisés :</span>
+</div>
+
 - Total des dettes (2000-2699)
 - Total des actifs (1000-1999)
 
 ### b) Ratio d'autonomie financière
 
-📌 **Formule**:
-Ratio d'autonomie financière = Capitaux propres / Total du passif
+<div className="flex items-center gap-2 my-3 text-swiss-blue">
+  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 12H2"/><path d="m9 4-7 8 7 8"/></svg>
+  <span className="font-semibold">Formule :</span>
+</div>
 
-📌 **Comptes utilisés**:
+<div className="my-4 py-3 px-6 bg-swiss-blue/5 border-l-4 border-swiss-blue rounded-md">
+  Ratio d'autonomie financière = <span className="font-semibold">Capitaux propres / Total du passif</span>
+</div>
+
+<div className="flex items-center gap-2 my-3 text-swiss-blue">
+  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 12H2"/><path d="m9 4-7 8 7 8"/></svg>
+  <span className="font-semibold">Comptes utilisés :</span>
+</div>
+
 - Capitaux propres (2800-2899)
 - Total du passif (2000-2999)`
     },
@@ -110,19 +180,52 @@ Les ratios d'efficacité mesurent la performance opérationnelle de l'entreprise
 
 ### a) Rotation des stocks
 
-📌 **Formule**:
-Rotation des stocks = Coût des marchandises vendues / Stock moyen
+<div className="flex items-center gap-2 my-3 text-swiss-blue">
+  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 12H2"/><path d="m9 4-7 8 7 8"/></svg>
+  <span className="font-semibold">Formule :</span>
+</div>
 
-📌 **Comptes utilisés**:
+<div className="my-4 py-3 px-6 bg-swiss-blue/5 border-l-4 border-swiss-blue rounded-md">
+  <div className="flex justify-center my-1">
+    <div className="text-center">
+      <div className="mb-1">Coût des marchandises vendues</div>
+      <div className="border-t border-gray-400"></div>
+      <div className="mt-1">Stock moyen</div>
+    </div>
+  </div>
+</div>
+
+<div className="flex items-center gap-2 my-3 text-swiss-blue">
+  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 12H2"/><path d="m9 4-7 8 7 8"/></svg>
+  <span className="font-semibold">Comptes utilisés :</span>
+</div>
+
 - Coût des marchandises vendues (4000-4099)
 - Stocks (1200-1299)
 
 ### b) Délai moyen de recouvrement des créances clients
 
-📌 **Formule**:
-Délai moyen de recouvrement = (Créances clients × 360) / Chiffre d'affaires (en jours)
+<div className="flex items-center gap-2 my-3 text-swiss-blue">
+  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 12H2"/><path d="m9 4-7 8 7 8"/></svg>
+  <span className="font-semibold">Formule :</span>
+</div>
 
-📌 **Comptes utilisés**:
+<div className="my-4 py-3 px-6 bg-swiss-blue/5 border-l-4 border-swiss-blue rounded-md">
+  <div className="flex justify-center my-1">
+    <div className="text-center">
+      <div className="mb-1">Créances clients × 360</div>
+      <div className="border-t border-gray-400"></div>
+      <div className="mt-1">Chiffre d'affaires</div>
+    </div>
+  </div>
+  <div className="text-right text-sm text-gray-600 mt-2">(en jours)</div>
+</div>
+
+<div className="flex items-center gap-2 my-3 text-swiss-blue">
+  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 12H2"/><path d="m9 4-7 8 7 8"/></svg>
+  <span className="font-semibold">Comptes utilisés :</span>
+</div>
+
 - Créances clients (1100-1199)
 - Chiffre d'affaires (3000-3799)`
     },
