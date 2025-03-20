@@ -1,4 +1,3 @@
-
 // Plan comptable suisse complet
 export interface AccountItem {
   number: string;
@@ -207,90 +206,86 @@ export const fullAccountsList: AccountItem[] = [
   { number: '2273.2', title: 'Compte courant Assurance-accidents - complémentaire', category: '2' },
   { number: '2274.1', title: 'Compte courant Assurance maladie (indemnité journalière maladie)', category: '2' },
   { number: '2274.2', title: 'Compte courant Assurance maladie - complémentaire', category: '2' },
+  { number: '2275', title: 'Compte courant – Autres (employés, caisses, assurances, …)', category: '2' },
+  { number: '2276', title: 'Créance relative à l\'impôt ecclésiastique', category: '2' },
+  { number: '2277', title: 'Taxe réfugiés', category: '2' },
+  { number: '2278', title: 'Office des Poursuites', category: '2' },
+  { number: '2279', title: 'Compte courant Impôt à la source', category: '2' },
+  { number: '2280', title: 'Retraite anticipée', category: '2' },
+  { number: '2281', title: 'Contribution professionnelle', category: '2' },
+  { number: '2282', title: 'Autres retenues employé à payer', category: '2' },
+  { number: '2283', title: 'Provisions 13ème et vacances à payer', category: '2' },
+  { number: '2290.1', title: 'Indemnités d\'assurance accidents', category: '2' },
+  { number: '2290.2', title: 'Indemnités d\'assurance maladie', category: '2' },
+  { number: '2290.3', title: 'Indemnités d\'assurance maternité', category: '2' },
+  { number: '2290.4', title: 'Indemnités d\'assurance maternité complémentaire', category: '2' },
+  { number: '2290.5', title: 'Indemnités d\'assurance APG militaire', category: '2' },
+  { number: '2290.6', title: 'Indemnités d\'assurance militaire', category: '2' },
+  { number: '2290.7', title: 'Indemnités d\'assurance chômage', category: '2' },
+  { number: '2290.8', title: 'Indemnités d\'assurance AI', category: '2' },
+  { number: '2290.9', title: 'Autre indemnités soumises (Parifonds, …)', category: '2' },
+  { number: '2300', title: 'Charges à payer', category: '2' },
+  { number: '2301', title: 'Produits encaissés d\'avance', category: '2' },
+  { number: '2303', title: 'Abandon de créances', category: '2' },
+  { number: '2330', title: 'Provisions pour travaux de garantie', category: '2' },
+  { number: '2331', title: 'Provisions pour risques liés aux engagements découlant d\'obligations de prendre livraison', category: '2' },
+  { number: '2340', title: 'Provisions pour impôts directs', category: '2' },
+  { number: '2341', title: 'Provisions pour impôts indirects', category: '2' },
+  { number: '2350', title: 'Provisions pour réparation et entretien', category: '2' },
+  { number: '2351', title: 'Provisions pour Rénovation des immobilisations', category: '2' },
+  { number: '2352', title: 'Provisions pour recherche', category: '2' },
+  { number: '2353', title: 'Provisions pour développement', category: '2' },
+  { number: '2354', title: 'Provisions pour restructuration', category: '2' },
+  { number: '2355', title: 'Provisions pour protection de l\'environnement', category: '2' },
+  { number: '2360', title: 'Provisions pour pertes futures', category: '2' },
+  { number: '2370', title: 'Provisions pour engagements envers l\'institution de prévoyance professionnelle', category: '2' },
+  { number: '2371', title: 'Provisions pour charges salariales', category: '2' },
+  { number: '2380', title: 'Provisions pour engagements envers participations', category: '2' },
+  { number: '2381', title: 'Provisions pour engagements envers les parties prenantes et les organes', category: '2' },
+  { number: '2390', title: 'Provisions pour assurer la prospérité durable de l\'entreprise', category: '2' },
+  { number: '2391', title: 'Autres provisions à court terme', category: '2' },
+  { number: '2400', title: 'Emprunts A', category: '2' },
+  { number: '2401', title: 'Hypothèque A', category: '2' },
+  { number: '2420', title: 'Engagements de financement par leasing', category: '2' },
+  { number: '2430', title: 'Emprunts obligataires', category: '2' },
+  { number: '2450', title: 'Emprunts', category: '2' },
+  { number: '2451', title: 'Hypothèques', category: '2' },
+  { number: '2470', title: 'Emprunts auprès de la participation A', category: '2' },
+  { number: '2471', title: 'Emprunts hypothécaires auprès de participation A', category: '2' },
+  { number: '2480', title: 'Emprunts auprès de l\'actionnaire A', category: '2' },
+  { number: '2481', title: 'Emprunts hypothécaires auprès de l\'actionnaire A', category: '2' },
+  { number: '2482', title: 'Emprunts auprès de l\'administrateur A', category: '2' },
+  { number: '2483', title: 'Emprunts hypothécaires auprès de l\'administrateur A', category: '2' },
+  { number: '2484', title: 'Emprunts auprès du membre de la direction A', category: '2' },
+  { number: '2485', title: 'Emprunts hypothécaires auprès du membre de la direction A', category: '2' },
+  { number: '2490', title: 'Emprunts auprès des institutions de prévoyance professionnelle', category: '2' },
+  { number: '2491', title: 'Dettes hypothécaires auprès des institutions de prévoyance professionnelle', category: '2' },
+  { number: '2500', title: 'Autres dettes envers des tiers', category: '2' },
+  { number: '2550', title: 'Autres dettes envers la participation A', category: '2' },
+  { number: '2560', title: 'Autres dettes envers l\'actionnaire A', category: '2' },
+  { number: '2562', title: 'Autres dettes envers l\'administrateur A', category: '2' },
+  { number: '2564', title: 'Autres dettes envers le membre de la direction A', category: '2' },
+  { number: '2570', title: 'Autres dettes envers des institutions de prévoyance professionnelle', category: '2' },
+  { number: '2630', title: 'Provisions pour travaux de garantie', category: '2' },
+  { number: '2631', title: 'Provisions pour risques liés aux engagements découlant d\'obligations de prendre livraison', category: '2' },
+  { number: '2640', title: 'Provisions pour impôts directs', category: '2' },
+  { number: '2641', title: 'Provisions pour impôts indirects', category: '2' },
+  { number: '2650', title: 'Provisions pour réparation et entretien', category: '2' },
+  { number: '2651', title: 'Provisions pour rénovation des immobilisations', category: '2' },
+  { number: '2652', title: 'Provisions pour recherche', category: '2' },
+  { number: '2653', title: 'Provisions pour développement', category: '2' },
+  { number: '2654', title: 'Provisions pour restructuration', category: '2' },
+  { number: '2655', title: 'Provisions pour protection de l\'environnement', category: '2' },
+  { number: '2660', title: 'Provisions pour affaires en cours', category: '2' },
+  { number: '2670', title: 'Provisions pour engagements envers l\'institution de prévoyance professionnelle', category: '2' },
+  { number: '2671', title: 'Provisions pour charges salariales', category: '2' },
+  { number: '2680', title: 'Provisions pour engagements envers participations', category: '2' },
+  { number: '2681', title: 'Provisions pour engagements envers les parties prenantes et les organes', category: '2' },
+  { number: '2690', title: 'Provisions pour assurer la prospérité durable de l\'entreprise', category: '2' },
+  { number: '2691', title: 'Autres provisions à long terme', category: '2' },
+  { number: '2695', title: 'Réserve pour fluctuation de valeur', category: '2' },
+  { number: '2710', title: 'Prêts postposés de tiers', category: '2' },
+  { number: '2720', title: 'Prêts postposés de participations', category: '2' },
+  { number: '2730', title: 'Prêts postposés des parties prenantes et des organes', category: '2' },
   { number: '2800', title: 'Capital-actions / parts sociales / capital de fondation / capital-participation', category: '2', description: 'Capital de base de l\'entreprise apporté par les actionnaires ou associés. Sa nature dépend de la forme juridique de l\'entreprise (SA, Sàrl, etc.).' },
-  { number: '2900', title: 'Agio à la fondation ou lors d\'augmentations de capital', category: '2' },
-  { number: '2901', title: 'Autres apports, primes et contributions', category: '2' },
-  { number: '2902', title: 'Agio lors de fusion, de scission ou de cession d\'actifs', category: '2' },
-  { number: '2903', title: 'Gain lors de réduction du capital', category: '2' },
-  { number: '2940', title: 'Réserve d\'évaluation', category: '2' },
-  { number: '2950', title: 'Réserve légale issue du bénéfice', category: '2' },
-  { number: '2960', title: 'Réserve libre', category: '2' },
-  { number: '2961', title: 'Réserves facultatives issues du bénéfice', category: '2' },
-  { number: '2970', title: 'Bénéfice ou perte reporté', category: '2' },
-  { number: '2979', title: 'Bénéfice ou perte de l\'exercice', category: '2' },
-  { number: '2980', title: 'Propres actions', category: '2' },
-  { number: '2985', title: 'Commandite propre', category: '2' },
-  
-  // Catégorie 3 - Revenus
-  { number: '3000', title: 'Ventes de produits fabriqués A', category: '3', description: 'Chiffre d\'affaires résultant de la vente des produits fabriqués par l\'entreprise.' },
-  { number: '3000.1', title: 'Ventes de produits fabriqués au comptant', category: '3' },
-  { number: '3001.1', title: 'Ventes de produits fabriqués au détail à crédit', category: '3' },
-  { number: '3002.1', title: 'Ventes de produits fabriqués en gros à crédit', category: '3' },
-  { number: '3007.1', title: 'Ventes de produits fabriqués résultant de prestations annexes (port et emballage)', category: '3' },
-  { number: '3008.1', title: 'Variation des créances/débiteurs', category: '3' },
-  { number: '3009.1', title: 'Déductions sur ventes', category: '3' },
-  { number: '3090', title: 'Escomptes', category: '3' },
-  { number: '3091', title: 'Rabais et réductions de prix', category: '3' },
-  { number: '3092', title: 'Ristournes', category: '3' },
-  { number: '3093', title: 'Commissions de tiers', category: '3' },
-  
-  // Catégorie 4 - Charges de matériel
-  { number: '4000', title: 'Charges de matériel produit A', category: '4', description: 'Coûts des matières premières et composants utilisés dans la fabrication.' },
-  { number: '4000.1', title: 'Achats d\'appareils', category: '4' },
-  { number: '4001.1', title: 'Achats de composants', category: '4' },
-  { number: '4002.1', title: 'Achats d\'accessoires', category: '4' },
-  { number: '4003.1', title: 'Achats d\'autres matières', category: '4' },
-  { number: '4004.1', title: 'Achats de matières auxiliaires et de fournitures d\'exploitation', category: '4' },
-  { number: '4005.1', title: 'Achats de matériel d\'emballage', category: '4' },
-  
-  // Catégorie 5 - Charges de personnel
-  { number: '5200', title: 'Salaires de base', category: '5', description: 'Salaires bruts versés aux employés, hors primes et commissions.' },
-  { number: '5201', title: 'Salaires variables, commissions et primes régulières', category: '5' },
-  { number: '5202', title: 'Primes occasionnelles et participations au bénéfice', category: '5' },
-  { number: '5203', title: 'Divers soumis AVS', category: '5' },
-  { number: '5204', title: 'Divers non soumis AVS', category: '5' },
-  { number: '5205', title: 'Prestations des assurances sociales', category: '5' },
-  
-  // Catégorie 6 - Autres charges d'exploitation
-  { number: '6000', title: 'Loyer des usines', category: '6', description: 'Charges locatives pour les bâtiments industriels utilisés par l\'entreprise.' },
-  { number: '6001', title: 'Loyer des ateliers', category: '6' },
-  { number: '6002', title: 'Loyer des entrepôts', category: '6' },
-  { number: '6003', title: 'Loyer des bâtiments d\'exposition et de vente', category: '6' },
-  { number: '6004', title: 'Loyer des bâtiments de bureau et d\'administration', category: '6' },
-  
-  // Catégorie 7 - Résultats des activités annexes
-  { number: '7000', title: 'Produits bruts', category: '7', description: 'Produits bruts des activités annexes d\'exploitation.' },
-  { number: '7009', title: 'Diminutions de produits', category: '7' },
-  { number: '7010', title: 'Charges de matières', category: '7' },
-  
-  // Catégorie 8 - Résultats hors exploitation
-  { number: '8000', title: 'Charges hors exploitation', category: '8', description: 'Charges non liées à l\'activité d\'exploitation normale de l\'entreprise.' },
-  { number: '8100', title: 'Produits hors exploitation', category: '8' },
-  { number: '8500', title: 'Dotations exceptionnelles aux réserves', category: '8' },
-  
-  // Catégorie 9 - Clôture
-  { number: '9000', title: 'Produits nets des ventes de biens et de prestations de services', category: '9', description: 'Compte de clôture pour le transfert des produits nets vers le compte de résultat.' },
-  { number: '9005', title: 'Variation des stocks de produits fini et semi-finis et variation des prestations de services non facturés', category: '9' },
-  { number: '9010', title: 'Chiffre d\'affaires résultant des ventes et des prestations de services', category: '9' }
-];
-
-// Fonction pour obtenir la liste complète des comptes
-export const getFullAccountsList = () => {
-  return fullAccountsList;
-};
-
-// Fonction pour obtenir les comptes par catégorie
-export const getAccountsByCategory = (categoryId: string) => {
-  return fullAccountsList.filter(account => account.category === categoryId);
-};
-
-// Fonction pour rechercher des comptes
-export const searchAccounts = (searchTerm: string) => {
-  if (!searchTerm.trim()) return [];
-  const lowercaseTerm = searchTerm.toLowerCase();
-  
-  return fullAccountsList.filter(account => 
-    account.number.toLowerCase().includes(lowercaseTerm) || 
-    account.title.toLowerCase().includes(lowercaseTerm)
-  );
-};
+  { number: '2900', title: 'Agio à la fondation
