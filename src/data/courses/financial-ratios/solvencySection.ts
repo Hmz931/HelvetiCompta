@@ -12,37 +12,29 @@ Les ratios de solvabilité évaluent la structure financière de l'entreprise et
 
 ### a) Ratio d'endettement total
 
-<div className="formula-display">
-  <span className="fraction">
-    <span className="numerator">Total des dettes</span>
-    <span className="denominator">Total des actifs</span>
+<div class="ratio-formula">
+  <span class="fraction">
+    <span class="numerator">Total des dettes</span>
+    <span class="denominator">Total des actifs</span>
   </span>
 </div>
 
-<div className="accounts-used">
-  <p className="accounts-title">Comptes utilisés :</p>
-  <ul>
-    <li>Total des dettes (2000-2699)</li>
-    <li>Total des actifs (1000-1999)</li>
-  </ul>
-</div>
+Comptes utilisés :
+- Total des dettes (2000-2699)
+- Total des actifs (1000-1999)
 
 #
 
 ### b) Ratio d'autonomie financière
 
-<div className="formula-display">
-  <span className="fraction">
-    <span className="numerator">Capitaux propres</span>
-    <span className="denominator">Total du passif</span>
+<div class="ratio-formula">
+  <span class="fraction">
+    <span class="numerator">Capitaux propres</span>
+    <span class="denominator">Total du passif</span>
   </span>
 </div>
 
-<div className="accounts-used">
-  <p className="accounts-title">Comptes utilisés :</p>
-  <ul>
-    <li>Capitaux propres (2800-2899)</li>
-    <li>Total du passif (2000-2999)</li>
-  </ul>
-</div>`
+Comptes utilisés :
+- Capitaux propres (2800-2899)
+- Total du passif (2000-2999)`
 };

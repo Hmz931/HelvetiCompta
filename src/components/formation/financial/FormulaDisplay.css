@@ -1,10 +1,10 @@
 
 .formula-display {
-  margin: 1.5rem 0;
-  padding: 1rem;
-  background-color: #f8f9fa;
+  margin: 1rem 0;
+  padding: 0.5rem;
+  background-color: transparent;
   border-radius: 0.5rem;
-  text-align: center;
+  text-align: left;
   font-size: 1.1rem;
 }
 
@@ -24,4 +24,43 @@
 .fraction .denominator {
   display: block;
   padding: 2px 5px;
+}
+
+.accounts-used {
+  margin-top: 0.5rem;
+  padding: 0.5rem 0;
+}
+
+.accounts-title {
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.accounts-used ul {
+  margin-left: 1.5rem;
+  list-style-type: disc;
+}
+
+.accounts-used li {
+  margin-bottom: 0.25rem;
+}
+
+.ratio-title {
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+  font-size: 1.2rem;
+}
+
+.ratio-formula {
+  margin-bottom: 1rem;
+}
+
+.account-detail {
+  font-weight: normal;
+  margin-top: 0.25rem;
+  padding-left: 1rem;
+}
+
+.account-range {
+  font-weight: bold;
 }

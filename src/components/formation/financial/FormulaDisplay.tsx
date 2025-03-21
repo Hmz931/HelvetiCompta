@@ -1,12 +1,13 @@
 
 import React from 'react';
+import './FormulaDisplay.css';
 
-type FractionProps = {
+interface FractionProps {
   numerator: string;
   denominator: string;
-};
+}
 
-const Fraction = ({ numerator, denominator }: FractionProps) => {
+export const Fraction: React.FC<FractionProps> = ({ numerator, denominator }) => {
   return (
     <span className="fraction">
       <span className="numerator">{numerator}</span>
@@ -15,32 +16,37 @@ const Fraction = ({ numerator, denominator }: FractionProps) => {
   );
 };
 
-type FormulaDisplayProps = {
-  formula: {
-    type: 'fraction';
-    numerator: string;
-    denominator: string;
-  } | {
-    type: 'text';
-    content: string;
-  };
-};
+interface FormulaDisplayProps {
+  formula: React.ReactNode;
+  accounts?: {
+    title?: string;
+    items: string[];
+  }[];
+}
 
-const FormulaDisplay = ({ formula }: FormulaDisplayProps) => {
-  if (formula.type === 'fraction') {
-    return (
-      <div className="formula-display">
-        <Fraction 
-          numerator={formula.numerator} 
-          denominator={formula.denominator} 
-        />
-      </div>
-    );
-  }
-  
+const FormulaDisplay: React.FC<FormulaDisplayProps> = ({ formula, accounts }) => {
   return (
-    <div className="formula-display">
-      <p>{formula.content}</p>
+    <div>
+      <div className="ratio-formula">
+        {formula}
+      </div>
+      
+      {accounts && accounts.length > 0 && (
+        <div className="accounts-used">
+          {accounts.map((group, groupIndex) => (
+            <div key={groupIndex}>
+              {group.title && (
+                <p className="accounts-title">{group.title}</p>
+              )}
+              <ul>
+                {group.items.map((item, itemIndex) => (
+                  <li key={itemIndex}>{item}</li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+      )}
     </div>
   );
 };

@@ -12,56 +12,44 @@ Les ratios de rentabilité mesurent la capacité de l'entreprise à générer de
 
 ### a) Marge bénéficiaire nette
 
-<div className="formula-display">
-  <span className="fraction">
-    <span className="numerator">Résultat net</span>
-    <span className="denominator">Chiffre d'affaires</span>
+<div class="ratio-formula">
+  <span class="fraction">
+    <span class="numerator">Résultat net</span>
+    <span class="denominator">Chiffre d'affaires</span>
   </span>
 </div>
 
-<div className="accounts-used">
-  <p className="accounts-title">Comptes utilisés :</p>
-  <ul>
-    <li>Chiffre d'affaires net (3000-3799)</li>
-    <li>Résultat net (9900)</li>
-  </ul>
-</div>
+Comptes utilisés :
+- Chiffre d'affaires net (3000-3799)
+- Résultat net (9900)
 
 #
 
 ### b) Rentabilité des capitaux propres (ROE)
 
-<div className="formula-display">
-  <span className="fraction">
-    <span className="numerator">Résultat net</span>
-    <span className="denominator">Capitaux propres</span>
+<div class="ratio-formula">
+  <span class="fraction">
+    <span class="numerator">Résultat net</span>
+    <span class="denominator">Capitaux propres</span>
   </span>
 </div>
 
-<div className="accounts-used">
-  <p className="accounts-title">Comptes utilisés :</p>
-  <ul>
-    <li>Résultat net (9900)</li>
-    <li>Capitaux propres (2800-2899)</li>
-  </ul>
-</div>
+Comptes utilisés :
+- Résultat net (9900)
+- Capitaux propres (2800-2899)
 
 #
 
 ### c) Rentabilité des actifs (ROA)
 
-<div className="formula-display">
-  <span className="fraction">
-    <span className="numerator">Résultat net</span>
-    <span className="denominator">Total des actifs</span>
+<div class="ratio-formula">
+  <span class="fraction">
+    <span class="numerator">Résultat net</span>
+    <span class="denominator">Total des actifs</span>
   </span>
 </div>
 
-<div className="accounts-used">
-  <p className="accounts-title">Comptes utilisés :</p>
-  <ul>
-    <li>Résultat net (9900)</li>
-    <li>Total des actifs (1000-1999)</li>
-  </ul>
-</div>`
+Comptes utilisés :
+- Résultat net (9900)
+- Total des actifs (1000-1999)`
 };

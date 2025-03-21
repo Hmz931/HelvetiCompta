@@ -1,9 +1,8 @@
+
 import React from 'react';
 import { courseStructure } from '@/data/courses';
 import { Table, TableHeader, TableRow, TableHead, TableBody, TableCell } from '@/components/ui/table';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import 'katex/dist/katex.min.css';
-import { InlineMath, BlockMath } from 'react-katex';
 import '../formation/financial/FormulaDisplay.css';
 
 type CourseContentProps = {
@@ -39,6 +38,11 @@ const SectionContent = ({ content }: { content: string }) => {
           // Check if paragraph is just a hash symbol (separator)
           if (paragraph.trim() === '#') {
             return <div key={idx} className="my-6"></div>;
+          }
+          // Check if paragraph contains a fraction formula 
+          else if (paragraph.includes('<div class="ratio-formula">') || paragraph.includes('<span class="fraction">')) {
+            // Just render it as HTML since we're using custom CSS styling
+            return <div key={idx} dangerouslySetInnerHTML={{ __html: paragraph }} />;
           }
           // Check if paragraph contains HTML tags (like <div className="formula-display">)
           else if (paragraph.trim().startsWith('<div className="formula-display">')) {
