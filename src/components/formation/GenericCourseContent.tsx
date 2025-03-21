@@ -39,18 +39,13 @@ const SectionContent = ({ content }: { content: string }) => {
           if (paragraph.trim() === '#') {
             return <div key={idx} className="my-6"></div>;
           }
-          // Check if paragraph contains a fraction formula 
-          else if (paragraph.includes('<div class="ratio-formula">') || paragraph.includes('<span class="fraction">')) {
-            // Just render it as HTML since we're using custom CSS styling
-            return <div key={idx} dangerouslySetInnerHTML={{ __html: paragraph }} />;
-          }
-          // Check if paragraph contains HTML tags (like <div className="formula-display">)
-          else if (paragraph.trim().startsWith('<div className="formula-display">')) {
-            // Just render it as HTML since we're using custom CSS styling
-            return <div key={idx} dangerouslySetInnerHTML={{ __html: paragraph }} />;
-          }
-          // Check if paragraph contains accounts-used div
-          else if (paragraph.includes('<div className="accounts-used">')) {
+          // Check if paragraph contains HTML for formulas or other special content
+          else if (
+            paragraph.includes('<div') || 
+            paragraph.includes('<span') || 
+            paragraph.includes('<ul')
+          ) {
+            // Use dangerouslySetInnerHTML to properly render HTML
             return <div key={idx} dangerouslySetInnerHTML={{ __html: paragraph }} />;
           }
           // Check if paragraph contains a table (rows with | separators)
