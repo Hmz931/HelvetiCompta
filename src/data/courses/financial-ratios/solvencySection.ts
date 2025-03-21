@@ -15,10 +15,11 @@ Les ratios de solvabilité évaluent la structure financière de l'entreprise et
   <span className="font-semibold">Formule :</span>
 </div>
 
-<div className="my-4 py-3 px-6 bg-swiss-blue/5 border-l-4 border-swiss-blue rounded-md">
-  <div className="flex items-center">
-    <div className="mr-3 text-lg font-medium">Ratio d'endettement total = </div>
-    <div className="mjx-formula" data-formula="\\frac{\\text{Total des dettes}}{\\text{Total des actifs}}"></div>
+<div className="ml-8 my-4">
+  <p className="text-lg mb-2">Ratio d'endettement total =</p>
+  <div className="flex flex-col">
+    <p className="text-lg border-b-2 border-gray-700 pb-1 mb-1">Total des dettes</p>
+    <p className="text-lg">Total des actifs</p>
   </div>
 </div>
 
@@ -27,8 +28,10 @@ Les ratios de solvabilité évaluent la structure financière de l'entreprise et
   <span className="font-semibold">Comptes utilisés :</span>
 </div>
 
-- Total des dettes (2000-2699)
-- Total des actifs (1000-1999)
+<ul className="list-disc ml-8 mb-6">
+  <li>Total des dettes (2000-2699)</li>
+  <li>Total des actifs (1000-1999)</li>
+</ul>
 
 ### b) Ratio d'autonomie financière
 
@@ -37,10 +40,11 @@ Les ratios de solvabilité évaluent la structure financière de l'entreprise et
   <span className="font-semibold">Formule :</span>
 </div>
 
-<div className="my-4 py-3 px-6 bg-swiss-blue/5 border-l-4 border-swiss-blue rounded-md">
-  <div className="flex items-center">
-    <div className="mr-3 text-lg font-medium">Ratio d'autonomie financière = </div>
-    <div className="mjx-formula" data-formula="\\frac{\\text{Capitaux propres}}{\\text{Total du passif}}"></div>
+<div className="ml-8 my-4">
+  <p className="text-lg mb-2">Ratio d'autonomie financière =</p>
+  <div className="flex flex-col">
+    <p className="text-lg border-b-2 border-gray-700 pb-1 mb-1">Capitaux propres</p>
+    <p className="text-lg">Total du passif</p>
   </div>
 </div>
 
@@ -49,6 +53,8 @@ Les ratios de solvabilité évaluent la structure financière de l'entreprise et
   <span className="font-semibold">Comptes utilisés :</span>
 </div>
 
-- Capitaux propres (2800-2899)
-- Total du passif (2000-2999)`
+<ul className="list-disc ml-8 mb-6">
+  <li>Capitaux propres (2800-2899)</li>
+  <li>Total du passif (2000-2999)</li>
+</ul>`
 };

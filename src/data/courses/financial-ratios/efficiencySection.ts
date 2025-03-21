@@ -15,10 +15,11 @@ Les ratios d'efficacité mesurent la performance opérationnelle de l'entreprise
   <span className="font-semibold">Formule :</span>
 </div>
 
-<div className="my-4 py-3 px-6 bg-swiss-blue/5 border-l-4 border-swiss-blue rounded-md">
-  <div className="flex items-center">
-    <div className="mr-3 text-lg font-medium">Rotation des stocks = </div>
-    <div className="mjx-formula" data-formula="\\frac{\\text{Coût des marchandises vendues}}{\\text{Stock moyen}}"></div>
+<div className="ml-8 my-4">
+  <p className="text-lg mb-2">Rotation des stocks =</p>
+  <div className="flex flex-col">
+    <p className="text-lg border-b-2 border-gray-700 pb-1 mb-1">Coût des marchandises vendues</p>
+    <p className="text-lg">Stock moyen</p>
   </div>
 </div>
 
@@ -27,8 +28,10 @@ Les ratios d'efficacité mesurent la performance opérationnelle de l'entreprise
   <span className="font-semibold">Comptes utilisés :</span>
 </div>
 
-- Coût des marchandises vendues (4000-4099)
-- Stocks (1200-1299)
+<ul className="list-disc ml-8 mb-6">
+  <li>Coût des marchandises vendues (4000-4099)</li>
+  <li>Stocks (1200-1299)</li>
+</ul>
 
 ### b) Délai moyen de recouvrement des créances clients
 
@@ -37,12 +40,13 @@ Les ratios d'efficacité mesurent la performance opérationnelle de l'entreprise
   <span className="font-semibold">Formule :</span>
 </div>
 
-<div className="my-4 py-3 px-6 bg-swiss-blue/5 border-l-4 border-swiss-blue rounded-md">
-  <div className="flex items-center">
-    <div className="mr-3 text-lg font-medium">Délai moyen de recouvrement = </div>
-    <div className="mjx-formula" data-formula="\\frac{\\text{Créances clients} \\times 360}{\\text{Chiffre d'affaires}}"></div>
-    <div className="ml-2 text-sm text-gray-600">(en jours)</div>
+<div className="ml-8 my-4">
+  <p className="text-lg mb-2">Délai moyen de recouvrement =</p>
+  <div className="flex flex-col">
+    <p className="text-lg border-b-2 border-gray-700 pb-1 mb-1">Créances clients × 360</p>
+    <p className="text-lg">Chiffre d'affaires</p>
   </div>
+  <p className="text-sm text-gray-600 mt-1">(en jours)</p>
 </div>
 
 <div className="flex items-center gap-2 my-3 text-swiss-blue">
@@ -50,6 +54,8 @@ Les ratios d'efficacité mesurent la performance opérationnelle de l'entreprise
   <span className="font-semibold">Comptes utilisés :</span>
 </div>
 
-- Créances clients (1100-1199)
-- Chiffre d'affaires (3000-3799)`
+<ul className="list-disc ml-8 mb-6">
+  <li>Créances clients (1100-1199)</li>
+  <li>Chiffre d'affaires (3000-3799)</li>
+</ul>`
 };

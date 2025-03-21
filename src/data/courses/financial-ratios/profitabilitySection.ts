@@ -15,10 +15,11 @@ Les ratios de rentabilité mesurent la capacité de l'entreprise à générer de
   <span className="font-semibold">Formule :</span>
 </div>
 
-<div className="my-4 py-3 px-6 bg-swiss-blue/5 border-l-4 border-swiss-blue rounded-md">
-  <div className="flex items-center">
-    <div className="mr-3 text-lg font-medium">Marge bénéficiaire nette = </div>
-    <div className="mjx-formula" data-formula="\\frac{\\text{Résultat net}}{\\text{Chiffre d'affaires}}"></div>
+<div className="ml-8 my-4">
+  <p className="text-lg mb-2">Marge bénéficiaire nette =</p>
+  <div className="flex flex-col">
+    <p className="text-lg border-b-2 border-gray-700 pb-1 mb-1">Résultat net</p>
+    <p className="text-lg">Chiffre d'affaires</p>
   </div>
 </div>
 
@@ -27,8 +28,10 @@ Les ratios de rentabilité mesurent la capacité de l'entreprise à générer de
   <span className="font-semibold">Comptes utilisés :</span>
 </div>
 
-- Chiffre d'affaires net (3000-3799)
-- Résultat net (9900)
+<ul className="list-disc ml-8 mb-6">
+  <li>Chiffre d'affaires net (3000-3799)</li>
+  <li>Résultat net (9900)</li>
+</ul>
 
 ### b) Rentabilité des capitaux propres (ROE)
 
@@ -37,10 +40,11 @@ Les ratios de rentabilité mesurent la capacité de l'entreprise à générer de
   <span className="font-semibold">Formule :</span>
 </div>
 
-<div className="my-4 py-3 px-6 bg-swiss-blue/5 border-l-4 border-swiss-blue rounded-md">
-  <div className="flex items-center">
-    <div className="mr-3 text-lg font-medium">ROE = </div>
-    <div className="mjx-formula" data-formula="\\frac{\\text{Résultat net}}{\\text{Capitaux propres}}"></div>
+<div className="ml-8 my-4">
+  <p className="text-lg mb-2">ROE =</p>
+  <div className="flex flex-col">
+    <p className="text-lg border-b-2 border-gray-700 pb-1 mb-1">Résultat net</p>
+    <p className="text-lg">Capitaux propres</p>
   </div>
 </div>
 
@@ -49,8 +53,10 @@ Les ratios de rentabilité mesurent la capacité de l'entreprise à générer de
   <span className="font-semibold">Comptes utilisés :</span>
 </div>
 
-- Résultat net (9900)
-- Capitaux propres (2800-2899)
+<ul className="list-disc ml-8 mb-6">
+  <li>Résultat net (9900)</li>
+  <li>Capitaux propres (2800-2899)</li>
+</ul>
 
 ### c) Rentabilité des actifs (ROA)
 
@@ -59,10 +65,11 @@ Les ratios de rentabilité mesurent la capacité de l'entreprise à générer de
   <span className="font-semibold">Formule :</span>
 </div>
 
-<div className="my-4 py-3 px-6 bg-swiss-blue/5 border-l-4 border-swiss-blue rounded-md">
-  <div className="flex items-center">
-    <div className="mr-3 text-lg font-medium">ROA = </div>
-    <div className="mjx-formula" data-formula="\\frac{\\text{Résultat net}}{\\text{Total des actifs}}"></div>
+<div className="ml-8 my-4">
+  <p className="text-lg mb-2">ROA =</p>
+  <div className="flex flex-col">
+    <p className="text-lg border-b-2 border-gray-700 pb-1 mb-1">Résultat net</p>
+    <p className="text-lg">Total des actifs</p>
   </div>
 </div>
 
@@ -71,6 +78,8 @@ Les ratios de rentabilité mesurent la capacité de l'entreprise à générer de
   <span className="font-semibold">Comptes utilisés :</span>
 </div>
 
-- Résultat net (9900)
-- Total des actifs (1000-1999)`
+<ul className="list-disc ml-8 mb-6">
+  <li>Résultat net (9900)</li>
+  <li>Total des actifs (1000-1999)</li>
+</ul>`
 };
