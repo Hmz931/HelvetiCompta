@@ -83,6 +83,14 @@
   border-color: #fde68a;
 }
 
+.ratio-icon-default {
+  color: #64748b;
+  background-color: #f8fafc;
+  border-color: #e2e8f0;
+}
+
+/* ... keep existing code (accounts header styles) */
+
 .accounts-header {
   margin: 1rem 0;
   font-weight: 500;
@@ -110,6 +118,8 @@
   height: 32px;
   color: #64748b;
 }
+
+/* ... keep existing code (fraction and math formula styles) */
 
 .fraction {
   display: inline-block;
@@ -156,7 +166,8 @@
   margin: 0 0.5rem;
 }
 
-/* New styles for the ratio items with indexes */
+/* ... keep existing code (ratio items styles) */
+
 .ratio-item {
   margin-bottom: 2rem;
   padding-bottom: 1rem;

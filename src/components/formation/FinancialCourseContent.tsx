@@ -2,7 +2,7 @@
 import React from 'react';
 import { courseStructure } from '@/data/courses';
 import AccountsPanel from './financial/AccountsPanel';
-import RatioIcon from './financial/RatioIcon';
+import RatioIcon, { getRatioIconByTitle } from './financial/RatioIcon';
 
 const FinancialCourseContent = () => {
   const course = courseStructure["financial"];
@@ -10,32 +10,6 @@ const FinancialCourseContent = () => {
   if (!course) {
     return <div>Cours non trouvé</div>;
   }
-  
-  // Function to get an icon based on section title
-  const getSectionIcon = (title: string) => {
-    const titleLower = title.toLowerCase();
-    
-    if (titleLower.includes('liquidité')) {
-      return <RatioIcon type="liquidity" size={20} />;
-    } 
-    else if (titleLower.includes('rentabilité')) {
-      return <RatioIcon type="profitability" size={20} />;
-    }
-    else if (titleLower.includes('solvabilité')) {
-      return <RatioIcon type="solvency" size={20} />;
-    }
-    else if (titleLower.includes('efficacité')) {
-      return <RatioIcon type="efficiency" size={20} />;
-    }
-    else if (titleLower.includes('croissance')) {
-      return <RatioIcon type="growth" size={20} />;
-    }
-    else if (titleLower.includes('marché') || titleLower.includes('capital')) {
-      return <RatioIcon type="market" size={20} />;
-    }
-    
-    return null;
-  };
   
   return (
     <div className="animate-fade-in">
@@ -45,19 +19,23 @@ const FinancialCourseContent = () => {
       )}
       
       <div className="space-y-6">
-        {course.sections.map((section) => (
-          <div key={section.id} className="glass rounded-xl p-6 shadow-card">
-            <h2 className="text-xl font-bold mb-3 flex items-center">
-              <span className="mr-3">
-                {getSectionIcon(section.title)}
-              </span>
-              {section.title}
-            </h2>
-            <p className="text-swiss-text-secondary">
-              {section.content || "Contenu à venir..."}
-            </p>
-          </div>
-        ))}
+        {course.sections.map((section) => {
+          const ratioType = getRatioIconByTitle(section.title);
+          
+          return (
+            <div key={section.id} className="glass rounded-xl p-6 shadow-card">
+              <h2 className="text-xl font-bold mb-3 flex items-center">
+                <span className="mr-3">
+                  <RatioIcon type={ratioType} size={20} />
+                </span>
+                {section.title}
+              </h2>
+              <p className="text-swiss-text-secondary">
+                {section.content || "Contenu à venir..."}
+              </p>
+            </div>
+          );
+        })}
 
         <AccountsPanel />
       </div>

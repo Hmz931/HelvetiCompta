@@ -41,15 +41,14 @@ const SidebarNavigation: React.FC = () => {
   return (
     <nav className="space-y-1">
       {navItems.map((item) => (
-        <React.Fragment key={item.name}>
-          <SidebarSectionItem 
-            item={item} 
-            isActive={isActive} 
-            getIcon={getIcon} 
-            isSectionExpanded={isSectionExpanded}
-            toggleSection={toggleSection}
-          />
-        </React.Fragment>
+        <SidebarSectionItem 
+          key={item.name}
+          item={item} 
+          isActive={isActive} 
+          getIcon={getIcon} 
+          isSectionExpanded={isSectionExpanded}
+          toggleSection={toggleSection}
+        />
       ))}
     </nav>
   );
