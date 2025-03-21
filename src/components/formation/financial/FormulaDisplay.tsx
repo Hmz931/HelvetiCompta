@@ -16,37 +16,35 @@ export const Fraction: React.FC<FractionProps> = ({ numerator, denominator }) =>
   );
 };
 
-interface FormulaDisplayProps {
-  formula: React.ReactNode;
-  accounts?: {
-    title?: string;
-    items: string[];
-  }[];
+interface Account {
+  name: string;
+  range?: string;
 }
 
-const FormulaDisplay: React.FC<FormulaDisplayProps> = ({ formula, accounts }) => {
+interface FormulaDisplayProps {
+  title: string;
+  formula: React.ReactNode;
+  accounts: Account[];
+}
+
+const FormulaDisplay: React.FC<FormulaDisplayProps> = ({ title, formula, accounts }) => {
   return (
-    <div>
-      <div className="ratio-formula">
+    <div className="ratio-section">
+      <h4 className="ratio-title">{title}</h4>
+      
+      <div className="formula-header">Formule :</div>
+      <div className="ratio-formula-equation">
         {formula}
       </div>
       
-      {accounts && accounts.length > 0 && (
-        <div className="accounts-used">
-          {accounts.map((group, groupIndex) => (
-            <div key={groupIndex}>
-              {group.title && (
-                <p className="accounts-title">{group.title}</p>
-              )}
-              <ul>
-                {group.items.map((item, itemIndex) => (
-                  <li key={itemIndex}>{item}</li>
-                ))}
-              </ul>
-            </div>
-          ))}
-        </div>
-      )}
+      <div className="accounts-header">Comptes utilisés :</div>
+      <ul className="accounts-list">
+        {accounts.map((account, idx) => (
+          <li key={idx}>
+            {account.name} {account.range && `(${account.range})`}
+          </li>
+        ))}
+      </ul>
     </div>
   );
 };

@@ -8,6 +8,44 @@
   font-size: 1.1rem;
 }
 
+.ratio-section {
+  margin-bottom: 2rem;
+  border-bottom: 1px solid #e5e7eb;
+  padding-bottom: 1.5rem;
+}
+
+.ratio-title {
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+  font-size: 1.2rem;
+}
+
+.formula-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+  font-weight: 500;
+}
+
+.formula-header::before {
+  content: "📊";
+  margin-right: 8px;
+  font-size: 1.2rem;
+}
+
+.accounts-header {
+  display: flex;
+  align-items: center;
+  margin: 1rem 0;
+  font-weight: 500;
+}
+
+.accounts-header::before {
+  content: "📊";
+  margin-right: 8px;
+  font-size: 1.2rem;
+}
+
 .fraction {
   display: inline-block;
   text-align: center;
@@ -26,41 +64,29 @@
   padding: 2px 5px;
 }
 
-.accounts-used {
-  margin-top: 0.5rem;
-  padding: 0.5rem 0;
+.math-formula {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 1.5rem 0;
 }
 
-.accounts-title {
-  font-weight: 600;
+.accounts-list {
+  list-style-type: disc;
+  margin-left: 1.5rem;
+}
+
+.accounts-list li {
   margin-bottom: 0.5rem;
 }
 
-.accounts-used ul {
-  margin-left: 1.5rem;
-  list-style-type: disc;
+.ratio-formula-equation {
+  font-size: 1.15rem;
+  text-align: center;
+  margin: 1rem 0;
+  font-style: italic;
 }
 
-.accounts-used li {
-  margin-bottom: 0.25rem;
-}
-
-.ratio-title {
-  font-weight: 600;
-  margin-bottom: 0.75rem;
-  font-size: 1.2rem;
-}
-
-.ratio-formula {
-  margin-bottom: 1rem;
-}
-
-.account-detail {
-  font-weight: normal;
-  margin-top: 0.25rem;
-  padding-left: 1rem;
-}
-
-.account-range {
-  font-weight: bold;
+.math-equal {
+  margin: 0 0.5rem;
 }

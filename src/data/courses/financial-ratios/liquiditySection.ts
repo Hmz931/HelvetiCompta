@@ -12,37 +12,42 @@ Les ratios de liquidité permettent d'évaluer la capacité de l'entreprise à f
 
 ### a) Ratio de liquidité générale
 
-<div class="ratio-formula">
+<div class="formula-header">Formule :</div>
+
+<div class="ratio-formula-equation">
+  Ratio de liquidité générale = 
   <span class="fraction">
     <span class="numerator">Actifs circulants</span>
     <span class="denominator">Passifs à court terme</span>
   </span>
 </div>
 
-Comptes utilisés (Bilan) :
+<div class="accounts-header">Comptes utilisés :</div>
 
-**Actifs circulants (1000 - 1499)** :
-- 1000-1099 : Liquidités (Banques, Caisse)
-- 1100-1199 : Créances clients
-- 1200-1299 : Stocks
-
-**Passifs à court terme (2000 - 2499)** :
-- 2000-2099 : Dettes fournisseurs
-- 2100-2199 : Emprunts à court terme
+<ul class="accounts-list">
+  <li>Actifs circulants (1000-1499)</li>
+  <li>Passifs à court terme (2000-2499)</li>
+</ul>
 
 #
 
 ### b) Ratio de liquidité immédiate
 
-<div class="ratio-formula">
+<div class="formula-header">Formule :</div>
+
+<div class="ratio-formula-equation">
+  Ratio de liquidité immédiate = 
   <span class="fraction">
     <span class="numerator">Liquidités + Créances clients</span>
     <span class="denominator">Passifs à court terme</span>
   </span>
 </div>
 
-Comptes utilisés :
-- Liquidités (1000-1099)
-- Créances clients (1100-1199)
-- Passifs à court terme (2000-2499)`
+<div class="accounts-header">Comptes utilisés :</div>
+
+<ul class="accounts-list">
+  <li>Liquidités (1000-1099)</li>
+  <li>Créances clients (1100-1199)</li>
+  <li>Passifs à court terme (2000-2499)</li>
+</ul>`
 };
