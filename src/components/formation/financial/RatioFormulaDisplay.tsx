@@ -25,9 +25,6 @@ const RatioFormulaDisplay: React.FC<RatioFormulaDisplayProps> = ({
       
       <div className="formula-content mb-4">
         <div className="formula-header-with-icon">
-          <span className="ratio-icon">
-            <RatioIcon type={ratioType} size={24} />
-          </span>
           Formule :
         </div>
         <div 
