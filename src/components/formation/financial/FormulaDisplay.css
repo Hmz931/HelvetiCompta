@@ -21,8 +21,6 @@
 }
 
 .formula-header {
-  display: flex;
-  align-items: center;
   margin-bottom: 1rem;
   font-weight: 500;
   color: #2c3e50;
@@ -87,8 +85,6 @@
 }
 
 .accounts-header {
-  display: flex;
-  align-items: center;
   margin: 1rem 0;
   font-weight: 500;
   color: #2c3e50;
@@ -157,4 +153,32 @@
 
 .math-equal {
   margin: 0 0.5rem;
+}
+
+/* New styles for the ratio items with indexes */
+.ratio-item {
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.formula-item, .accounts-item {
+  display: flex;
+  margin-bottom: 1.5rem;
+}
+
+.formula-item-index, .accounts-item-index {
+  width: 40px;
+  margin-right: 12px;
+  color: #566c82;
+  font-weight: 500;
+}
+
+.formula-content, .accounts-content {
+  flex: 1;
+}
+
+/* Fix for the Ratios de liquidité section */
+h3.text-xl.font-semibold.mb-5.text-swiss-dark.border-b.pb-2 + .ratio-item {
+  margin-top: 1.5rem;
 }
