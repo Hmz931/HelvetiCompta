@@ -77,10 +77,8 @@ const FinancialRatiosCourseContent = () => {
           return (
             <Card key={section.id} className="border-0 shadow-md rounded-xl overflow-hidden">
               <CardHeader className="bg-gradient-to-r from-swiss-blue/15 to-swiss-blue/5 pb-4">
-                <CardTitle className="text-2xl font-bold text-swiss-dark flex items-center">
-                  <span className="mr-3">
-                    <RatioIcon type={ratioType} size={28} />
-                  </span>
+                <CardTitle className="text-2xl font-bold text-swiss-dark flex items-center gap-3">
+                  <RatioIcon type={ratioType} size={28} />
                   {section.title}
                 </CardTitle>
               </CardHeader>

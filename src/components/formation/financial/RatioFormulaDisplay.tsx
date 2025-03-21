@@ -1,6 +1,5 @@
 
 import React from 'react';
-import RatioIcon, { getRatioIconByTitle } from './RatioIcon';
 
 interface RatioFormulaDisplayProps {
   title: string;
@@ -13,12 +12,9 @@ const RatioFormulaDisplay: React.FC<RatioFormulaDisplayProps> = ({
   formula, 
   accounts
 }) => {
-  const ratioType = getRatioIconByTitle(title);
-  
   return (
     <div className="ratio-item">
-      <h3 className="text-xl font-semibold mb-5 text-swiss-dark border-b pb-2 flex items-center">
-        <RatioIcon type={ratioType} size={26} className="mr-2" />
+      <h3 className="text-xl font-semibold mb-5 text-swiss-dark border-b pb-2">
         {title}
       </h3>
       
