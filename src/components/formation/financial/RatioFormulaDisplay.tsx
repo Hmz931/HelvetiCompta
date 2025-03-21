@@ -31,7 +31,10 @@ const RatioFormulaDisplay: React.FC<RatioFormulaDisplayProps> = ({
       <div className="formula-item">
         <div className="formula-item-index">{itemIndex || ""}</div>
         <div className="formula-content">
-          <div className="formula-header">Formule :</div>
+          <div className="formula-header-with-icon">
+            <RatioIcon type={ratioType} size={20} />
+            <span>Formule :</span>
+          </div>
           <div className="ratio-formula-equation">
             {formula}
           </div>
@@ -44,7 +47,15 @@ const RatioFormulaDisplay: React.FC<RatioFormulaDisplayProps> = ({
             {itemIndex ? itemIndex.split('-')[0] + '-' + (parseInt(itemIndex.split('-')[1]) + 1) : ""}
           </div>
           <div className="accounts-content">
-            <div className="accounts-header">Comptes utilisés :</div>
+            <div className="accounts-header-with-icon">
+              <span className="accounts-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2" />
+                  <rect x="8" y="2" width="8" height="4" rx="1" ry="1" />
+                </svg>
+              </span>
+              <span>Comptes utilisés :</span>
+            </div>
             <ul className="accounts-list">
               {accounts.map((account, index) => (
                 <li key={index}>{account}</li>

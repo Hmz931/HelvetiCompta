@@ -1,6 +1,14 @@
 
 import React from 'react';
-import { PieChart, Droplet, Search, Settings, LineChart, BarChart3, CircleDollarSign } from 'lucide-react';
+import { 
+  Droplet, 
+  PieChart, 
+  Search, 
+  Settings, 
+  LineChart, 
+  CircleDollarSign 
+} from 'lucide-react';
+import './FormulaDisplay.css';
 
 type RatioType = 'liquidity' | 'profitability' | 'solvency' | 'efficiency' | 'growth' | 'market' | 'default';
 
@@ -10,7 +18,7 @@ interface RatioIconProps {
   className?: string;
 }
 
-export const getRatioIconByTitle = (title: string) => {
+export const getRatioIconByTitle = (title: string): RatioType => {
   const titleLower = title.toLowerCase();
   
   if (titleLower.includes('liquidité')) {
@@ -35,33 +43,29 @@ export const getRatioIconByTitle = (title: string) => {
   return 'default';
 };
 
-const RatioIcon: React.FC<RatioIconProps> = ({ type, size = 20, className = '' }) => {
+const RatioIcon: React.FC<RatioIconProps> = ({ type, size = 24, className = '' }) => {
+  const iconClassName = `formula-icon formula-icon-${type} ${className}`;
+  
   const getIcon = () => {
     switch (type) {
       case 'liquidity':
-        return <Droplet size={size} className={className} />;
+        return <Droplet size={size} strokeWidth={1.5} className={iconClassName} />;
       case 'profitability':
-        return <PieChart size={size} className={className} />;
+        return <PieChart size={size} strokeWidth={1.5} className={iconClassName} />;
       case 'solvency':
-        return <Search size={size} className={className} />;
+        return <Search size={size} strokeWidth={1.5} className={iconClassName} />;
       case 'efficiency':
-        return <Settings size={size} className={className} />;
+        return <Settings size={size} strokeWidth={1.5} className={iconClassName} />;
       case 'growth':
-        return <BarChart3 size={size} className={className} />;
+        return <LineChart size={size} strokeWidth={1.5} className={iconClassName} />;
       case 'market':
-        return <CircleDollarSign size={size} className={className} />;
+        return <CircleDollarSign size={size} strokeWidth={1.5} className={iconClassName} />;
       default:
-        return <CircleDollarSign size={size} className={className} />;
+        return <CircleDollarSign size={size} strokeWidth={1.5} className={iconClassName} />;
     }
   };
 
-  return (
-    <div className="formula-icon-container">
-      <span className="formula-icon">
-        {getIcon()}
-      </span>
-    </div>
-  );
+  return getIcon();
 };
 
 export default RatioIcon;
