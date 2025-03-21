@@ -35,9 +35,6 @@ const RatioFormulaDisplay: React.FC<RatioFormulaDisplayProps> = ({
       
       <div className="accounts-content">
         <div className="accounts-header-with-icon">
-          <span className="accounts-icon">
-            <List size={24} />
-          </span>
           Comptes utilisés :
         </div>
         <ul className="accounts-list">
