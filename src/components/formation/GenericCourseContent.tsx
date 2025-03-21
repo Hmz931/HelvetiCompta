@@ -4,6 +4,7 @@ import { courseStructure } from '@/data/courses';
 import { Table, TableHeader, TableRow, TableHead, TableBody, TableCell } from '@/components/ui/table';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import '../formation/financial/FormulaDisplay.css';
+import { BarChart3, TrendingUp, Wallet, RotateCcw } from 'lucide-react';
 
 type CourseContentProps = {
   courseId: string;
@@ -15,6 +16,34 @@ const SectionContent = ({ content }: { content: string }) => {
 
   // Split content by sections that might have ## headers
   const sections = content.split(/(?=#{2}\s)/);
+
+  // Function to get icon based on section ID/title
+  const getFormulaIcon = (text: string) => {
+    if (text.includes("liquidité")) {
+      return <Wallet className="formula-icon" size={20} />;
+    } else if (text.includes("rentabilité")) {
+      return <TrendingUp className="formula-icon" size={20} />;
+    } else if (text.includes("solvabilité")) {
+      return <BarChart3 className="formula-icon" size={20} />;
+    } else if (text.includes("efficacité")) {
+      return <RotateCcw className="formula-icon" size={20} />;
+    }
+    return null;
+  };
+
+  // Process the formula header to replace the emoji with icons
+  const processFormulaHeader = (html: string) => {
+    // Replace any formula header with our custom icon implementation
+    const updatedHtml = html.replace(
+      /<div class="formula-header">([^<]+)<\/div>/g, 
+      (match, content) => {
+        const icon = getFormulaIcon(content.toLowerCase());
+        const iconHtml = icon ? `<span class="formula-icon-container">${match.split('::before')[0]}</span>` : '';
+        return `<div class="formula-header-with-icon">${iconHtml}${content}</div>`;
+      }
+    );
+    return updatedHtml;
+  };
 
   return sections.map((section, sectionIndex) => {
     // Check if this is a section with a header
@@ -45,8 +74,10 @@ const SectionContent = ({ content }: { content: string }) => {
             paragraph.includes('<span') || 
             paragraph.includes('<ul')
           ) {
+            // Process formula headers to add icons before rendering
+            const processedParagraph = processFormulaHeader(paragraph);
             // Use dangerouslySetInnerHTML to properly render HTML
-            return <div key={idx} dangerouslySetInnerHTML={{ __html: paragraph }} />;
+            return <div key={idx} dangerouslySetInnerHTML={{ __html: processedParagraph }} />;
           }
           // Check if paragraph contains a table (rows with | separators)
           else if (paragraph.includes('|') && paragraph.trim().startsWith('|')) {

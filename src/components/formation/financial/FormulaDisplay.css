@@ -25,12 +25,42 @@
   align-items: center;
   margin-bottom: 1rem;
   font-weight: 500;
+  color: #2c3e50;
 }
 
-.formula-header::before {
-  content: "📊";
+.formula-header-with-icon {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+  font-weight: 500;
+  color: #2c3e50;
+}
+
+.formula-header-with-icon::before {
+  content: "";
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  margin-right: 10px;
+  background-color: #0F8BC0;
+  border-radius: 50%;
+  color: white;
+}
+
+.formula-icon {
+  color: white;
+  margin-right: 10px;
+  background-color: #0F8BC0;
+  border-radius: 50%;
+  padding: 4px;
+}
+
+.formula-icon-container {
+  display: inline-flex;
+  align-items: center;
   margin-right: 8px;
-  font-size: 1.2rem;
 }
 
 .accounts-header {
@@ -38,12 +68,20 @@
   align-items: center;
   margin: 1rem 0;
   font-weight: 500;
+  color: #2c3e50;
 }
 
 .accounts-header::before {
-  content: "📊";
-  margin-right: 8px;
-  font-size: 1.2rem;
+  content: "";
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  margin-right: 10px;
+  background-color: #0F8BC0;
+  border-radius: 50%;
+  color: white;
 }
 
 .fraction {

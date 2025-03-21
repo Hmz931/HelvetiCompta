@@ -11,7 +11,8 @@ import {
   Map, 
   Building,
   Award,
-  FileSpreadsheet
+  FileSpreadsheet,
+  BarChart3
 } from 'lucide-react';
 
 export const getIcon = (name: string) => {
@@ -28,6 +29,7 @@ export const getIcon = (name: string) => {
     case 'administrations': return <Building size={size} />;
     case 'quiz': return <Award size={size} />;
     case 'excel-converter': return <FileSpreadsheet size={size} />;
+    case 'financial-ratios': return <BarChart3 size={size} />;
     default: return null;
   }
 };
