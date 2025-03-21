@@ -4,7 +4,7 @@ import { Section } from '../types';
 export const solvencySection: Section = {
   id: 'solvency',
   title: 'Ratios de solvabilité',
-  content: `## Ratios de solvabilité
+  content: `Ratios de solvabilité
       
 Les ratios de solvabilité évaluent la structure financière de l'entreprise et sa capacité à faire face à ses engagements à long terme.
 

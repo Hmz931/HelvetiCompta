@@ -4,7 +4,7 @@ import { Section } from '../types';
 export const profitabilitySection: Section = {
   id: 'profitability',
   title: 'Ratios de rentabilité',
-  content: `## Ratios de rentabilité
+  content: `Ratios de rentabilité
       
 Les ratios de rentabilité mesurent la capacité de l'entreprise à générer des profits à partir de ses ressources.
 

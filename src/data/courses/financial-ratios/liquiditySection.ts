@@ -4,7 +4,7 @@ import { Section } from '../types';
 export const liquiditySection: Section = {
   id: 'liquidity',
   title: 'Ratios de liquidité',
-  content: `## Ratios de liquidité
+  content: `Ratios de liquidité
       
 Les ratios de liquidité permettent d'évaluer la capacité de l'entreprise à faire face à ses engagements à court terme.
 

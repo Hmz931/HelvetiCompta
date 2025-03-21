@@ -1,6 +1,5 @@
 
 import React from 'react';
-import { List } from 'lucide-react';
 import RatioIcon, { getRatioIconByTitle } from './RatioIcon';
 
 interface RatioFormulaDisplayProps {
