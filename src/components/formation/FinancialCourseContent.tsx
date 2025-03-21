@@ -4,11 +4,13 @@ import { courseStructure } from '@/data/courses';
 import AccountsPanel from './financial/AccountsPanel';
 import { 
   PieChart, 
-  Search, 
   Droplet, 
+  Search, 
   Settings, 
-  BarChart3, 
-  LineChart 
+  LineChart,
+  BarChart3,
+  CircleDollarSign,
+  Scale
 } from 'lucide-react';
 
 const FinancialCourseContent = () => {
@@ -29,7 +31,7 @@ const FinancialCourseContent = () => {
       return <PieChart size={20} className="mr-2 text-swiss-blue" />;
     }
     else if (titleLower.includes('solvabilité')) {
-      return <Search size={20} className="mr-2 text-swiss-blue" />;
+      return <Scale size={20} className="mr-2 text-swiss-blue" />;
     }
     else if (titleLower.includes('efficacité')) {
       return <Settings size={20} className="mr-2 text-swiss-blue" />;
@@ -38,7 +40,7 @@ const FinancialCourseContent = () => {
       return <BarChart3 size={20} className="mr-2 text-swiss-blue" />;
     }
     else if (titleLower.includes('marché') || titleLower.includes('capital')) {
-      return <LineChart size={20} className="mr-2 text-swiss-blue" />;
+      return <CircleDollarSign size={20} className="mr-2 text-swiss-blue" />;
     }
     
     return null;

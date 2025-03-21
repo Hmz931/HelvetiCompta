@@ -50,6 +50,36 @@
   border: 1px solid #e2e8f0;
 }
 
+.formula-icon-liquidity {
+  background-color: #ebf8ff;
+  border-color: #bee3f8;
+}
+
+.formula-icon-profitability {
+  background-color: #f0fff4;
+  border-color: #c6f6d5;
+}
+
+.formula-icon-solvency {
+  background-color: #f7fafc;
+  border-color: #e2e8f0;
+}
+
+.formula-icon-efficiency {
+  background-color: #faf5ff;
+  border-color: #e9d8fd;
+}
+
+.formula-icon-growth {
+  background-color: #fff5f5;
+  border-color: #fed7d7;
+}
+
+.formula-icon-market {
+  background-color: #fffaf0;
+  border-color: #feebc8;
+}
+
 .formula-icon-container {
   display: inline-flex;
   align-items: center;

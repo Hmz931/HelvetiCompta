@@ -30,7 +30,7 @@ export const navItems: NavItem[] = [
       { name: 'Sociétés anonymes (SA)', path: '/formation/corporations', icon: 'formation' },
       { name: 'Sociétés à responsabilité limitée (Sàrl)', path: '/formation/llc', icon: 'formation' },
       { name: 'Les amortissements', path: '/formation/depreciation', icon: 'formation' },
-      { name: 'Ratios et indicateurs financiers', path: '/formation/financial-ratios', icon: 'formation' },
+      { name: 'Ratios et indicateurs financiers', path: '/formation/financial-ratios', icon: 'financial-ratios' },
       { name: 'Quiz', path: '/formation/quiz', icon: 'quiz' }
     ]
   },
