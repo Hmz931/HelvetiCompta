@@ -2,6 +2,14 @@
 import React from 'react';
 import { courseStructure } from '@/data/courses';
 import AccountsPanel from './financial/AccountsPanel';
+import { 
+  PieChart, 
+  Search, 
+  Droplet, 
+  Settings, 
+  BarChart3, 
+  LineChart 
+} from 'lucide-react';
 
 const FinancialCourseContent = () => {
   const course = courseStructure["financial"];
@@ -9,6 +17,32 @@ const FinancialCourseContent = () => {
   if (!course) {
     return <div>Cours non trouvé</div>;
   }
+  
+  // Function to get an icon based on section title
+  const getSectionIcon = (title: string) => {
+    const titleLower = title.toLowerCase();
+    
+    if (titleLower.includes('liquidité')) {
+      return <Droplet size={20} className="mr-2 text-swiss-blue" />;
+    } 
+    else if (titleLower.includes('rentabilité')) {
+      return <PieChart size={20} className="mr-2 text-swiss-blue" />;
+    }
+    else if (titleLower.includes('solvabilité')) {
+      return <Search size={20} className="mr-2 text-swiss-blue" />;
+    }
+    else if (titleLower.includes('efficacité')) {
+      return <Settings size={20} className="mr-2 text-swiss-blue" />;
+    }
+    else if (titleLower.includes('croissance')) {
+      return <BarChart3 size={20} className="mr-2 text-swiss-blue" />;
+    }
+    else if (titleLower.includes('marché') || titleLower.includes('capital')) {
+      return <LineChart size={20} className="mr-2 text-swiss-blue" />;
+    }
+    
+    return null;
+  };
   
   return (
     <div className="animate-fade-in">
@@ -20,7 +54,10 @@ const FinancialCourseContent = () => {
       <div className="space-y-6">
         {course.sections.map((section) => (
           <div key={section.id} className="glass rounded-xl p-6 shadow-card">
-            <h2 className="text-xl font-bold mb-3">{section.title}</h2>
+            <h2 className="text-xl font-bold mb-3 flex items-center">
+              {getSectionIcon(section.title)}
+              {section.title}
+            </h2>
             <p className="text-swiss-text-secondary">
               {section.content || "Contenu à venir..."}
             </p>

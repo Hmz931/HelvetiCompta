@@ -12,7 +12,12 @@ import {
   Building,
   Award,
   FileSpreadsheet,
-  BarChart3
+  PieChart,
+  Search,
+  Droplet,
+  Settings,
+  LineChart,
+  CircleDollarSign
 } from 'lucide-react';
 
 export const getIcon = (name: string) => {
@@ -29,7 +34,7 @@ export const getIcon = (name: string) => {
     case 'administrations': return <Building size={size} />;
     case 'quiz': return <Award size={size} />;
     case 'excel-converter': return <FileSpreadsheet size={size} />;
-    case 'financial-ratios': return <BarChart3 size={size} />;
+    case 'financial-ratios': return <CircleDollarSign size={size} />;
     default: return null;
   }
 };

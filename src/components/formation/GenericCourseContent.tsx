@@ -6,17 +6,25 @@ import '../formation/financial/FormulaDisplay.css';
 import { 
   BarChart3, 
   TrendingUp, 
-  Wallet, 
+  DollarSign, 
   RotateCcw, 
   Calculator, 
   Percent, 
   CreditCard,
   CircleDollarSign,
-  PiggyBank,
+  PieChart,
   ArrowUpDown,
   Clock,
   Scale,
-  Building2
+  Building2,
+  Flag,
+  Droplet,
+  Search,
+  Settings,
+  Globe,
+  Coins,
+  Gauge,
+  LineChart
 } from 'lucide-react';
 
 type CourseContentProps = {
@@ -32,83 +40,64 @@ const SectionContent = ({ content }: { content: string }) => {
 
   // Function to get formula icon based on section title and formula content
   const getFormulaIcon = (sectionText: string, formulaText: string) => {
-    if (sectionText.includes("liquidité")) {
-      if (formulaText.includes("générale")) {
-        return <PiggyBank size={18} />;
-      } else if (formulaText.includes("immédiate")) {
-        return <Wallet size={18} />;
-      }
-      return <CircleDollarSign size={18} />;
+    const sectionLower = sectionText.toLowerCase();
+    const formulaLower = formulaText.toLowerCase();
+
+    if (sectionLower.includes("liquidité")) {
+      // Droplet icon for liquidity ratios like in the screenshot
+      return <Droplet size={20} />;
     } 
-    else if (sectionText.includes("rentabilité")) {
-      if (formulaText.includes("bénéficiaire")) {
-        return <Percent size={18} />;
-      } else if (formulaText.includes("capitaux propres") || formulaText.includes("ROE")) {
-        return <Building2 size={18} />;
-      } else if (formulaText.includes("actifs") || formulaText.includes("ROA")) {
-        return <TrendingUp size={18} />;
-      }
-      return <Calculator size={18} />;
+    else if (sectionLower.includes("rentabilité")) {
+      // PieChart icon for profitability ratios like in the screenshot
+      return <PieChart size={20} />;
     } 
-    else if (sectionText.includes("solvabilité")) {
-      if (formulaText.includes("endettement")) {
-        return <Scale size={18} />;
-      } else if (formulaText.includes("autonomie")) {
-        return <Building2 size={18} />;
-      }
-      return <BarChart3 size={18} />;
+    else if (sectionLower.includes("solvabilité")) {
+      // Search/magnifying glass for solvency ratios like in the screenshot
+      return <Search size={20} />; 
     } 
-    else if (sectionText.includes("efficacité")) {
-      if (formulaText.includes("rotation")) {
-        return <RotateCcw size={18} />;
-      } else if (formulaText.includes("recouvrement") || formulaText.includes("délai")) {
-        return <Clock size={18} />;
-      }
-      return <ArrowUpDown size={18} />;
+    else if (sectionLower.includes("efficacité")) {
+      // Gear/cog icon for efficiency ratios like in the screenshot
+      return <Settings size={20} />;
     }
-    return <Calculator size={18} />;
-  };
-
-  // Function to get accounts icon based on section title and accounts content
-  const getAccountsIcon = (sectionText: string, accountsText: string) => {
-    if (sectionText.includes("liquidité")) {
-      return <CircleDollarSign size={18} />;
-    } 
-    else if (sectionText.includes("rentabilité")) {
-      return <Calculator size={18} />;
-    } 
-    else if (sectionText.includes("solvabilité")) {
-      return <BarChart3 size={18} />;
-    } 
-    else if (sectionText.includes("efficacité")) {
-      return <ArrowUpDown size={18} />;
+    else if (sectionLower.includes("croissance")) {
+      // Bar chart with dollar for growth ratios like in the screenshot
+      return <BarChart3 size={20} />;
     }
-    return <CreditCard size={18} />;
+    else if (sectionLower.includes("marché") || sectionLower.includes("capital")) {
+      // Trending line for capital market ratios like in the screenshot
+      return <LineChart size={20} />;
+    }
+    // Default to calculator
+    return <Calculator size={20} />;
   };
 
-  // Process HTML content to add proper icons
-  const processContent = (html: string, sectionText: string) => {
-    // Process formula headers with icons
-    let processedHtml = html.replace(
-      /<div class="formula-header">([^<]+)<\/div>/g, 
-      (match, content) => {
-        const icon = getFormulaIcon(sectionText.toLowerCase(), content.toLowerCase());
-        return `<div class="formula-header"><span class="formula-icon">${''}</span>${content}</div>`;
-      }
-    );
-    
-    // Process accounts headers with icons
-    processedHtml = processedHtml.replace(
-      /<div class="accounts-header">([^<]+)<\/div>/g, 
-      (match, content) => {
-        const icon = getAccountsIcon(sectionText.toLowerCase(), content.toLowerCase());
-        return `<div class="accounts-header"><span class="accounts-icon">${''}</span>${content}</div>`;
-      }
-    );
-    
-    return processedHtml;
+  // Function to get accounts icon based on section title
+  const getAccountsIcon = (sectionText: string) => {
+    const sectionLower = sectionText.toLowerCase();
+
+    if (sectionLower.includes("liquidité")) {
+      return <DollarSign size={20} />;
+    } 
+    else if (sectionLower.includes("rentabilité")) {
+      return <PieChart size={20} />;
+    } 
+    else if (sectionLower.includes("solvabilité")) {
+      return <Search size={20} />;
+    } 
+    else if (sectionLower.includes("efficacité")) {
+      return <Settings size={20} />;
+    }
+    else if (sectionLower.includes("croissance")) {
+      return <BarChart3 size={20} />;
+    }
+    else if (sectionLower.includes("marché") || sectionLower.includes("capital")) {
+      return <LineChart size={20} />;
+    }
+    // Default
+    return <CircleDollarSign size={20} />;
   };
 
+  // Process HTML content to render with React components
   return sections.map((section, sectionIndex) => {
     // Check if this is a section with a header
     const hasSectionHeader = section.startsWith('## ');
@@ -138,67 +127,83 @@ const SectionContent = ({ content }: { content: string }) => {
             paragraph.includes('<span') || 
             paragraph.includes('<ul')
           ) {
-            // Process HTML content to add proper icons
-            const processedHtml = processContent(paragraph, sectionHeader || '');
+            // Process for formula headers
+            let processedHtml = paragraph;
             
-            // Create a wrapper element to hold the processed HTML and icons
-            const wrapper = document.createElement('div');
-            wrapper.innerHTML = processedHtml;
+            // Replace formula header divs with our custom ones that include the right icons
+            if (processedHtml.includes('<div class="formula-header">')) {
+              const formulaHeaderRegex = /<div class="formula-header">([^<]+)<\/div>/g;
+              processedHtml = processedHtml.replace(formulaHeaderRegex, (match, content) => {
+                const icon = getFormulaIcon(sectionHeader, content);
+                return `
+                  <div class="formula-header">
+                    <span class="formula-icon">${idx}-${sectionIndex}-formula</span>
+                    <span>${content}</span>
+                  </div>
+                `;
+              });
+            }
             
-            // Find formula header elements and add icons
-            const formulaHeaders = wrapper.querySelectorAll('.formula-header');
-            formulaHeaders.forEach(header => {
-              const iconSpan = header.querySelector('.formula-icon');
-              if (iconSpan) {
-                const headerText = header.textContent || '';
-                const sectionText = sectionHeader || '';
-                const icon = getFormulaIcon(sectionText.toLowerCase(), headerText.toLowerCase());
-                
-                // Create React element for icon and render it to the DOM
-                const tempDiv = document.createElement('div');
-                const iconContainer = document.createElement('span');
-                iconContainer.className = 'formula-icon';
-                tempDiv.appendChild(iconContainer);
-                
-                // Remove the empty placeholder span
-                if (iconSpan) {
-                  header.removeChild(iconSpan);
-                }
-                
-                // Add the new icon span at the beginning of the header
-                header.insertBefore(iconContainer, header.firstChild);
-              }
-            });
+            // Replace accounts header divs with our custom ones that include the right icons
+            if (processedHtml.includes('<div class="accounts-header">')) {
+              const accountsHeaderRegex = /<div class="accounts-header">([^<]+)<\/div>/g;
+              processedHtml = processedHtml.replace(accountsHeaderRegex, (match, content) => {
+                const icon = getAccountsIcon(sectionHeader);
+                return `
+                  <div class="accounts-header">
+                    <span class="accounts-icon">${idx}-${sectionIndex}-accounts</span>
+                    <span>${content}</span>
+                  </div>
+                `;
+              });
+            }
             
-            // Find accounts header elements and add icons
-            const accountsHeaders = wrapper.querySelectorAll('.accounts-header');
-            accountsHeaders.forEach(header => {
-              const iconSpan = header.querySelector('.accounts-icon');
-              if (iconSpan) {
-                const headerText = header.textContent || '';
-                const sectionText = sectionHeader || '';
-                const icon = getAccountsIcon(sectionText.toLowerCase(), headerText.toLowerCase());
-                
-                // Create React element for icon and render it to the DOM
-                const tempDiv = document.createElement('div');
-                const iconContainer = document.createElement('span');
-                iconContainer.className = 'accounts-icon';
-                tempDiv.appendChild(iconContainer);
-                
-                // Remove the empty placeholder span
-                if (iconSpan) {
-                  header.removeChild(iconSpan);
-                }
-                
-                // Add the new icon span at the beginning of the header
-                header.insertBefore(iconContainer, header.firstChild);
-              }
-            });
+            // Create a temporary div to process the HTML
+            const tempDiv = document.createElement('div');
+            tempDiv.innerHTML = processedHtml;
             
-            // Use dangerouslySetInnerHTML to render the processed HTML
+            // Now render the processed HTML
+            const renderHtml = () => {
+              return {__html: processedHtml};
+            };
+            
+            // Use the dangerouslySetInnerHTML to render the processed HTML
             return (
-              <div key={idx} dangerouslySetInnerHTML={{ __html: processedHtml }} className="ratio-content">
-                {/* Formula headers with icons will be rendered by React here */}
+              <div key={idx} className="ratio-content">
+                <div dangerouslySetInnerHTML={renderHtml()} />
+                
+                {/* Add icons programmatically */}
+                {processedHtml.includes(`${idx}-${sectionIndex}-formula`) && (
+                  <script dangerouslySetInnerHTML={{
+                    __html: `
+                      document.addEventListener('DOMContentLoaded', () => {
+                        const iconElements = document.querySelectorAll('.formula-icon');
+                        iconElements.forEach(el => {
+                          if (el.textContent === '${idx}-${sectionIndex}-formula') {
+                            el.textContent = '';
+                            el.appendChild(${getFormulaIcon(sectionHeader, '').type.name});
+                          }
+                        });
+                      });
+                    `
+                  }} />
+                )}
+                
+                {processedHtml.includes(`${idx}-${sectionIndex}-accounts`) && (
+                  <script dangerouslySetInnerHTML={{
+                    __html: `
+                      document.addEventListener('DOMContentLoaded', () => {
+                        const iconElements = document.querySelectorAll('.accounts-icon');
+                        iconElements.forEach(el => {
+                          if (el.textContent === '${idx}-${sectionIndex}-accounts') {
+                            el.textContent = '';
+                            el.appendChild(${getAccountsIcon(sectionHeader).type.name});
+                          }
+                        });
+                      });
+                    `
+                  }} />
+                )}
               </div>
             );
           }
@@ -274,7 +279,7 @@ const SectionContent = ({ content }: { content: string }) => {
             );
           }
           else {
-            // Regular paragraph with improved styling
+            // Regular paragraph
             return (
               <p 
                 key={idx} 
