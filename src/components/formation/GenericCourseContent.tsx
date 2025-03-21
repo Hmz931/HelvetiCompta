@@ -3,6 +3,8 @@ import React from 'react';
 import { courseStructure } from '@/data/courses';
 import { Table, TableHeader, TableRow, TableHead, TableBody, TableCell } from '@/components/ui/table';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import 'katex/dist/katex.min.css';
+import { InlineMath, BlockMath } from 'react-katex';
 
 type CourseContentProps = {
   courseId: string;
@@ -45,11 +47,29 @@ const GenericCourseContent = ({ courseId }: CourseContentProps) => {
             if (paragraph.trim() === '#') {
               return <div key={idx} className="my-6"></div>;
             }
-            // Check if paragraph contains HTML tags (like <img> or <div>)
-            else if (paragraph.trim().startsWith('<') && paragraph.includes('>')) {
-              return (
-                <div key={idx} dangerouslySetInnerHTML={{ __html: paragraph }} className="ratio-formula" />
-              );
+            // Check if paragraph contains HTML tags (like <div className="formula-display">)
+            else if (paragraph.trim().startsWith('<div className="formula-display">')) {
+              // This is a formula display, we'll extract the formula and use KaTeX
+              try {
+                // Extract the formula from the paragraph - look for text inside fraction tags if present
+                const formulaMatch = paragraph.match(/formula-display">\s*<p>(.*?)<\/p>/s);
+                
+                if (formulaMatch && formulaMatch[1]) {
+                  const formulaContent = formulaMatch[1]
+                    .replace(/<span className="fraction">.*?<span className="numerator">(.*?)<\/span>.*?<span className="denominator">(.*?)<\/span>.*?<\/span>/g, '\\frac{$1}{$2}')
+                    .replace(/<.*?>/g, ''); // Remove any remaining HTML tags
+                  
+                  return (
+                    <div key={idx} className="my-4 px-6 py-4 bg-gray-50 rounded-md">
+                      <InlineMath math={formulaContent} />
+                    </div>
+                  );
+                }
+                return <div key={idx} dangerouslySetInnerHTML={{ __html: paragraph }} />;
+              } catch (error) {
+                console.error("Error rendering KaTeX formula:", error);
+                return <div key={idx} dangerouslySetInnerHTML={{ __html: paragraph }} />;
+              }
             }
             // Check if paragraph contains a table (rows with | separators)
             else if (paragraph.includes('|') && paragraph.trim().startsWith('|')) {
@@ -114,6 +134,10 @@ const GenericCourseContent = ({ courseId }: CourseContentProps) => {
                 </Card>
               );
             }
+            // Check if paragraph contains accounts-used div
+            else if (paragraph.includes('<div className="accounts-used">')) {
+              return <div key={idx} dangerouslySetInnerHTML={{ __html: paragraph }} />;
+            }
             // Handle subsection headers (###)
             else if (paragraph.startsWith('### ')) {
               return (
@@ -141,57 +165,6 @@ const GenericCourseContent = ({ courseId }: CourseContentProps) => {
   
   return (
     <div className="animate-fade-in">
-      <style jsx>{`
-        .formula-display {
-          margin: 1.5rem 0;
-          font-size: 1.1rem;
-        }
-        
-        .formula-display p {
-          display: flex;
-          align-items: center;
-          flex-wrap: wrap;
-          gap: 0.5rem;
-        }
-        
-        .fraction {
-          display: inline-flex;
-          flex-direction: column;
-          vertical-align: middle;
-          text-align: center;
-          margin: 0 0.2rem;
-        }
-        
-        .numerator {
-          border-bottom: 1px solid #000;
-          padding: 0 0.5rem 0.1rem;
-          margin-bottom: 0.1rem;
-        }
-        
-        .denominator {
-          padding: 0.1rem 0.5rem 0;
-        }
-        
-        .accounts-used {
-          margin: 1rem 0 1.5rem 1.5rem;
-        }
-        
-        .accounts-title {
-          font-weight: 600;
-          margin-bottom: 0.5rem;
-        }
-        
-        .accounts-used ul {
-          list-style-type: disc;
-          margin-left: 1.5rem;
-          margin-bottom: 1rem;
-        }
-        
-        .accounts-used li {
-          margin-bottom: 0.25rem;
-        }
-      `}</style>
-      
       <h1 className="text-3xl font-bold mb-4 text-swiss-dark">{course.title}</h1>
       {course.description && (
         <p className="text-gray-600 mb-8 text-lg">{course.description}</p>

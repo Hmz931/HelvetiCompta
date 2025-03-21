@@ -13,7 +13,7 @@ Les ratios de liquidité permettent d'évaluer la capacité de l'entreprise à f
 ### a) Ratio de liquidité générale
 
 <div className="formula-display">
-  <p>Ratio de liquidité générale = <span className="fraction"><span className="numerator">Actifs circulants</span><span className="denominator">Passifs à court terme</span></span></p>
+  <p>Ratio de liquidité générale = Actifs circulants / Passifs à court terme</p>
 </div>
 
 <div className="accounts-used">
@@ -36,7 +36,7 @@ Les ratios de liquidité permettent d'évaluer la capacité de l'entreprise à f
 ### b) Ratio de liquidité immédiate
 
 <div className="formula-display">
-  <p>Ratio de liquidité immédiate = <span className="fraction"><span className="numerator">Liquidités + Créances clients</span><span className="denominator">Passifs à court terme</span></span></p>
+  <p>Ratio de liquidité immédiate = (Liquidités + Créances clients) / Passifs à court terme</p>
 </div>
 
 <div className="accounts-used">
