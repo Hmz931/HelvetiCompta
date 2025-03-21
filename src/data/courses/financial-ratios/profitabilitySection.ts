@@ -18,10 +18,7 @@ Les ratios de rentabilité mesurent la capacité de l'entreprise à générer de
 <div className="my-4 py-3 px-6 bg-swiss-blue/5 border-l-4 border-swiss-blue rounded-md">
   <div className="flex items-center">
     <div className="mr-3 text-lg font-medium">Marge bénéficiaire nette = </div>
-    <div className="inline-block text-center">
-      <div className="px-8 py-2 text-center font-medium border-b-[3px] border-gray-800">Résultat net</div>
-      <div className="px-8 py-2 text-center font-medium">Chiffre d'affaires</div>
-    </div>
+    <div className="mjx-formula" data-formula="\\frac{\\text{Résultat net}}{\\text{Chiffre d'affaires}}"></div>
   </div>
 </div>
 
@@ -43,10 +40,7 @@ Les ratios de rentabilité mesurent la capacité de l'entreprise à générer de
 <div className="my-4 py-3 px-6 bg-swiss-blue/5 border-l-4 border-swiss-blue rounded-md">
   <div className="flex items-center">
     <div className="mr-3 text-lg font-medium">ROE = </div>
-    <div className="inline-block text-center">
-      <div className="px-8 py-2 text-center font-medium border-b-[3px] border-gray-800">Résultat net</div>
-      <div className="px-8 py-2 text-center font-medium">Capitaux propres</div>
-    </div>
+    <div className="mjx-formula" data-formula="\\frac{\\text{Résultat net}}{\\text{Capitaux propres}}"></div>
   </div>
 </div>
 
@@ -68,10 +62,7 @@ Les ratios de rentabilité mesurent la capacité de l'entreprise à générer de
 <div className="my-4 py-3 px-6 bg-swiss-blue/5 border-l-4 border-swiss-blue rounded-md">
   <div className="flex items-center">
     <div className="mr-3 text-lg font-medium">ROA = </div>
-    <div className="inline-block text-center">
-      <div className="px-8 py-2 text-center font-medium border-b-[3px] border-gray-800">Résultat net</div>
-      <div className="px-8 py-2 text-center font-medium">Total des actifs</div>
-    </div>
+    <div className="mjx-formula" data-formula="\\frac{\\text{Résultat net}}{\\text{Total des actifs}}"></div>
   </div>
 </div>
 

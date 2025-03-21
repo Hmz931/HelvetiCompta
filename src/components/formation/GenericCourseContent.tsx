@@ -1,8 +1,10 @@
-
-import React from 'react';
+import React, { useEffect } from 'react';
 import { courseStructure } from '@/data/courses';
 import { Table, TableHeader, TableRow, TableHead, TableBody, TableCell } from '@/components/ui/table';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+
+// @ts-ignore
+import * as MathJax from 'mathjax/es5/tex-svg.js';
 
 type CourseContentProps = {
   courseId: string;
@@ -10,6 +12,40 @@ type CourseContentProps = {
 
 const GenericCourseContent = ({ courseId }: CourseContentProps) => {
   const course = courseStructure[courseId];
+  
+  useEffect(() => {
+    // Initialize MathJax
+    if (typeof window !== 'undefined') {
+      // Typecast to any to avoid TypeScript errors
+      const mathJax = MathJax as any;
+      
+      if (mathJax && mathJax.typesetPromise) {
+        // Find all elements with the mjx-formula class
+        const formulas = document.querySelectorAll('.mjx-formula');
+        
+        if (formulas.length > 0) {
+          // Process each formula
+          formulas.forEach((formula: Element) => {
+            const tex = formula.getAttribute('data-formula');
+            if (tex) {
+              // Create a MathJax SVG element
+              const svg = mathJax.tex2svg(tex, {display: false});
+              // Replace the formula content with the SVG
+              formula.innerHTML = '';
+              formula.appendChild(svg);
+            }
+          });
+          
+          // Typeset all math elements
+          mathJax.typesetPromise().then(() => {
+            console.log('MathJax typesetting completed');
+          }).catch((err: Error) => {
+            console.error('MathJax typesetting failed:', err);
+          });
+        }
+      }
+    }
+  }, [course]); // Re-run when course changes
   
   if (!course) {
     return <div>Cours non trouvé</div>;
