@@ -19,7 +19,7 @@ Les ratios d'efficacité mesurent la performance opérationnelle de l'entreprise
   <div className="flex items-center">
     <div className="mr-3 text-lg font-medium">Rotation des stocks = </div>
     <div className="inline-block text-center">
-      <div className="border-b-2 border-gray-800 px-8 py-2 text-center font-medium">Coût des marchandises vendues</div>
+      <div className="px-8 py-2 text-center font-medium border-b-[3px] border-gray-800">Coût des marchandises vendues</div>
       <div className="px-8 py-2 text-center font-medium">Stock moyen</div>
     </div>
   </div>
@@ -44,7 +44,7 @@ Les ratios d'efficacité mesurent la performance opérationnelle de l'entreprise
   <div className="flex items-center">
     <div className="mr-3 text-lg font-medium">Délai moyen de recouvrement = </div>
     <div className="inline-block text-center">
-      <div className="border-b-2 border-gray-800 px-8 py-2 text-center font-medium">Créances clients × 360</div>
+      <div className="px-8 py-2 text-center font-medium border-b-[3px] border-gray-800">Créances clients × 360</div>
       <div className="px-8 py-2 text-center font-medium">Chiffre d'affaires</div>
     </div>
     <div className="ml-2 text-sm text-gray-600">(en jours)</div>
