@@ -10,7 +10,7 @@ Les ratios de liquidité permettent d'évaluer la capacité de l'entreprise à f
 
 #
 
-### a) Ratio de liquidité générale
+### Ratio de liquidité générale
 
 <div class="formula-header">Formule :</div>
 
@@ -31,7 +31,7 @@ Les ratios de liquidité permettent d'évaluer la capacité de l'entreprise à f
 
 #
 
-### b) Ratio de liquidité immédiate
+### Ratio de liquidité immédiate
 
 <div class="formula-header">Formule :</div>
 

@@ -10,7 +10,7 @@ Les ratios d'efficacité mesurent la performance opérationnelle de l'entreprise
 
 #
 
-### a) Rotation des stocks
+### Rotation des stocks
 
 <div class="formula-header">Formule :</div>
 
@@ -31,7 +31,7 @@ Les ratios d'efficacité mesurent la performance opérationnelle de l'entreprise
 
 #
 
-### b) Délai moyen de recouvrement des créances clients
+### Délai moyen de recouvrement des créances clients
 
 <div class="formula-header">Formule :</div>
 

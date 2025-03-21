@@ -10,7 +10,7 @@ Les ratios de rentabilité mesurent la capacité de l'entreprise à générer de
 
 #
 
-### a) Marge bénéficiaire nette
+### Marge bénéficiaire nette
 
 <div class="formula-header">Formule :</div>
 
@@ -31,7 +31,7 @@ Les ratios de rentabilité mesurent la capacité de l'entreprise à générer de
 
 #
 
-### b) Rentabilité des capitaux propres (ROE)
+### Rentabilité des capitaux propres (ROE)
 
 <div class="formula-header">Formule :</div>
 
@@ -52,7 +52,7 @@ Les ratios de rentabilité mesurent la capacité de l'entreprise à générer de
 
 #
 
-### c) Rentabilité des actifs (ROA)
+### Rentabilité des actifs (ROA)
 
 <div class="formula-header">Formule :</div>
 
