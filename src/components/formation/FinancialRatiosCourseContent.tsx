@@ -46,16 +46,12 @@ const FinancialRatiosCourseContent = () => {
               }
             }
             
-            // Generate index like a-1 format
-            const itemIndex = `${String.fromCharCode(97 + index)}-1`;
-            
             return (
               <RatioFormulaDisplay
                 key={index}
                 title={title}
                 formula={formula}
                 accounts={accountItems}
-                itemIndex={itemIndex}
               />
             );
           })}
@@ -83,7 +79,7 @@ const FinancialRatiosCourseContent = () => {
               <CardHeader className="bg-gradient-to-r from-swiss-blue/15 to-swiss-blue/5 pb-4">
                 <CardTitle className="text-2xl font-bold text-swiss-dark flex items-center">
                   <span className="mr-3">
-                    <RatioIcon type={ratioType} size={24} />
+                    <RatioIcon type={ratioType} size={28} />
                   </span>
                   {section.title}
                 </CardTitle>
