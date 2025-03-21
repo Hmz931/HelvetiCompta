@@ -13,7 +13,10 @@ Les ratios de rentabilité mesurent la capacité de l'entreprise à générer de
 ### a) Marge bénéficiaire nette
 
 <div className="formula-display">
-  <p>Marge bénéficiaire nette = Résultat net / Chiffre d'affaires</p>
+  <span className="fraction">
+    <span className="numerator">Résultat net</span>
+    <span className="denominator">Chiffre d'affaires</span>
+  </span>
 </div>
 
 <div className="accounts-used">
@@ -29,7 +32,10 @@ Les ratios de rentabilité mesurent la capacité de l'entreprise à générer de
 ### b) Rentabilité des capitaux propres (ROE)
 
 <div className="formula-display">
-  <p>ROE = Résultat net / Capitaux propres</p>
+  <span className="fraction">
+    <span className="numerator">Résultat net</span>
+    <span className="denominator">Capitaux propres</span>
+  </span>
 </div>
 
 <div className="accounts-used">
@@ -45,7 +51,10 @@ Les ratios de rentabilité mesurent la capacité de l'entreprise à générer de
 ### c) Rentabilité des actifs (ROA)
 
 <div className="formula-display">
-  <p>ROA = Résultat net / Total des actifs</p>
+  <span className="fraction">
+    <span className="numerator">Résultat net</span>
+    <span className="denominator">Total des actifs</span>
+  </span>
 </div>
 
 <div className="accounts-used">
