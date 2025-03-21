@@ -14,11 +14,11 @@ import {
   FileSpreadsheet,
   PieChart,
   Search,
-  Droplet,
   Settings,
   LineChart,
   CircleDollarSign
 } from 'lucide-react';
+import RatioIcon from '@/components/formation/financial/RatioIcon';
 
 export const getIcon = (name: string) => {
   const size = 20;
@@ -35,12 +35,12 @@ export const getIcon = (name: string) => {
     case 'quiz': return <Award size={size} />;
     case 'excel-converter': return <FileSpreadsheet size={size} />;
     case 'financial-ratios': return <PieChart size={size} />; 
-    case 'liquidity-ratio': return <Droplet size={size} />;
-    case 'profitability-ratio': return <PieChart size={size} />;
-    case 'solvency-ratio': return <Search size={size} />;
-    case 'efficiency-ratio': return <Settings size={size} />;
-    case 'growth-ratio': return <LineChart size={size} />;
-    case 'market-ratio': return <CircleDollarSign size={size} />;
+    case 'liquidity-ratio': return <RatioIcon type="liquidity" size={size} />;
+    case 'profitability-ratio': return <RatioIcon type="profitability" size={size} />;
+    case 'solvency-ratio': return <RatioIcon type="solvency" size={size} />;
+    case 'efficiency-ratio': return <RatioIcon type="efficiency" size={size} />;
+    case 'growth-ratio': return <RatioIcon type="growth" size={size} />;
+    case 'market-ratio': return <RatioIcon type="market" size={size} />;
     default: return null;
   }
 };

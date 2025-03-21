@@ -2,16 +2,7 @@
 import React from 'react';
 import { courseStructure } from '@/data/courses';
 import AccountsPanel from './financial/AccountsPanel';
-import { 
-  PieChart, 
-  Droplet, 
-  Search, 
-  Settings, 
-  LineChart,
-  BarChart3,
-  CircleDollarSign,
-  Scale
-} from 'lucide-react';
+import RatioIcon from './financial/RatioIcon';
 
 const FinancialCourseContent = () => {
   const course = courseStructure["financial"];
@@ -25,22 +16,22 @@ const FinancialCourseContent = () => {
     const titleLower = title.toLowerCase();
     
     if (titleLower.includes('liquidité')) {
-      return <Droplet size={20} className="mr-2 text-swiss-blue" />;
+      return <RatioIcon type="liquidity" size={20} />;
     } 
     else if (titleLower.includes('rentabilité')) {
-      return <PieChart size={20} className="mr-2 text-swiss-blue" />;
+      return <RatioIcon type="profitability" size={20} />;
     }
     else if (titleLower.includes('solvabilité')) {
-      return <Scale size={20} className="mr-2 text-swiss-blue" />;
+      return <RatioIcon type="solvency" size={20} />;
     }
     else if (titleLower.includes('efficacité')) {
-      return <Settings size={20} className="mr-2 text-swiss-blue" />;
+      return <RatioIcon type="efficiency" size={20} />;
     }
     else if (titleLower.includes('croissance')) {
-      return <BarChart3 size={20} className="mr-2 text-swiss-blue" />;
+      return <RatioIcon type="growth" size={20} />;
     }
     else if (titleLower.includes('marché') || titleLower.includes('capital')) {
-      return <CircleDollarSign size={20} className="mr-2 text-swiss-blue" />;
+      return <RatioIcon type="market" size={20} />;
     }
     
     return null;
@@ -57,7 +48,9 @@ const FinancialCourseContent = () => {
         {course.sections.map((section) => (
           <div key={section.id} className="glass rounded-xl p-6 shadow-card">
             <h2 className="text-xl font-bold mb-3 flex items-center">
-              {getSectionIcon(section.title)}
+              <span className="mr-3">
+                {getSectionIcon(section.title)}
+              </span>
               {section.title}
             </h2>
             <p className="text-swiss-text-secondary">

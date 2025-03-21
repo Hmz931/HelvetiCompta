@@ -4,6 +4,7 @@ import { courseStructure } from '@/data/courses';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import RatioIcon, { getRatioIconByTitle } from './financial/RatioIcon';
 import './financial/FormulaDisplay.css';
+import RatioFormulaDisplay from './financial/RatioFormulaDisplay';
 
 const FinancialRatiosCourseContent = () => {
   const course = courseStructure["financial-ratios"];
@@ -45,34 +46,17 @@ const FinancialRatiosCourseContent = () => {
               }
             }
             
-            // Generate index like a) b) c) based on position
-            const itemIndex = index + '-1-formula';
+            // Generate index like a-1 format
+            const itemIndex = `${String.fromCharCode(97 + index)}-1`;
             
             return (
-              <div key={index} className="ratio-item">
-                <h4 className="ratio-title">{title}</h4>
-                <div className="formula-item">
-                  <div className="formula-item-index">{String.fromCharCode(97 + index)}</div>
-                  <div className="formula-content">
-                    <div className="formula-header">Formule :</div>
-                    <div className="ratio-formula-equation" dangerouslySetInnerHTML={{ __html: formula }} />
-                  </div>
-                </div>
-                
-                {accountItems.length > 0 && (
-                  <div className="accounts-item">
-                    <div className="accounts-item-index">{String.fromCharCode(97 + index) + '-1'}</div>
-                    <div className="accounts-content">
-                      <div className="accounts-header">Comptes utilisés :</div>
-                      <ul className="accounts-list">
-                        {accountItems.map((account, idx) => (
-                          <li key={idx}>{account}</li>
-                        ))}
-                      </ul>
-                    </div>
-                  </div>
-                )}
-              </div>
+              <RatioFormulaDisplay
+                key={index}
+                title={title}
+                formula={formula}
+                accounts={accountItems}
+                itemIndex={itemIndex}
+              />
             );
           })}
         </>
