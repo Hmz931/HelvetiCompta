@@ -1,5 +1,5 @@
 
-import React, { useEffect } from 'react';
+import React from 'react';
 import { courseStructure } from '@/data/courses';
 import { Table, TableHeader, TableRow, TableHead, TableBody, TableCell } from '@/components/ui/table';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
@@ -48,7 +48,7 @@ const GenericCourseContent = ({ courseId }: CourseContentProps) => {
             // Check if paragraph contains HTML tags (like <img> or <div>)
             else if (paragraph.trim().startsWith('<') && paragraph.includes('>')) {
               return (
-                <div key={idx} dangerouslySetInnerHTML={{ __html: paragraph }} />
+                <div key={idx} dangerouslySetInnerHTML={{ __html: paragraph }} className="ratio-formula" />
               );
             }
             // Check if paragraph contains a table (rows with | separators)
@@ -122,46 +122,6 @@ const GenericCourseContent = ({ courseId }: CourseContentProps) => {
                 </h4>
               );
             }
-            // Handle special formatting for formulas (← Formule :)
-            else if (paragraph.startsWith('←\nFormule :')) {
-              const lines = paragraph.split('\n');
-              return (
-                <div key={idx} className="ml-5 my-4">
-                  {lines.map((line, lineIdx) => {
-                    if (line === '←') {
-                      return (
-                        <div key={`line-${lineIdx}`} className="flex items-center gap-2 text-swiss-blue">
-                          <span>←</span>
-                        </div>
-                      );
-                    } else {
-                      return <p key={`line-${lineIdx}`} className="ml-0 my-1">{line}</p>;
-                    }
-                  })}
-                </div>
-              );
-            }
-            // Handle special formatting for comptes utilisés (← Comptes utilisés :)
-            else if (paragraph.startsWith('←\nComptes utilisés')) {
-              const lines = paragraph.split('\n');
-              return (
-                <div key={idx} className="ml-5 my-4">
-                  {lines.map((line, lineIdx) => {
-                    if (line === '←') {
-                      return (
-                        <div key={`line-${lineIdx}`} className="flex items-center gap-2 text-swiss-blue">
-                          <span>←</span>
-                        </div>
-                      );
-                    } else if (line.startsWith('**')) {
-                      return <p key={`line-${lineIdx}`} className="ml-0 my-1 font-bold">{line.replace(/\*\*/g, '')}</p>;
-                    } else {
-                      return <p key={`line-${lineIdx}`} className="ml-0 my-1">{line}</p>;
-                    }
-                  })}
-                </div>
-              );
-            }
             else {
               // Regular paragraph with improved styling
               return (
@@ -181,6 +141,57 @@ const GenericCourseContent = ({ courseId }: CourseContentProps) => {
   
   return (
     <div className="animate-fade-in">
+      <style jsx>{`
+        .formula-display {
+          margin: 1.5rem 0;
+          font-size: 1.1rem;
+        }
+        
+        .formula-display p {
+          display: flex;
+          align-items: center;
+          flex-wrap: wrap;
+          gap: 0.5rem;
+        }
+        
+        .fraction {
+          display: inline-flex;
+          flex-direction: column;
+          vertical-align: middle;
+          text-align: center;
+          margin: 0 0.2rem;
+        }
+        
+        .numerator {
+          border-bottom: 1px solid #000;
+          padding: 0 0.5rem 0.1rem;
+          margin-bottom: 0.1rem;
+        }
+        
+        .denominator {
+          padding: 0.1rem 0.5rem 0;
+        }
+        
+        .accounts-used {
+          margin: 1rem 0 1.5rem 1.5rem;
+        }
+        
+        .accounts-title {
+          font-weight: 600;
+          margin-bottom: 0.5rem;
+        }
+        
+        .accounts-used ul {
+          list-style-type: disc;
+          margin-left: 1.5rem;
+          margin-bottom: 1rem;
+        }
+        
+        .accounts-used li {
+          margin-bottom: 0.25rem;
+        }
+      `}</style>
+      
       <h1 className="text-3xl font-bold mb-4 text-swiss-dark">{course.title}</h1>
       {course.description && (
         <p className="text-gray-600 mb-8 text-lg">{course.description}</p>

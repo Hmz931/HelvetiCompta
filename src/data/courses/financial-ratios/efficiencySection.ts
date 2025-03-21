@@ -12,30 +12,31 @@ Les ratios d'efficacité mesurent la performance opérationnelle de l'entreprise
 
 ### a) Rotation des stocks
 
-←
-Formule :
-Rotation des stocks =
-Coût des marchandises vendues
-Stock moyen
+<div className="formula-display">
+  <p>Rotation des stocks = <span className="fraction"><span className="numerator">Coût des marchandises vendues</span><span className="denominator">Stock moyen</span></span></p>
+</div>
 
-←
-Comptes utilisés :
-Coût des marchandises vendues (4000-4099)
-Stocks (1200-1299)
+<div className="accounts-used">
+  <p className="accounts-title">Comptes utilisés :</p>
+  <ul>
+    <li>Coût des marchandises vendues (4000-4099)</li>
+    <li>Stocks (1200-1299)</li>
+  </ul>
+</div>
 
 #
 
 ### b) Délai moyen de recouvrement des créances clients
 
-←
-Formule :
-Délai moyen de recouvrement =
-Créances clients × 360
-Chiffre d'affaires
-(en jours)
+<div className="formula-display">
+  <p>Délai moyen de recouvrement = <span className="fraction"><span className="numerator">Créances clients × 360</span><span className="denominator">Chiffre d'affaires</span></span> (en jours)</p>
+</div>
 
-←
-Comptes utilisés :
-Créances clients (1100-1199)
-Chiffre d'affaires (3000-3799)`
+<div className="accounts-used">
+  <p className="accounts-title">Comptes utilisés :</p>
+  <ul>
+    <li>Créances clients (1100-1199)</li>
+    <li>Chiffre d'affaires (3000-3799)</li>
+  </ul>
+</div>`
 };

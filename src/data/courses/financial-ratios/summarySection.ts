@@ -16,5 +16,5 @@ export const summarySection: Section = {
 | Endettement total | 2000-2699 / 1000-1999 |
 | Autonomie financière | 2800-2899 / 2000-2999 |
 | Rotation des stocks | 4000-4099 / 1200-1299 |
-| Délai moyen de recouvrement | 1100-1199 / 3000-3799 |`
+| Délai moyen de recouvrement | 1100-1199 × 360 / 3000-3799 |`
 };
