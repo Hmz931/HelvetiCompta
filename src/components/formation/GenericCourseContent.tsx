@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import { courseStructure } from '@/data/courses';
 import { Table, TableHeader, TableRow, TableHead, TableBody, TableCell } from '@/components/ui/table';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
@@ -41,8 +41,12 @@ const GenericCourseContent = ({ courseId }: CourseContentProps) => {
           {hasSectionHeader && <h3 className="text-xl font-semibold mb-5 text-swiss-dark border-b pb-2">{sectionHeader}</h3>}
           
           {sectionContent.split('\n\n').map((paragraph, idx) => {
+            // Check if paragraph is just a hash symbol (separator)
+            if (paragraph.trim() === '#') {
+              return <div key={idx} className="my-6"></div>;
+            }
             // Check if paragraph contains HTML tags (like <img> or <div>)
-            if (paragraph.trim().startsWith('<') && paragraph.includes('>')) {
+            else if (paragraph.trim().startsWith('<') && paragraph.includes('>')) {
               return (
                 <div key={idx} dangerouslySetInnerHTML={{ __html: paragraph }} />
               );
@@ -109,7 +113,56 @@ const GenericCourseContent = ({ courseId }: CourseContentProps) => {
                   </div>
                 </Card>
               );
-            } else {
+            }
+            // Handle subsection headers (###)
+            else if (paragraph.startsWith('### ')) {
+              return (
+                <h4 key={idx} className="text-lg font-semibold mt-8 mb-4 text-swiss-dark">
+                  {paragraph.substring(4)}
+                </h4>
+              );
+            }
+            // Handle special formatting for formulas (← Formule :)
+            else if (paragraph.startsWith('←\nFormule :')) {
+              const lines = paragraph.split('\n');
+              return (
+                <div key={idx} className="ml-5 my-4">
+                  {lines.map((line, lineIdx) => {
+                    if (line === '←') {
+                      return (
+                        <div key={`line-${lineIdx}`} className="flex items-center gap-2 text-swiss-blue">
+                          <span>←</span>
+                        </div>
+                      );
+                    } else {
+                      return <p key={`line-${lineIdx}`} className="ml-0 my-1">{line}</p>;
+                    }
+                  })}
+                </div>
+              );
+            }
+            // Handle special formatting for comptes utilisés (← Comptes utilisés :)
+            else if (paragraph.startsWith('←\nComptes utilisés')) {
+              const lines = paragraph.split('\n');
+              return (
+                <div key={idx} className="ml-5 my-4">
+                  {lines.map((line, lineIdx) => {
+                    if (line === '←') {
+                      return (
+                        <div key={`line-${lineIdx}`} className="flex items-center gap-2 text-swiss-blue">
+                          <span>←</span>
+                        </div>
+                      );
+                    } else if (line.startsWith('**')) {
+                      return <p key={`line-${lineIdx}`} className="ml-0 my-1 font-bold">{line.replace(/\*\*/g, '')}</p>;
+                    } else {
+                      return <p key={`line-${lineIdx}`} className="ml-0 my-1">{line}</p>;
+                    }
+                  })}
+                </div>
+              );
+            }
+            else {
               // Regular paragraph with improved styling
               return (
                 <p 
