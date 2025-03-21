@@ -42,7 +42,7 @@ const RatioIcon: React.FC<RatioIconProps> = ({ type = 'default', size = 24, clas
     return (
       <div className={`ratio-icon ratio-icon-${type} ${className}`}>
         <img 
-          src={`/assets/images/ratio-icons/${type}-icon.png`} 
+          src={`/assets/images/${type}-icon.png`} 
           alt={`${type} icon`} 
           width={size} 
           height={size} 
