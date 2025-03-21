@@ -19,8 +19,8 @@ Les ratios de liquidité permettent d'évaluer la capacité de l'entreprise à f
   <div className="flex items-center">
     <div className="mr-3 text-lg font-medium">Ratio de liquidité générale = </div>
     <div className="inline-block text-center">
-      <div className="border-b-2 border-gray-800 px-4 py-1 text-center">Actifs circulants</div>
-      <div className="px-4 py-1 text-center">Passifs à court terme</div>
+      <div className="border-b-2 border-gray-800 px-8 py-2 text-center font-medium">Actifs circulants</div>
+      <div className="px-8 py-2 text-center font-medium">Passifs à court terme</div>
     </div>
   </div>
 </div>
@@ -49,8 +49,8 @@ Les ratios de liquidité permettent d'évaluer la capacité de l'entreprise à f
   <div className="flex items-center">
     <div className="mr-3 text-lg font-medium">Ratio de liquidité immédiate = </div>
     <div className="inline-block text-center">
-      <div className="border-b-2 border-gray-800 px-4 py-1 text-center">Liquidités + Créances clients</div>
-      <div className="px-4 py-1 text-center">Passifs à court terme</div>
+      <div className="border-b-2 border-gray-800 px-8 py-2 text-center font-medium">Liquidités + Créances clients</div>
+      <div className="px-8 py-2 text-center font-medium">Passifs à court terme</div>
     </div>
   </div>
 </div>

@@ -19,8 +19,8 @@ Les ratios de rentabilité mesurent la capacité de l'entreprise à générer de
   <div className="flex items-center">
     <div className="mr-3 text-lg font-medium">Marge bénéficiaire nette = </div>
     <div className="inline-block text-center">
-      <div className="border-b-2 border-gray-800 px-4 py-1 text-center">Résultat net</div>
-      <div className="px-4 py-1 text-center">Chiffre d'affaires</div>
+      <div className="border-b-2 border-gray-800 px-8 py-2 text-center font-medium">Résultat net</div>
+      <div className="px-8 py-2 text-center font-medium">Chiffre d'affaires</div>
     </div>
   </div>
 </div>
@@ -44,8 +44,8 @@ Les ratios de rentabilité mesurent la capacité de l'entreprise à générer de
   <div className="flex items-center">
     <div className="mr-3 text-lg font-medium">ROE = </div>
     <div className="inline-block text-center">
-      <div className="border-b-2 border-gray-800 px-4 py-1 text-center">Résultat net</div>
-      <div className="px-4 py-1 text-center">Capitaux propres</div>
+      <div className="border-b-2 border-gray-800 px-8 py-2 text-center font-medium">Résultat net</div>
+      <div className="px-8 py-2 text-center font-medium">Capitaux propres</div>
     </div>
   </div>
 </div>
@@ -69,8 +69,8 @@ Les ratios de rentabilité mesurent la capacité de l'entreprise à générer de
   <div className="flex items-center">
     <div className="mr-3 text-lg font-medium">ROA = </div>
     <div className="inline-block text-center">
-      <div className="border-b-2 border-gray-800 px-4 py-1 text-center">Résultat net</div>
-      <div className="px-4 py-1 text-center">Total des actifs</div>
+      <div className="border-b-2 border-gray-800 px-8 py-2 text-center font-medium">Résultat net</div>
+      <div className="px-8 py-2 text-center font-medium">Total des actifs</div>
     </div>
   </div>
 </div>
