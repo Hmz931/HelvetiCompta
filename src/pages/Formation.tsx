@@ -5,6 +5,7 @@ import Breadcrumb from '../components/common/Breadcrumb';
 import FormationOverview from '../components/formation/FormationOverview';
 import GenericCourseContent from '../components/formation/GenericCourseContent';
 import FinancialCourseContent from '../components/formation/FinancialCourseContent';
+import FinancialRatiosCourseContent from '../components/formation/FinancialRatiosCourseContent';
 import ChartOfAccountsCourseContent from '../components/formation/ChartOfAccountsCourseContent';
 
 const Formation = () => {
@@ -32,7 +33,7 @@ const Formation = () => {
         <Route path="/corporations" element={<GenericCourseContent courseId="corporations" />} />
         <Route path="/llc" element={<GenericCourseContent courseId="llc" />} />
         <Route path="/depreciation" element={<GenericCourseContent courseId="depreciation" />} />
-        <Route path="/financial-ratios" element={<GenericCourseContent courseId="financial-ratios" />} />
+        <Route path="/financial-ratios" element={<FinancialRatiosCourseContent />} />
       </Routes>
     </div>
   );
