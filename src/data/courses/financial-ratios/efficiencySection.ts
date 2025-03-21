@@ -4,9 +4,7 @@ import { Section } from '../types';
 export const efficiencySection: Section = {
   id: 'efficiency',
   title: 'Ratios d\'efficacité',
-  content: `Ratios d'efficacité
-      
-Les ratios d'efficacité mesurent la performance opérationnelle de l'entreprise dans l'utilisation de ses ressources.
+  content: `Les ratios d'efficacité mesurent la performance opérationnelle de l'entreprise dans l'utilisation de ses ressources.
 
 #
 

@@ -22,26 +22,30 @@ const RatioFormulaDisplay: React.FC<RatioFormulaDisplayProps> = ({
         {title}
       </h3>
       
-      <div className="formula-content mb-4">
-        <div className="formula-header-with-icon">
-          Formule :
+      {formula && (
+        <div className="formula-content mb-4">
+          <div className="formula-header-with-icon">
+            Formule :
+          </div>
+          <div 
+            className="ratio-formula-equation" 
+            dangerouslySetInnerHTML={{ __html: formula }}
+          />
         </div>
-        <div 
-          className="ratio-formula-equation" 
-          dangerouslySetInnerHTML={{ __html: formula }}
-        />
-      </div>
+      )}
       
-      <div className="accounts-content">
-        <div className="accounts-header-with-icon">
-          Comptes utilisés :
+      {accounts && accounts.length > 0 && (
+        <div className="accounts-content">
+          <div className="accounts-header-with-icon">
+            Comptes utilisés :
+          </div>
+          <ul className="accounts-list">
+            {accounts.map((account, idx) => (
+              <li key={idx}>{account}</li>
+            ))}
+          </ul>
         </div>
-        <ul className="accounts-list">
-          {accounts.map((account, idx) => (
-            <li key={idx}>{account}</li>
-          ))}
-        </ul>
-      </div>
+      )}
     </div>
   );
 };
