@@ -85,5 +85,162 @@ export const accountingQuizQuestions: QuizQuestion[] = [
     ],
     correctAnswer: 1,
     explanation: 'Swiss GAAP RPC (Recommandations relatives à la présentation des comptes) est la norme comptable suisse spécifiquement adaptée aux besoins des PME suisses.'
+  },
+  {
+    id: '8',
+    question: 'Dans quelle colonne du bilan figure la caisse?',
+    options: [
+      'Actif',
+      'Passif',
+      'Les deux selon les cas',
+      'Ni l\'un ni l\'autre'
+    ],
+    correctAnswer: 0,
+    explanation: 'La caisse (liquidités) figure toujours dans la colonne Actif du bilan. Elle représente les moyens de paiement immédiatement disponibles pour l\'entreprise.'
+  },
+  {
+    id: '9',
+    question: 'Dans quelle colonne du bilan figurent les créances clients?',
+    options: [
+      'Actif',
+      'Passif',
+      'Les deux selon le solde',
+      'Dans le compte de résultat uniquement'
+    ],
+    correctAnswer: 0,
+    explanation: 'Les créances clients représentent les montants dus à l\'entreprise par ses clients. Elles figurent toujours dans la colonne Actif du bilan, généralement dans les actifs circulants.'
+  },
+  {
+    id: '10',
+    question: 'Dans quelle colonne du bilan figurent les dettes fournisseurs?',
+    options: [
+      'Actif',
+      'Passif',
+      'Actif si solde débiteur, Passif si solde créditeur',
+      'Ni l\'un ni l\'autre'
+    ],
+    correctAnswer: 1,
+    explanation: 'Les dettes fournisseurs représentent les montants que l\'entreprise doit à ses fournisseurs. Elles figurent toujours dans la colonne Passif du bilan, généralement dans les dettes à court terme.'
+  },
+  {
+    id: '11',
+    question: 'Dans quelle colonne du bilan figure le capital?',
+    options: [
+      'Actif',
+      'Passif',
+      'Les deux selon le type d\'entreprise',
+      'Uniquement dans le compte de résultat'
+    ],
+    correctAnswer: 1,
+    explanation: 'Le capital représente les apports des propriétaires ou actionnaires. Il figure toujours dans la colonne Passif du bilan, dans les fonds propres.'
+  },
+  {
+    id: '12',
+    question: 'Dans quelle colonne du bilan figure un immeuble?',
+    options: [
+      'Actif',
+      'Passif',
+      'Dépend de son utilisation',
+      'Hors bilan'
+    ],
+    correctAnswer: 0,
+    explanation: 'Un immeuble, qu\'il soit à usage commercial ou d\'investissement, figure toujours dans la colonne Actif du bilan, généralement dans les actifs immobilisés.'
+  },
+  {
+    id: '13',
+    question: 'Dans quelle colonne du bilan figure une dette hypothécaire?',
+    options: [
+      'Actif',
+      'Passif',
+      'Actif si taux négatif, Passif si taux positif',
+      'Ni l\'un ni l\'autre'
+    ],
+    correctAnswer: 1,
+    explanation: 'Une dette hypothécaire est un emprunt contracté pour financer l\'achat d\'un bien immobilier. Elle figure toujours dans la colonne Passif du bilan, généralement dans les dettes à long terme.'
+  },
+  {
+    id: '14',
+    question: 'Dans quelle colonne du bilan figure le stock de marchandises?',
+    options: [
+      'Actif',
+      'Passif',
+      'Dépend de leur valeur',
+      'Dans le compte de résultat uniquement'
+    ],
+    correctAnswer: 0,
+    explanation: 'Le stock de marchandises représente les biens destinés à être vendus. Il figure toujours dans la colonne Actif du bilan, dans les actifs circulants.'
+  },
+  {
+    id: '15',
+    question: 'Dans quelle colonne du bilan figure le mobilier?',
+    options: [
+      'Actif',
+      'Passif',
+      'Selon son état d\'amortissement',
+      'Hors bilan après amortissement'
+    ],
+    correctAnswer: 0,
+    explanation: 'Le mobilier (meubles, équipements de bureau) figure toujours dans la colonne Actif du bilan, dans les actifs immobilisés, même s\'il est partiellement ou totalement amorti tant qu\'il est encore utilisé.'
+  },
+  {
+    id: '16',
+    question: 'Dans quelle colonne du bilan figurent les véhicules?',
+    options: [
+      'Actif',
+      'Passif',
+      'Actif pour les véhicules neufs, Passif pour les anciens',
+      'Doivent être entièrement amortis dès la première année'
+    ],
+    correctAnswer: 0,
+    explanation: 'Les véhicules utilisés par l\'entreprise figurent toujours dans la colonne Actif du bilan, dans les actifs immobilisés, quelle que soit leur ancienneté.'
+  },
+  {
+    id: '17',
+    question: 'Dans quelle colonne du bilan figure une dette bancaire à court terme?',
+    options: [
+      'Actif',
+      'Passif',
+      'Actif si solde créditeur, Passif si solde débiteur',
+      'En déduction des liquidités à l\'actif'
+    ],
+    correctAnswer: 1,
+    explanation: 'Une dette bancaire à court terme représente un emprunt à rembourser dans un délai inférieur à un an. Elle figure toujours dans la colonne Passif du bilan, dans les dettes à court terme.'
+  },
+  {
+    id: '18',
+    question: 'Dans quelle colonne du bilan figure un brevet?',
+    options: [
+      'Actif',
+      'Passif',
+      'Uniquement dans l\'annexe aux comptes',
+      'Ne peut pas figurer au bilan selon les normes suisses'
+    ],
+    correctAnswer: 0,
+    explanation: 'Un brevet est un actif incorporel qui figure dans la colonne Actif du bilan, dans les immobilisations incorporelles, s\'il a été acquis à titre onéreux ou développé en interne (certaines restrictions s\'appliquent pour ce dernier cas).'
+  },
+  {
+    id: '19',
+    question: 'Dans quelle colonne du bilan figure l\'outillage?',
+    options: [
+      'Actif',
+      'Passif',
+      'Ne figure pas au bilan si d\'une valeur inférieure à 5\'000 CHF',
+      'Directement comptabilisé en charge'
+    ],
+    correctAnswer: 0,
+    explanation: 'L\'outillage figure dans la colonne Actif du bilan, dans les immobilisations corporelles, à moins qu\'il ne soit de faible valeur et comptabilisé directement en charge selon la politique d\'activation de l\'entreprise.'
+  },
+  {
+    id: '20',
+    question: 'Dans quelle colonne du bilan figure une créance à long terme?',
+    options: [
+      'Actif',
+      'Passif',
+      'Hors bilan jusqu\'à son échéance',
+      'Uniquement dans l\'annexe aux comptes'
+    ],
+    correctAnswer: 0,
+    explanation: 'Une créance à long terme représente un montant dû à l\'entreprise avec une échéance supérieure à un an. Elle figure dans la colonne Actif du bilan, généralement dans les actifs immobilisés financiers.'
   }
 ];
+
