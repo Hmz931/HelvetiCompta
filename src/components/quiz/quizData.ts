@@ -1,4 +1,3 @@
-
 import { QuizQuestion } from './types';
 
 export const accountingQuizQuestions: QuizQuestion[] = [
@@ -242,7 +241,6 @@ export const accountingQuizQuestions: QuizQuestion[] = [
     correctAnswer: 0,
     explanation: 'Une créance à long terme représente un montant dû à l\'entreprise avec une échéance supérieure à un an. Elle figure dans la colonne Actif du bilan, généralement dans les actifs immobilisés financiers.'
   },
-  // Nouvelles questions basées sur l'image fournie, transformées en format QCM
   {
     id: '21',
     question: 'L\'ensemble des ventes à crédit figurent au bilan sous les créances clients.',
@@ -338,5 +336,149 @@ export const accountingQuizQuestions: QuizQuestion[] = [
     ],
     correctAnswer: 0,
     explanation: 'C\'est exact. Les capitaux étrangers (dettes) sont destinés à être remboursés selon des échéances définies, tandis que les capitaux propres représentent les ressources permanentes de l\'entreprise et ne font pas l\'objet d\'une obligation de remboursement (sauf cas particuliers comme une réduction de capital).'
+  },
+  {
+    id: '29',
+    question: 'À l\'inverse du compte, le bilan représente une image statique de la comptabilité.',
+    options: [
+      'Vrai',
+      'Faux',
+      'Cela dépend du type de bilan',
+      'Le bilan est également dynamique'
+    ],
+    correctAnswer: 0,
+    explanation: 'En effet, le bilan est une photographie de la situation financière de l\'entreprise à un moment précis (donc statique), alors que les comptes sont des éléments dynamiques qui enregistrent les mouvements.'
+  },
+  {
+    id: '30',
+    question: 'Lorsqu\'on écrit une somme à gauche du compte, on dit que l\'on débite le compte.',
+    options: [
+      'Vrai',
+      'Faux',
+      'Cela dépend du type de compte',
+      'On dit qu\'on crédite le compte'
+    ],
+    correctAnswer: 0,
+    explanation: 'C\'est exact. La colonne de gauche d\'un compte est le débit (ou Doit). Lorsqu\'on porte une somme au débit d\'un compte, on dit qu\'on débite le compte.'
+  },
+  {
+    id: '31',
+    question: 'L\'ensemble des comptes actifs s\'appelle le Grand Livre.',
+    options: [
+      'Vrai',
+      'Faux',
+      'Seulement les comptes de classe 1',
+      'Le Grand Livre ne concerne que les comptes du bilan'
+    ],
+    correctAnswer: 1,
+    explanation: 'C\'est faux. Le Grand Livre est l\'ensemble de tous les comptes de la comptabilité, qu\'ils soient actifs, passifs, de charges ou de produits, et non pas uniquement les comptes actifs.'
+  },
+  {
+    id: '32',
+    question: 'Les comptes actifs sont numérotés de 2000 à 2999.',
+    options: [
+      'Vrai',
+      'Faux',
+      'Ils sont numérotés de 1000 à 1999',
+      'La numérotation varie selon le plan comptable utilisé'
+    ],
+    correctAnswer: 1,
+    explanation: 'C\'est faux. Selon le plan comptable suisse PME, les comptes actifs commencent par le chiffre 1 (donc numérotés de 1000 à 1999), tandis que les comptes passifs commencent par le chiffre 2 (numérotés de 2000 à 2999).'
+  },
+  {
+    id: '33',
+    question: 'Le côté droit d\'un compte s\'appelle toujours le crédit.',
+    options: [
+      'Vrai',
+      'Faux',
+      'Seulement pour les comptes de bilan',
+      'Seulement pour les comptes de résultat'
+    ],
+    correctAnswer: 0,
+    explanation: 'C\'est exact. Dans un compte en T, la colonne de droite s\'appelle toujours le crédit (ou l\'Avoir), indépendamment du type de compte.'
+  },
+  {
+    id: '34',
+    question: 'Le bilan est un tableau de l\'ensemble des soldes à nouveau des comptes actifs et passifs.',
+    options: [
+      'Vrai',
+      'Faux',
+      'Le bilan inclut tous les comptes y compris les comptes de résultat',
+      'Le bilan ne montre que les comptes avec des soldes positifs'
+    ],
+    correctAnswer: 0,
+    explanation: 'C\'est exact. Le bilan présente l\'ensemble des soldes à nouveau des comptes d\'actif et de passif, montrant ainsi la situation financière de l\'entreprise à un moment donné.'
+  },
+  {
+    id: '35',
+    question: 'Le côté gauche d\'un compte s\'appelle toujours le débit.',
+    options: [
+      'Vrai',
+      'Faux',
+      'Seulement pour les comptes actifs',
+      'Seulement pour les comptes de charges'
+    ],
+    correctAnswer: 0,
+    explanation: 'C\'est exact. Dans un compte en T, la colonne de gauche s\'appelle toujours le débit (ou Doit), quel que soit le type de compte.'
+  },
+  {
+    id: '36',
+    question: 'Clôturer un compte actif signifie déterminer la différence entre le total du débit et du crédit du compte; le montant est porté en solde du compte.',
+    options: [
+      'Vrai',
+      'Faux',
+      'C\'est seulement vrai pour les comptes passifs',
+      'La clôture d\'un compte actif implique toujours un solde nul'
+    ],
+    correctAnswer: 0,
+    explanation: 'C\'est exact. Clôturer un compte consiste à calculer la différence entre le total des montants au débit et au crédit, puis à inscrire cette différence du côté le moins élevé pour équilibrer le compte.'
+  },
+  {
+    id: '37',
+    question: 'Lorsqu\'un compte est clôturé, le total du débit est toujours égal au total du crédit.',
+    options: [
+      'Vrai',
+      'Faux',
+      'Uniquement pour les comptes de bilan',
+      'Uniquement lors de la clôture annuelle'
+    ],
+    correctAnswer: 0,
+    explanation: 'C\'est exact. Après la clôture d\'un compte, les totaux du débit et du crédit s\'équilibrent toujours, car on ajoute le solde du côté le moins élevé pour égaliser les deux colonnes.'
+  },
+  {
+    id: '38',
+    question: 'Le N° attribué au compte Caisse est 2000.',
+    options: [
+      'Vrai',
+      'Faux',
+      'C\'est 1000',
+      'Le numéro varie selon l\'entreprise'
+    ],
+    correctAnswer: 1,
+    explanation: 'C\'est faux. Dans le plan comptable suisse PME, le compte Caisse porte généralement le numéro 1000, car il s\'agit d\'un compte d\'actif (les comptes d\'actif commencent par 1).'
+  },
+  {
+    id: '39',
+    question: 'Le compte est un élément statique de la comptabilité.',
+    options: [
+      'Vrai',
+      'Faux',
+      'Il est à la fois statique et dynamique',
+      'Cela dépend s\'il est utilisé dans le bilan ou dans le compte de résultat'
+    ],
+    correctAnswer: 1,
+    explanation: 'C\'est faux. Le compte est un élément dynamique de la comptabilité qui enregistre les mouvements (augmentations et diminutions) des différents éléments du patrimoine et du résultat, contrairement au bilan qui est statique.'
+  },
+  {
+    id: '40',
+    question: 'Chaque poste du bilan correspond au moins à un compte de la comptabilité.',
+    options: [
+      'Vrai',
+      'Faux',
+      'Certains postes du bilan n\'ont pas de compte correspondant',
+      'Les postes du bilan correspondent uniquement aux comptes actifs et passifs'
+    ],
+    correctAnswer: 0,
+    explanation: 'C\'est exact. Chaque poste figurant au bilan correspond à au moins un compte de la comptabilité, bien que parfois un poste du bilan puisse regrouper plusieurs comptes pour des raisons de présentation simplifiée.'
   }
 ];
