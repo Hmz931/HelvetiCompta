@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { BookOpen, FileText, BookMarked, Hash } from 'lucide-react';
 
 type SearchResultItem = {
@@ -57,6 +57,7 @@ const SearchResults = ({ searchQuery, searchResults }: SearchResultsProps) => {
 
   // Handle result click with explicit navigation
   const handleResultClick = (path: string) => {
+    console.log('Navigating to:', path);
     navigate(path);
   };
 

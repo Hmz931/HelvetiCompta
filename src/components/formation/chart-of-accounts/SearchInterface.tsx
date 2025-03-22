@@ -9,6 +9,7 @@ import {
   CommandItem,
   CommandList
 } from "@/components/ui/command";
+import { normalizeAccents } from '@/utils/searchUtils';
 
 interface Account {
   number: string;
@@ -34,6 +35,34 @@ const SearchInterface = ({
   isSearching,
   onAccountSelect
 }: SearchInterfaceProps) => {
+  // Highlight the matching part of the text, handling accents
+  const highlightMatch = (text: string, query: string) => {
+    if (!query.trim()) return text;
+    
+    const normalizedText = text.toLowerCase();
+    const normalizedQuery = normalizeAccents(query.toLowerCase());
+    
+    // Simple implementation for basic highlighting
+    try {
+      // Find the index in the normalized text
+      const index = normalizeAccents(normalizedText).indexOf(normalizedQuery);
+      
+      if (index === -1) return text;
+      
+      // Get the actual matched substring from the original text
+      const matchedPart = text.substring(index, index + query.length);
+      
+      // Replace only the first occurrence to avoid multiple replacements
+      return text.replace(
+        matchedPart, 
+        `<span class="bg-yellow-100 text-swiss-dark font-medium">${matchedPart}</span>`
+      );
+    } catch (e) {
+      // Fallback if regex fails
+      return text;
+    }
+  };
+
   return (
     <div className="relative">
       <div className="flex items-center">
@@ -65,7 +94,9 @@ const SearchInterface = ({
                   >
                     <FileText className="h-4 w-4 mr-2 text-swiss-blue" />
                     <span className="font-mono mr-2 font-medium">{account.number}</span>
-                    <span>{account.title}</span>
+                    <span dangerouslySetInnerHTML={{ 
+                      __html: highlightMatch(account.title, searchTerm) 
+                    }}></span>
                   </CommandItem>
                 ))}
                 {searchResults.length > 20 && (

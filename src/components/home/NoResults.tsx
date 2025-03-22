@@ -1,7 +1,8 @@
 
 import React from 'react';
 import { Search, FileText, BookOpen, HelpCircle, Hash, BookMarked } from 'lucide-react';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import { normalizeAccents } from '@/utils/searchUtils';
 
 type NoResultsProps = {
   searchQuery: string;
@@ -14,15 +15,21 @@ const NoResults = ({ searchQuery }: NoResultsProps) => {
   const isLikelyAccountNumber = /^\d{2,5}$/.test(searchQuery.trim());
   
   // Check if query might be related to financial statements or tax
-  const isLikelyFinancial = /bilan|états financiers|compte de résultat|trésorerie/i.test(searchQuery);
-  const isLikelyTax = /tva|taxe|impôt|fiscal/i.test(searchQuery);
+  const normalizedQuery = normalizeAccents(searchQuery.toLowerCase());
+  const isLikelyFinancial = /bilan|etats financiers|etat financier|compte de resultat|tresorerie/i.test(normalizedQuery);
+  const isLikelyTax = /tva|taxe|impot|fiscal/i.test(normalizedQuery);
   
   // Get individual search terms for suggestions
   const searchTerms = searchQuery.split(/\s+/).filter(term => term.length > 2);
   
   // Handle navigation with a function to ensure proper routing
   const handleNavigate = (path: string) => {
+    console.log('Navigating to:', path);
     navigate(path);
+  };
+  
+  const handleTermSearch = (term: string) => {
+    navigate(`/?search=${encodeURIComponent(term)}`);
   };
   
   return (
@@ -44,13 +51,13 @@ const NoResults = ({ searchQuery }: NoResultsProps) => {
             </p>
             <div className="flex flex-wrap justify-center gap-2 mt-2">
               {searchTerms.map(term => (
-                <Link 
+                <button 
                   key={term}
-                  to={`/?search=${encodeURIComponent(term)}`}
+                  onClick={() => handleTermSearch(term)}
                   className="px-3 py-1 bg-swiss-muted text-swiss-blue rounded-full text-sm hover:bg-swiss-blue/10"
                 >
                   {term}
-                </Link>
+                </button>
               ))}
             </div>
           </div>

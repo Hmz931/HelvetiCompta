@@ -6,6 +6,7 @@ import { fullAccountsList } from '@/data/courses/chartOfAccounts';
 import SearchInterface from './SearchInterface';
 import CategoryFilters from './CategoryFilters';
 import ResultsDisplay from './ResultsDisplay';
+import { normalizeAccents } from '@/utils/searchUtils';
 
 interface Account {
   number: string;
@@ -36,11 +37,16 @@ const ChartOfAccountsSearch = () => {
       return;
     }
     
+    const normalizedSearchTerm = normalizeAccents(searchTerm.toLowerCase());
+    
     const filteredAccounts = fullAccountsList.filter(account => {
+      // Normalize account title for accent-insensitive comparison
+      const normalizedTitle = normalizeAccents(account.title.toLowerCase());
+      
       // Filtre par terme de recherche
       const matchesSearch = 
-        account.number.toLowerCase().includes(searchTerm.toLowerCase()) || 
-        account.title.toLowerCase().includes(searchTerm.toLowerCase());
+        account.number.toLowerCase().includes(normalizedSearchTerm) || 
+        normalizedTitle.includes(normalizedSearchTerm);
       
       // Filtre par catégorie si une est sélectionnée
       const matchesCategory = categoryFilter 

@@ -10,7 +10,8 @@ import {
   searchInHtmlContent, 
   extractHighlightedHtmlExcerpt,
   containsAllKeywords,
-  extractMultiKeywordExcerpt
+  extractMultiKeywordExcerpt,
+  normalizeAccents
 } from '@/utils/searchUtils';
 
 // Import refactored components
@@ -61,20 +62,22 @@ const Index = () => {
     
     setIsSearching(true);
     
-    const query = searchQuery.toLowerCase();
+    const normalizedQuery = normalizeAccents(searchQuery.toLowerCase());
     const results = [];
     
     // Search in lexicon terms
     for (const term of lexiconTerms) {
+      const normalizedTitle = normalizeAccents(term.title.toLowerCase());
+      
       if (
-        term.title.toLowerCase().includes(query) ||
-        containsAllKeywords(term.definition, query) ||
-        (term.example && containsAllKeywords(term.example, query))
+        normalizedTitle.includes(normalizedQuery) ||
+        containsAllKeywords(term.definition, searchQuery) ||
+        (term.example && containsAllKeywords(term.example, searchQuery))
       ) {
         results.push({
           title: term.title,
           path: `/lexique?term=${encodeURIComponent(term.title)}`,
-          excerpt: extractMultiKeywordExcerpt(term.definition, query, 150),
+          excerpt: extractMultiKeywordExcerpt(term.definition, searchQuery, 150),
           source: 'Lexique'
         });
       }
@@ -82,15 +85,17 @@ const Index = () => {
     
     // Search in glossary terms
     for (const term of glossaryTerms) {
+      const normalizedTitle = normalizeAccents(term.title.toLowerCase());
+      
       if (
-        term.title.toLowerCase().includes(query) ||
-        containsAllKeywords(term.definition, query) ||
-        (term.example && containsAllKeywords(term.example, query))
+        normalizedTitle.includes(normalizedQuery) ||
+        containsAllKeywords(term.definition, searchQuery) ||
+        (term.example && containsAllKeywords(term.example, searchQuery))
       ) {
         results.push({
           title: term.title,
           path: `/lexique?term=${encodeURIComponent(term.title)}`,
-          excerpt: extractMultiKeywordExcerpt(term.definition, query, 150),
+          excerpt: extractMultiKeywordExcerpt(term.definition, searchQuery, 150),
           source: 'Lexique'
         });
       }
@@ -98,9 +103,12 @@ const Index = () => {
     
     // Search in chart of accounts
     for (const account of fullAccountsList) {
+      const normalizedTitle = normalizeAccents(account.title.toLowerCase());
+      
       if (
-        account.number.includes(query) ||
-        containsAllKeywords(account.title, query)
+        account.number.includes(normalizedQuery) ||
+        normalizedTitle.includes(normalizedQuery) ||
+        containsAllKeywords(account.title, searchQuery)
       ) {
         results.push({
           title: `${account.number} - ${account.title}`,
@@ -114,17 +122,18 @@ const Index = () => {
     // Search in training courses
     for (const courseId in courseStructure) {
       const course = courseStructure[courseId];
+      const normalizedTitle = normalizeAccents(course.title.toLowerCase());
       
       // Search in course title and description
       if (
-        course.title.toLowerCase().includes(query) ||
-        (course.description && containsAllKeywords(course.description, query))
+        normalizedTitle.includes(normalizedQuery) ||
+        (course.description && containsAllKeywords(course.description, searchQuery))
       ) {
         results.push({
           title: course.title,
           path: `/formation?course=${courseId}`,
           excerpt: course.description 
-            ? extractMultiKeywordExcerpt(course.description, query, 150)
+            ? extractMultiKeywordExcerpt(course.description, searchQuery, 150)
             : `Cours de formation sur ${course.title}`,
           source: 'Formation'
         });
@@ -132,20 +141,22 @@ const Index = () => {
       
       // Search in course introduction
       if (course.introduction && (
-        searchInHtmlContent(course.introduction, query) || 
-        containsAllKeywords(course.introduction, query)
+        searchInHtmlContent(course.introduction, normalizedQuery) || 
+        containsAllKeywords(course.introduction, searchQuery)
       )) {
         results.push({
           title: `Introduction - ${course.title}`,
           path: `/formation?course=${courseId}`,
-          excerpt: extractMultiKeywordExcerpt(course.introduction, query),
+          excerpt: extractMultiKeywordExcerpt(course.introduction, searchQuery),
           source: 'Formation'
         });
       }
       
       // Search in course sections
       for (const section of course.sections) {
-        if (section.title.toLowerCase().includes(query) || containsAllKeywords(section.title, query)) {
+        const normalizedSectionTitle = normalizeAccents(section.title.toLowerCase());
+        
+        if (normalizedSectionTitle.includes(normalizedQuery) || containsAllKeywords(section.title, searchQuery)) {
           results.push({
             title: section.title,
             path: `/formation?course=${courseId}&section=${section.id}`,
@@ -156,13 +167,13 @@ const Index = () => {
         
         // Search in section content
         if (section.content && (
-          searchInHtmlContent(section.content, query) || 
-          containsAllKeywords(section.content, query)
+          searchInHtmlContent(section.content, normalizedQuery) || 
+          containsAllKeywords(section.content, searchQuery)
         )) {
           results.push({
             title: `${section.title} - ${course.title}`,
             path: `/formation?course=${courseId}&section=${section.id}`,
-            excerpt: extractMultiKeywordExcerpt(section.content, query),
+            excerpt: extractMultiKeywordExcerpt(section.content, searchQuery),
             source: 'Formation'
           });
         }
@@ -170,7 +181,9 @@ const Index = () => {
         // Search in subsections
         if (section.subsections) {
           for (const subsection of section.subsections) {
-            if (subsection.title.toLowerCase().includes(query) || containsAllKeywords(subsection.title, query)) {
+            const normalizedSubsectionTitle = normalizeAccents(subsection.title.toLowerCase());
+            
+            if (normalizedSubsectionTitle.includes(normalizedQuery) || containsAllKeywords(subsection.title, searchQuery)) {
               results.push({
                 title: subsection.title,
                 path: `/formation?course=${courseId}&section=${section.id}`,
@@ -181,13 +194,13 @@ const Index = () => {
             
             // Search in subsection content
             if (subsection.content && (
-              searchInHtmlContent(subsection.content, query) || 
-              containsAllKeywords(subsection.content, query)
+              searchInHtmlContent(subsection.content, normalizedQuery) || 
+              containsAllKeywords(subsection.content, searchQuery)
             )) {
               results.push({
                 title: `${subsection.title} - ${section.title}`,
                 path: `/formation?course=${courseId}&section=${section.id}`,
-                excerpt: extractMultiKeywordExcerpt(subsection.content, query),
+                excerpt: extractMultiKeywordExcerpt(subsection.content, searchQuery),
                 source: 'Formation'
               });
             }
@@ -196,18 +209,15 @@ const Index = () => {
       }
     }
     
-    // Search in tax documentation
-    if (
-      'tva'.includes(query) || 
-      'taxe'.includes(query) || 
-      'impôt'.includes(query) || 
-      'fiscal'.includes(query) || 
-      'fiscalité'.includes(query)
-    ) {
+    // Special case for tax-related searches
+    const taxTerms = ['tva', 'taxe', 'impot', 'fiscal', 'fiscalite'];
+    const normalizedTaxTerms = taxTerms.map(term => normalizeAccents(term));
+    
+    if (normalizedTaxTerms.some(term => normalizedQuery.includes(term))) {
       results.push({
         title: 'TVA et fiscalité',
         path: '/formation?course=tax',
-        excerpt: highlightText('Principes de la TVA suisse, taux applicables, méthodes de décompte et particularités.', query, 150),
+        excerpt: highlightText('Principes de la TVA suisse, taux applicables, méthodes de décompte et particularités.', searchQuery, 150),
         source: 'Formation'
       });
     }

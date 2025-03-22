@@ -24,6 +24,9 @@ const AccountsSearch = ({
         onChange={(e) => onSearchChange(e.target.value)}
         className="pl-10 w-full border-gray-300 focus:border-swiss-blue focus:ring-swiss-blue/30"
       />
+      <div className="text-xs text-gray-500 mt-1">
+        Conseil: La recherche fonctionne avec ou sans accents (ex: "Genève" ou "Geneve")
+      </div>
     </div>
   );
 };

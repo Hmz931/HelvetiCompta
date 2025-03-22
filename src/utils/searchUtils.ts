@@ -1,4 +1,3 @@
-
 export const highlightText = (text: string, query: string, maxLength: number): string => {
   // Convert both text and query to lowercase for case-insensitive search
   const lowerText = text.toLowerCase();
@@ -112,7 +111,17 @@ export const extractHighlightedHtmlExcerpt = (content: string, query: string, ma
 };
 
 /**
- * New function that checks if content contains all keywords in a search query
+ * Removes accents/diacritics from a string
+ * @param text Text to normalize
+ * @returns The text without accents/diacritics
+ */
+export const normalizeAccents = (text: string): string => {
+  if (!text) return '';
+  return text.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+};
+
+/**
+ * New function that checks if content contains all keywords in a search query, ignoring accents
  * @param content Text content to search in
  * @param query Space-separated keywords to search for
  * @returns True if all keywords are found in the content
@@ -120,11 +129,12 @@ export const extractHighlightedHtmlExcerpt = (content: string, query: string, ma
 export const containsAllKeywords = (content: string, query: string): boolean => {
   if (!content || !query.trim()) return false;
   
-  // Remove HTML tags and normalize content
-  const cleanContent = content.replace(/<[^>]*>/g, ' ').toLowerCase();
+  // Remove HTML tags and normalize content, removing accents
+  const cleanContent = normalizeAccents(content.replace(/<[^>]*>/g, ' ').toLowerCase());
   
-  // Split query into keywords
-  const keywords = query.toLowerCase().split(/\s+/).filter(keyword => keyword.trim().length > 1);
+  // Split query into keywords and normalize them
+  const keywords = query.toLowerCase().split(/\s+/).filter(keyword => keyword.trim().length > 1)
+    .map(keyword => normalizeAccents(keyword));
   
   // If no valid keywords, return false
   if (keywords.length === 0) return false;
@@ -134,7 +144,7 @@ export const containsAllKeywords = (content: string, query: string): boolean => 
 };
 
 /**
- * Highlights multiple keywords in text content
+ * Highlights multiple keywords in text content with accent-insensitive matching
  * @param content Text content to highlight in
  * @param query Space-separated keywords to highlight
  * @returns HTML string with highlighted keywords
@@ -149,14 +159,38 @@ export const highlightMultipleKeywords = (content: string, query: string): strin
   
   let highlightedContent = content;
   
-  // Create a regular expression that matches any of the keywords
-  const keywordPattern = new RegExp(`(${keywords.map(k => escapeRegExp(k)).join('|')})`, 'gi');
-  
-  // Replace all occurrences with highlighted version
-  highlightedContent = highlightedContent.replace(
-    keywordPattern,
-    match => `<span class="bg-yellow-100 text-swiss-dark font-medium">${match}</span>`
-  );
+  // Process each keyword individually to handle accent matching
+  for (const keyword of keywords) {
+    // Create a regex pattern that matches the keyword regardless of accents
+    // We're using a simplified approach here by creating alternatives for common accented chars
+    const accentMap: Record<string, string[]> = {
+      'a': ['a', 'à', 'á', 'â', 'ä', 'ã', 'å'],
+      'e': ['e', 'è', 'é', 'ê', 'ë'],
+      'i': ['i', 'ì', 'í', 'î', 'ï'],
+      'o': ['o', 'ò', 'ó', 'ô', 'ö', 'õ', 'ø'],
+      'u': ['u', 'ù', 'ú', 'û', 'ü'],
+      'c': ['c', 'ç'],
+      'n': ['n', 'ñ']
+    };
+    
+    let pattern = '';
+    for (const char of normalizeAccents(keyword)) {
+      if (accentMap[char]) {
+        pattern += `[${accentMap[char].join('')}]`;
+      } else {
+        pattern += escapeRegExp(char);
+      }
+    }
+    
+    // Create regex with the pattern
+    const keywordPattern = new RegExp(`(${pattern})`, 'gi');
+    
+    // Replace all occurrences with highlighted version
+    highlightedContent = highlightedContent.replace(
+      keywordPattern,
+      match => `<span class="bg-yellow-100 text-swiss-dark font-medium">${match}</span>`
+    );
+  }
   
   return highlightedContent;
 };
@@ -186,12 +220,15 @@ export const extractMultiKeywordExcerpt = (content: string, query: string, maxLe
   
   if (keywords.length === 0) return cleanContent.substring(0, maxLength) + '...';
   
-  // Find the first keyword occurrence
+  // Find the first keyword occurrence, using accent-insensitive comparison
   let firstIndex = -1;
   let firstKeyword = '';
   
+  const normalizedContent = normalizeAccents(cleanContent.toLowerCase());
+  
   for (const keyword of keywords) {
-    const index = cleanContent.toLowerCase().indexOf(keyword);
+    const normalizedKeyword = normalizeAccents(keyword);
+    const index = normalizedContent.indexOf(normalizedKeyword);
     if (index !== -1 && (firstIndex === -1 || index < firstIndex)) {
       firstIndex = index;
       firstKeyword = keyword;
