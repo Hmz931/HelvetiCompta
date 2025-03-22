@@ -4,7 +4,8 @@ import { useLocation } from 'react-router-dom';
 import { lexiconTerms } from '@/data/lexiconTerms';
 import { glossaryTerms } from '@/data/glossaryTerms';
 import { fullAccountsList } from '@/data/courses/chartOfAccounts';
-import { highlightText } from '@/utils/searchUtils';
+import { courseStructure } from '@/data/courses';
+import { highlightText, searchInHtmlContent, extractHighlightedHtmlExcerpt } from '@/utils/searchUtils';
 
 // Import refactored components
 import HomeHeader from '@/components/home/HomeHeader';
@@ -101,6 +102,82 @@ const Index = () => {
           excerpt: `Numéro de compte: ${account.number}, Libellé: ${account.title}`,
           source: 'Plan Comptable'
         });
+      }
+    }
+    
+    // Nouvelle recherche dans les cours de formation
+    for (const courseId in courseStructure) {
+      const course = courseStructure[courseId];
+      
+      // Recherche dans le titre et la description du cours
+      if (
+        course.title.toLowerCase().includes(query) ||
+        (course.description && course.description.toLowerCase().includes(query))
+      ) {
+        results.push({
+          title: course.title,
+          path: `/formation?course=${courseId}`,
+          excerpt: course.description 
+            ? highlightText(course.description, query, 150)
+            : `Cours de formation sur ${course.title}`,
+          source: 'Formation'
+        });
+      }
+      
+      // Recherche dans l'introduction du cours
+      if (course.introduction && searchInHtmlContent(course.introduction, query)) {
+        results.push({
+          title: `Introduction - ${course.title}`,
+          path: `/formation?course=${courseId}`,
+          excerpt: extractHighlightedHtmlExcerpt(course.introduction, query),
+          source: 'Formation'
+        });
+      }
+      
+      // Recherche dans les sections du cours
+      for (const section of course.sections) {
+        if (section.title.toLowerCase().includes(query)) {
+          results.push({
+            title: section.title,
+            path: `/formation?course=${courseId}&section=${section.id}`,
+            excerpt: `Section du cours "${course.title}"`,
+            source: 'Formation'
+          });
+        }
+        
+        // Recherche dans le contenu de la section
+        if (section.content && searchInHtmlContent(section.content, query)) {
+          results.push({
+            title: `${section.title} - ${course.title}`,
+            path: `/formation?course=${courseId}&section=${section.id}`,
+            excerpt: extractHighlightedHtmlExcerpt(section.content, query),
+            source: 'Formation'
+          });
+        }
+        
+        // Recherche dans les sous-sections
+        if (section.subsections) {
+          for (const subsection of section.subsections) {
+            if (subsection.title.toLowerCase().includes(query)) {
+              results.push({
+                title: subsection.title,
+                path: `/formation?course=${courseId}&section=${section.id}`,
+                excerpt: `Sous-section de "${section.title}" dans le cours "${course.title}"`,
+                source: 'Formation'
+              });
+            }
+            
+            // Recherche dans le contenu de la sous-section
+            if (searchInHtmlContent(subsection.content, query)) {
+              results.push({
+                title: `${subsection.title} - ${section.title}`,
+                path: `/formation?course=${courseId}&section=${section.id}`,
+                excerpt: extractHighlightedHtmlExcerpt(subsection.content, query),
+                source: 'Formation'
+              });
+            }
+          }
+        }
       }
     }
     

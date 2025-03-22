@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Search, FileText, BookOpen, HelpCircle } from 'lucide-react';
+import { Search, FileText, BookOpen, HelpCircle, Hash, BookMarked } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 type NoResultsProps = {
@@ -10,6 +10,10 @@ type NoResultsProps = {
 const NoResults = ({ searchQuery }: NoResultsProps) => {
   // Check if the search query might be related to an account number
   const isLikelyAccountNumber = /^\d{2,5}$/.test(searchQuery.trim());
+  
+  // Check if query might be related to financial statements or tax
+  const isLikelyFinancial = /bilan|états financiers|compte de résultat|trésorerie/i.test(searchQuery);
+  const isLikelyTax = /tva|taxe|impôt|fiscal/i.test(searchQuery);
   
   return (
     <section className="mb-16">
@@ -30,7 +34,7 @@ const NoResults = ({ searchQuery }: NoResultsProps) => {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             {isLikelyAccountNumber && (
               <Link to="/formation/chart-of-accounts" className="flex flex-col items-center p-4 rounded-lg border border-gray-200 hover:border-swiss-blue/50 hover:shadow-md transition-all">
-                <BookOpen size={24} className="text-swiss-blue mb-2" />
+                <Hash size={24} className="text-indigo-600 mb-2" />
                 <h3 className="font-medium mb-1">Plan comptable</h3>
                 <p className="text-sm text-gray-500 text-center">
                   Consultez notre plan comptable pour trouver le compte {searchQuery}
@@ -38,8 +42,28 @@ const NoResults = ({ searchQuery }: NoResultsProps) => {
               </Link>
             )}
             
-            <Link to="/glossary" className="flex flex-col items-center p-4 rounded-lg border border-gray-200 hover:border-swiss-blue/50 hover:shadow-md transition-all">
-              <FileText size={24} className="text-swiss-blue mb-2" />
+            {isLikelyFinancial && (
+              <Link to="/formation?course=financial-statements" className="flex flex-col items-center p-4 rounded-lg border border-gray-200 hover:border-swiss-blue/50 hover:shadow-md transition-all">
+                <BookMarked size={24} className="text-swiss-blue mb-2" />
+                <h3 className="font-medium mb-1">États financiers</h3>
+                <p className="text-sm text-gray-500 text-center">
+                  Consultez notre module sur les états financiers
+                </p>
+              </Link>
+            )}
+            
+            {isLikelyTax && (
+              <Link to="/formation?course=tax" className="flex flex-col items-center p-4 rounded-lg border border-gray-200 hover:border-swiss-blue/50 hover:shadow-md transition-all">
+                <BookMarked size={24} className="text-swiss-blue mb-2" />
+                <h3 className="font-medium mb-1">TVA et fiscalité</h3>
+                <p className="text-sm text-gray-500 text-center">
+                  Consultez notre module sur la TVA et la fiscalité
+                </p>
+              </Link>
+            )}
+            
+            <Link to="/lexique" className="flex flex-col items-center p-4 rounded-lg border border-gray-200 hover:border-swiss-blue/50 hover:shadow-md transition-all">
+              <FileText size={24} className="text-teal-600 mb-2" />
               <h3 className="font-medium mb-1">Glossaire</h3>
               <p className="text-sm text-gray-500 text-center">
                 Consultez notre glossaire de termes comptables
@@ -54,7 +78,7 @@ const NoResults = ({ searchQuery }: NoResultsProps) => {
               </p>
             </Link>
             
-            <Link to="/quiz" className="flex flex-col items-center p-4 rounded-lg border border-gray-200 hover:border-swiss-blue/50 hover:shadow-md transition-all">
+            <Link to="/formation/quiz" className="flex flex-col items-center p-4 rounded-lg border border-gray-200 hover:border-swiss-blue/50 hover:shadow-md transition-all">
               <HelpCircle size={24} className="text-swiss-blue mb-2" />
               <h3 className="font-medium mb-1">Quiz</h3>
               <p className="text-sm text-gray-500 text-center">

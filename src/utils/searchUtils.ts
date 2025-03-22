@@ -67,3 +67,46 @@ export const highlightNumber = (number: string | number, query: string): string 
     stringNumber.substring(index + query.length)
   );
 };
+
+// Nouvelle fonction pour rechercher dans le contenu HTML
+export const searchInHtmlContent = (content: string, query: string): boolean => {
+  if (!content) return false;
+  
+  // Supprimer les balises HTML pour la recherche
+  const textContent = content.replace(/<[^>]*>/g, ' ');
+  return textContent.toLowerCase().includes(query.toLowerCase());
+};
+
+// Nouvelle fonction pour extraire un extrait d'un contenu HTML avec mise en évidence
+export const extractHighlightedHtmlExcerpt = (content: string, query: string, maxLength: number = 150): string => {
+  if (!content) return '';
+  
+  // Supprimer les balises HTML pour la recherche
+  const textContent = content.replace(/<[^>]*>/g, ' ');
+  const lowerTextContent = textContent.toLowerCase();
+  const lowerQuery = query.toLowerCase();
+  
+  const index = lowerTextContent.indexOf(lowerQuery);
+  
+  if (index === -1) {
+    // Si le terme n'est pas trouvé, retourner le début du contenu
+    return textContent.substring(0, maxLength) + '...';
+  }
+  
+  // Calculer le début et la fin de l'extrait
+  const start = Math.max(0, index - 50);
+  const end = Math.min(textContent.length, index + query.length + 70);
+  
+  let excerpt = '';
+  if (start > 0) excerpt += '...';
+  
+  excerpt += textContent.substring(start, end);
+  
+  if (end < textContent.length) excerpt += '...';
+  
+  // Mettre en surbrillance le terme recherché
+  return excerpt.replace(
+    new RegExp(query, 'gi'),
+    match => `<span class="bg-yellow-100 text-swiss-dark font-medium">${match}</span>`
+  );
+};
