@@ -96,6 +96,9 @@ const SearchResults = ({ searchQuery, searchResults }: SearchResultsProps) => {
                     />
                     <div className="mt-2 text-sm text-gray-500">
                       Source: {result.source}
+                      <span className="ml-2 text-swiss-blue hover:underline font-medium">
+                        Voir plus
+                      </span>
                     </div>
                   </div>
                 </div>

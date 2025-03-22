@@ -1,169 +1,48 @@
-export const highlightText = (text: string, query: string, maxLength: number): string => {
-  // Convert both text and query to lowercase for case-insensitive search
-  const lowerText = text.toLowerCase();
-  const lowerQuery = query.toLowerCase();
-  
-  // Find the index of the query in the text
-  const index = lowerText.indexOf(lowerQuery);
-  
-  // If query not found in text, return a truncated version of the text
-  if (index === -1) {
-    return text.length > maxLength ? text.substring(0, maxLength) + '...' : text;
-  }
-  
-  // Calculate start and end positions for the excerpt
-  const start = Math.max(0, index - 50);
-  const end = Math.min(text.length, index + query.length + 50);
-  
-  // Build the excerpt with ellipses if needed
-  let excerpt = '';
-  if (start > 0) {
-    excerpt += '...';
-  }
-  
-  excerpt += text.substring(start, end);
-  
-  if (end < text.length) {
-    excerpt += '...';
-  }
-  
-  return excerpt;
-};
 
-// New function to check if a number matches a search query
-export const matchesNumber = (number: string | number, query: string): boolean => {
-  const stringNumber = String(number);
-  const stringQuery = String(query).trim();
-  
-  return stringNumber.includes(stringQuery);
-};
+// Utility functions for searching data
 
-// New function to search for account numbers in any format
-export const accountNumberMatches = (accountNumber: string | number, query: string): boolean => {
-  // Convert both to strings and remove any non-numeric characters for searching
-  const cleanAccountNumber = String(accountNumber).replace(/\D/g, '');
-  const cleanQuery = query.replace(/\D/g, '');
-  
-  // If query is empty after cleaning, return false
-  if (!cleanQuery) return false;
-  
-  // Check if the account number includes the query
-  return cleanAccountNumber.includes(cleanQuery);
-};
-
-// New function to highlight a number in text
-export const highlightNumber = (number: string | number, query: string): string => {
-  const stringNumber = String(number);
-  const index = stringNumber.indexOf(query);
-  
-  if (index === -1) return stringNumber;
-  
-  return (
-    stringNumber.substring(0, index) + 
-    '<span class="bg-yellow-200 text-black">' + 
-    stringNumber.substring(index, index + query.length) + 
-    '</span>' + 
-    stringNumber.substring(index + query.length)
-  );
-};
-
-// Function for HTML content search
-export const searchInHtmlContent = (content: string, query: string): boolean => {
-  if (!content) return false;
-  
-  // Remove HTML tags for search
-  const textContent = content.replace(/<[^>]*>/g, ' ');
-  return textContent.toLowerCase().includes(query.toLowerCase());
-};
-
-// Function to extract excerpt with highlighting from HTML content
-export const extractHighlightedHtmlExcerpt = (content: string, query: string, maxLength: number = 150): string => {
-  if (!content) return '';
-  
-  // Remove HTML tags for search
-  const textContent = content.replace(/<[^>]*>/g, ' ');
-  const lowerTextContent = textContent.toLowerCase();
-  const lowerQuery = query.toLowerCase();
-  
-  const index = lowerTextContent.indexOf(lowerQuery);
-  
-  if (index === -1) {
-    // If term not found, return beginning of content
-    return textContent.substring(0, maxLength) + '...';
-  }
-  
-  // Calculate start and end for excerpt
-  const start = Math.max(0, index - 50);
-  const end = Math.min(textContent.length, index + query.length + 70);
-  
-  let excerpt = '';
-  if (start > 0) excerpt += '...';
-  
-  excerpt += textContent.substring(start, end);
-  
-  if (end < textContent.length) excerpt += '...';
-  
-  // Highlight search term
-  return excerpt.replace(
-    new RegExp(query, 'gi'),
-    match => `<span class="bg-yellow-100 text-swiss-dark font-medium">${match}</span>`
-  );
-};
-
-/**
- * Removes accents/diacritics from a string
- * @param text Text to normalize
- * @returns The text without accents/diacritics
- */
+// Normalize text for accent-insensitive search
 export const normalizeAccents = (text: string): string => {
-  if (!text) return '';
-  return text.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+  return text.toLowerCase()
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '');
 };
 
-/**
- * New function that checks if content contains all keywords in a search query, ignoring accents
- * @param content Text content to search in
- * @param query Space-separated keywords to search for
- * @returns True if all keywords are found in the content
- */
-export const containsAllKeywords = (content: string, query: string): boolean => {
-  if (!content || !query.trim()) return false;
+// Check if a text contains all of a set of search terms
+export const containsAllSearchTerms = (text: string, searchTerms: string[]): boolean => {
+  const normalizedText = normalizeAccents(text);
   
-  // Remove HTML tags and normalize content, removing accents
-  const cleanContent = normalizeAccents(content.replace(/<[^>]*>/g, ' ').toLowerCase());
-  
-  // Split query into keywords and normalize them
-  const keywords = query.toLowerCase().split(/\s+/).filter(keyword => keyword.trim().length > 1)
-    .map(keyword => normalizeAccents(keyword));
-  
-  // If no valid keywords, return false
-  if (keywords.length === 0) return false;
-  
-  // Check if all keywords are present in the content
-  return keywords.every(keyword => cleanContent.includes(keyword));
+  return searchTerms.every(term => {
+    const normalizedTerm = normalizeAccents(term);
+    return normalizedText.includes(normalizedTerm);
+  });
 };
 
-/**
- * Highlights multiple keywords in text content with accent-insensitive matching
- * @param content Text content to highlight in
- * @param query Space-separated keywords to highlight
- * @returns HTML string with highlighted keywords
- */
-export const highlightMultipleKeywords = (content: string, query: string): string => {
-  if (!content || !query.trim()) return content;
+// Check if a term contains any numerical search term (for account numbers)
+export const containsAccountNumber = (text: string, searchTerms: string[]): boolean => {
+  const accountNumbers = searchTerms.filter(term => /^\d+$/.test(term.trim()));
+  if (accountNumbers.length === 0) return false;
   
-  // Split query into keywords
-  const keywords = query.toLowerCase().split(/\s+/).filter(keyword => keyword.trim().length > 1);
+  return accountNumbers.some(numTerm => text.includes(numTerm));
+};
+
+// Highlight matching terms in text
+export const highlightMatchingTerms = (text: string, searchTerms: string[]): string => {
+  if (!text || searchTerms.length === 0 || searchTerms[0].trim() === '') {
+    return text;
+  }
   
-  if (keywords.length === 0) return content;
+  let highlightedText = text;
   
-  let highlightedContent = content;
-  
-  // Process each keyword individually to handle accent matching
-  for (const keyword of keywords) {
-    // Create a regex pattern that matches the keyword regardless of accents
-    // We're using a simplified approach here by creating alternatives for common accented chars
-    const accentMap: Record<string, string[]> = {
+  searchTerms.forEach(term => {
+    if (term.trim() === '') return;
+    
+    const normalizedTerm = normalizeAccents(term.trim());
+    if (normalizedTerm === '') return;
+    
+    // Create a regex that's case insensitive and accent insensitive
+    // This requires finding all variations of the characters with accents
+    const accentVariations: { [key: string]: string[] } = {
       'a': ['a', 'à', 'á', 'â', 'ä', 'ã', 'å'],
       'e': ['e', 'è', 'é', 'ê', 'ë'],
       'i': ['i', 'ì', 'í', 'î', 'ï'],
@@ -173,85 +52,157 @@ export const highlightMultipleKeywords = (content: string, query: string): strin
       'n': ['n', 'ñ']
     };
     
-    let pattern = '';
-    for (const char of normalizeAccents(keyword)) {
-      if (accentMap[char]) {
-        pattern += `[${accentMap[char].join('')}]`;
+    let regexPattern = '';
+    for (const char of normalizedTerm) {
+      if (accentVariations[char]) {
+        regexPattern += `[${accentVariations[char].join('')}]`;
       } else {
-        pattern += escapeRegExp(char);
+        regexPattern += char;
       }
     }
     
-    // Create regex with the pattern
-    const keywordPattern = new RegExp(`(${pattern})`, 'gi');
-    
-    // Replace all occurrences with highlighted version
-    highlightedContent = highlightedContent.replace(
-      keywordPattern,
-      match => `<span class="bg-yellow-100 text-swiss-dark font-medium">${match}</span>`
-    );
-  }
+    const regex = new RegExp(`(${regexPattern})`, 'gi');
+    highlightedText = highlightedText.replace(regex, '<mark>$1</mark>');
+  });
   
-  return highlightedContent;
+  return highlightedText;
 };
 
-/**
- * Helper function to escape special characters in regex
- */
-function escapeRegExp(string: string): string {
-  return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-}
-
-/**
- * Extract a relevant excerpt from content that contains all keywords
- * @param content Text content to extract from
- * @param query Space-separated keywords
- * @param maxLength Maximum length of the excerpt
- * @returns HTML string with excerpt and highlighted keywords
- */
-export const extractMultiKeywordExcerpt = (content: string, query: string, maxLength: number = 200): string => {
-  if (!content || !query.trim()) return content.substring(0, maxLength) + '...';
+// Extract a relevant excerpt from text that contains the search terms
+export const extractRelevantExcerpt = (text: string, searchTerms: string[], maxLength: number = 200): string => {
+  if (!text) return '';
   
-  // Remove HTML tags for searching
-  const cleanContent = content.replace(/<[^>]*>/g, ' ');
+  const normalizedText = normalizeAccents(text);
+  let bestExcerptStart = 0;
+  let highestTermCount = 0;
   
-  // Split query into keywords
-  const keywords = query.toLowerCase().split(/\s+/).filter(keyword => keyword.trim().length > 1);
+  // If the text is shorter than maxLength, just return the whole text
+  if (text.length <= maxLength) {
+    return highlightMatchingTerms(text, searchTerms);
+  }
   
-  if (keywords.length === 0) return cleanContent.substring(0, maxLength) + '...';
+  // Find the paragraph with the most search terms
+  const paragraphs = text.split(/\n+/);
+  let bestParagraph = '';
   
-  // Find the first keyword occurrence, using accent-insensitive comparison
-  let firstIndex = -1;
-  let firstKeyword = '';
-  
-  const normalizedContent = normalizeAccents(cleanContent.toLowerCase());
-  
-  for (const keyword of keywords) {
-    const normalizedKeyword = normalizeAccents(keyword);
-    const index = normalizedContent.indexOf(normalizedKeyword);
-    if (index !== -1 && (firstIndex === -1 || index < firstIndex)) {
-      firstIndex = index;
-      firstKeyword = keyword;
+  for (const paragraph of paragraphs) {
+    const normalizedParagraph = normalizeAccents(paragraph);
+    let termCount = 0;
+    
+    searchTerms.forEach(term => {
+      const normalizedTerm = normalizeAccents(term.trim());
+      if (normalizedTerm && normalizedParagraph.includes(normalizedTerm)) {
+        termCount++;
+      }
+    });
+    
+    if (termCount > highestTermCount) {
+      highestTermCount = termCount;
+      bestParagraph = paragraph;
     }
   }
   
-  if (firstIndex === -1) {
-    // If no keywords found, return the beginning of the content
-    return cleanContent.substring(0, maxLength) + '...';
+  // If we found a good paragraph, use it for our excerpt
+  if (bestParagraph) {
+    // If paragraph is still too long, extract a window around the first match
+    if (bestParagraph.length > maxLength) {
+      for (const term of searchTerms) {
+        const normalizedTerm = normalizeAccents(term.trim());
+        if (!normalizedTerm) continue;
+        
+        const termIndex = normalizeAccents(bestParagraph).indexOf(normalizedTerm);
+        if (termIndex !== -1) {
+          // Calculate start and end positions for the excerpt window
+          const start = Math.max(0, termIndex - Math.floor(maxLength / 2));
+          const end = Math.min(bestParagraph.length, start + maxLength);
+          
+          let excerpt = bestParagraph.substring(start, end);
+          
+          // Add ellipsis if we're not starting/ending at the actual start/end
+          if (start > 0) excerpt = '...' + excerpt;
+          if (end < bestParagraph.length) excerpt = excerpt + '...';
+          
+          return highlightMatchingTerms(excerpt, searchTerms);
+        }
+      }
+    }
+    
+    // If paragraph fits or we couldn't find a better excerpt window
+    return highlightMatchingTerms(bestParagraph, searchTerms);
   }
   
-  // Calculate excerpt bounds around the first found keyword
-  const start = Math.max(0, firstIndex - 40);
-  const end = Math.min(cleanContent.length, firstIndex + firstKeyword.length + 140);
+  // Fallback to simple excerpt if no good paragraph found
+  const firstMatchIndex = searchTerms.reduce((earliestIndex, term) => {
+    const normalizedTerm = normalizeAccents(term.trim());
+    if (!normalizedTerm) return earliestIndex;
+    
+    const index = normalizedText.indexOf(normalizedTerm);
+    return index !== -1 && (index < earliestIndex || earliestIndex === -1) ? index : earliestIndex;
+  }, -1);
   
-  // Create excerpt
-  let excerpt = '';
-  if (start > 0) excerpt += '...';
+  if (firstMatchIndex !== -1) {
+    const start = Math.max(0, firstMatchIndex - Math.floor(maxLength / 4));
+    const end = Math.min(text.length, start + maxLength);
+    
+    let excerpt = text.substring(start, end);
+    
+    // Add ellipsis if needed
+    if (start > 0) excerpt = '...' + excerpt;
+    if (end < text.length) excerpt = excerpt + '...';
+    
+    return highlightMatchingTerms(excerpt, searchTerms);
+  }
   
-  excerpt += cleanContent.substring(start, end);
+  // If all else fails, just return the first part of the text
+  return highlightMatchingTerms(text.substring(0, maxLength) + '...', searchTerms);
+};
+
+// Generate search suggestions based on partial matches
+export const generateSearchSuggestions = (searchText: string, allTerms: string[]): string[] => {
+  if (!searchText || searchText.trim().length < 2) return [];
   
-  if (end < cleanContent.length) excerpt += '...';
+  const normalizedSearchText = normalizeAccents(searchText.trim().toLowerCase());
+  const matches = allTerms
+    .filter(term => normalizeAccents(term.toLowerCase()).includes(normalizedSearchText))
+    .slice(0, 5); // Limit to 5 suggestions
+    
+  return matches;
+};
+
+// Calculate relevance score for search results sorting
+export const calculateRelevanceScore = (text: string, title: string, searchTerms: string[]): number => {
+  const normalizedText = normalizeAccents(text);
+  const normalizedTitle = normalizeAccents(title);
+  let score = 0;
   
-  // Highlight all keywords in the excerpt
-  return highlightMultipleKeywords(excerpt, query);
+  searchTerms.forEach(term => {
+    const normalizedTerm = normalizeAccents(term.trim());
+    if (!normalizedTerm) return;
+    
+    // Higher score for term in title
+    if (normalizedTitle.includes(normalizedTerm)) {
+      score += 10;
+      
+      // Even higher if it starts with the term
+      if (normalizedTitle.startsWith(normalizedTerm)) {
+        score += 5;
+      }
+      
+      // Higher score for exact title match
+      if (normalizedTitle === normalizedTerm) {
+        score += 20;
+      }
+    }
+    
+    // Score for term in text
+    if (normalizedText.includes(normalizedTerm)) {
+      score += 5;
+      
+      // Count occurrences for additional relevance
+      const occurrences = (normalizedText.match(new RegExp(normalizedTerm, 'gi')) || []).length;
+      score += Math.min(occurrences, 5); // Cap at 5 to avoid extreme bias
+    }
+  });
+  
+  return score;
 };

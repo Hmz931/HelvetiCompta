@@ -24,6 +24,13 @@ const SearchBar = ({
   
   const isControlled = value !== undefined && onChange !== undefined;
   
+  // Normalize accents and capitalization for search
+  const normalizeText = (text: string) => {
+    return text.toLowerCase()
+      .normalize('NFD')
+      .replace(/[\u0300-\u036f]/g, '');
+  };
+  
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const newValue = e.target.value;
     
