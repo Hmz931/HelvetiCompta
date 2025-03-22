@@ -14,10 +14,10 @@ export const financialStatementsCourse: Course = {
     {
       id: 'balance-sheet',
       title: 'Le bilan',
-      content: `
-<h2>Le bilan</h2>
-<p>Le bilan (ou état de la situation financière) est un document comptable qui présente l'ensemble des ressources (actifs) et des moyens de financement (passifs) d'une entreprise à un moment précis, généralement à la fin de l'exercice comptable.</p>
-
+      subsections: [
+        {
+          title: 'Structure du bilan suisse',
+          content: `
 <h3>Structure du bilan suisse</h3>
 <p>Selon le droit comptable suisse (Code des Obligations), le bilan doit être structuré comme suit:</p>
 
@@ -67,7 +67,11 @@ export const financialStatementsCourse: Course = {
 <li>Bénéfice ou perte reporté (29XX)</li>
 <li>Bénéfice ou perte de l'exercice (29XX)</li>
 </ul>
-
+          `
+        },
+        {
+          title: 'Principes fondamentaux du bilan',
+          content: `
 <h3>Principes fondamentaux du bilan</h3>
 <ul>
 <li><strong>Principe d'équilibre</strong>: Le total des actifs doit toujours être égal au total des passifs</li>
@@ -75,15 +79,21 @@ export const financialStatementsCourse: Course = {
 <li><strong>Principe d'exigibilité</strong>: Les passifs sont classés par ordre d'exigibilité croissante</li>
 <li><strong>Principe de permanence</strong>: Les méthodes de présentation et d'évaluation doivent rester constantes d'un exercice à l'autre</li>
 </ul>
+          `
+        }
+      ],
+      content: `
+<h2>Le bilan</h2>
+<p>Le bilan (ou état de la situation financière) est un document comptable qui présente l'ensemble des ressources (actifs) et des moyens de financement (passifs) d'une entreprise à un moment précis, généralement à la fin de l'exercice comptable.</p>
       `
     },
     {
       id: 'income-statement',
       title: 'Le compte de résultat',
-      content: `
-<h2>Le compte de résultat</h2>
-<p>Le compte de résultat (ou état du résultat global) est un document comptable qui présente les produits et les charges d'une entreprise sur une période donnée, généralement un exercice comptable. Il permet de déterminer si l'entreprise a réalisé un bénéfice ou une perte.</p>
-
+      subsections: [
+        {
+          title: 'Structure du compte de résultat suisse',
+          content: `
 <h3>Structure du compte de résultat suisse</h3>
 <p>Selon le droit comptable suisse, le compte de résultat peut être présenté selon la méthode de l'affectation des charges par nature ou par fonction:</p>
 
@@ -116,7 +126,11 @@ export const financialStatementsCourse: Course = {
 <li><strong>Impôts directs</strong></li>
 <li><strong>Bénéfice ou perte de l'exercice</strong></li>
 </ol>
-
+          `
+        },
+        {
+          title: 'Principes fondamentaux du compte de résultat',
+          content: `
 <h3>Principes fondamentaux du compte de résultat</h3>
 <ul>
 <li><strong>Principe de prudence</strong>: Ne pas surévaluer les produits et sous-évaluer les charges</li>
@@ -124,15 +138,21 @@ export const financialStatementsCourse: Course = {
 <li><strong>Principe de périodicité</strong>: Les produits et charges doivent être comptabilisés dans la période à laquelle ils se rapportent</li>
 <li><strong>Principe de spécialisation des exercices</strong>: Les opérations doivent être enregistrées dans l'exercice auquel elles se rattachent</li>
 </ul>
+          `
+        }
+      ],
+      content: `
+<h2>Le compte de résultat</h2>
+<p>Le compte de résultat (ou état du résultat global) est un document comptable qui présente les produits et les charges d'une entreprise sur une période donnée, généralement un exercice comptable. Il permet de déterminer si l'entreprise a réalisé un bénéfice ou une perte.</p>
       `
     },
     {
       id: 'cash-flow',
       title: 'Le tableau des flux de trésorerie',
-      content: `
-<h2>Le tableau des flux de trésorerie</h2>
-<p>Le tableau des flux de trésorerie est un document comptable qui présente les mouvements d'argent (entrées et sorties) d'une entreprise sur une période donnée. Il est complémentaire au bilan et au compte de résultat et permet de comprendre comment l'entreprise génère et utilise sa trésorerie.</p>
-
+      subsections: [
+        {
+          title: 'Structure du tableau des flux de trésorerie suisse',
+          content: `
 <h3>Structure du tableau des flux de trésorerie suisse</h3>
 <p>Le tableau des flux de trésorerie est structuré en trois parties distinctes:</p>
 
@@ -172,7 +192,11 @@ export const financialStatementsCourse: Course = {
 <li>Émission/remboursement d'emprunts</li>
 <li>Dividendes versés</li>
 </ul>
-
+          `
+        },
+        {
+          title: 'Importance du tableau des flux de trésorerie',
+          content: `
 <h3>Importance du tableau des flux de trésorerie</h3>
 <p>Ce document est essentiel car il permet:</p>
 <ul>
@@ -181,15 +205,21 @@ export const financialStatementsCourse: Course = {
 <li>De comprendre la différence entre le résultat comptable et la variation de trésorerie</li>
 <li>D'anticiper les problèmes de liquidité</li>
 </ul>
+          `
+        }
+      ],
+      content: `
+<h2>Le tableau des flux de trésorerie</h2>
+<p>Le tableau des flux de trésorerie est un document comptable qui présente les mouvements d'argent (entrées et sorties) d'une entreprise sur une période donnée. Il est complémentaire au bilan et au compte de résultat et permet de comprendre comment l'entreprise génère et utilise sa trésorerie.</p>
       `
     },
     {
       id: 'notes',
       title: 'L\'annexe aux comptes',
-      content: `
-<h2>L'annexe aux comptes</h2>
-<p>L'annexe (ou notes aux états financiers) est un document qui complète le bilan, le compte de résultat et le tableau des flux de trésorerie. Elle fournit des informations supplémentaires pour permettre une meilleure compréhension des états financiers.</p>
-
+      subsections: [
+        {
+          title: 'Contenu de l\'annexe selon le droit suisse',
+          content: `
 <h3>Contenu de l'annexe selon le droit suisse</h3>
 <p>Selon l'article 959c du Code des Obligations, l'annexe doit contenir les informations suivantes:</p>
 
@@ -211,7 +241,11 @@ export const financialStatementsCourse: Course = {
 <li>Les événements importants survenus après la date du bilan</li>
 <li>Les motifs ayant conduit à la démission anticipée de l'organe de révision</li>
 </ol>
-
+          `
+        },
+        {
+          title: 'Importance de l\'annexe',
+          content: `
 <h3>Importance de l'annexe</h3>
 <p>L'annexe est essentielle car elle:</p>
 <ul>
@@ -220,15 +254,21 @@ export const financialStatementsCourse: Course = {
 <li>Présente des informations qui ne figurent pas dans les autres états financiers</li>
 <li>Permet une meilleure compréhension de la situation financière de l'entreprise</li>
 </ul>
+          `
+        }
+      ],
+      content: `
+<h2>L'annexe aux comptes</h2>
+<p>L'annexe (ou notes aux états financiers) est un document qui complète le bilan, le compte de résultat et le tableau des flux de trésorerie. Elle fournit des informations supplémentaires pour permettre une meilleure compréhension des états financiers.</p>
       `
     },
     {
       id: 'analysis',
       title: 'Analyse des états financiers',
-      content: `
-<h2>Analyse des états financiers</h2>
-<p>L'analyse des états financiers consiste à étudier les informations contenues dans le bilan, le compte de résultat, le tableau des flux de trésorerie et l'annexe pour évaluer la situation financière et la performance d'une entreprise.</p>
-
+      subsections: [
+        {
+          title: 'Méthodes d\'analyse',
+          content: `
 <h3>Méthodes d'analyse</h3>
 <h4>1. Analyse horizontale</h4>
 <p>L'analyse horizontale consiste à comparer les états financiers sur plusieurs exercices pour identifier les tendances et les évolutions.</p>
@@ -246,7 +286,11 @@ export const financialStatementsCourse: Course = {
 </ul>
 
 <p>Pour une analyse détaillée des ratios financiers, consultez le cours <a href="/formation/financial-ratios">Ratios et indicateurs financiers</a>.</p>
-
+          `
+        },
+        {
+          title: 'Interprétation des résultats',
+          content: `
 <h3>Interprétation des résultats</h3>
 <p>L'interprétation des résultats de l'analyse doit tenir compte:</p>
 <ul>
@@ -264,6 +308,12 @@ export const financialStatementsCourse: Course = {
 <li>Certaines informations importantes peuvent ne pas être reflétées dans les états financiers</li>
 <li>Les états financiers peuvent faire l'objet de manipulations (comptabilité créative)</li>
 </ul>
+          `
+        }
+      ],
+      content: `
+<h2>Analyse des états financiers</h2>
+<p>L'analyse des états financiers consiste à étudier les informations contenues dans le bilan, le compte de résultat, le tableau des flux de trésorerie et l'annexe pour évaluer la situation financière et la performance d'une entreprise.</p>
       `
     }
   ]
