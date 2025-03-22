@@ -34,8 +34,8 @@ export const financialStatementsCourse: Course = {
 <p><strong>Actifs immobilisés:</strong></p>
 <ul>
 <li>Immobilisations financières (14XX)</li>
-<li>Participations (15XX)</li>
-<li>Immobilisations corporelles (16XX)</li>
+<li>Participations (14XX)</li>
+<li>Immobilisations corporelles (15XX et 16XX)</li>
 <li>Immobilisations incorporelles (17XX)</li>
 <li>Capital non libéré (18XX)</li>
 </ul>
