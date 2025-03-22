@@ -1,6 +1,7 @@
+
 import { Course } from './types';
 
-export const accountingChartCourse: Course = {
+export const chartOfAccountsCourse: Course = {
   id: 'chart-of-accounts',
   title: 'Les comptes et leur classification',
   description: 'Comprendre l\'organisation et l\'utilisation du plan comptable suisse',
