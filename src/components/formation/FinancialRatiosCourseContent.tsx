@@ -7,7 +7,6 @@ import './financial/FormulaDisplay.css';
 import RatioFormulaDisplay from './financial/RatioFormulaDisplay';
 import RatioSummaryTable from './financial/RatioSummaryTable';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 
 const FinancialRatiosCourseContent = () => {
   const course = courseStructure["financial-ratios"];
@@ -95,32 +94,10 @@ const FinancialRatiosCourseContent = () => {
               </CardTitle>
             </CardHeader>
             <CardContent className="pt-6 px-6">
-              {introSection.content && (
+              {introSection.content ? (
                 <div dangerouslySetInnerHTML={{ __html: introSection.content }} />
-              )}
-              
-              {introSection.subsections && introSection.subsections.length > 0 && (
-                <div className="mt-6">
-                  <Tabs defaultValue={introSection.subsections[0].title}>
-                    <TabsList className="mb-4 w-full">
-                      {introSection.subsections.map((subsection) => (
-                        <TabsTrigger 
-                          key={subsection.title} 
-                          value={subsection.title}
-                          className="flex-1"
-                        >
-                          {subsection.title}
-                        </TabsTrigger>
-                      ))}
-                    </TabsList>
-                    
-                    {introSection.subsections.map((subsection) => (
-                      <TabsContent key={subsection.title} value={subsection.title}>
-                        <div className="py-2" dangerouslySetInnerHTML={{ __html: subsection.content }} />
-                      </TabsContent>
-                    ))}
-                  </Tabs>
-                </div>
+              ) : (
+                <p className="text-gray-500 italic">Contenu à venir...</p>
               )}
             </CardContent>
           </Card>
@@ -147,32 +124,10 @@ const FinancialRatiosCourseContent = () => {
                       </div>
                     </AccordionTrigger>
                     <AccordionContent className="pt-4 pb-2 px-2">
-                      {section.content && (
-                        <div dangerouslySetInnerHTML={{ __html: section.content }} />
-                      )}
-                      
-                      {section.subsections && section.subsections.length > 0 && (
-                        <div className="mt-4">
-                          <Tabs defaultValue={section.subsections[0].title}>
-                            <TabsList className="mb-4 w-full">
-                              {section.subsections.map((subsection) => (
-                                <TabsTrigger 
-                                  key={subsection.title} 
-                                  value={subsection.title}
-                                  className="flex-1"
-                                >
-                                  {subsection.title}
-                                </TabsTrigger>
-                              ))}
-                            </TabsList>
-                            
-                            {section.subsections.map((subsection) => (
-                              <TabsContent key={subsection.title} value={subsection.title}>
-                                <div className="py-2" dangerouslySetInnerHTML={{ __html: subsection.content }} />
-                              </TabsContent>
-                            ))}
-                          </Tabs>
-                        </div>
+                      {section.content ? (
+                        processContent(section.content, section.id)
+                      ) : (
+                        <p className="text-gray-500 italic">Contenu à venir...</p>
                       )}
                     </AccordionContent>
                   </AccordionItem>
@@ -191,32 +146,10 @@ const FinancialRatiosCourseContent = () => {
               </CardTitle>
             </CardHeader>
             <CardContent className="pt-6 px-6">
-              {summarySection.content && (
-                <div dangerouslySetInnerHTML={{ __html: summarySection.content }} />
-              )}
-              
-              {summarySection.subsections && summarySection.subsections.length > 0 && (
-                <div className="mt-6">
-                  <Tabs defaultValue={summarySection.subsections[0].title}>
-                    <TabsList className="mb-4 w-full">
-                      {summarySection.subsections.map((subsection) => (
-                        <TabsTrigger 
-                          key={subsection.title} 
-                          value={subsection.title}
-                          className="flex-1"
-                        >
-                          {subsection.title}
-                        </TabsTrigger>
-                      ))}
-                    </TabsList>
-                    
-                    {summarySection.subsections.map((subsection) => (
-                      <TabsContent key={subsection.title} value={subsection.title}>
-                        <div className="py-2" dangerouslySetInnerHTML={{ __html: subsection.content }} />
-                      </TabsContent>
-                    ))}
-                  </Tabs>
-                </div>
+              {summarySection.content ? (
+                processContent(summarySection.content, summarySection.id)
+              ) : (
+                <p className="text-gray-500 italic">Contenu à venir...</p>
               )}
             </CardContent>
           </Card>
