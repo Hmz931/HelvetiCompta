@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { BookOpen, FileText, BookMarked, Hash } from 'lucide-react';
 
 type SearchResultItem = {
@@ -16,6 +16,8 @@ type SearchResultsProps = {
 };
 
 const SearchResults = ({ searchQuery, searchResults }: SearchResultsProps) => {
+  const navigate = useNavigate();
+
   // Function to determine icon based on source
   const getSourceIcon = (source: string) => {
     switch (source) {
@@ -53,6 +55,11 @@ const SearchResults = ({ searchQuery, searchResults }: SearchResultsProps) => {
     groupedResults[result.source].push(result);
   });
 
+  // Handle result click with explicit navigation
+  const handleResultClick = (path: string) => {
+    navigate(path);
+  };
+
   return (
     <section className="mb-16">
       <h2 className="text-2xl font-bold mb-4 border-b pb-2">Résultats de recherche pour "{searchQuery}"</h2>
@@ -70,10 +77,10 @@ const SearchResults = ({ searchQuery, searchResults }: SearchResultsProps) => {
           
           <div className="space-y-4">
             {groupedResults[source].map((result, index) => (
-              <Link 
-                to={result.path} 
+              <div
                 key={`${result.title}-${index}`}
-                className="block glass rounded-xl p-5 shadow-card hover:shadow-lg transition-all"
+                className="block glass rounded-xl p-5 shadow-card hover:shadow-lg transition-all cursor-pointer"
+                onClick={() => handleResultClick(result.path)}
               >
                 <div className="flex items-start">
                   <div className={`${getSourceColor(source)} p-2 rounded-lg mr-4 mt-1 hidden sm:block`}>
@@ -91,7 +98,7 @@ const SearchResults = ({ searchQuery, searchResults }: SearchResultsProps) => {
                     </div>
                   </div>
                 </div>
-              </Link>
+              </div>
             ))}
           </div>
         </div>
