@@ -5,7 +5,13 @@ import { lexiconTerms } from '@/data/lexiconTerms';
 import { glossaryTerms } from '@/data/glossaryTerms';
 import { fullAccountsList } from '@/data/courses/chartOfAccounts';
 import { courseStructure } from '@/data/courses';
-import { highlightText, searchInHtmlContent, extractHighlightedHtmlExcerpt } from '@/utils/searchUtils';
+import { 
+  highlightText, 
+  searchInHtmlContent, 
+  extractHighlightedHtmlExcerpt,
+  containsAllKeywords,
+  extractMultiKeywordExcerpt
+} from '@/utils/searchUtils';
 
 // Import refactored components
 import HomeHeader from '@/components/home/HomeHeader';
@@ -62,13 +68,13 @@ const Index = () => {
     for (const term of lexiconTerms) {
       if (
         term.title.toLowerCase().includes(query) ||
-        term.definition.toLowerCase().includes(query) ||
-        (term.example && term.example.toLowerCase().includes(query))
+        containsAllKeywords(term.definition, query) ||
+        (term.example && containsAllKeywords(term.example, query))
       ) {
         results.push({
           title: term.title,
           path: `/lexique?term=${encodeURIComponent(term.title)}`,
-          excerpt: highlightText(term.definition, query, 150),
+          excerpt: extractMultiKeywordExcerpt(term.definition, query, 150),
           source: 'Lexique'
         });
       }
@@ -78,13 +84,13 @@ const Index = () => {
     for (const term of glossaryTerms) {
       if (
         term.title.toLowerCase().includes(query) ||
-        term.definition.toLowerCase().includes(query) ||
-        (term.example && term.example.toLowerCase().includes(query))
+        containsAllKeywords(term.definition, query) ||
+        (term.example && containsAllKeywords(term.example, query))
       ) {
         results.push({
           title: term.title,
           path: `/lexique?term=${encodeURIComponent(term.title)}`,
-          excerpt: highlightText(term.definition, query, 150),
+          excerpt: extractMultiKeywordExcerpt(term.definition, query, 150),
           source: 'Lexique'
         });
       }
@@ -94,7 +100,7 @@ const Index = () => {
     for (const account of fullAccountsList) {
       if (
         account.number.includes(query) ||
-        account.title.toLowerCase().includes(query)
+        containsAllKeywords(account.title, query)
       ) {
         results.push({
           title: `${account.number} - ${account.title}`,
@@ -105,38 +111,41 @@ const Index = () => {
       }
     }
     
-    // Nouvelle recherche dans les cours de formation
+    // Search in training courses
     for (const courseId in courseStructure) {
       const course = courseStructure[courseId];
       
-      // Recherche dans le titre et la description du cours
+      // Search in course title and description
       if (
         course.title.toLowerCase().includes(query) ||
-        (course.description && course.description.toLowerCase().includes(query))
+        (course.description && containsAllKeywords(course.description, query))
       ) {
         results.push({
           title: course.title,
           path: `/formation?course=${courseId}`,
           excerpt: course.description 
-            ? highlightText(course.description, query, 150)
+            ? extractMultiKeywordExcerpt(course.description, query, 150)
             : `Cours de formation sur ${course.title}`,
           source: 'Formation'
         });
       }
       
-      // Recherche dans l'introduction du cours
-      if (course.introduction && searchInHtmlContent(course.introduction, query)) {
+      // Search in course introduction
+      if (course.introduction && (
+        searchInHtmlContent(course.introduction, query) || 
+        containsAllKeywords(course.introduction, query)
+      )) {
         results.push({
           title: `Introduction - ${course.title}`,
           path: `/formation?course=${courseId}`,
-          excerpt: extractHighlightedHtmlExcerpt(course.introduction, query),
+          excerpt: extractMultiKeywordExcerpt(course.introduction, query),
           source: 'Formation'
         });
       }
       
-      // Recherche dans les sections du cours
+      // Search in course sections
       for (const section of course.sections) {
-        if (section.title.toLowerCase().includes(query)) {
+        if (section.title.toLowerCase().includes(query) || containsAllKeywords(section.title, query)) {
           results.push({
             title: section.title,
             path: `/formation?course=${courseId}&section=${section.id}`,
@@ -145,20 +154,23 @@ const Index = () => {
           });
         }
         
-        // Recherche dans le contenu de la section
-        if (section.content && searchInHtmlContent(section.content, query)) {
+        // Search in section content
+        if (section.content && (
+          searchInHtmlContent(section.content, query) || 
+          containsAllKeywords(section.content, query)
+        )) {
           results.push({
             title: `${section.title} - ${course.title}`,
             path: `/formation?course=${courseId}&section=${section.id}`,
-            excerpt: extractHighlightedHtmlExcerpt(section.content, query),
+            excerpt: extractMultiKeywordExcerpt(section.content, query),
             source: 'Formation'
           });
         }
         
-        // Recherche dans les sous-sections
+        // Search in subsections
         if (section.subsections) {
           for (const subsection of section.subsections) {
-            if (subsection.title.toLowerCase().includes(query)) {
+            if (subsection.title.toLowerCase().includes(query) || containsAllKeywords(subsection.title, query)) {
               results.push({
                 title: subsection.title,
                 path: `/formation?course=${courseId}&section=${section.id}`,
@@ -167,12 +179,15 @@ const Index = () => {
               });
             }
             
-            // Recherche dans le contenu de la sous-section
-            if (searchInHtmlContent(subsection.content, query)) {
+            // Search in subsection content
+            if (subsection.content && (
+              searchInHtmlContent(subsection.content, query) || 
+              containsAllKeywords(subsection.content, query)
+            )) {
               results.push({
                 title: `${subsection.title} - ${section.title}`,
                 path: `/formation?course=${courseId}&section=${section.id}`,
-                excerpt: extractHighlightedHtmlExcerpt(subsection.content, query),
+                excerpt: extractMultiKeywordExcerpt(subsection.content, query),
                 source: 'Formation'
               });
             }

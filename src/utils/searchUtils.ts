@@ -68,20 +68,20 @@ export const highlightNumber = (number: string | number, query: string): string 
   );
 };
 
-// Nouvelle fonction pour rechercher dans le contenu HTML
+// Function for HTML content search
 export const searchInHtmlContent = (content: string, query: string): boolean => {
   if (!content) return false;
   
-  // Supprimer les balises HTML pour la recherche
+  // Remove HTML tags for search
   const textContent = content.replace(/<[^>]*>/g, ' ');
   return textContent.toLowerCase().includes(query.toLowerCase());
 };
 
-// Nouvelle fonction pour extraire un extrait d'un contenu HTML avec mise en évidence
+// Function to extract excerpt with highlighting from HTML content
 export const extractHighlightedHtmlExcerpt = (content: string, query: string, maxLength: number = 150): string => {
   if (!content) return '';
   
-  // Supprimer les balises HTML pour la recherche
+  // Remove HTML tags for search
   const textContent = content.replace(/<[^>]*>/g, ' ');
   const lowerTextContent = textContent.toLowerCase();
   const lowerQuery = query.toLowerCase();
@@ -89,11 +89,11 @@ export const extractHighlightedHtmlExcerpt = (content: string, query: string, ma
   const index = lowerTextContent.indexOf(lowerQuery);
   
   if (index === -1) {
-    // Si le terme n'est pas trouvé, retourner le début du contenu
+    // If term not found, return beginning of content
     return textContent.substring(0, maxLength) + '...';
   }
   
-  // Calculer le début et la fin de l'extrait
+  // Calculate start and end for excerpt
   const start = Math.max(0, index - 50);
   const end = Math.min(textContent.length, index + query.length + 70);
   
@@ -104,9 +104,117 @@ export const extractHighlightedHtmlExcerpt = (content: string, query: string, ma
   
   if (end < textContent.length) excerpt += '...';
   
-  // Mettre en surbrillance le terme recherché
+  // Highlight search term
   return excerpt.replace(
     new RegExp(query, 'gi'),
     match => `<span class="bg-yellow-100 text-swiss-dark font-medium">${match}</span>`
   );
+};
+
+/**
+ * New function that checks if content contains all keywords in a search query
+ * @param content Text content to search in
+ * @param query Space-separated keywords to search for
+ * @returns True if all keywords are found in the content
+ */
+export const containsAllKeywords = (content: string, query: string): boolean => {
+  if (!content || !query.trim()) return false;
+  
+  // Remove HTML tags and normalize content
+  const cleanContent = content.replace(/<[^>]*>/g, ' ').toLowerCase();
+  
+  // Split query into keywords
+  const keywords = query.toLowerCase().split(/\s+/).filter(keyword => keyword.trim().length > 1);
+  
+  // If no valid keywords, return false
+  if (keywords.length === 0) return false;
+  
+  // Check if all keywords are present in the content
+  return keywords.every(keyword => cleanContent.includes(keyword));
+};
+
+/**
+ * Highlights multiple keywords in text content
+ * @param content Text content to highlight in
+ * @param query Space-separated keywords to highlight
+ * @returns HTML string with highlighted keywords
+ */
+export const highlightMultipleKeywords = (content: string, query: string): string => {
+  if (!content || !query.trim()) return content;
+  
+  // Split query into keywords
+  const keywords = query.toLowerCase().split(/\s+/).filter(keyword => keyword.trim().length > 1);
+  
+  if (keywords.length === 0) return content;
+  
+  let highlightedContent = content;
+  
+  // Create a regular expression that matches any of the keywords
+  const keywordPattern = new RegExp(`(${keywords.map(k => escapeRegExp(k)).join('|')})`, 'gi');
+  
+  // Replace all occurrences with highlighted version
+  highlightedContent = highlightedContent.replace(
+    keywordPattern,
+    match => `<span class="bg-yellow-100 text-swiss-dark font-medium">${match}</span>`
+  );
+  
+  return highlightedContent;
+};
+
+/**
+ * Helper function to escape special characters in regex
+ */
+function escapeRegExp(string: string): string {
+  return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+}
+
+/**
+ * Extract a relevant excerpt from content that contains all keywords
+ * @param content Text content to extract from
+ * @param query Space-separated keywords
+ * @param maxLength Maximum length of the excerpt
+ * @returns HTML string with excerpt and highlighted keywords
+ */
+export const extractMultiKeywordExcerpt = (content: string, query: string, maxLength: number = 200): string => {
+  if (!content || !query.trim()) return content.substring(0, maxLength) + '...';
+  
+  // Remove HTML tags for searching
+  const cleanContent = content.replace(/<[^>]*>/g, ' ');
+  
+  // Split query into keywords
+  const keywords = query.toLowerCase().split(/\s+/).filter(keyword => keyword.trim().length > 1);
+  
+  if (keywords.length === 0) return cleanContent.substring(0, maxLength) + '...';
+  
+  // Find the first keyword occurrence
+  let firstIndex = -1;
+  let firstKeyword = '';
+  
+  for (const keyword of keywords) {
+    const index = cleanContent.toLowerCase().indexOf(keyword);
+    if (index !== -1 && (firstIndex === -1 || index < firstIndex)) {
+      firstIndex = index;
+      firstKeyword = keyword;
+    }
+  }
+  
+  if (firstIndex === -1) {
+    // If no keywords found, return the beginning of the content
+    return cleanContent.substring(0, maxLength) + '...';
+  }
+  
+  // Calculate excerpt bounds around the first found keyword
+  const start = Math.max(0, firstIndex - 40);
+  const end = Math.min(cleanContent.length, firstIndex + firstKeyword.length + 140);
+  
+  // Create excerpt
+  let excerpt = '';
+  if (start > 0) excerpt += '...';
+  
+  excerpt += cleanContent.substring(start, end);
+  
+  if (end < cleanContent.length) excerpt += '...';
+  
+  // Highlight all keywords in the excerpt
+  return highlightMultipleKeywords(excerpt, query);
 };

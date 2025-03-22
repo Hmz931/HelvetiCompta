@@ -16,7 +16,7 @@ type SearchResultsProps = {
 };
 
 const SearchResults = ({ searchQuery, searchResults }: SearchResultsProps) => {
-  // Fonction pour déterminer l'icône en fonction de la source
+  // Function to determine icon based on source
   const getSourceIcon = (source: string) => {
     switch (source) {
       case 'Lexique':
@@ -30,7 +30,7 @@ const SearchResults = ({ searchQuery, searchResults }: SearchResultsProps) => {
     }
   };
 
-  // Fonction pour déterminer la couleur de l'icône en fonction de la source
+  // Function to determine icon color based on source
   const getSourceColor = (source: string) => {
     switch (source) {
       case 'Lexique':
@@ -44,7 +44,7 @@ const SearchResults = ({ searchQuery, searchResults }: SearchResultsProps) => {
     }
   };
 
-  // Regrouper les résultats par source
+  // Group results by source
   const groupedResults: { [key: string]: SearchResultItem[] } = {};
   searchResults.forEach(result => {
     if (!groupedResults[result.source]) {

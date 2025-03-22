@@ -15,6 +15,9 @@ const NoResults = ({ searchQuery }: NoResultsProps) => {
   const isLikelyFinancial = /bilan|états financiers|compte de résultat|trésorerie/i.test(searchQuery);
   const isLikelyTax = /tva|taxe|impôt|fiscal/i.test(searchQuery);
   
+  // Get individual search terms for suggestions
+  const searchTerms = searchQuery.split(/\s+/).filter(term => term.length > 2);
+  
   return (
     <section className="mb-16">
       <div className="text-center py-8">
@@ -26,6 +29,26 @@ const NoResults = ({ searchQuery }: NoResultsProps) => {
         <h2 className="text-lg font-medium text-gray-500 mb-2">
           Aucun résultat trouvé pour "{searchQuery}"
         </h2>
+        
+        {searchTerms.length > 1 && (
+          <div className="mb-6">
+            <p className="text-gray-500 mb-2">
+              Essayez de rechercher individuellement avec ces termes :
+            </p>
+            <div className="flex flex-wrap justify-center gap-2 mt-2">
+              {searchTerms.map(term => (
+                <Link 
+                  key={term}
+                  to={`/?search=${encodeURIComponent(term)}`}
+                  className="px-3 py-1 bg-swiss-muted text-swiss-blue rounded-full text-sm hover:bg-swiss-blue/10"
+                >
+                  {term}
+                </Link>
+              ))}
+            </div>
+          </div>
+        )}
+        
         <p className="text-gray-500 mb-8">
           Essayez d'autres termes ou consultez nos ressources ci-dessous.
         </p>
