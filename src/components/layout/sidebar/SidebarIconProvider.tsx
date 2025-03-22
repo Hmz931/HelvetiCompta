@@ -16,7 +16,8 @@ import {
   Search,
   Settings,
   LineChart,
-  CircleDollarSign
+  CircleDollarSign,
+  FileBarChart
 } from 'lucide-react';
 import RatioIcon from '@/components/formation/financial/RatioIcon';
 
@@ -35,6 +36,7 @@ export const getIcon = (name: string) => {
     case 'quiz': return <Award size={size} />;
     case 'excel-converter': return <FileSpreadsheet size={size} />;
     case 'financial-ratios': return <PieChart size={size} />; 
+    case 'financial-statements': return <FileBarChart size={size} />; 
     case 'liquidity-ratio': return <RatioIcon type="liquidity" size={size} />;
     case 'profitability-ratio': return <RatioIcon type="profitability" size={size} />;
     case 'solvency-ratio': return <RatioIcon type="solvency" size={size} />;

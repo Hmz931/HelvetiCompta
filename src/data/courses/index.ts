@@ -20,6 +20,7 @@ import { corporationsCourse } from './corporations';
 import { llcCourse } from './llc';
 import { depreciationCourse } from './depreciation';
 import { financialRatiosCourse } from './financialRatios';
+import { financialStatementsCourse } from './financialStatements';
 
 export const courseStructure: CourseStructure = {
   overview: overviewCourse,
@@ -41,7 +42,8 @@ export const courseStructure: CourseStructure = {
   corporations: corporationsCourse,
   llc: llcCourse,
   depreciation: depreciationCourse,
-  'financial-ratios': financialRatiosCourse
+  'financial-ratios': financialRatiosCourse,
+  'financial-statements': financialStatementsCourse
 };
 
 export * from './types';

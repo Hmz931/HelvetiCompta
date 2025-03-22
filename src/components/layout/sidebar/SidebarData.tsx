@@ -23,6 +23,7 @@ export const navItems: NavItem[] = [
       { name: 'Le calcul des intérêts', path: '/formation/interests', icon: 'formation' },
       { name: 'Les actifs et passifs transitoires', path: '/formation/transitional', icon: 'formation' },
       { name: 'Pertes sur créances et provisions', path: '/formation/provisions', icon: 'formation' },
+      { name: 'Les états financiers', path: '/formation/financial-statements', icon: 'financial-statements' },
       { name: 'Balance et clôture', path: '/formation/closing', icon: 'formation' },
       { name: 'La TVA', path: '/formation/tax', icon: 'formation' },
       { name: 'Les formes juridiques', path: '/formation/legal-forms', icon: 'formation' },
