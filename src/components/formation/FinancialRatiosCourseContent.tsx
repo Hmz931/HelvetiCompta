@@ -6,6 +6,7 @@ import RatioIcon, { getRatioIconByTitle } from './financial/RatioIcon';
 import './financial/FormulaDisplay.css';
 import RatioFormulaDisplay from './financial/RatioFormulaDisplay';
 import RatioSummaryTable from './financial/RatioSummaryTable';
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 
 const FinancialRatiosCourseContent = () => {
   const course = courseStructure["financial-ratios"];
@@ -69,6 +70,13 @@ const FinancialRatiosCourseContent = () => {
     }
   };
   
+  // Separate intro from ratio sections
+  const introSection = course.sections.find(section => section.id === 'intro');
+  const ratioSections = course.sections.filter(section => 
+    section.id !== 'intro' && section.id !== 'summary'
+  );
+  const summarySection = course.sections.find(section => section.id === 'summary');
+  
   return (
     <div className="animate-fade-in">
       <h1 className="text-3xl font-bold mb-4 text-swiss-dark">{course.title}</h1>
@@ -77,27 +85,75 @@ const FinancialRatiosCourseContent = () => {
       )}
       
       <div className="space-y-10">
-        {course.sections.map((section) => {
-          const ratioType = getRatioIconByTitle(section.title);
-          
-          return (
-            <Card key={section.id} className="border-0 shadow-md rounded-xl overflow-hidden">
-              <CardHeader className="bg-gradient-to-r from-swiss-blue/15 to-swiss-blue/5 pb-4">
-                <CardTitle className="text-2xl font-bold text-swiss-dark flex items-center gap-3">
-                  <RatioIcon type={ratioType} size={28} />
-                  {section.title}
-                </CardTitle>
-              </CardHeader>
-              <CardContent className="pt-6 px-6">
-                {section.content ? (
-                  processContent(section.content, section.id)
-                ) : (
-                  <p className="text-gray-500 italic">Contenu à venir...</p>
-                )}
-              </CardContent>
-            </Card>
-          );
-        })}
+        {/* Introduction section */}
+        {introSection && (
+          <Card className="border-0 shadow-md rounded-xl overflow-hidden">
+            <CardHeader className="bg-gradient-to-r from-swiss-blue/15 to-swiss-blue/5 pb-4">
+              <CardTitle className="text-2xl font-bold text-swiss-dark flex items-center gap-3">
+                {introSection.title}
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="pt-6 px-6">
+              {introSection.content ? (
+                <div dangerouslySetInnerHTML={{ __html: introSection.content }} />
+              ) : (
+                <p className="text-gray-500 italic">Contenu à venir...</p>
+              )}
+            </CardContent>
+          </Card>
+        )}
+
+        {/* Ratio sections in accordion */}
+        <Card className="border-0 shadow-md rounded-xl overflow-hidden">
+          <CardHeader className="bg-gradient-to-r from-swiss-blue/15 to-swiss-blue/5 pb-4">
+            <CardTitle className="text-2xl font-bold text-swiss-dark">
+              Les différents types de ratios
+            </CardTitle>
+          </CardHeader>
+          <CardContent className="pt-6 px-6">
+            <Accordion type="single" collapsible className="w-full">
+              {ratioSections.map((section) => {
+                const ratioType = getRatioIconByTitle(section.title);
+                
+                return (
+                  <AccordionItem key={section.id} value={section.id} className="border-b border-gray-200 py-2">
+                    <AccordionTrigger className="hover:no-underline py-3">
+                      <div className="flex items-center gap-3 text-xl font-medium text-swiss-dark">
+                        <RatioIcon type={ratioType} size={24} />
+                        {section.title}
+                      </div>
+                    </AccordionTrigger>
+                    <AccordionContent className="pt-4 pb-2 px-2">
+                      {section.content ? (
+                        processContent(section.content, section.id)
+                      ) : (
+                        <p className="text-gray-500 italic">Contenu à venir...</p>
+                      )}
+                    </AccordionContent>
+                  </AccordionItem>
+                );
+              })}
+            </Accordion>
+          </CardContent>
+        </Card>
+
+        {/* Summary section */}
+        {summarySection && (
+          <Card className="border-0 shadow-md rounded-xl overflow-hidden">
+            <CardHeader className="bg-gradient-to-r from-swiss-blue/15 to-swiss-blue/5 pb-4">
+              <CardTitle className="text-2xl font-bold text-swiss-dark flex items-center gap-3">
+                {summarySection.title}
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="pt-6 px-6">
+              {summarySection.content ? (
+                processContent(summarySection.content, summarySection.id)
+              ) : (
+                <p className="text-gray-500 italic">Contenu à venir...</p>
+              )}
+            </CardContent>
+          </Card>
+        )}
       </div>
     </div>
   );
