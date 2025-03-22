@@ -241,6 +241,102 @@ export const accountingQuizQuestions: QuizQuestion[] = [
     ],
     correctAnswer: 0,
     explanation: 'Une créance à long terme représente un montant dû à l\'entreprise avec une échéance supérieure à un an. Elle figure dans la colonne Actif du bilan, généralement dans les actifs immobilisés financiers.'
+  },
+  // Nouvelles questions basées sur l'image fournie, transformées en format QCM
+  {
+    id: '21',
+    question: 'L\'ensemble des ventes à crédit figurent au bilan sous les créances clients.',
+    options: [
+      'Vrai',
+      'Faux',
+      'Cela dépend de la date de paiement',
+      'Elles figurent uniquement dans le compte de résultat'
+    ],
+    correctAnswer: 0,
+    explanation: 'Les ventes à crédit (non encore encaissées) sont considérées comme des créances clients et figurent à l\'actif du bilan dans les actifs circulants.'
+  },
+  {
+    id: '22',
+    question: 'Le bilan correspond à une sorte de photographie de la situation d\'une entreprise à un moment donné.',
+    options: [
+      'Vrai',
+      'Faux',
+      'Le bilan montre l\'évolution sur une période',
+      'Le bilan est une projection future'
+    ],
+    correctAnswer: 0,
+    explanation: 'Le bilan est effectivement une "photographie" de la situation patrimoniale de l\'entreprise à une date précise, montrant ses actifs, ses passifs et ses fonds propres à cet instant.'
+  },
+  {
+    id: '23',
+    question: 'Le bilan doit toujours être dressé le 31 décembre.',
+    options: [
+      'Vrai',
+      'Faux',
+      'Uniquement pour les sociétés anonymes',
+      'Uniquement pour les entreprises cotées en bourse'
+    ],
+    correctAnswer: 1,
+    explanation: 'Le bilan n\'est pas obligatoirement dressé le 31 décembre. L\'entreprise peut choisir une autre date de clôture qui correspond mieux à son cycle d\'activité, sous réserve de certaines contraintes fiscales selon les cantons.'
+  },
+  {
+    id: '24',
+    question: 'Le passif du bilan indique la provenance des fonds mis à disposition de l\'entreprise.',
+    options: [
+      'Vrai',
+      'Faux',
+      'Le passif indique uniquement les dettes',
+      'Le passif indique l\'utilisation des fonds'
+    ],
+    correctAnswer: 0,
+    explanation: 'Le passif du bilan indique effectivement l\'origine des ressources (fonds propres et dettes) dont dispose l\'entreprise, tandis que l\'actif montre l\'utilisation qui en est faite.'
+  },
+  {
+    id: '25',
+    question: 'Le Brevet est à classer parmi les actifs circulants.',
+    options: [
+      'Vrai',
+      'Faux',
+      'Uniquement s\'il est destiné à être vendu dans l\'année',
+      'Cela dépend de sa durée de validité restante'
+    ],
+    correctAnswer: 1,
+    explanation: 'Un brevet est généralement classé parmi les actifs immobilisés incorporels et non dans les actifs circulants, car il s\'agit d\'un actif à long terme dont l\'entreprise tire des avantages sur plusieurs années.'
+  },
+  {
+    id: '26',
+    question: 'Le fonds de roulement (FR) est identique au total des actifs circulants.',
+    options: [
+      'Vrai',
+      'Faux',
+      'Uniquement dans les petites entreprises',
+      'Uniquement si l\'entreprise n\'a pas de dettes à court terme'
+    ],
+    correctAnswer: 1,
+    explanation: 'Le fonds de roulement n\'est pas identique au total des actifs circulants. Il correspond à la différence entre les actifs circulants et les dettes à court terme (passifs circulants).'
+  },
+  {
+    id: '27',
+    question: 'Les Autres dettes font partie des actifs immobilisés.',
+    options: [
+      'Vrai',
+      'Faux',
+      'Uniquement si leur échéance est supérieure à un an',
+      'Uniquement s\'il s\'agit de dettes envers les associés'
+    ],
+    correctAnswer: 1,
+    explanation: 'Les "Autres dettes" sont des passifs et figurent au passif du bilan, soit dans les dettes à court terme, soit dans les dettes à long terme selon leur échéance. Elles ne font jamais partie des actifs immobilisés.'
+  },
+  {
+    id: '28',
+    question: 'Les capitaux étrangers doivent immédiatement ou à terme être remboursés par l\'entreprise, à l\'inverse des capitaux propres qui ne doivent pas être remboursés.',
+    options: [
+      'Vrai',
+      'Faux',
+      'Cela dépend du type de société',
+      'Cela dépend des contrats de prêt'
+    ],
+    correctAnswer: 0,
+    explanation: 'C\'est exact. Les capitaux étrangers (dettes) sont destinés à être remboursés selon des échéances définies, tandis que les capitaux propres représentent les ressources permanentes de l\'entreprise et ne font pas l\'objet d\'une obligation de remboursement (sauf cas particuliers comme une réduction de capital).'
   }
 ];
-
