@@ -5,222 +5,265 @@ export const financialStatementsCourse: Course = {
   id: 'financial-statements',
   title: 'Les états financiers',
   description: 'Comprendre, analyser et interpréter les états financiers suisses',
+  introduction: `
+    <p>Les états financiers sont un ensemble de documents comptables qui présentent la situation financière et les performances d'une entreprise. En Suisse, ils comprennent principalement le bilan, le compte de résultat, le tableau des flux de trésorerie et l'annexe.</p>
+    <p>Ces documents sont essentiels pour les dirigeants, les investisseurs, les créanciers et les autorités fiscales, car ils permettent d'évaluer la santé financière d'une entreprise, sa rentabilité et sa capacité à générer des liquidités.</p>
+    <p>Dans ce cours, nous allons explorer en détail chacun de ces états financiers, leur structure, leur contenu et les principes comptables qui les régissent selon le droit suisse.</p>
+  `,
   sections: [
     {
       id: 'balance-sheet',
       title: 'Le bilan',
       content: `
-## Le bilan
-Le bilan (ou état de la situation financière) est un document comptable qui présente l'ensemble des ressources (actifs) et des moyens de financement (passifs) d'une entreprise à un moment précis, généralement à la fin de l'exercice comptable.
+<h2>Le bilan</h2>
+<p>Le bilan (ou état de la situation financière) est un document comptable qui présente l'ensemble des ressources (actifs) et des moyens de financement (passifs) d'une entreprise à un moment précis, généralement à la fin de l'exercice comptable.</p>
 
-### Structure du bilan suisse
-Selon le droit comptable suisse (Code des Obligations), le bilan doit être structuré comme suit:
+<h3>Structure du bilan suisse</h3>
+<p>Selon le droit comptable suisse (Code des Obligations), le bilan doit être structuré comme suit:</p>
 
-#### ACTIFS
-**Actifs circulants:**
-- Trésorerie et actifs cotés en bourse détenus à court terme (comptes 10XX)
-- Créances résultant de la vente de biens et de prestations de services (11XX)
-- Autres créances à court terme (11XX)
-- Stocks et prestations de services non facturées (12XX)
-- Actifs de régularisation (13XX)
+<h4>ACTIFS</h4>
+<p><strong>Actifs circulants:</strong></p>
+<ul>
+<li>Trésorerie et actifs cotés en bourse détenus à court terme (comptes 10XX)</li>
+<li>Créances résultant de la vente de biens et de prestations de services (11XX)</li>
+<li>Autres créances à court terme (11XX)</li>
+<li>Stocks et prestations de services non facturées (12XX)</li>
+<li>Actifs de régularisation (13XX)</li>
+</ul>
 
-**Actifs immobilisés:**
-- Immobilisations financières (14XX)
-- Participations (15XX)
-- Immobilisations corporelles (16XX)
-- Immobilisations incorporelles (17XX)
-- Capital non libéré (18XX)
+<p><strong>Actifs immobilisés:</strong></p>
+<ul>
+<li>Immobilisations financières (14XX)</li>
+<li>Participations (15XX)</li>
+<li>Immobilisations corporelles (16XX)</li>
+<li>Immobilisations incorporelles (17XX)</li>
+<li>Capital non libéré (18XX)</li>
+</ul>
 
-#### PASSIFS
-**Capitaux étrangers à court terme:**
-- Dettes résultant de l'achat de biens et de prestations de services (20XX)
-- Dettes à court terme portant intérêt (21XX) 
-- Autres dettes à court terme (22XX)
-- Passifs de régularisation (23XX)
-- Provisions à court terme (24XX)
+<h4>PASSIFS</h4>
+<p><strong>Capitaux étrangers à court terme:</strong></p>
+<ul>
+<li>Dettes résultant de l'achat de biens et de prestations de services (20XX)</li>
+<li>Dettes à court terme portant intérêt (21XX)</li>
+<li>Autres dettes à court terme (22XX)</li>
+<li>Passifs de régularisation (23XX)</li>
+<li>Provisions à court terme (24XX)</li>
+</ul>
 
-**Capitaux étrangers à long terme:**
-- Dettes à long terme portant intérêt (25XX)
-- Autres dettes à long terme (26XX)
-- Provisions et postes analogues prévus par la loi (27XX)
+<p><strong>Capitaux étrangers à long terme:</strong></p>
+<ul>
+<li>Dettes à long terme portant intérêt (25XX)</li>
+<li>Autres dettes à long terme (26XX)</li>
+<li>Provisions et postes analogues prévus par la loi (27XX)</li>
+</ul>
 
-**Capitaux propres:**
-- Capital social ou capital de fondation (28XX)
-- Réserve légale issue du capital (28XX)
-- Réserve légale issue du bénéfice (28XX)
-- Réserves facultatives issues du bénéfice (28XX)
-- Propres parts du capital (28XX)
-- Bénéfice ou perte reporté (29XX)
-- Bénéfice ou perte de l'exercice (29XX)
+<p><strong>Capitaux propres:</strong></p>
+<ul>
+<li>Capital social ou capital de fondation (28XX)</li>
+<li>Réserve légale issue du capital (28XX)</li>
+<li>Réserve légale issue du bénéfice (28XX)</li>
+<li>Réserves facultatives issues du bénéfice (28XX)</li>
+<li>Propres parts du capital (28XX)</li>
+<li>Bénéfice ou perte reporté (29XX)</li>
+<li>Bénéfice ou perte de l'exercice (29XX)</li>
+</ul>
 
-### Principes fondamentaux du bilan
-- **Principe d'équilibre**: Le total des actifs doit toujours être égal au total des passifs
-- **Principe de liquidité**: Les actifs sont classés par ordre de liquidité décroissante
-- **Principe d'exigibilité**: Les passifs sont classés par ordre d'exigibilité croissante
-- **Principe de permanence**: Les méthodes de présentation et d'évaluation doivent rester constantes d'un exercice à l'autre
+<h3>Principes fondamentaux du bilan</h3>
+<ul>
+<li><strong>Principe d'équilibre</strong>: Le total des actifs doit toujours être égal au total des passifs</li>
+<li><strong>Principe de liquidité</strong>: Les actifs sont classés par ordre de liquidité décroissante</li>
+<li><strong>Principe d'exigibilité</strong>: Les passifs sont classés par ordre d'exigibilité croissante</li>
+<li><strong>Principe de permanence</strong>: Les méthodes de présentation et d'évaluation doivent rester constantes d'un exercice à l'autre</li>
+</ul>
       `
     },
     {
       id: 'income-statement',
       title: 'Le compte de résultat',
       content: `
-## Le compte de résultat
-Le compte de résultat (ou état du résultat global) est un document comptable qui présente les produits et les charges d'une entreprise sur une période donnée, généralement un exercice comptable. Il permet de déterminer si l'entreprise a réalisé un bénéfice ou une perte.
+<h2>Le compte de résultat</h2>
+<p>Le compte de résultat (ou état du résultat global) est un document comptable qui présente les produits et les charges d'une entreprise sur une période donnée, généralement un exercice comptable. Il permet de déterminer si l'entreprise a réalisé un bénéfice ou une perte.</p>
 
-### Structure du compte de résultat suisse
-Selon le droit comptable suisse, le compte de résultat peut être présenté selon la méthode de l'affectation des charges par nature ou par fonction:
+<h3>Structure du compte de résultat suisse</h3>
+<p>Selon le droit comptable suisse, le compte de résultat peut être présenté selon la méthode de l'affectation des charges par nature ou par fonction:</p>
 
-#### Présentation par nature des charges
+<h4>Présentation par nature des charges</h4>
+<ol>
+<li><strong>Produits nets des ventes de biens et de prestations de services</strong> (comptes 3XXX)</li>
+<li><strong>Variation des stocks de produits finis et semi-finis et variation des prestations de services non facturées</strong></li>
+<li><strong>Charges de matières et de marchandises</strong> (comptes 4XXX)</li>
+<li><strong>Charges de personnel</strong> (comptes 5XXX)</li>
+<li><strong>Autres charges d'exploitation</strong> (comptes 6XXX)</li>
+<li><strong>Amortissements et corrections de valeur sur les postes de l'actif immobilisé</strong></li>
+<li><strong>Charges et produits financiers</strong> (comptes 68XX, 69XX)</li>
+<li><strong>Charges et produits hors exploitation</strong> (comptes 7XXX)</li>
+<li><strong>Charges et produits exceptionnels, uniques ou hors période</strong> (comptes 8XXX)</li>
+<li><strong>Impôts directs</strong> (comptes 89XX)</li>
+<li><strong>Bénéfice ou perte de l'exercice</strong></li>
+</ol>
 
-1. **Produits nets des ventes de biens et de prestations de services** (comptes 3XXX)
-2. **Variation des stocks de produits finis et semi-finis et variation des prestations de services non facturées**
-3. **Charges de matières et de marchandises** (comptes 4XXX)
-4. **Charges de personnel** (comptes 5XXX)
-5. **Autres charges d'exploitation** (comptes 6XXX)
-6. **Amortissements et corrections de valeur sur les postes de l'actif immobilisé**
-7. **Charges et produits financiers** (comptes 68XX, 69XX)
-8. **Charges et produits hors exploitation** (comptes 7XXX)
-9. **Charges et produits exceptionnels, uniques ou hors période** (comptes 8XXX)
-10. **Impôts directs** (comptes 89XX)
-11. **Bénéfice ou perte de l'exercice**
+<h4>Présentation par fonction des charges</h4>
+<ol>
+<li><strong>Produits nets des ventes de biens et de prestations de services</strong></li>
+<li><strong>Coûts d'acquisition ou de production des biens et prestations de services vendus</strong></li>
+<li><strong>Résultat brut</strong></li>
+<li><strong>Charges de distribution et d'administration</strong></li>
+<li><strong>Autres produits et charges d'exploitation</strong></li>
+<li><strong>Résultat d'exploitation</strong></li>
+<li><strong>Charges et produits financiers</strong></li>
+<li><strong>Charges et produits hors exploitation</strong></li>
+<li><strong>Charges et produits exceptionnels, uniques ou hors période</strong></li>
+<li><strong>Impôts directs</strong></li>
+<li><strong>Bénéfice ou perte de l'exercice</strong></li>
+</ol>
 
-#### Présentation par fonction des charges
-
-1. **Produits nets des ventes de biens et de prestations de services**
-2. **Coûts d'acquisition ou de production des biens et prestations de services vendus**
-3. **Résultat brut**
-4. **Charges de distribution et d'administration**
-5. **Autres produits et charges d'exploitation**
-6. **Résultat d'exploitation**
-7. **Charges et produits financiers**
-8. **Charges et produits hors exploitation**
-9. **Charges et produits exceptionnels, uniques ou hors période**
-10. **Impôts directs**
-11. **Bénéfice ou perte de l'exercice**
-
-### Principes fondamentaux du compte de résultat
-- **Principe de prudence**: Ne pas surévaluer les produits et sous-évaluer les charges
-- **Principe de rattachement**: Les charges doivent être rattachées aux produits correspondants
-- **Principe de périodicité**: Les produits et charges doivent être comptabilisés dans la période à laquelle ils se rapportent
-- **Principe de spécialisation des exercices**: Les opérations doivent être enregistrées dans l'exercice auquel elles se rattachent
+<h3>Principes fondamentaux du compte de résultat</h3>
+<ul>
+<li><strong>Principe de prudence</strong>: Ne pas surévaluer les produits et sous-évaluer les charges</li>
+<li><strong>Principe de rattachement</strong>: Les charges doivent être rattachées aux produits correspondants</li>
+<li><strong>Principe de périodicité</strong>: Les produits et charges doivent être comptabilisés dans la période à laquelle ils se rapportent</li>
+<li><strong>Principe de spécialisation des exercices</strong>: Les opérations doivent être enregistrées dans l'exercice auquel elles se rattachent</li>
+</ul>
       `
     },
     {
       id: 'cash-flow',
       title: 'Le tableau des flux de trésorerie',
       content: `
-## Le tableau des flux de trésorerie
-Le tableau des flux de trésorerie est un document comptable qui présente les mouvements d'argent (entrées et sorties) d'une entreprise sur une période donnée. Il est complémentaire au bilan et au compte de résultat et permet de comprendre comment l'entreprise génère et utilise sa trésorerie.
+<h2>Le tableau des flux de trésorerie</h2>
+<p>Le tableau des flux de trésorerie est un document comptable qui présente les mouvements d'argent (entrées et sorties) d'une entreprise sur une période donnée. Il est complémentaire au bilan et au compte de résultat et permet de comprendre comment l'entreprise génère et utilise sa trésorerie.</p>
 
-### Structure du tableau des flux de trésorerie suisse
-Le tableau des flux de trésorerie est structuré en trois parties distinctes:
+<h3>Structure du tableau des flux de trésorerie suisse</h3>
+<p>Le tableau des flux de trésorerie est structuré en trois parties distinctes:</p>
 
-#### 1. Flux de trésorerie liés à l'activité opérationnelle
-Cette section présente les flux de trésorerie générés par les activités principales de l'entreprise.
+<h4>1. Flux de trésorerie liés à l'activité opérationnelle</h4>
+<p>Cette section présente les flux de trésorerie générés par les activités principales de l'entreprise.</p>
 
-**Méthode directe:**
-- Encaissements provenant des clients
-- Paiements aux fournisseurs
-- Paiements aux employés
-- Autres paiements/encaissements opérationnels
-- Impôts payés
-- Intérêts payés/reçus
+<p><strong>Méthode directe:</strong></p>
+<ul>
+<li>Encaissements provenant des clients</li>
+<li>Paiements aux fournisseurs</li>
+<li>Paiements aux employés</li>
+<li>Autres paiements/encaissements opérationnels</li>
+<li>Impôts payés</li>
+<li>Intérêts payés/reçus</li>
+</ul>
 
-**Méthode indirecte:**
-- Résultat de l'exercice
-- Ajustements pour éléments sans incidence sur la trésorerie (amortissements, provisions)
-- Variation du besoin en fonds de roulement
+<p><strong>Méthode indirecte:</strong></p>
+<ul>
+<li>Résultat de l'exercice</li>
+<li>Ajustements pour éléments sans incidence sur la trésorerie (amortissements, provisions)</li>
+<li>Variation du besoin en fonds de roulement</li>
+</ul>
 
-#### 2. Flux de trésorerie liés aux activités d'investissement
-Cette section présente les flux de trésorerie liés à l'acquisition et à la cession d'actifs à long terme:
-- Acquisition d'immobilisations corporelles et incorporelles
-- Cession d'immobilisations corporelles et incorporelles
-- Acquisition/cession d'immobilisations financières
-- Acquisition/cession de filiales
+<h4>2. Flux de trésorerie liés aux activités d'investissement</h4>
+<p>Cette section présente les flux de trésorerie liés à l'acquisition et à la cession d'actifs à long terme:</p>
+<ul>
+<li>Acquisition d'immobilisations corporelles et incorporelles</li>
+<li>Cession d'immobilisations corporelles et incorporelles</li>
+<li>Acquisition/cession d'immobilisations financières</li>
+<li>Acquisition/cession de filiales</li>
+</ul>
 
-#### 3. Flux de trésorerie liés aux activités de financement
-Cette section présente les flux de trésorerie liés au financement de l'entreprise:
-- Augmentation/diminution de capital
-- Émission/remboursement d'emprunts
-- Dividendes versés
+<h4>3. Flux de trésorerie liés aux activités de financement</h4>
+<p>Cette section présente les flux de trésorerie liés au financement de l'entreprise:</p>
+<ul>
+<li>Augmentation/diminution de capital</li>
+<li>Émission/remboursement d'emprunts</li>
+<li>Dividendes versés</li>
+</ul>
 
-### Importance du tableau des flux de trésorerie
-Ce document est essentiel car il permet:
-- D'évaluer la capacité de l'entreprise à générer des liquidités
-- D'analyser les besoins de financement
-- De comprendre la différence entre le résultat comptable et la variation de trésorerie
-- D'anticiper les problèmes de liquidité
+<h3>Importance du tableau des flux de trésorerie</h3>
+<p>Ce document est essentiel car il permet:</p>
+<ul>
+<li>D'évaluer la capacité de l'entreprise à générer des liquidités</li>
+<li>D'analyser les besoins de financement</li>
+<li>De comprendre la différence entre le résultat comptable et la variation de trésorerie</li>
+<li>D'anticiper les problèmes de liquidité</li>
+</ul>
       `
     },
     {
       id: 'notes',
       title: 'L\'annexe aux comptes',
       content: `
-## L'annexe aux comptes
-L'annexe (ou notes aux états financiers) est un document qui complète le bilan, le compte de résultat et le tableau des flux de trésorerie. Elle fournit des informations supplémentaires pour permettre une meilleure compréhension des états financiers.
+<h2>L'annexe aux comptes</h2>
+<p>L'annexe (ou notes aux états financiers) est un document qui complète le bilan, le compte de résultat et le tableau des flux de trésorerie. Elle fournit des informations supplémentaires pour permettre une meilleure compréhension des états financiers.</p>
 
-### Contenu de l'annexe selon le droit suisse
-Selon l'article 959c du Code des Obligations, l'annexe doit contenir les informations suivantes:
+<h3>Contenu de l'annexe selon le droit suisse</h3>
+<p>Selon l'article 959c du Code des Obligations, l'annexe doit contenir les informations suivantes:</p>
 
-#### Informations obligatoires pour toutes les entreprises:
-1. Les principes comptables appliqués
-2. Les informations, la structure et les commentaires concernant les postes du bilan et du compte de résultat
-3. Le montant total des réserves de remplacement et des réserves latentes dissoutes
-4. Les autres informations prescrites par la loi
+<h4>Informations obligatoires pour toutes les entreprises:</h4>
+<ol>
+<li>Les principes comptables appliqués</li>
+<li>Les informations, la structure et les commentaires concernant les postes du bilan et du compte de résultat</li>
+<li>Le montant total des réserves de remplacement et des réserves latentes dissoutes</li>
+<li>Les autres informations prescrites par la loi</li>
+</ol>
 
-#### Informations supplémentaires pour les entreprises soumises à un contrôle ordinaire:
-1. Les dettes à long terme portant intérêt
-2. Les honoraires versés à l'organe de révision
-3. Le nombre d'emplois à plein temps en moyenne annuelle
-4. Les participations directes ou indirectes
-5. Les augmentations et diminutions des réserves de réévaluation
-6. Les événements importants survenus après la date du bilan
-7. Les motifs ayant conduit à la démission anticipée de l'organe de révision
+<h4>Informations supplémentaires pour les entreprises soumises à un contrôle ordinaire:</h4>
+<ol>
+<li>Les dettes à long terme portant intérêt</li>
+<li>Les honoraires versés à l'organe de révision</li>
+<li>Le nombre d'emplois à plein temps en moyenne annuelle</li>
+<li>Les participations directes ou indirectes</li>
+<li>Les augmentations et diminutions des réserves de réévaluation</li>
+<li>Les événements importants survenus après la date du bilan</li>
+<li>Les motifs ayant conduit à la démission anticipée de l'organe de révision</li>
+</ol>
 
-### Importance de l'annexe
-L'annexe est essentielle car elle:
-- Fournit des explications sur les méthodes comptables utilisées
-- Détaille les postes significatifs du bilan et du compte de résultat
-- Présente des informations qui ne figurent pas dans les autres états financiers
-- Permet une meilleure compréhension de la situation financière de l'entreprise
+<h3>Importance de l'annexe</h3>
+<p>L'annexe est essentielle car elle:</p>
+<ul>
+<li>Fournit des explications sur les méthodes comptables utilisées</li>
+<li>Détaille les postes significatifs du bilan et du compte de résultat</li>
+<li>Présente des informations qui ne figurent pas dans les autres états financiers</li>
+<li>Permet une meilleure compréhension de la situation financière de l'entreprise</li>
+</ul>
       `
     },
     {
       id: 'analysis',
       title: 'Analyse des états financiers',
       content: `
-## Analyse des états financiers
-L'analyse des états financiers consiste à étudier les informations contenues dans le bilan, le compte de résultat, le tableau des flux de trésorerie et l'annexe pour évaluer la situation financière et la performance d'une entreprise.
+<h2>Analyse des états financiers</h2>
+<p>L'analyse des états financiers consiste à étudier les informations contenues dans le bilan, le compte de résultat, le tableau des flux de trésorerie et l'annexe pour évaluer la situation financière et la performance d'une entreprise.</p>
 
-### Méthodes d'analyse
-#### 1. Analyse horizontale
-L'analyse horizontale consiste à comparer les états financiers sur plusieurs exercices pour identifier les tendances et les évolutions.
+<h3>Méthodes d'analyse</h3>
+<h4>1. Analyse horizontale</h4>
+<p>L'analyse horizontale consiste à comparer les états financiers sur plusieurs exercices pour identifier les tendances et les évolutions.</p>
 
-#### 2. Analyse verticale
-L'analyse verticale consiste à exprimer chaque poste du bilan en pourcentage du total du bilan et chaque poste du compte de résultat en pourcentage du chiffre d'affaires.
+<h4>2. Analyse verticale</h4>
+<p>L'analyse verticale consiste à exprimer chaque poste du bilan en pourcentage du total du bilan et chaque poste du compte de résultat en pourcentage du chiffre d'affaires.</p>
 
-#### 3. Analyse par les ratios
-L'analyse par les ratios consiste à calculer différents indicateurs financiers pour évaluer:
-- La liquidité: capacité à faire face aux engagements à court terme
-- La solvabilité: capacité à faire face aux engagements à long terme
-- La rentabilité: capacité à générer des bénéfices
-- L'efficacité: capacité à utiliser efficacement les ressources
+<h4>3. Analyse par les ratios</h4>
+<p>L'analyse par les ratios consiste à calculer différents indicateurs financiers pour évaluer:</p>
+<ul>
+<li>La liquidité: capacité à faire face aux engagements à court terme</li>
+<li>La solvabilité: capacité à faire face aux engagements à long terme</li>
+<li>La rentabilité: capacité à générer des bénéfices</li>
+<li>L'efficacité: capacité à utiliser efficacement les ressources</li>
+</ul>
 
-Pour une analyse détaillée des ratios financiers, consultez le cours [Ratios et indicateurs financiers](/formation/financial-ratios).
+<p>Pour une analyse détaillée des ratios financiers, consultez le cours <a href="/formation/financial-ratios">Ratios et indicateurs financiers</a>.</p>
 
-### Interprétation des résultats
-L'interprétation des résultats de l'analyse doit tenir compte:
-- Du secteur d'activité de l'entreprise
-- De la taille de l'entreprise
-- De la phase de développement de l'entreprise
-- Du contexte économique général
-- Des spécificités suisses (notamment fiscales)
+<h3>Interprétation des résultats</h3>
+<p>L'interprétation des résultats de l'analyse doit tenir compte:</p>
+<ul>
+<li>Du secteur d'activité de l'entreprise</li>
+<li>De la taille de l'entreprise</li>
+<li>De la phase de développement de l'entreprise</li>
+<li>Du contexte économique général</li>
+<li>Des spécificités suisses (notamment fiscales)</li>
+</ul>
 
-### Limites de l'analyse des états financiers
-- Les états financiers sont basés sur des coûts historiques
-- Les méthodes comptables peuvent varier d'une entreprise à l'autre
-- Certaines informations importantes peuvent ne pas être reflétées dans les états financiers
-- Les états financiers peuvent faire l'objet de manipulations (comptabilité créative)
+<h3>Limites de l'analyse des états financiers</h3>
+<ul>
+<li>Les états financiers sont basés sur des coûts historiques</li>
+<li>Les méthodes comptables peuvent varier d'une entreprise à l'autre</li>
+<li>Certaines informations importantes peuvent ne pas être reflétées dans les états financiers</li>
+<li>Les états financiers peuvent faire l'objet de manipulations (comptabilité créative)</li>
+</ul>
       `
     }
   ]
