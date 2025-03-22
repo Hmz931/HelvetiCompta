@@ -38,21 +38,21 @@ const FinancialStatementsCourseContent = () => {
             <AccordionTrigger className="px-6 py-4 hover:bg-gray-50 text-lg font-medium text-swiss-dark">
               {section.title}
             </AccordionTrigger>
-            <AccordionContent className="px-6 py-4 border-t bg-white">
+            <AccordionContent className="px-6 pt-5 pb-6 border-t bg-white">
               {section.content && (
-                <div className="prose max-w-none">
+                <div className="prose max-w-none leading-relaxed">
                   <div dangerouslySetInnerHTML={{ __html: section.content }} />
                 </div>
               )}
               
               {section.subsections && section.subsections.length > 0 && (
-                <div className="mt-6 space-y-6">
+                <div className="mt-8 space-y-8">
                   {section.subsections.map((subsection, subIndex) => (
-                    <div key={subIndex} className="border-l-4 border-swiss-blue/30 pl-4">
-                      <h3 className="text-lg font-medium text-swiss-dark mb-3">
+                    <div key={subIndex} className="bg-gray-50 rounded-lg p-6 border-l-4 border-swiss-blue/60">
+                      <h3 className="text-lg font-medium text-swiss-dark mb-4 pb-2 border-b border-gray-200">
                         {subsection.title}
                       </h3>
-                      <div className="prose max-w-none text-gray-700">
+                      <div className="prose max-w-none text-gray-700 leading-relaxed">
                         <div dangerouslySetInnerHTML={{ __html: subsection.content }} />
                       </div>
                     </div>
