@@ -32,7 +32,32 @@ type CourseContentProps = {
 };
 
 // Function to create SectionContent as a separate component to improve code organization
-const SectionContent = ({ content }: { content: string }) => {
+const SectionContent = ({ content, subsections }: { content: string | null, subsections?: any[] }) => {
+  // If we have subsections, render those instead of content
+  if (subsections && subsections.length > 0) {
+    return (
+      <div className="space-y-8">
+        {subsections.map((subsection, idx) => (
+          <div key={idx} className="bg-gray-50 rounded-lg p-6 border-l-4 border-swiss-blue/60">
+            <h4 className="text-lg font-medium text-swiss-dark mb-4 pb-2 border-b border-gray-200">
+              {subsection.title}
+            </h4>
+            {subsection.content ? (
+              typeof subsection.content === 'string' && subsection.content.includes('<div') ? (
+                <div dangerouslySetInnerHTML={{ __html: subsection.content }} className="ratio-content" />
+              ) : (
+                <p className="text-gray-700 leading-relaxed">{subsection.content}</p>
+              )
+            ) : (
+              <p className="text-gray-500 italic">Contenu à venir...</p>
+            )}
+          </div>
+        ))}
+      </div>
+    );
+  }
+  
+  // If no content, return null
   if (!content) return null;
 
   // Split content by sections that might have ## headers
@@ -316,7 +341,9 @@ const GenericCourseContent = ({ courseId }: CourseContentProps) => {
               <CardTitle className="text-2xl font-bold text-swiss-dark">{section.title}</CardTitle>
             </CardHeader>
             <CardContent className="pt-6 px-6">
-              {section.content ? (
+              {section.subsections ? (
+                <SectionContent content={null} subsections={section.subsections} />
+              ) : section.content ? (
                 <SectionContent content={section.content} />
               ) : (
                 <p className="text-gray-500 italic">Contenu à venir...</p>
