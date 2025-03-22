@@ -7,6 +7,7 @@ import GenericCourseContent from '../components/formation/GenericCourseContent';
 import FinancialCourseContent from '../components/formation/FinancialCourseContent';
 import FinancialRatiosCourseContent from '../components/formation/FinancialRatiosCourseContent';
 import ChartOfAccountsCourseContent from '../components/formation/ChartOfAccountsCourseContent';
+import FinancialStatementsCourseContent from '../components/formation/FinancialStatementsCourseContent';
 
 const Formation = () => {
   return (
@@ -34,7 +35,7 @@ const Formation = () => {
         <Route path="/llc" element={<GenericCourseContent courseId="llc" />} />
         <Route path="/depreciation" element={<GenericCourseContent courseId="depreciation" />} />
         <Route path="/financial-ratios" element={<FinancialRatiosCourseContent />} />
-        <Route path="/financial-statements" element={<GenericCourseContent courseId="financial-statements" />} />
+        <Route path="/financial-statements" element={<FinancialStatementsCourseContent />} />
       </Routes>
     </div>
   );
