@@ -5,6 +5,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import RatioIcon, { getRatioIconByTitle } from './financial/RatioIcon';
 import './financial/FormulaDisplay.css';
 import RatioFormulaDisplay from './financial/RatioFormulaDisplay';
+import RatioSummaryTable from './financial/RatioSummaryTable';
 
 const FinancialRatiosCourseContent = () => {
   const course = courseStructure["financial-ratios"];
@@ -14,7 +15,12 @@ const FinancialRatiosCourseContent = () => {
   }
   
   // Function to process content with special layout for ratios
-  const processContent = (content: string) => {
+  const processContent = (content: string, sectionId: string) => {
+    // For the summary section, use our new component
+    if (sectionId === 'summary') {
+      return <RatioSummaryTable />;
+    }
+    
     // Check if content has formulas and accounts sections
     if (content.includes('<div class="formula-header">') || 
         content.includes('<div class="accounts-header">')) {
@@ -84,7 +90,7 @@ const FinancialRatiosCourseContent = () => {
               </CardHeader>
               <CardContent className="pt-6 px-6">
                 {section.content ? (
-                  processContent(section.content)
+                  processContent(section.content, section.id)
                 ) : (
                   <p className="text-gray-500 italic">Contenu à venir...</p>
                 )}
