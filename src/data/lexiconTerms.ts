@@ -8,7 +8,7 @@ export type LexiconTerm = {
   title: string;
   definition: string;
   example?: string;
-  category: 'general' | 'fiscal' | 'accounting';
+  category: 'general' | 'fiscal' | 'accounting' | 'legal';
   links?: LexiconLink[];
 };
 

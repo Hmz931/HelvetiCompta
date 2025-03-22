@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect, useCallback } from 'react';
 import Breadcrumb from '../components/common/Breadcrumb';
 import { Search, BookOpen, ChevronDown, ChevronUp, Tag, Filter, Hash, Book } from 'lucide-react';
@@ -17,7 +16,6 @@ const Lexicon = () => {
   const [showFilters, setShowFilters] = useState(false);
   const [activeTab, setActiveTab] = useState<string>('terms');
 
-  // Get all categories and tags
   const termCategories = Array.from(new Set(lexiconTerms.map(term => term.category)));
   const abbrevCategories = Array.from(new Set(lexiconAbbreviations.map(abbr => abbr.category)));
   const allCategories = Array.from(new Set([...termCategories, ...abbrevCategories]));
@@ -26,9 +24,7 @@ const Lexicon = () => {
     term.example ? [term.category] : [term.category]
   )));
 
-  // Filter content based on search and filters
   const filterContent = useCallback(() => {
-    // Filter terms
     let termsResult = lexiconTerms;
     
     if (searchTerm) {
@@ -45,7 +41,6 @@ const Lexicon = () => {
     
     setFilteredTerms(termsResult);
 
-    // Filter abbreviations
     let abbrevResults = lexiconAbbreviations;
     
     if (searchTerm) {
@@ -63,7 +58,6 @@ const Lexicon = () => {
     setFilteredAbbreviations(abbrevResults);
   }, [searchTerm, selectedCategory, selectedTags]);
 
-  // Apply filters whenever search or filter options change
   useEffect(() => {
     filterContent();
   }, [filterContent, searchTerm, selectedCategory, selectedTags]);
