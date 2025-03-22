@@ -104,7 +104,14 @@ Ces formulaires comprennent trois sections principales:
 - L'impôt préalable correspond à la TVA payée aux fournisseurs
 - Le solde à payer est la différence entre la TVA collectée et l'impôt préalable
 - Les décomptes peuvent être trimestriels ou semestriels selon le régime choisi
-- Le non-respect des délais de dépôt et de paiement entraîne des intérêts moratoires`
+- Le non-respect des délais de dépôt et de paiement entraîne des intérêts moratoires
+
+## Abréviations importantes liées à la TVA
+- TVA: Taxe sur la valeur ajoutée
+- AFC: Administration fédérale des contributions
+- OTVA: Ordonnance régissant la taxe sur la valeur ajoutée
+- LTVA: Loi fédérale régissant la taxe sur la valeur ajoutée
+- TDFN: Taux de la dette fiscale nette`
     },
     {
       id: 'tax-deductions',

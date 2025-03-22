@@ -1,4 +1,3 @@
-
 export type LexiconLink = {
   text: string;
   url: string;
@@ -12,6 +11,220 @@ export type LexiconTerm = {
   category: 'general' | 'fiscal' | 'accounting';
   links?: LexiconLink[];
 };
+
+export type LexiconAbbreviation = {
+  id: number;
+  abbreviation: string;
+  fullName: string;
+  category: 'general' | 'fiscal' | 'accounting' | 'legal';
+};
+
+export const lexiconAbbreviations: LexiconAbbreviation[] = [
+  {
+    id: 1,
+    abbreviation: 'AC',
+    fullName: 'Assurance-chômage',
+    category: 'fiscal'
+  },
+  {
+    id: 2,
+    abbreviation: 'AFC',
+    fullName: 'Administration fédérale des contributions',
+    category: 'fiscal'
+  },
+  {
+    id: 3,
+    abbreviation: 'AI',
+    fullName: 'Assurance-invalidité',
+    category: 'fiscal'
+  },
+  {
+    id: 4,
+    abbreviation: 'al.',
+    fullName: 'Alinéa',
+    category: 'legal'
+  },
+  {
+    id: 5,
+    abbreviation: 'APG',
+    fullName: 'Allocations pour perte de gain',
+    category: 'fiscal'
+  },
+  {
+    id: 6,
+    abbreviation: 'art.',
+    fullName: 'Article',
+    category: 'legal'
+  },
+  {
+    id: 7,
+    abbreviation: 'AVS',
+    fullName: 'Assurance-vieillesse et survivants',
+    category: 'fiscal'
+  },
+  {
+    id: 8,
+    abbreviation: 'CC',
+    fullName: 'Code civil suisse',
+    category: 'legal'
+  },
+  {
+    id: 9,
+    abbreviation: 'CCF',
+    fullName: 'Caisses de compensation pour les allocations familiales',
+    category: 'fiscal'
+  },
+  {
+    id: 10,
+    abbreviation: 'CCP',
+    fullName: 'Comptes de chèques postaux',
+    category: 'accounting'
+  },
+  {
+    id: 11,
+    abbreviation: 'CD',
+    fullName: 'Disque compact',
+    category: 'general'
+  },
+  {
+    id: 12,
+    abbreviation: 'ch.',
+    fullName: 'Chiffre',
+    category: 'general'
+  },
+  {
+    id: 13,
+    abbreviation: 'CO',
+    fullName: 'Code des obligations',
+    category: 'legal'
+  },
+  {
+    id: 14,
+    abbreviation: 'Division principale DAT',
+    fullName: 'Division principale de l\'impôt fédéral direct, de l\'impôt anticipé, des droits de timbre (Administration fédérale des contributions)',
+    category: 'fiscal'
+  },
+  {
+    id: 15,
+    abbreviation: 'ERR',
+    fullName: 'Entretien, réparations, remplacements',
+    category: 'accounting'
+  },
+  {
+    id: 16,
+    abbreviation: 'IA',
+    fullName: 'Impôt anticipé',
+    category: 'fiscal'
+  },
+  {
+    id: 17,
+    abbreviation: 'IFCAM',
+    fullName: 'Institut suisse pour la formation des chefs d\'entreprise dans les arts et métiers',
+    category: 'general'
+  },
+  {
+    id: 18,
+    abbreviation: 'Instr. TVA',
+    fullName: 'Instructions à l\'usage des assujettis TVA',
+    category: 'fiscal'
+  },
+  {
+    id: 19,
+    abbreviation: 'LAA',
+    fullName: 'Loi fédérale sur l\'assurance-accidents',
+    category: 'legal'
+  },
+  {
+    id: 20,
+    abbreviation: 'LAI',
+    fullName: 'Loi fédérale sur l\'assurance-invalidité',
+    category: 'legal'
+  },
+  {
+    id: 21,
+    abbreviation: 'LAMal',
+    fullName: 'Loi fédérale sur l\'assurance-maladie',
+    category: 'legal'
+  },
+  {
+    id: 22,
+    abbreviation: 'LETC',
+    fullName: 'Lettre',
+    category: 'general'
+  },
+  {
+    id: 23,
+    abbreviation: 'LHID',
+    fullName: 'Loi fédérale sur l\'harmonisation des impôts directs des cantons et des communes',
+    category: 'legal'
+  },
+  {
+    id: 24,
+    abbreviation: 'LIFD',
+    fullName: 'Loi fédérale sur l\'impôt fédéral direct',
+    category: 'legal'
+  },
+  {
+    id: 25,
+    abbreviation: 'LPP',
+    fullName: 'Loi fédérale sur la prévoyance professionnelle',
+    category: 'legal'
+  },
+  {
+    id: 26,
+    abbreviation: 'OTVA',
+    fullName: 'Ordonnance régissant la taxe sur la valeur ajoutée',
+    category: 'legal'
+  },
+  {
+    id: 27,
+    abbreviation: 'PME',
+    fullName: 'Petites et moyennes entreprises',
+    category: 'general'
+  },
+  {
+    id: 28,
+    abbreviation: 'RéCri',
+    fullName: 'Réserves de crise',
+    category: 'accounting'
+  },
+  {
+    id: 29,
+    abbreviation: 'RPC',
+    fullName: 'Recommandations relatives à la présentation des comptes en Suisse',
+    category: 'accounting'
+  },
+  {
+    id: 30,
+    abbreviation: 'S.à r.l.',
+    fullName: 'Société à responsabilité limitée',
+    category: 'general'
+  },
+  {
+    id: 31,
+    abbreviation: 'SWISCO',
+    fullName: 'Association suisse des comptables contrôleurs de gestion diplômés',
+    category: 'accounting'
+  },
+  {
+    id: 32,
+    abbreviation: 'TVA',
+    fullName: 'Taxe sur la valeur ajoutée',
+    category: 'fiscal'
+  },
+  {
+    id: 33,
+    abbreviation: 'VEBIT',
+    fullName: 'Vereinigung eidg. dipl. Buchhalter/Controller im Treuhandfach',
+    category: 'accounting'
+  },
+  {
+    id: 34,
+    abbreviation: 'WIR',
+    fullName: 'Cercle économique, société coopérative (Wirtschaftsring), Bâle',
+    category: 'general'
+  }
+];
 
 export const lexiconTerms: LexiconTerm[] = [
   {
