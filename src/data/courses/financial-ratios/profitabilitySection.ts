@@ -23,7 +23,7 @@ export const profitabilitySection: Section = {
 <div class="accounts-header">Comptes utilisés :</div>
 
 <ul class="accounts-list">
-  <li>Chiffre d'affaires net (3000-3799)</li>
+  <li>Chiffre d'affaires net (3000 à 3799)</li>
   <li>Résultat net (9900)</li>
 </ul>
 
@@ -45,7 +45,7 @@ export const profitabilitySection: Section = {
 
 <ul class="accounts-list">
   <li>Résultat net (9900)</li>
-  <li>Capitaux propres (2800-2899)</li>
+  <li>Capitaux propres (2800 à 2899)</li>
 </ul>
 
 #
@@ -66,6 +66,6 @@ export const profitabilitySection: Section = {
 
 <ul class="accounts-list">
   <li>Résultat net (9900)</li>
-  <li>Total des actifs (1000-1999)</li>
+  <li>Total des actifs (1000 à 1999)</li>
 </ul>`
 };

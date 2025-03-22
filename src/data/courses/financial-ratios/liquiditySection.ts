@@ -23,8 +23,8 @@ export const liquiditySection: Section = {
 <div class="accounts-header">Comptes utilisés :</div>
 
 <ul class="accounts-list">
-  <li>Actifs circulants (1000-1499)</li>
-  <li>Passifs à court terme (2000-2499)</li>
+  <li>Actifs circulants (1000 à 1499)</li>
+  <li>Passifs à court terme (2000 à 2499)</li>
 </ul>
 
 #
@@ -44,8 +44,8 @@ export const liquiditySection: Section = {
 <div class="accounts-header">Comptes utilisés :</div>
 
 <ul class="accounts-list">
-  <li>Liquidités (1000-1099)</li>
-  <li>Créances clients (1100-1199)</li>
-  <li>Passifs à court terme (2000-2499)</li>
+  <li>Liquidités (1000 à 1099)</li>
+  <li>Créances clients (1100 à 1199)</li>
+  <li>Passifs à court terme (2000 à 2499)</li>
 </ul>`
 };

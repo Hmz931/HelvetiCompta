@@ -23,8 +23,8 @@ export const efficiencySection: Section = {
 <div class="accounts-header">Comptes utilisés :</div>
 
 <ul class="accounts-list">
-  <li>Coût des marchandises vendues (4000-4099)</li>
-  <li>Stocks (1200-1299)</li>
+  <li>Coût des marchandises vendues (4000 à 4099)</li>
+  <li>Stocks (1200 à 1299)</li>
 </ul>
 
 #
@@ -40,7 +40,7 @@ export const efficiencySection: Section = {
 <div class="accounts-header">Comptes utilisés :</div>
 
 <ul class="accounts-list">
-  <li>Créances clients (1100-1199)</li>
-  <li>Chiffre d'affaires (3000-3799)</li>
+  <li>Créances clients (1100 à 1199)</li>
+  <li>Chiffre d'affaires (3000 à 3799)</li>
 </ul>`
 };

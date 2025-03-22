@@ -23,8 +23,8 @@ export const solvencySection: Section = {
 <div class="accounts-header">Comptes utilisés :</div>
 
 <ul class="accounts-list">
-  <li>Total des dettes (2000-2699)</li>
-  <li>Total des actifs (1000-1999)</li>
+  <li>Total des dettes (2000 à 2699)</li>
+  <li>Total des actifs (1000 à 1999)</li>
 </ul>
 
 #
@@ -44,7 +44,7 @@ export const solvencySection: Section = {
 <div class="accounts-header">Comptes utilisés :</div>
 
 <ul class="accounts-list">
-  <li>Capitaux propres (2800-2899)</li>
-  <li>Total du passif (2000-2999)</li>
+  <li>Capitaux propres (2800 à 2899)</li>
+  <li>Total du passif (2000 à 2999)</li>
 </ul>`
 };
