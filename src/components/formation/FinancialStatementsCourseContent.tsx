@@ -4,6 +4,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { courseStructure } from '@/data/courses';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { FileBarChart } from 'lucide-react';
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 
 const FinancialStatementsCourseContent = () => {
   const course = courseStructure['financial-statements'];
@@ -42,6 +43,124 @@ const FinancialStatementsCourseContent = () => {
               {section.content && (
                 <div className="prose max-w-none leading-relaxed">
                   <div dangerouslySetInnerHTML={{ __html: section.content }} />
+                </div>
+              )}
+              
+              {/* Special treatment for the income statement section to add the table visualization */}
+              {section.id === 'income-statement' && (
+                <div className="mt-6 bg-gray-50 rounded-lg p-6 border border-gray-200">
+                  <h3 className="text-xl font-semibold mb-4 text-swiss-dark">Structure détaillée du compte de résultat</h3>
+                  <div className="overflow-x-auto">
+                    <Table className="w-full border-collapse">
+                      <TableHeader className="bg-swiss-blue/10">
+                        <TableRow>
+                          <TableHead className="w-1/2 font-bold">Élément du compte de résultat</TableHead>
+                          <TableHead className="w-1/6 text-center font-bold">Opération</TableHead>
+                          <TableHead className="w-1/3 font-bold">Groupes principaux de comptes</TableHead>
+                        </TableRow>
+                      </TableHeader>
+                      <TableBody>
+                        <TableRow>
+                          <TableCell className="font-medium">Chiffre d'affaires résultant des ventes et des prestations de services</TableCell>
+                          <TableCell></TableCell>
+                          <TableCell>30-39</TableCell>
+                        </TableRow>
+                        <TableRow>
+                          <TableCell>Charges de matières, de marchandises et de services</TableCell>
+                          <TableCell className="text-center">-</TableCell>
+                          <TableCell>40-49</TableCell>
+                        </TableRow>
+                        <TableRow className="bg-gray-100">
+                          <TableCell className="font-medium">= Marge brute 1</TableCell>
+                          <TableCell className="text-center">=</TableCell>
+                          <TableCell></TableCell>
+                        </TableRow>
+                        <TableRow>
+                          <TableCell>Charges de personnel de production</TableCell>
+                          <TableCell className="text-center">-</TableCell>
+                          <TableCell>50-51</TableCell>
+                        </TableRow>
+                        <TableRow className="bg-gray-100">
+                          <TableCell className="font-medium">= Marge brute 2</TableCell>
+                          <TableCell className="text-center">=</TableCell>
+                          <TableCell></TableCell>
+                        </TableRow>
+                        <TableRow>
+                          <TableCell>Autres charges de personnel</TableCell>
+                          <TableCell className="text-center">-</TableCell>
+                          <TableCell>52-59</TableCell>
+                        </TableRow>
+                        <TableRow className="bg-gray-100">
+                          <TableCell className="font-medium">= Marge brute 3</TableCell>
+                          <TableCell className="text-center">=</TableCell>
+                          <TableCell></TableCell>
+                        </TableRow>
+                        <TableRow>
+                          <TableCell>Autres charges d'exploitation</TableCell>
+                          <TableCell className="text-center">-</TableCell>
+                          <TableCell>60-67</TableCell>
+                        </TableRow>
+                        <TableRow className="bg-gray-100">
+                          <TableCell className="font-medium">= Résultat d'exploitation 1 (avant résultat financier)</TableCell>
+                          <TableCell className="text-center">=</TableCell>
+                          <TableCell></TableCell>
+                        </TableRow>
+                        <TableRow>
+                          <TableCell>Résultat financier</TableCell>
+                          <TableCell className="text-center">+/-</TableCell>
+                          <TableCell>68</TableCell>
+                        </TableRow>
+                        <TableRow className="bg-gray-100">
+                          <TableCell className="font-medium">= Résultat d'exploitation 2 (avant amortissements)</TableCell>
+                          <TableCell className="text-center">=</TableCell>
+                          <TableCell></TableCell>
+                        </TableRow>
+                        <TableRow>
+                          <TableCell>Amortissements</TableCell>
+                          <TableCell className="text-center">-</TableCell>
+                          <TableCell>69</TableCell>
+                        </TableRow>
+                        <TableRow className="bg-gray-100">
+                          <TableCell className="font-medium">= Résultat d'exploitation 3 (avant résultat des activités annexes d'exploitation)</TableCell>
+                          <TableCell className="text-center">=</TableCell>
+                          <TableCell></TableCell>
+                        </TableRow>
+                        <TableRow>
+                          <TableCell>Résultat des activités annexes d'exploitation</TableCell>
+                          <TableCell className="text-center">+/-</TableCell>
+                          <TableCell>70-79</TableCell>
+                        </TableRow>
+                        <TableRow className="bg-gray-100">
+                          <TableCell className="font-medium">= Résultat d'exploitation 4</TableCell>
+                          <TableCell className="text-center">=</TableCell>
+                          <TableCell></TableCell>
+                        </TableRow>
+                        <TableRow>
+                          <TableCell>Résultats exceptionnel et hors exploitation</TableCell>
+                          <TableCell className="text-center">+/-</TableCell>
+                          <TableCell>80-88</TableCell>
+                        </TableRow>
+                        <TableRow className="bg-gray-100">
+                          <TableCell className="font-medium">= Résultat de l'exercice (avant impôts)</TableCell>
+                          <TableCell className="text-center">=</TableCell>
+                          <TableCell></TableCell>
+                        </TableRow>
+                        <TableRow>
+                          <TableCell>Charges d'impôt</TableCell>
+                          <TableCell className="text-center">-</TableCell>
+                          <TableCell>89</TableCell>
+                        </TableRow>
+                        <TableRow className="bg-gray-100">
+                          <TableCell className="font-medium">= Bénéfice / Perte de l'exercice</TableCell>
+                          <TableCell className="text-center">=</TableCell>
+                          <TableCell></TableCell>
+                        </TableRow>
+                      </TableBody>
+                    </Table>
+                  </div>
+                  <div className="mt-4 text-sm text-gray-600">
+                    <p className="italic">Note: Cette structure suit la présentation par nature des charges selon le plan comptable suisse.</p>
+                  </div>
                 </div>
               )}
               
