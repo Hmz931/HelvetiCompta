@@ -1,13 +1,12 @@
-
 import React, { useState, useRef, useEffect } from 'react';
 import Highcharts from 'highcharts';
 import HighchartsReact from 'highcharts-react-official';
-import HighchartsMap from 'highcharts/modules/map';
+import mapModule from 'highcharts/modules/map';
 import { MapPin, Info, ExternalLink, ArrowRight } from 'lucide-react';
 
 // Initialize the map module
 if (typeof Highcharts === 'object') {
-  HighchartsMap(Highcharts);
+  mapModule(Highcharts);
 }
 
 interface Canton {
@@ -23,7 +22,7 @@ interface Canton {
   website: string;
 }
 
-// Canton data (same as your original component)
+// Canton data
 const cantons: Record<string, Canton> = {
   zh: {
     id: 'zh',
@@ -344,13 +343,11 @@ const SwissMapHighcharts: React.FC = () => {
   const [selectedCanton, setSelectedCanton] = useState<Canton | null>(null);
   const chartRef = useRef<HighchartsReact.RefObject>(null);
 
-  // Prepare data for Highcharts
   const getMapData = () => {
     return Object.entries(cantons).map(([key, canton]) => {
-      // Convert tax rate string to number for color gradient
       const taxRate = parseFloat(canton.taxRate.replace('%', ''));
       return {
-        'hc-key': `ch-${key}`, // Highcharts uses this format for Swiss cantons
+        'hc-key': `ch-${key}`,
         value: taxRate,
         name: canton.name,
         id: key,
@@ -360,7 +357,6 @@ const SwissMapHighcharts: React.FC = () => {
   };
 
   useEffect(() => {
-    // Fetch the Swiss map topology
     const fetchData = async () => {
       try {
         const response = await fetch(
@@ -368,7 +364,6 @@ const SwissMapHighcharts: React.FC = () => {
         );
         const topology = await response.json();
         
-        // Set the map data
         if (chartRef.current && chartRef.current.chart) {
           Highcharts.maps['countries/ch/ch-all'] = topology;
           chartRef.current.chart.update({
@@ -390,16 +385,13 @@ const SwissMapHighcharts: React.FC = () => {
     }
   }, [chartRef.current]);
 
-  // Handle canton selection
   const handleCantonSelect = (e: Highcharts.PointClickEventObject) => {
     if (e.point) {
-      // Use type assertion to access custom properties
       const point = e.point as any;
       if (point.id) {
         const cantonId = point.id.toString();
         setSelectedCanton(cantons[cantonId]);
         
-        // Highlight selected canton
         if (chartRef.current && chartRef.current.chart) {
           chartRef.current.chart.update({
             tooltip: {
@@ -411,7 +403,6 @@ const SwissMapHighcharts: React.FC = () => {
     }
   };
 
-  // Chart configuration
   const chartOptions: Highcharts.Options = {
     chart: {
       height: 500,
@@ -422,7 +413,6 @@ const SwissMapHighcharts: React.FC = () => {
       },
       events: {
         load: function() {
-          // This event fires when the chart is first loaded
           setMapLoaded(true);
         }
       }
