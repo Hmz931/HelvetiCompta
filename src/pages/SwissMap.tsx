@@ -1,8 +1,7 @@
-
 import React from 'react';
 import Breadcrumb from '../components/common/Breadcrumb';
 import SwissMapComponent from '../components/map/SwissMap';
-import { Map, Info, BookOpen, CreditCard, Building2 } from 'lucide-react';
+import { Map, Info, BookOpen, CreditCard, Building2, FileText } from 'lucide-react';
 
 const SwissMap = () => {
   return (
@@ -193,6 +192,50 @@ const SwissMap = () => {
               <span className="font-semibold min-w-20">Lucerne</span>
               <span className="text-swiss-text-secondary">Administration fiscale</span>
             </a>
+          </div>
+        </div>
+      </section>
+      
+      <section className="mb-10 mt-10">
+        <h2 className="text-2xl font-bold mb-6 flex items-center">
+          <FileText size={24} className="mr-3 text-swiss-blue" />
+          Sources et références
+        </h2>
+        
+        <div className="glass rounded-xl p-6 shadow-card">
+          <p className="text-swiss-text-secondary mb-6">
+            Les données présentées dans cette carte interactive ont été collectées à partir des sources officielles suivantes :
+          </p>
+          
+          <div className="space-y-4">
+            <div>
+              <h3 className="text-lg font-semibold mb-2">Données démographiques et géographiques</h3>
+              <ul className="list-disc list-inside space-y-2 text-swiss-text-secondary pl-4">
+                <li>Office fédéral de la statistique (OFS) - <a href="https://www.bfs.admin.ch" target="_blank" rel="noopener noreferrer" className="text-swiss-blue hover:underline">www.bfs.admin.ch</a></li>
+                <li>Portail des autorités suisses - <a href="https://www.ch.ch" target="_blank" rel="noopener noreferrer" className="text-swiss-blue hover:underline">www.ch.ch</a></li>
+              </ul>
+            </div>
+            
+            <div>
+              <h3 className="text-lg font-semibold mb-2">Données fiscales</h3>
+              <ul className="list-disc list-inside space-y-2 text-swiss-text-secondary pl-4">
+                <li>Administration fédérale des contributions (AFC) - <a href="https://www.estv.admin.ch" target="_blank" rel="noopener noreferrer" className="text-swiss-blue hover:underline">www.estv.admin.ch</a></li>
+                <li>Conférence suisse des impôts (CSI) - <a href="https://www.steuerkonferenz.ch" target="_blank" rel="noopener noreferrer" className="text-swiss-blue hover:underline">www.steuerkonferenz.ch</a></li>
+                <li>KPMG Switzerland Tax Report - <a href="https://home.kpmg/ch/fr/home/services/tax.html" target="_blank" rel="noopener noreferrer" className="text-swiss-blue hover:underline">KPMG Suisse</a></li>
+              </ul>
+            </div>
+            
+            <div>
+              <h3 className="text-lg font-semibold mb-2">Sites officiels des cantons</h3>
+              <p className="text-swiss-text-secondary mb-2">Les informations spécifiques à chaque canton proviennent des sites web officiels cantonaux, accessibles via les liens fournis dans la section "Ressources administratives".</p>
+            </div>
+            
+            <div className="pt-4 border-t border-gray-200">
+              <p className="text-sm text-swiss-text-secondary italic">
+                Note : Les taux d'imposition et données démographiques sont sujets à des modifications périodiques. Dernière mise à jour : Mai 2023. 
+                Pour les informations les plus récentes, veuillez consulter directement les sites officiels des administrations cantonales.
+              </p>
+            </div>
           </div>
         </div>
       </section>
