@@ -1,7 +1,7 @@
 
 import React from 'react';
 import Breadcrumb from '../components/common/Breadcrumb';
-import SwissMapComponent from '../components/map/SwissMap';
+import SwissMapComponent from '../components/map/SwissMapHighcharts';
 import { Map, Info, BookOpen, CreditCard, Building2, FileText, ExternalLink } from 'lucide-react';
 
 const SwissMap = () => {
