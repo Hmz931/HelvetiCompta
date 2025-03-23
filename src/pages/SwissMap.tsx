@@ -1,7 +1,8 @@
+
 import React from 'react';
 import Breadcrumb from '../components/common/Breadcrumb';
 import SwissMapComponent from '../components/map/SwissMap';
-import { Map, Info, BookOpen, CreditCard, Building2, FileText } from 'lucide-react';
+import { Map, Info, BookOpen, CreditCard, Building2, FileText, ExternalLink } from 'lucide-react';
 
 const SwissMap = () => {
   return (
@@ -211,23 +212,31 @@ const SwissMap = () => {
             <div>
               <h3 className="text-lg font-semibold mb-2">Données démographiques et géographiques</h3>
               <ul className="list-disc list-inside space-y-2 text-swiss-text-secondary pl-4">
-                <li>Office fédéral de la statistique (OFS) - <a href="https://www.bfs.admin.ch" target="_blank" rel="noopener noreferrer" className="text-swiss-blue hover:underline">www.bfs.admin.ch</a></li>
-                <li>Portail des autorités suisses - <a href="https://www.ch.ch" target="_blank" rel="noopener noreferrer" className="text-swiss-blue hover:underline">www.ch.ch</a></li>
+                <li>Office fédéral de la statistique (OFS) - <a href="https://www.bfs.admin.ch" target="_blank" rel="noopener noreferrer" className="text-swiss-blue hover:underline inline-flex items-center">www.bfs.admin.ch <ExternalLink size={12} className="ml-1" /></a></li>
+                <li>Portail des autorités suisses - <a href="https://www.ch.ch" target="_blank" rel="noopener noreferrer" className="text-swiss-blue hover:underline inline-flex items-center">www.ch.ch <ExternalLink size={12} className="ml-1" /></a></li>
+                <li>Swissinfo - <a href="https://www.swissinfo.ch" target="_blank" rel="noopener noreferrer" className="text-swiss-blue hover:underline inline-flex items-center">www.swissinfo.ch <ExternalLink size={12} className="ml-1" /></a></li>
               </ul>
             </div>
             
             <div>
               <h3 className="text-lg font-semibold mb-2">Données fiscales</h3>
               <ul className="list-disc list-inside space-y-2 text-swiss-text-secondary pl-4">
-                <li>Administration fédérale des contributions (AFC) - <a href="https://www.estv.admin.ch" target="_blank" rel="noopener noreferrer" className="text-swiss-blue hover:underline">www.estv.admin.ch</a></li>
-                <li>Conférence suisse des impôts (CSI) - <a href="https://www.steuerkonferenz.ch" target="_blank" rel="noopener noreferrer" className="text-swiss-blue hover:underline">www.steuerkonferenz.ch</a></li>
-                <li>KPMG Switzerland Tax Report - <a href="https://home.kpmg/ch/fr/home/services/tax.html" target="_blank" rel="noopener noreferrer" className="text-swiss-blue hover:underline">KPMG Suisse</a></li>
+                <li>Administration fédérale des contributions (AFC) - <a href="https://www.estv.admin.ch" target="_blank" rel="noopener noreferrer" className="text-swiss-blue hover:underline inline-flex items-center">www.estv.admin.ch <ExternalLink size={12} className="ml-1" /></a></li>
+                <li>Conférence suisse des impôts (CSI) - <a href="https://www.steuerkonferenz.ch" target="_blank" rel="noopener noreferrer" className="text-swiss-blue hover:underline inline-flex items-center">www.steuerkonferenz.ch <ExternalLink size={12} className="ml-1" /></a></li>
+                <li>KPMG Switzerland Tax Report - <a href="https://home.kpmg/ch/fr/home/services/tax.html" target="_blank" rel="noopener noreferrer" className="text-swiss-blue hover:underline inline-flex items-center">KPMG Suisse <ExternalLink size={12} className="ml-1" /></a></li>
+                <li>PwC Switzerland Tax Insights - <a href="https://www.pwc.ch/fr/services/conseil-fiscal.html" target="_blank" rel="noopener noreferrer" className="text-swiss-blue hover:underline inline-flex items-center">PwC Suisse <ExternalLink size={12} className="ml-1" /></a></li>
               </ul>
             </div>
             
             <div>
               <h3 className="text-lg font-semibold mb-2">Sites officiels des cantons</h3>
               <p className="text-swiss-text-secondary mb-2">Les informations spécifiques à chaque canton proviennent des sites web officiels cantonaux, accessibles via les liens fournis dans la section "Ressources administratives".</p>
+              <p className="text-swiss-text-secondary mb-2">Pour les données détaillées des capitales cantonales, populations, superficies et langues, nous nous sommes référés aux publications suivantes:</p>
+              <ul className="list-disc list-inside space-y-2 text-swiss-text-secondary pl-4">
+                <li>Annuaire statistique de la Suisse (OFS)</li>
+                <li>Rapport annuel sur la fiscalité cantonale (AFC)</li>
+                <li>Statistiques cantonales comparatives (2022-2023)</li>
+              </ul>
             </div>
             
             <div className="pt-4 border-t border-gray-200">

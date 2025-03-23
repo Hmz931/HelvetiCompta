@@ -1,6 +1,6 @@
 
 import React, { useState } from 'react';
-import { ArrowRight, MapPin, Info } from 'lucide-react';
+import { ArrowRight, MapPin, Info, ExternalLink } from 'lucide-react';
 
 interface Canton {
   id: string;
@@ -853,6 +853,35 @@ const SwissMap = () => {
                   >
                     Visiter le site officiel <ArrowRight size={14} className="ml-1" />
                   </a>
+
+                  <div className="pt-3 mt-3 border-t border-gray-200 text-xs text-swiss-text-secondary">
+                    <p className="flex items-center">
+                      <Info size={12} className="mr-1" /> 
+                      Sources des données:
+                    </p>
+                    <ul className="mt-1 space-y-1">
+                      <li className="flex items-start">
+                        <span className="inline-block w-2 h-2 rounded-full bg-swiss-blue/60 mt-1.5 mr-1.5"></span>
+                        <span>Démographie: Office fédéral de la statistique (OFS)</span>
+                      </li>
+                      <li className="flex items-start">
+                        <span className="inline-block w-2 h-2 rounded-full bg-swiss-blue/60 mt-1.5 mr-1.5"></span>
+                        <span>Fiscalité: Administration fédérale des contributions (AFC)</span>
+                      </li>
+                      <li className="flex items-start">
+                        <span className="inline-block w-2 h-2 rounded-full bg-swiss-blue/60 mt-1.5 mr-1.5"></span>
+                        <a 
+                          href="https://www.estv.admin.ch" 
+                          target="_blank" 
+                          rel="noopener noreferrer" 
+                          className="text-swiss-blue hover:underline inline-flex items-center"
+                        >
+                          Voir les références complètes
+                          <ExternalLink size={10} className="ml-1" />
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
                 </div>
               </div>
             ) : (
@@ -874,4 +903,3 @@ const SwissMap = () => {
 };
 
 export default SwissMap;
-
