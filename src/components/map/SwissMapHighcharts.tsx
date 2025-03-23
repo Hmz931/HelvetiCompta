@@ -2,12 +2,12 @@
 import React, { useState, useRef, useEffect } from 'react';
 import Highcharts from 'highcharts';
 import HighchartsReact from 'highcharts-react-official';
-import highchartsMap from 'highcharts/modules/map';
+import HighchartsMap from 'highcharts/modules/map';
 import { MapPin, Info, ExternalLink, ArrowRight } from 'lucide-react';
 
 // Initialize the map module
 if (typeof Highcharts === 'object') {
-  highchartsMap(Highcharts);
+  HighchartsMap(Highcharts);
 }
 
 interface Canton {
@@ -373,6 +373,7 @@ const SwissMapHighcharts: React.FC = () => {
           Highcharts.maps['countries/ch/ch-all'] = topology;
           chartRef.current.chart.update({
             series: [{
+              type: 'map',
               data: getMapData(),
               mapData: topology
             }]
@@ -391,17 +392,21 @@ const SwissMapHighcharts: React.FC = () => {
 
   // Handle canton selection
   const handleCantonSelect = (e: Highcharts.PointClickEventObject) => {
-    if (e.point && e.point.id) {
-      const cantonId = e.point.id.toString();
-      setSelectedCanton(cantons[cantonId]);
-      
-      // Highlight selected canton
-      if (chartRef.current && chartRef.current.chart) {
-        chartRef.current.chart.update({
-          tooltip: {
-            enabled: true
-          }
-        });
+    if (e.point) {
+      // Use type assertion to access custom properties
+      const point = e.point as any;
+      if (point.id) {
+        const cantonId = point.id.toString();
+        setSelectedCanton(cantons[cantonId]);
+        
+        // Highlight selected canton
+        if (chartRef.current && chartRef.current.chart) {
+          chartRef.current.chart.update({
+            tooltip: {
+              enabled: true
+            }
+          });
+        }
       }
     }
   };
@@ -499,7 +504,7 @@ const SwissMapHighcharts: React.FC = () => {
           click: handleCantonSelect
         }
       }
-    }],
+    } as Highcharts.SeriesMapOptions],
     credits: {
       enabled: false
     }
