@@ -1,27 +1,13 @@
 
 import React from 'react';
 import { ArrowRight, Info, ExternalLink } from 'lucide-react';
-
-interface Canton {
-  id: string;
-  name: string;
-  abbreviation: string;
-  capital: string;
-  population: string;
-  area: string;
-  languages: string[];
-  fiscalInfo: string;
-  taxRate: string;
-  website: string;
-}
+import { Canton } from './cantonData';
 
 interface CantonDetailProps {
-  canton: Canton | null;
+  canton: Canton;
 }
 
 const CantonDetail: React.FC<CantonDetailProps> = ({ canton }) => {
-  if (!canton) return null;
-  
   return (
     <div id="canton-info">
       <div className="flex justify-between items-start mb-4">
