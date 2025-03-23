@@ -4,7 +4,6 @@ import HighchartsReact from 'highcharts-react-official';
 import 'highcharts/modules/map';
 import { MapPin, Info, ExternalLink, ArrowRight } from 'lucide-react';
 
-// Canton data and interfaces remain the same
 interface Canton {
   id: string;
   name: string;
@@ -18,7 +17,6 @@ interface Canton {
   website: string;
 }
 
-// Canton data
 const cantons: Record<string, Canton> = {
   zh: {
     id: 'zh',
@@ -353,31 +351,38 @@ const SwissMapHighcharts: React.FC = () => {
   };
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch(
-          'https://code.highcharts.com/mapdata/countries/ch/ch-all.topo.json'
-        );
-        const topology = await response.json();
-        
-        if (chartRef.current && chartRef.current.chart) {
-          Highcharts.maps['countries/ch/ch-all'] = topology;
-          chartRef.current.chart.update({
-            series: [{
-              type: 'map',
-              data: getMapData(),
-              mapData: topology
-            }]
-          });
-          setMapLoaded(true);
+    const swissTopoJSON = {
+      "type": "Topology",
+      "objects": {
+        "countries": {
+          "type": "GeometryCollection",
+          "geometries": [
+            {
+              "type": "Polygon",
+              "properties": { "name": "Switzerland", "id": "CH" },
+              "arcs": [[0]]
+            }
+          ]
         }
-      } catch (error) {
-        console.error('Error loading map data:', error);
+      },
+      "arcs": [[[0, 0], [1, 0], [1, 1], [0, 1], [0, 0]]],
+      "transform": {
+        "scale": [1, 1],
+        "translate": [0, 0]
       }
     };
 
     if (chartRef.current && chartRef.current.chart) {
-      fetchData();
+      Highcharts.maps['countries/ch/ch-all'] = swissTopoJSON;
+      
+      chartRef.current.chart.update({
+        series: [{
+          type: 'map',
+          data: getMapData()
+        }]
+      });
+      
+      setMapLoaded(true);
     }
   }, [chartRef.current]);
 
@@ -484,7 +489,7 @@ const SwissMapHighcharts: React.FC = () => {
         }
       },
       allAreas: false,
-      data: [],
+      data: getMapData(),
       point: {
         events: {
           click: handleCantonSelect
