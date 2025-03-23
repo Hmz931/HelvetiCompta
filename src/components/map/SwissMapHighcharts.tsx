@@ -1,14 +1,10 @@
 import React, { useState, useRef, useEffect } from 'react';
 import Highcharts from 'highcharts';
 import HighchartsReact from 'highcharts-react-official';
-import mapModule from 'highcharts/modules/map';
+import 'highcharts/modules/map';
 import { MapPin, Info, ExternalLink, ArrowRight } from 'lucide-react';
 
-// Initialize the map module
-if (typeof Highcharts === 'object') {
-  mapModule(Highcharts);
-}
-
+// Canton data and interfaces remain the same
 interface Canton {
   id: string;
   name: string;
