@@ -1,6 +1,6 @@
 
 import React, { useState } from 'react';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, MapPin, Info } from 'lucide-react';
 
 interface Canton {
   id: string;
@@ -342,6 +342,47 @@ const SwissMap = () => {
     setHoveredCanton(cantonId);
   };
 
+  // Fonction pour déterminer la couleur d'un canton
+  const getCantonFill = (cantonId: string) => {
+    if (selectedCanton?.id === cantonId) {
+      return '#0056b3'; // Bleu foncé pour le canton sélectionné
+    } else if (hoveredCanton === cantonId) {
+      return '#4285F4'; // Bleu clair pour le canton survolé
+    }
+
+    // Couleurs par défaut pour chaque canton
+    const cantonColors: Record<string, string> = {
+      zh: '#e6f2ff', // Zurich - bleu très clair
+      be: '#c2e0c2', // Berne - vert clair
+      lu: '#ffe6b3', // Lucerne - jaune clair
+      ur: '#ffcccc', // Uri - rouge clair
+      sz: '#f2d9f2', // Schwytz - violet clair
+      ow: '#d9f2e6', // Obwald - turquoise clair
+      nw: '#d9e6f2', // Nidwald - bleu grisé
+      gl: '#e6f2d9', // Glaris - vert-jaune clair
+      zg: '#ffe6cc', // Zoug - orange clair
+      fr: '#ffe6e6', // Fribourg - rose très clair
+      so: '#f2f2d9', // Soleure - beige
+      bs: '#ffccb3', // Bâle-Ville - saumon clair
+      bl: '#f2d9e6', // Bâle-Campagne - rose pâle
+      sh: '#d9d9f2', // Schaffhouse - bleu-violet clair
+      ar: '#e6e6f2', // Appenzell Rhodes-Extérieures - gris bleuté
+      ai: '#f2e6ff', // Appenzell Rhodes-Intérieures - violet très clair
+      sg: '#ffe6d9', // Saint-Gall - pêche clair
+      gr: '#f2e6d9', // Grisons - beige rosé
+      ag: '#ffcccc', // Argovie - rouge clair
+      tg: '#d9f2f2', // Thurgovie - bleu-vert clair
+      ti: '#f2d9cc', // Tessin - taupe clair
+      vd: '#ffffb3', // Vaud - jaune pâle
+      vs: '#d9e6ff', // Valais - bleu ciel clair
+      ne: '#ffccb3', // Neuchâtel - saumon clair
+      ge: '#f2d9d9', // Genève - rose grisé
+      ju: '#ffe6cc'  // Jura - orange clair
+    };
+
+    return cantonColors[cantonId] || '#e8e8e8'; // Couleur par défaut gris très clair
+  };
+
   return (
     <div className="glass rounded-xl p-6 shadow-card overflow-hidden">
       <div className="flex flex-col lg:flex-row gap-8">
@@ -353,54 +394,408 @@ const SwissMap = () => {
           
           <div className="relative w-full aspect-[4/3] max-w-lg mx-auto">
             <svg 
-              viewBox="0 0 800 600" 
+              viewBox="0 0 1200 800" 
               className="w-full h-full" 
               style={{ filter: 'drop-shadow(0px 2px 4px rgba(0, 0, 0, 0.1))' }}
             >
-              {/* Canton outlines - this is a simplified representation */}
-              {/* You would replace these paths with actual SVG paths for Swiss cantons */}
-              <g>
-                {Object.entries(cantons).map(([id, canton]) => {
-                  // These are placeholder coordinates - in a real implementation you'd use actual SVG paths
-                  // This is just to demonstrate the concept
-                  const randomX = Math.floor(Math.random() * 700) + 50;
-                  const randomY = Math.floor(Math.random() * 500) + 50;
-                  const randomSize = Math.floor(Math.random() * 20) + 30;
-                  
-                  return (
-                    <g key={id}>
-                      <circle
-                        cx={randomX}
-                        cy={randomY}
-                        r={randomSize}
-                        fill={selectedCanton?.id === id ? '#0056b3' : hoveredCanton === id ? '#4285F4' : '#90cdf4'}
-                        stroke="#ffffff"
-                        strokeWidth="2"
-                        onClick={() => handleCantonClick(id)}
-                        onMouseEnter={() => handleCantonHover(id)}
-                        onMouseLeave={() => handleCantonHover(null)}
-                        style={{ cursor: 'pointer', transition: 'all 0.3s ease' }}
-                      />
-                      <text
-                        x={randomX}
-                        y={randomY}
-                        textAnchor="middle"
-                        dy=".3em"
-                        fontSize="12"
-                        fontWeight="bold"
-                        fill="#ffffff"
-                        pointerEvents="none"
-                      >
-                        {canton.abbreviation}
-                      </text>
-                    </g>
-                  );
-                })}
+              {/* Carte de la Suisse avec tous les cantons */}
+              <g className="cantons">
+                {/* Zurich (ZH) */}
+                <path
+                  id="zh"
+                  d="M800 170 L830 150 L870 170 L900 185 L920 200 L930 220 L920 240 L890 260 L860 250 L850 230 L830 220 L780 200 L770 180 Z"
+                  fill={getCantonFill('zh')}
+                  stroke="#333"
+                  strokeWidth="2"
+                  onClick={() => handleCantonClick('zh')}
+                  onMouseEnter={() => handleCantonHover('zh')}
+                  onMouseLeave={() => handleCantonHover(null)}
+                  style={{ cursor: 'pointer', transition: 'fill 0.3s ease' }}
+                />
+                <text x="820" y="210" textAnchor="middle" fontSize="14" fontWeight="bold" pointerEvents="none">ZH</text>
+
+                {/* Berne (BE) */}
+                <path
+                  id="be"
+                  d="M430 380 L450 300 L480 280 L540 350 L560 390 L530 420 L510 450 L470 480 L420 520 L380 470 L410 430 Z"
+                  fill={getCantonFill('be')}
+                  stroke="#333"
+                  strokeWidth="2"
+                  onClick={() => handleCantonClick('be')}
+                  onMouseEnter={() => handleCantonHover('be')}
+                  onMouseLeave={() => handleCantonHover(null)}
+                  style={{ cursor: 'pointer', transition: 'fill 0.3s ease' }}
+                />
+                <text x="470" y="400" textAnchor="middle" fontSize="14" fontWeight="bold" pointerEvents="none">BE</text>
+
+                {/* Lucerne (LU) */}
+                <path
+                  id="lu"
+                  d="M650 350 L680 320 L710 340 L700 380 L670 400 L630 390 L620 370 Z"
+                  fill={getCantonFill('lu')}
+                  stroke="#333"
+                  strokeWidth="2"
+                  onClick={() => handleCantonClick('lu')}
+                  onMouseEnter={() => handleCantonHover('lu')}
+                  onMouseLeave={() => handleCantonHover(null)}
+                  style={{ cursor: 'pointer', transition: 'fill 0.3s ease' }}
+                />
+                <text x="670" y="365" textAnchor="middle" fontSize="14" fontWeight="bold" pointerEvents="none">LU</text>
+
+                {/* Uri (UR) */}
+                <path
+                  id="ur"
+                  d="M790 420 L810 390 L830 410 L820 450 L790 470 L770 460 L760 430 Z"
+                  fill={getCantonFill('ur')}
+                  stroke="#333"
+                  strokeWidth="2"
+                  onClick={() => handleCantonClick('ur')}
+                  onMouseEnter={() => handleCantonHover('ur')}
+                  onMouseLeave={() => handleCantonHover(null)}
+                  style={{ cursor: 'pointer', transition: 'fill 0.3s ease' }}
+                />
+                <text x="790" y="430" textAnchor="middle" fontSize="14" fontWeight="bold" pointerEvents="none">UR</text>
+
+                {/* Schwytz (SZ) */}
+                <path
+                  id="sz"
+                  d="M850 360 L880 340 L900 360 L890 380 L860 390 L830 380 L840 360 Z"
+                  fill={getCantonFill('sz')}
+                  stroke="#333"
+                  strokeWidth="2"
+                  onClick={() => handleCantonClick('sz')}
+                  onMouseEnter={() => handleCantonHover('sz')}
+                  onMouseLeave={() => handleCantonHover(null)}
+                  style={{ cursor: 'pointer', transition: 'fill 0.3s ease' }}
+                />
+                <text x="865" y="365" textAnchor="middle" fontSize="14" fontWeight="bold" pointerEvents="none">SZ</text>
+
+                {/* Obwald (OW) */}
+                <path
+                  id="ow"
+                  d="M720 420 L750 400 L770 420 L760 440 L730 450 L710 440 Z"
+                  fill={getCantonFill('ow')}
+                  stroke="#333"
+                  strokeWidth="2"
+                  onClick={() => handleCantonClick('ow')}
+                  onMouseEnter={() => handleCantonHover('ow')}
+                  onMouseLeave={() => handleCantonHover(null)}
+                  style={{ cursor: 'pointer', transition: 'fill 0.3s ease' }}
+                />
+                <text x="740" y="425" textAnchor="middle" fontSize="14" fontWeight="bold" pointerEvents="none">OW</text>
+
+                {/* Nidwald (NW) */}
+                <path
+                  id="nw"
+                  d="M765 425 L785 405 L800 420 L790 440 L770 450 Z"
+                  fill={getCantonFill('nw')}
+                  stroke="#333"
+                  strokeWidth="2"
+                  onClick={() => handleCantonClick('nw')}
+                  onMouseEnter={() => handleCantonHover('nw')}
+                  onMouseLeave={() => handleCantonHover(null)}
+                  style={{ cursor: 'pointer', transition: 'fill 0.3s ease' }}
+                />
+                <text x="780" y="430" textAnchor="middle" fontSize="12" fontWeight="bold" pointerEvents="none">NW</text>
+
+                {/* Glaris (GL) */}
+                <path
+                  id="gl"
+                  d="M960 380 L980 360 L995 380 L985 400 L960 410 L950 390 Z"
+                  fill={getCantonFill('gl')}
+                  stroke="#333"
+                  strokeWidth="2"
+                  onClick={() => handleCantonClick('gl')}
+                  onMouseEnter={() => handleCantonHover('gl')}
+                  onMouseLeave={() => handleCantonHover(null)}
+                  style={{ cursor: 'pointer', transition: 'fill 0.3s ease' }}
+                />
+                <text x="970" y="385" textAnchor="middle" fontSize="12" fontWeight="bold" pointerEvents="none">GL</text>
+
+                {/* Zoug (ZG) */}
+                <path
+                  id="zg"
+                  d="M800 330 L820 310 L840 325 L830 345 L810 350 Z"
+                  fill={getCantonFill('zg')}
+                  stroke="#333"
+                  strokeWidth="2"
+                  onClick={() => handleCantonClick('zg')}
+                  onMouseEnter={() => handleCantonHover('zg')}
+                  onMouseLeave={() => handleCantonHover(null)}
+                  style={{ cursor: 'pointer', transition: 'fill 0.3s ease' }}
+                />
+                <text x="820" y="330" textAnchor="middle" fontSize="12" fontWeight="bold" pointerEvents="none">ZG</text>
+
+                {/* Fribourg (FR) */}
+                <path
+                  id="fr"
+                  d="M390 470 L420 440 L450 450 L470 480 L450 510 L420 520 L400 500 Z"
+                  fill={getCantonFill('fr')}
+                  stroke="#333"
+                  strokeWidth="2"
+                  onClick={() => handleCantonClick('fr')}
+                  onMouseEnter={() => handleCantonHover('fr')}
+                  onMouseLeave={() => handleCantonHover(null)}
+                  style={{ cursor: 'pointer', transition: 'fill 0.3s ease' }}
+                />
+                <text x="430" y="480" textAnchor="middle" fontSize="14" fontWeight="bold" pointerEvents="none">FR</text>
+
+                {/* Soleure (SO) */}
+                <path
+                  id="so"
+                  d="M540 230 L570 210 L590 225 L580 245 L550 255 Z"
+                  fill={getCantonFill('so')}
+                  stroke="#333"
+                  strokeWidth="2"
+                  onClick={() => handleCantonClick('so')}
+                  onMouseEnter={() => handleCantonHover('so')}
+                  onMouseLeave={() => handleCantonHover(null)}
+                  style={{ cursor: 'pointer', transition: 'fill 0.3s ease' }}
+                />
+                <text x="565" y="235" textAnchor="middle" fontSize="12" fontWeight="bold" pointerEvents="none">SO</text>
+
+                {/* Bâle-Ville (BS) */}
+                <path
+                  id="bs"
+                  d="M540 140 L555 130 L570 140 L565 150 L545 155 Z"
+                  fill={getCantonFill('bs')}
+                  stroke="#333"
+                  strokeWidth="2"
+                  onClick={() => handleCantonClick('bs')}
+                  onMouseEnter={() => handleCantonHover('bs')}
+                  onMouseLeave={() => handleCantonHover(null)}
+                  style={{ cursor: 'pointer', transition: 'fill 0.3s ease' }}
+                />
+                <text x="555" y="145" textAnchor="middle" fontSize="10" fontWeight="bold" pointerEvents="none">BS</text>
+
+                {/* Bâle-Campagne (BL) */}
+                <path
+                  id="bl"
+                  d="M550 155 L570 140 L590 150 L600 170 L590 185 L570 180 L555 165 Z"
+                  fill={getCantonFill('bl')}
+                  stroke="#333"
+                  strokeWidth="2"
+                  onClick={() => handleCantonClick('bl')}
+                  onMouseEnter={() => handleCantonHover('bl')}
+                  onMouseLeave={() => handleCantonHover(null)}
+                  style={{ cursor: 'pointer', transition: 'fill 0.3s ease' }}
+                />
+                <text x="575" y="165" textAnchor="middle" fontSize="12" fontWeight="bold" pointerEvents="none">BL</text>
+
+                {/* Schaffhouse (SH) */}
+                <path
+                  id="sh"
+                  d="M760 100 L790 80 L810 95 L800 115 L770 120 Z"
+                  fill={getCantonFill('sh')}
+                  stroke="#333"
+                  strokeWidth="2"
+                  onClick={() => handleCantonClick('sh')}
+                  onMouseEnter={() => handleCantonHover('sh')}
+                  onMouseLeave={() => handleCantonHover(null)}
+                  style={{ cursor: 'pointer', transition: 'fill 0.3s ease' }}
+                />
+                <text x="785" y="100" textAnchor="middle" fontSize="12" fontWeight="bold" pointerEvents="none">SH</text>
+
+                {/* Appenzell Rhodes-Extérieures (AR) */}
+                <path
+                  id="ar"
+                  d="M1000 230 L1020 210 L1040 225 L1030 245 L1010 250 Z"
+                  fill={getCantonFill('ar')}
+                  stroke="#333"
+                  strokeWidth="2"
+                  onClick={() => handleCantonClick('ar')}
+                  onMouseEnter={() => handleCantonHover('ar')}
+                  onMouseLeave={() => handleCantonHover(null)}
+                  style={{ cursor: 'pointer', transition: 'fill 0.3s ease' }}
+                />
+                <text x="1020" y="230" textAnchor="middle" fontSize="12" fontWeight="bold" pointerEvents="none">AR</text>
+
+                {/* Appenzell Rhodes-Intérieures (AI) */}
+                <path
+                  id="ai"
+                  d="M1035 235 L1050 225 L1060 235 L1055 250 L1040 255 Z"
+                  fill={getCantonFill('ai')}
+                  stroke="#333"
+                  strokeWidth="2"
+                  onClick={() => handleCantonClick('ai')}
+                  onMouseEnter={() => handleCantonHover('ai')}
+                  onMouseLeave={() => handleCantonHover(null)}
+                  style={{ cursor: 'pointer', transition: 'fill 0.3s ease' }}
+                />
+                <text x="1045" y="240" textAnchor="middle" fontSize="10" fontWeight="bold" pointerEvents="none">AI</text>
+
+                {/* Saint-Gall (SG) */}
+                <path
+                  id="sg"
+                  d="M950 200 L980 180 L1020 190 L1040 220 L1030 250 L990 260 L965 240 Z"
+                  fill={getCantonFill('sg')}
+                  stroke="#333"
+                  strokeWidth="2"
+                  onClick={() => handleCantonClick('sg')}
+                  onMouseEnter={() => handleCantonHover('sg')}
+                  onMouseLeave={() => handleCantonHover(null)}
+                  style={{ cursor: 'pointer', transition: 'fill 0.3s ease' }}
+                />
+                <text x="995" y="220" textAnchor="middle" fontSize="14" fontWeight="bold" pointerEvents="none">SG</text>
+
+                {/* Grisons (GR) */}
+                <path
+                  id="gr"
+                  d="M1000 380 L1040 360 L1100 380 L1120 420 L1090 470 L1040 480 L980 450 L970 410 Z"
+                  fill={getCantonFill('gr')}
+                  stroke="#333"
+                  strokeWidth="2"
+                  onClick={() => handleCantonClick('gr')}
+                  onMouseEnter={() => handleCantonHover('gr')}
+                  onMouseLeave={() => handleCantonHover(null)}
+                  style={{ cursor: 'pointer', transition: 'fill 0.3s ease' }}
+                />
+                <text x="1050" y="420" textAnchor="middle" fontSize="14" fontWeight="bold" pointerEvents="none">GR</text>
+
+                {/* Argovie (AG) */}
+                <path
+                  id="ag"
+                  d="M670 200 L700 180 L730 200 L720 230 L690 240 L670 230 Z"
+                  fill={getCantonFill('ag')}
+                  stroke="#333"
+                  strokeWidth="2"
+                  onClick={() => handleCantonClick('ag')}
+                  onMouseEnter={() => handleCantonHover('ag')}
+                  onMouseLeave={() => handleCantonHover(null)}
+                  style={{ cursor: 'pointer', transition: 'fill 0.3s ease' }}
+                />
+                <text x="700" y="210" textAnchor="middle" fontSize="14" fontWeight="bold" pointerEvents="none">AG</text>
+
+                {/* Thurgovie (TG) */}
+                <path
+                  id="tg"
+                  d="M920 140 L950 120 L980 130 L1000 155 L980 180 L930 170 Z"
+                  fill={getCantonFill('tg')}
+                  stroke="#333"
+                  strokeWidth="2"
+                  onClick={() => handleCantonClick('tg')}
+                  onMouseEnter={() => handleCantonHover('tg')}
+                  onMouseLeave={() => handleCantonHover(null)}
+                  style={{ cursor: 'pointer', transition: 'fill 0.3s ease' }}
+                />
+                <text x="960" y="150" textAnchor="middle" fontSize="14" fontWeight="bold" pointerEvents="none">TG</text>
+
+                {/* Tessin (TI) */}
+                <path
+                  id="ti"
+                  d="M850 550 L880 530 L920 550 L910 590 L870 610 L840 600 L830 570 Z"
+                  fill={getCantonFill('ti')}
+                  stroke="#333"
+                  strokeWidth="2"
+                  onClick={() => handleCantonClick('ti')}
+                  onMouseEnter={() => handleCantonHover('ti')}
+                  onMouseLeave={() => handleCantonHover(null)}
+                  style={{ cursor: 'pointer', transition: 'fill 0.3s ease' }}
+                />
+                <text x="875" y="570" textAnchor="middle" fontSize="14" fontWeight="bold" pointerEvents="none">TI</text>
+
+                {/* Vaud (VD) */}
+                <path
+                  id="vd"
+                  d="M270 480 L320 450 L380 470 L350 520 L300 550 L260 540 L250 510 Z"
+                  fill={getCantonFill('vd')}
+                  stroke="#333"
+                  strokeWidth="2"
+                  onClick={() => handleCantonClick('vd')}
+                  onMouseEnter={() => handleCantonHover('vd')}
+                  onMouseLeave={() => handleCantonHover(null)}
+                  style={{ cursor: 'pointer', transition: 'fill 0.3s ease' }}
+                />
+                <text x="320" y="500" textAnchor="middle" fontSize="14" fontWeight="bold" pointerEvents="none">VD</text>
+
+                {/* Valais (VS) */}
+                <path
+                  id="vs"
+                  d="M450 550 L500 520 L570 540 L590 580 L550 620 L480 630 L430 610 L420 570 Z"
+                  fill={getCantonFill('vs')}
+                  stroke="#333"
+                  strokeWidth="2"
+                  onClick={() => handleCantonClick('vs')}
+                  onMouseEnter={() => handleCantonHover('vs')}
+                  onMouseLeave={() => handleCantonHover(null)}
+                  style={{ cursor: 'pointer', transition: 'fill 0.3s ease' }}
+                />
+                <text x="510" y="580" textAnchor="middle" fontSize="14" fontWeight="bold" pointerEvents="none">VS</text>
+
+                {/* Neuchâtel (NE) */}
+                <path
+                  id="ne"
+                  d="M300 380 L330 360 L360 380 L350 400 L320 410 L300 400 Z"
+                  fill={getCantonFill('ne')}
+                  stroke="#333"
+                  strokeWidth="2"
+                  onClick={() => handleCantonClick('ne')}
+                  onMouseEnter={() => handleCantonHover('ne')}
+                  onMouseLeave={() => handleCantonHover(null)}
+                  style={{ cursor: 'pointer', transition: 'fill 0.3s ease' }}
+                />
+                <text x="330" y="385" textAnchor="middle" fontSize="14" fontWeight="bold" pointerEvents="none">NE</text>
+
+                {/* Genève (GE) */}
+                <path
+                  id="ge"
+                  d="M140 680 L160 660 L190 670 L195 690 L175 700 L150 695 Z"
+                  fill={getCantonFill('ge')}
+                  stroke="#333"
+                  strokeWidth="2"
+                  onClick={() => handleCantonClick('ge')}
+                  onMouseEnter={() => handleCantonHover('ge')}
+                  onMouseLeave={() => handleCantonHover(null)}
+                  style={{ cursor: 'pointer', transition: 'fill 0.3s ease' }}
+                />
+                <text x="170" y="680" textAnchor="middle" fontSize="14" fontWeight="bold" pointerEvents="none">GE</text>
+
+                {/* Jura (JU) */}
+                <path
+                  id="ju"
+                  d="M350 250 L380 230 L410 250 L400 270 L370 280 L350 270 Z"
+                  fill={getCantonFill('ju')}
+                  stroke="#333"
+                  strokeWidth="2"
+                  onClick={() => handleCantonClick('ju')}
+                  onMouseEnter={() => handleCantonHover('ju')}
+                  onMouseLeave={() => handleCantonHover(null)}
+                  style={{ cursor: 'pointer', transition: 'fill 0.3s ease' }}
+                />
+                <text x="380" y="255" textAnchor="middle" fontSize="14" fontWeight="bold" pointerEvents="none">JU</text>
               </g>
+
+              {/* Ajout des lacs principaux pour plus de réalisme */}
+              <path
+                d="M350 370 L380 350 L410 370 L400 390 L370 400 L350 390 Z"
+                fill="#a6cff7"
+                stroke="#666"
+                strokeWidth="1"
+                pointerEvents="none"
+              />
+              <text x="375" y="375" textAnchor="middle" fontSize="10" fill="#333" pointerEvents="none">Lac de Neuchâtel</text>
+
+              <path
+                d="M280 520 L300 510 L320 520 L310 535 L290 540 Z"
+                fill="#a6cff7"
+                stroke="#666"
+                strokeWidth="1"
+                pointerEvents="none"
+              />
+              <text x="300" y="525" textAnchor="middle" fontSize="8" fill="#333" pointerEvents="none">Lac Léman</text>
+
+              <path
+                d="M680 350 L700 340 L720 350 L710 360 L690 365 Z"
+                fill="#a6cff7"
+                stroke="#666"
+                strokeWidth="1"
+                pointerEvents="none"
+              />
+              <text x="700" y="353" textAnchor="middle" fontSize="8" fill="#333" pointerEvents="none">Lac des 4 Cantons</text>
             </svg>
             
-            <div className="mt-4 text-center text-sm text-swiss-text-secondary">
-              Note: Ceci est une représentation simplifiée à des fins de démonstration. Une carte SVG précise serait utilisée en production.
+            <div className="mt-4 text-sm text-swiss-text-secondary text-center">
+              <Info size={14} className="inline mr-1" /> Cliquez sur un canton pour afficher ses informations fiscales et comptables.
             </div>
           </div>
         </div>
@@ -408,7 +803,7 @@ const SwissMap = () => {
         <div className="lg:w-2/5 flex flex-col">
           <div className="bg-gray-50 rounded-xl p-6 flex-grow">
             {selectedCanton ? (
-              <div>
+              <div id="canton-info">
                 <div className="flex justify-between items-start mb-4">
                   <h3 className="text-xl font-bold text-swiss-blue">{selectedCanton.name}</h3>
                   <div className="bg-swiss-blue text-white text-xs font-bold px-2 py-1 rounded">
@@ -463,9 +858,7 @@ const SwissMap = () => {
             ) : (
               <div className="h-full flex flex-col items-center justify-center text-center p-6">
                 <div className="bg-swiss-blue/10 rounded-full p-4 mb-4">
-                  <svg className="w-10 h-10 text-swiss-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"></path>
-                  </svg>
+                  <MapPin className="w-10 h-10 text-swiss-blue" />
                 </div>
                 <h3 className="text-lg font-semibold mb-2">Sélectionnez un canton</h3>
                 <p className="text-swiss-text-secondary">
@@ -481,3 +874,4 @@ const SwissMap = () => {
 };
 
 export default SwissMap;
+

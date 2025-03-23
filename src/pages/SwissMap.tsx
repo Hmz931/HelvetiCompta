@@ -27,35 +27,9 @@ const SwissMap = () => {
         </div>
       </div>
       
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-10">
-        <div className="lg:col-span-2">
-          <div className="glass rounded-xl p-6 shadow-card h-full">
-            <h2 className="text-xl font-semibold mb-4">Carte des Cantons Suisses</h2>
-            <div className="aspect-[4/3] w-full relative bg-swiss-muted rounded-lg overflow-hidden">
-              <SwissMapComponent />
-            </div>
-          </div>
-        </div>
-        
-        <div>
-          <div className="glass rounded-xl p-6 shadow-card">
-            <h2 className="text-xl font-semibold mb-4">Informations Cantonales</h2>
-            <div className="text-swiss-text-secondary mb-4">
-              <p>Sélectionnez un canton sur la carte pour afficher ses particularités fiscales et comptables.</p>
-            </div>
-            
-            <div id="canton-info" className="space-y-4">
-              <div className="border border-dashed border-gray-300 rounded-lg p-4 text-center text-swiss-text-secondary">
-                <Map size={32} className="mx-auto mb-2 text-gray-400" />
-                <p>Aucun canton sélectionné</p>
-                <p className="text-sm mt-2">Cliquez sur un canton pour voir ses informations</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+      <SwissMapComponent />
       
-      <section className="mb-10">
+      <section className="mb-10 mt-10">
         <h2 className="text-2xl font-bold mb-6 flex items-center">
           <Info size={24} className="mr-3 text-swiss-blue" />
           Particularités cantonales
